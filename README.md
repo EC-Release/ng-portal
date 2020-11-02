@@ -1,2 +1,2 @@
 # ng-webui
-EC Engineering Web Portal
+Release Engineering Web Portal
