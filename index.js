@@ -21,3 +21,8 @@
 }(cdnSource)
     .catch(loadScript.bind(null, localSource))
     .then(successCallback, failureCallback);
+
+const newDiv = document.createElement("div"); 
+const newContent = document.createTextNode("Hello EC engineering world."); 
+newDiv.appendChild(newContent);  
+document.body.appendChild(newDiv); 
