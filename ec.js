@@ -13,11 +13,8 @@ class EC extends Base {
   constructor(id) {
       super();
       console.log(`EC id# ${id}`);
-      this.Api().then((resp)=>{
- console.log(`Api(): ${resp.json()}`);
-}).then((data)=>{
+      this.Api().then(resp => resp.json()).then((data)=>{
  console.log(`data: ${data}`);
-      
       }).catch((e)=>{
  console.log(`Exception: e}`);
 });
