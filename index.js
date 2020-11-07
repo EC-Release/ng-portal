@@ -23,7 +23,7 @@ class Base {
  }
 }
 
-let d = new EC('ec1');
+let d = new Base('ec1');
 d.load("./ec.js")
  .catch((err)=>{})
  .then((success)=>{}, (failure)=>{});
