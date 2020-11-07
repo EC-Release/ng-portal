@@ -23,7 +23,9 @@ class Base {
  }
 }
 
-let d = new EC('ec1');
+let d = new Base();
 d.load("./assets/ec.js")
  .catch((err)=>{})
- .then((success)=>{}, (failure)=>{});
+ .then((success)=>{
+ let e = new EC("ec1");
+}, (failure)=>{});
