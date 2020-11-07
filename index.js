@@ -11,7 +11,7 @@
  
 class Base {
  constructor(){}
- load(src)=>{
+ load(src){
   return new Promise(function (resolve, reject) {
    var s;
    s = document.createElement('script');
@@ -19,10 +19,11 @@ class Base {
    s.onload = resolve;
    s.onerror = reject;
    document.head.appendChild(s);
-  });
+  }
  }
 }
 
 let d = new EC('ec1');
-d.load("./ec.js").catch((err)=>{})
-    .then((success)=>{}, (failure)=>{});
+d.load("./ec.js")
+ .catch((err)=>{})
+ .then((success)=>{}, (failure)=>{});
