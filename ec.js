@@ -1,6 +1,6 @@
-class EC { 
+class EC extends Base {
   constructor(id) {
-    this.id = id;
-    console.log(`EC id# ${obj}`);
+    console.log(`EC id# ${id}`);
+    super();
   }
 }
