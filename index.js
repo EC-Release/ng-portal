@@ -34,4 +34,7 @@ d.load("./assets/ec.js")
  .catch((err)=>{})
  .then((success)=>{
  let e = new EC("ec1");
+ $('ul').on('click', 'li.ec-godoc', ()=>{
+        $("main").html("hello world");
+    });
 }, (failure)=>{});
