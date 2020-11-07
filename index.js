@@ -24,6 +24,6 @@ class Base {
 }
 
 let d = new Base('ec1');
-d.load("./ec.js")
+d.load("./assets/ec.js")
  .catch((err)=>{})
  .then((success)=>{}, (failure)=>{});
