@@ -9,24 +9,8 @@
  * author: apolo.yasuda@ge.com
  */
  
-(src)=> {
-    return new Promise(function (resolve, reject) {
-        var s;
-        s = document.createElement('script');
-        s.src = src;
-        s.onload = resolve;
-        s.onerror = reject;
-        document.head.appendChild(s);
-    });
-}(cdnSource)
-    .catch(loadScript.bind(null, localSource))
-    .then(successCallback, failureCallback);
-
-class EC {
- constructor(id) {
-  this.id = id;
-  console.log(`EC id# ${obj}`);
- }
+class Base {
+ constructor(){}
  load(src)=>{
   return new Promise(function (resolve, reject) {
    var s;
@@ -40,4 +24,5 @@ class EC {
 }
 
 let d = new EC('ec1');
-d.load("./ec.js");
+d.load("./ec.js").catch((err)=>{})
+    .then((success)=>{}, (failure)=>{});
