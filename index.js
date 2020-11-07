@@ -22,7 +22,22 @@
     .catch(loadScript.bind(null, localSource))
     .then(successCallback, failureCallback);
 
-const newDiv = document.createElement("div"); 
-const newContent = document.createTextNode("Hello EC engineering world."); 
-newDiv.appendChild(newContent);  
-document.body.appendChild(newDiv); 
+class EC {
+ constructor(id) {
+  this.id = id;
+  console.log(`EC id# ${obj}`);
+ }
+ load(src)=>{
+  return new Promise(function (resolve, reject) {
+   var s;
+   s = document.createElement('script');
+   s.src = src;
+   s.onload = resolve;
+   s.onerror = reject;
+   document.head.appendChild(s);
+  });
+ }
+}
+
+let d = new EC('ec1');
+d.load("./ec.js");
