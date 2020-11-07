@@ -23,12 +23,6 @@ class Base {
  }
 }
 
-$(document).ready(()=>{
-    $('ul').on('click', 'li.ec-godoc', ()=>{
-        $("main").html("hello world");
-    });
-});
-
 let d = new Base();
 d.load("./assets/ec.js")
  .catch((err)=>{})
