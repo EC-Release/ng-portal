@@ -8,7 +8,7 @@
  *
  * author: apolo.yasuda@ge.com
  */
- 
+
 class Base {
  constructor(){}
  load(src){
@@ -23,6 +23,7 @@ class Base {
  }
 }
 
+()=>{
 let d = new Base();
 d.load("./assets/ec.js")
  .catch((err)=>{})
@@ -32,3 +33,6 @@ d.load("./assets/ec.js")
         $("main").html("hello world");
     });
 }, (failure)=>{});
+}();
+
+
