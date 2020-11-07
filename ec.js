@@ -14,7 +14,7 @@ class EC extends Base {
       super();
       console.log(`EC id# ${id}`);
       this.Api().then(resp => resp.json()).then((data)=>{
- console.log(`data: ${data}`);
+ console.log(`data: ${JSON.stringify(data)}`);
       }).catch((e)=>{
  console.log(`Exception: e}`);
 });
