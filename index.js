@@ -9,21 +9,20 @@
  * author: apolo.yasuda@ge.com
  */
 
-
-    class Base {
-        constructor() {}
-        load(src) {
-            return new Promise((resolve,reject)=>{
-                var s;
-                s = document.createElement('script');
-                s.src = src;
-                s.onload = resolve;
-                s.onerror = reject;
-                document.head.appendChild(s);
-            }
-            );
+class Base {
+    constructor() {}
+    load(src) {
+        return new Promise((resolve,reject)=>{
+            var s;
+            s = document.createElement('script');
+            s.src = src;
+            s.onload = resolve;
+            s.onerror = reject;
+            document.head.appendChild(s);
         }
+        );
     }
+}
 
 (()=>{
     let d = new Base();
