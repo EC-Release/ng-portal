@@ -29,6 +29,22 @@ d.load("./assets/ec.js")
  .catch((err)=>{})
  .then((success)=>{
  let e = new EC("ec1");
+ e.Api('https://api.github.com/repos/ec-release/web-ui/contents/webui-assets/godoc')
+  .then((data)=>{
+ /*
+    let htmlString = '<ul>';
+	for (let file of data) {
+	  if (file.type=="dir"){
+	    htmlString += `<li><a href="/web-ui/${file.path}">${file.name}</a></li>`;
+	  }
+	}
+	htmlString += '</ul>';
+      document.getElementById('wzlib-releases').innerHTML = htmlString;
+      */
+  console.log(`data: ${JSON.stringify(data)}`);
+ }).catch((e)=>{
+ console.log(`Exception: e}`);
+});
  $('ul').on('click', 'li.ec-godoc', ()=>{
         $("main").html("hello world");
     });
