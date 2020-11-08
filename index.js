@@ -23,7 +23,7 @@ class Base {
  }
 }
 
-()=>{
+$(document).ready(()=>{
 let d = new Base();
 d.load("./assets/ec.js")
  .catch((err)=>{})
@@ -33,6 +33,6 @@ d.load("./assets/ec.js")
         $("main").html("hello world");
     });
 }, (failure)=>{});
-}();
+});
 
 
