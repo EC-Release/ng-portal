@@ -38,11 +38,11 @@ class Base {
                 return;
             }
 
-            ec.Api('https://api.github.com/repos/ec-release/web-ui/contents/webui-assets/godoc').then((data)=>{
+            ec.Api('https://api.github.com/repos/ec-release/ng-webui/contents/godoc').then((data)=>{
                 let htmlString = '<ul>';
                 for (let file of data) {
                     if (file.type == "dir") {
-                        htmlString += `<li><a href="/web-ui/${file.path}">${file.name}</a></li>`;
+                        htmlString += `<li><a href="${file.path}">${file.name}</a></li>`;
                     }
                 }
                 htmlString += '</ul>';
