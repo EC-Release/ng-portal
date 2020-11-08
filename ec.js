@@ -22,7 +22,7 @@ class EC extends Base {
     .then(resp => resp.json());
   }
   
-	set sdkInnerHTML(c) {
+  set sdkInnerHTML(c) {
     this.#sdk=c;
   }
 
