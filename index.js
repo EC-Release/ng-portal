@@ -9,7 +9,7 @@
  * author: apolo.yasuda@ge.com
  */
 
-(()=>{
+
     class Base {
         constructor() {}
         load(src) {
@@ -25,6 +25,7 @@
         }
     }
 
+(()=>{
     let d = new Base();
     d.load("./assets/ec.js").catch((err)=>{}
     ).then((success)=>{
