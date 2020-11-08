@@ -42,7 +42,7 @@ class Base {
                 let htmlString = '<ul>';
                 for (let file of data) {
                     if (file.type == "dir") {
-                        htmlString += `<li><a href="${file.path}">${file.name}</a></li>`;
+                        htmlString += `<li><a href="./assets/godoc/${file.path}">${file.name}</a></li>`;
                     }
                 }
                 htmlString += '</ul>';
