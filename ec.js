@@ -13,14 +13,10 @@ class EC extends Base {
   constructor(id) {
       super();
       console.log(`EC id# ${id}`);
-      this.Api().then(resp => resp.json()).then((data)=>{
- console.log(`data: ${JSON.stringify(data)}`);
-      }).catch((e)=>{
- console.log(`Exception: e}`);
-});
   }
   
-  Api(){
-    return fetch('https://api.github.com/repos/ec-release/web-ui/contents/webui-assets/godoc');
+  Api(url){
+    return fetch(url)
+    .then(resp => resp.json());
   }
 }
