@@ -9,29 +9,37 @@
  * author: apolo.yasuda@ge.com
  */
 
-class Base {
- constructor(){}
- load(src){
-  return new Promise((resolve, reject)=>{
-   var s;
-   s = document.createElement('script');
-   s.src = src;
-   s.onload = resolve;
-   s.onerror = reject;
-   document.head.appendChild(s);
-  });
- }
-}
+(()=>{
+    class Base {
+        constructor() {}
+        load(src) {
+            return new Promise((resolve,reject)=>{
+                var s;
+                s = document.createElement('script');
+                s.src = src;
+                s.onload = resolve;
+                s.onerror = reject;
+                document.head.appendChild(s);
+            }
+            );
+        }
+    }
 
-$(document).ready(()=>{
-let d = new Base();
-d.load("./assets/ec.js")
- .catch((err)=>{})
- .then((success)=>{
- let e = new EC("ec1");
- e.Api('https://api.github.com/repos/ec-release/web-ui/contents/webui-assets/godoc')
-  .then((data)=>{
- /*
+    let d = new Base();
+    d.load("./assets/ec.js").catch((err)=>{}
+    ).then((success)=>{
+
+	let ec = new EC("ec1");
+            
+        $('ul').on('click', 'li.ec-godoc', (event)=>{
+	    event.preventDefault();
+	    if (ec.sdkInnerHTML!="") {
+		    $("main").html(ec.sdkInnerHTML);
+		    return;
+	    }
+		
+            ec.Api('https://api.github.com/repos/ec-release/web-ui/contents/webui-assets/godoc').then((data)=>{
+                
     let htmlString = '<ul>';
 	for (let file of data) {
 	  if (file.type=="dir"){
@@ -39,16 +47,19 @@ d.load("./assets/ec.js")
 	  }
 	}
 	htmlString += '</ul>';
-      document.getElementById('wzlib-releases').innerHTML = htmlString;
-      */
-  console.log(`data: ${JSON.stringify(data)}`);
- }).catch((e)=>{
- console.log(`Exception: e}`);
-});
- $('ul').on('click', 'li.ec-godoc', ()=>{
-        $("main").html("hello world");
-    });
-}, (failure)=>{});
-});
+       ec.sdkInnerHTML=htmlString;
+		    $("main").html(ec.sdkInnerHTML);
+	    }									      										      
+            }
+            ).catch((e)=>{
+                console.log(`Exception: e}`);
+            }
+            );
+        }
+        );
+    }
+    , (failure)=>{}
+    );
 
-
+}
+)();
