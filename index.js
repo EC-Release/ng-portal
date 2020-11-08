@@ -29,27 +29,25 @@
     d.load("./assets/ec.js").catch((err)=>{}
     ).then((success)=>{
 
-	let ec = new EC("ec1");
-            
+        let ec = new EC("ec1");
+
         $('ul').on('click', 'li.ec-godoc', (event)=>{
-	    event.preventDefault();
-	    if (ec.sdkInnerHTML!="") {
-		    $("main").html(ec.sdkInnerHTML);
-		    return;
-	    }
-		
+            event.preventDefault();
+            if (ec.sdkInnerHTML != "") {
+                $("main").html(ec.sdkInnerHTML);
+                return;
+            }
+
             ec.Api('https://api.github.com/repos/ec-release/web-ui/contents/webui-assets/godoc').then((data)=>{
-                
-    let htmlString = '<ul>';
-	for (let file of data) {
-	  if (file.type=="dir"){
-	    htmlString += `<li><a href="/web-ui/${file.path}">${file.name}</a></li>`;
-	  }
-	}
-	htmlString += '</ul>';
-       ec.sdkInnerHTML=htmlString;
-		    $("main").html(ec.sdkInnerHTML);
-	    }									      										      
+                let htmlString = '<ul>';
+                for (let file of data) {
+                    if (file.type == "dir") {
+                        htmlString += `<li><a href="/web-ui/${file.path}">${file.name}</a></li>`;
+                    }
+                }
+                htmlString += '</ul>';
+                ec.sdkInnerHTML = htmlString;
+                $("main").html(ec.sdkInnerHTML);
             }
             ).catch((e)=>{
                 console.log(`Exception: e}`);
