@@ -10,6 +10,8 @@
  */
 
 class EC extends Base {
+  #sdk = "";
+  
   constructor(id) {
       super();
       console.log(`EC id# ${id}`);
@@ -19,4 +21,13 @@ class EC extends Base {
     return fetch(url)
     .then(resp => resp.json());
   }
+  
+	set sdkInnerHTML(c) {
+    this.#sdk=c;
+  }
+
+  get sdkInnerHTML() {
+    return this.#sdk;
+  }
+  
 }
