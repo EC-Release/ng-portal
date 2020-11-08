@@ -72,6 +72,13 @@ body {
  * Navbar
  */
 
+.ec-logo {
+  width: 30px;
+  margin-right: 3px;
+  margin-bottom: 6px;
+  margin-left: 10px;
+}
+
 .navbar-brand {
   padding-top: .75rem;
   padding-bottom: .75rem;
