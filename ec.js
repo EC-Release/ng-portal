@@ -11,7 +11,6 @@
 
 class EC extends Base {
   #sdk = "";
-  #godoc = "";
   
   constructor(id) {
       super();
@@ -26,14 +25,6 @@ class EC extends Base {
   Html(url){
     return fetch(url)
     .then(resp => resp.text());
-  }
-  
-  set godocHTML(c) {
-    this.#godoc=c;
-  }
-
-  get godocHTML() {
-    return this.#godoc;
   }
 
   set sdkInnerHTML(c) {
