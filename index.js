@@ -26,12 +26,13 @@ class Base {
 
 (()=>{
     let d = new Base();
-    d.load("https://cdn.jsdelivr.net/npm/marked/marked.min.js").catch((err)=>{}
+    d.load("https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js").catch((err)=>{}
     ).then((success)=>{
 
         d.load("./assets/ec.js").catch((err)=>{}
         ).then((success)=>{
 
+            let marked = new showdown.Converter();
             let ec = new EC("ec1");
 
             $('ul').on('click', 'li.ec-godoc', (event)=>{
@@ -63,14 +64,15 @@ class Base {
                 event.preventDefault();
                 
                 if (ec.securityMd != "") {
-                    //let op = atob(ec.securityMd);
-                    $("main").html(marked(ec.securityMd));
+                    $("main").html(marked.makeHtml(ec.securityMd));
                     return;
                 }
                 
                 ec.Html('https://raw.githubusercontent.com/EC-Release/sdk/v1_security_review/vulnerability/predix.README.md').then((data)=>{
+                    
                     ec.securityMd = data.content;
-                    $("main").html(marked(data.content));
+                    $("main").html(marked.makeHtml(data.content));
+                    
                 });
             });
 
