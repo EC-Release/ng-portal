@@ -39,7 +39,7 @@ class Base {
             }
 
             ec.Api('https://api.github.com/repos/ec-release/ng-webui/contents/godoc').then((data)=>{
-                let htmlString = `<div class="list-group">`;
+                let htmlString = `<div class="list-group d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">`;
                 for (let file of data) {
                     if (file.type == "dir") {
                         htmlString += `<a href="./assets/godoc/${file.path}" class="list-group-item list-group-item-action">${file.name}</a>`;
