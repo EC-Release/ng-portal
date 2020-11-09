@@ -63,11 +63,12 @@ class Base {
                 event.preventDefault();
 
                 ec.Api(event.target.href).then((data)=>{
-                    let op = atob(data.content);
-                    $("main").innerHTML = marked(op);
+                    //let op = atob(data.content);
+                    //$("main").innerHTML = marked(op);
+                    $("main").html(data);
                 }
                 ).catch((e)=>{
-                    console.log(`Exception: e}`);
+                    console.log(`Exception: ${e}`);
                 }
                 );
 
