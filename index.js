@@ -58,6 +58,22 @@ class Base {
                 );
             }
             );
+            
+            $('ul').on('click', 'li.ec-security', (event)=>{
+                event.preventDefault();
+                
+                if (ec.securityMd != "") {
+                    let op = atob(ec.securityMd);
+                    $("main").html(marked(op));
+                    return;
+                }
+                
+                ec.Html(event.target.href).then((data)=>{
+                    ec.securityMd = data;
+                    let op = atob(data.content);
+                    $("main").html(marked(op));
+                });
+            });
 
             $('main').on('click', 'a.ec-godoc-rev', (event)=>{
                 event.preventDefault();
