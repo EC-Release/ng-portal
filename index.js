@@ -59,10 +59,10 @@ class Base {
         }
         );
         
-        $('a.ec-godoc-rev').on('click', 'li.ec-godoc', (event)=>{
+        $('main').on('click', 'a.ec-godoc-rev', (event)=>{
             event.preventDefault();
             
-            ec.Api('https://api.github.com/repos/ec-release/ng-webui/contents/godoc').then((data)=>{
+            ec.Api(event.target.attr('href')).then((data)=>{
                 let op = atob(data.content);
                 $("main").innerHTML = marked(op);
             }
