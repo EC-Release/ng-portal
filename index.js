@@ -38,7 +38,7 @@ class Base {
 
       return [{
         type: 'html',
-        regex: /(<h([1-3]) id="([^"]+?)">)(.*<\/h\2>)/g,
+        regex: /(<h([1-4]) id="([^"]+?)">)(.*<\/h\2>)/g,
         replace: ancTpl
       }];
     });
