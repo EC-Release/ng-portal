@@ -26,58 +26,60 @@ class Base {
 
 (()=>{
     let d = new Base();
-    d.load("https://cdn.jsdelivr.net/npm/marked/marked.min.js").catch((err)=>{})
-        .then((success)=>{
-        
-    d.load("./assets/ec.js").catch((err)=>{}
+    d.load("https://cdn.jsdelivr.net/npm/marked/marked.min.js").catch((err)=>{}
     ).then((success)=>{
 
-        let ec = new EC("ec1");
+        d.load("./assets/ec.js").catch((err)=>{}
+        ).then((success)=>{
 
-        $('ul').on('click', 'li.ec-godoc', (event)=>{
-            event.preventDefault();
-            if (ec.sdkInnerHTML != "") {
-                $("main").html(ec.sdkInnerHTML);
-                return;
-            }
+            let ec = new EC("ec1");
 
-            ec.Api('https://api.github.com/repos/ec-release/ng-webui/contents/godoc').then((data)=>{
-                let htmlString = `<div class="list-group d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">`;
-                for (let file of data) {
-                    if (file.type == "dir") {
-                        htmlString += `<a href="./assets/${file.path}" class="list-group-item list-group-item-action ec-godoc-rev">${file.name}</a>`;
-                    }
+            $('ul').on('click', 'li.ec-godoc', (event)=>{
+                event.preventDefault();
+                if (ec.sdkInnerHTML != "") {
+                    $("main").html(ec.sdkInnerHTML);
+                    return;
                 }
-                htmlString += '</div>';
-                ec.sdkInnerHTML = htmlString;
-                $("main").html(ec.sdkInnerHTML);
-            }
-            ).catch((e)=>{
-                console.log(`Exception: e}`);
+
+                ec.Api('https://api.github.com/repos/ec-release/ng-webui/contents/godoc').then((data)=>{
+                    let htmlString = `<div class="list-group d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">`;
+                    for (let file of data) {
+                        if (file.type == "dir") {
+                            htmlString += `<a href="./assets/${file.path}" class="list-group-item list-group-item-action ec-godoc-rev">${file.name}</a>`;
+                        }
+                    }
+                    htmlString += '</div>';
+                    ec.sdkInnerHTML = htmlString;
+                    $("main").html(ec.sdkInnerHTML);
+                }
+                ).catch((e)=>{
+                    console.log(`Exception: e}`);
+                }
+                );
             }
             );
+
+            $('main').on('click', 'a.ec-godoc-rev', (event)=>{
+                event.preventDefault();
+
+                ec.Api(event.target.href).then((data)=>{
+                    let op = atob(data.content);
+                    $("main").innerHTML = marked(op);
+                }
+                ).catch((e)=>{
+                    console.log(`Exception: e}`);
+                }
+                );
+
+            }
+            )
+
         }
+        , (failure)=>{}
         );
-        
-        $('main').on('click', 'a.ec-godoc-rev', (event)=>{
-            event.preventDefault();
-            
-            ec.Api(event.target.attr('href')).then((data)=>{
-                let op = atob(data.content);
-                $("main").innerHTML = marked(op);
-            }
-            ).catch((e)=>{
-                console.log(`Exception: e}`);
-            }
-            );
-            
-        })
-        
-        
+
     }
     , (failure)=>{}
     );
-
-        }, (failure)=>{});
 }
 )();
