@@ -61,7 +61,7 @@ class Base {
 
             $('main').on('click', 'a.ec-godoc-rev', (event)=>{
                 event.preventDefault();
-                $("main").add("iframe").attr("src", event.target.href)
+                $("main").html(`<div class="embed-responsive embed-responsive-16by9 mt-3"><iframe class="embed-responsive-item" src="${event.target.href}" allowfullscreen></iframe></div>`);
                 
                 //ec.Html(event.target.href).then((data)=>{
                     //let op = atob(data.content);
