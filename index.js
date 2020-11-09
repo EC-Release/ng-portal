@@ -63,15 +63,14 @@ class Base {
                 event.preventDefault();
                 
                 if (ec.securityMd != "") {
-                    let op = atob(ec.securityMd);
-                    $("main").html(marked(op));
+                    //let op = atob(ec.securityMd);
+                    $("main").html(marked(ec.securityMd));
                     return;
                 }
                 
                 ec.Html(event.target.href).then((data)=>{
-                    ec.securityMd = data;
-                    let op = atob(data.content);
-                    $("main").html(marked(op));
+                    ec.securityMd = data.content;
+                    $("main").html(marked(data.content));
                 });
             });
 
