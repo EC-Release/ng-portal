@@ -42,7 +42,7 @@ class Base {
                 let htmlString = `<div class="list-group d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">`;
                 for (let file of data) {
                     if (file.type == "dir") {
-                        htmlString += `<a href="./assets/godoc/${file.path}" class="list-group-item list-group-item-action">${file.name}</a>`;
+                        htmlString += `<a href="./assets/${file.path}" class="list-group-item list-group-item-action">${file.name}</a>`;
                     }
                 }
                 htmlString += '</div>';
