@@ -39,13 +39,13 @@ class Base {
             }
 
             ec.Api('https://api.github.com/repos/ec-release/ng-webui/contents/godoc').then((data)=>{
-                let htmlString = '<ul>';
+                let htmlString = `<div class="list-group">`;
                 for (let file of data) {
                     if (file.type == "dir") {
-                        htmlString += `<li><a href="./assets/godoc/${file.path}">${file.name}</a></li>`;
+                        htmlString += `<a href="./assets/godoc/${file.path}" class="list-group-item list-group-item-action">${file.name}</a>`;
                     }
                 }
-                htmlString += '</ul>';
+                htmlString += '</div>';
                 ec.sdkInnerHTML = htmlString;
                 $("main").html(ec.sdkInnerHTML);
             }
