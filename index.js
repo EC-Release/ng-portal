@@ -70,8 +70,8 @@ class Base {
                 
                 ec.Html('https://raw.githubusercontent.com/EC-Release/sdk/v1_security_review/vulnerability/predix.README.md').then((data)=>{
                     
-                    ec.securityMd = data.content;
-                    $("main").html(marked.makeHtml(data.content));
+                    ec.securityMd = data;
+                    $("main").html(marked.makeHtml(data));
                     
                 });
             });
