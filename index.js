@@ -61,14 +61,13 @@ class Base {
 
             $('main').on('click', 'a.ec-godoc-rev', (event)=>{
                 event.preventDefault();
-
-                ec.Html(event.target.href).then((data)=>{
-                    //let op = atob(data.content);
-                    //$("main").innerHTML = marked(op);
-                         
-                    $("main").add("iframe").attr("src", event.target.href);html(data);
+                $("main").add("iframe").attr("src", event.target.href)
                 
-                }
+                //ec.Html(event.target.href).then((data)=>{
+                    //let op = atob(data.content);
+                    //$("main").innerHTML = marked(op);                
+                //}
+                
                 ).catch((e)=>{
                     console.log(`Exception: ${e}`);
                 }
