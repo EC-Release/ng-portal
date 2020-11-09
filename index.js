@@ -68,11 +68,6 @@ class Base {
                     //$("main").innerHTML = marked(op);                
                 //}
                 
-                ).catch((e)=>{
-                    console.log(`Exception: ${e}`);
-                }
-                );
-
             }
             )
 
