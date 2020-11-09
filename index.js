@@ -65,7 +65,9 @@ class Base {
                 ec.Html(event.target.href).then((data)=>{
                     //let op = atob(data.content);
                     //$("main").innerHTML = marked(op);
-                    $("main").html(data);
+                         
+                    $("main").add("iframe").attr("src", event.target.href);html(data);
+                
                 }
                 ).catch((e)=>{
                     console.log(`Exception: ${e}`);
