@@ -62,7 +62,7 @@ class Base {
             $('main').on('click', 'a.ec-godoc-rev', (event)=>{
                 event.preventDefault();
 
-                ec.Api(event.target.href).then((data)=>{
+                ec.Html(event.target.href).then((data)=>{
                     //let op = atob(data.content);
                     //$("main").innerHTML = marked(op);
                     $("main").html(data);
