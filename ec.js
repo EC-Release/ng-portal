@@ -11,6 +11,7 @@
 
 class EC extends Base {
   #sdk = "";
+  #security = "";
   
   constructor(id) {
       super();
@@ -25,6 +26,14 @@ class EC extends Base {
   Html(url){
     return fetch(url)
     .then(resp => resp.text());
+  }
+
+  set securityMd(c) {
+    this.#security=c;
+  }
+
+  get securityMd() {
+    return this.#security;
   }
 
   set sdkInnerHTML(c) {
