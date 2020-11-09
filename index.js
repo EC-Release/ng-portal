@@ -43,7 +43,9 @@ class Base {
       }];
     });
 
-            let marked = new showdown.Converter();
+            let marked = new showdown.Converter({
+  extensions: ['header-anchors']
+});
             let ec = new EC("ec1");
 
             $('ul').on('click', 'li.ec-godoc', (event)=>{
