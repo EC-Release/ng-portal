@@ -26,6 +26,9 @@ class Base {
 
 (()=>{
     let d = new Base();
+    d.load("https://cdn.jsdelivr.net/npm/marked/marked.min.js").catch((err)=>{})
+        .then((success)=>{
+        
     d.load("./assets/ec.js").catch((err)=>{}
     ).then((success)=>{
 
@@ -42,7 +45,7 @@ class Base {
                 let htmlString = `<div class="list-group d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">`;
                 for (let file of data) {
                     if (file.type == "dir") {
-                        htmlString += `<a href="./assets/${file.path}" class="list-group-item list-group-item-action">${file.name}</a>`;
+                        htmlString += `<a href="./assets/${file.path}" class="list-group-item list-group-item-action ec-godoc-rev">${file.name}</a>`;
                     }
                 }
                 htmlString += '</div>';
@@ -55,9 +58,26 @@ class Base {
             );
         }
         );
+        
+        $('a.ec-godoc-rev').on('click', 'li.ec-godoc', (event)=>{
+            event.preventDefault();
+            
+            ec.Api('https://api.github.com/repos/ec-release/ng-webui/contents/godoc').then((data)=>{
+                let op = atob(data.content);
+                $("main").innerHTML = marked(op);
+            }
+            ).catch((e)=>{
+                console.log(`Exception: e}`);
+            }
+            );
+            
+        })
+        
+        
     }
     , (failure)=>{}
     );
 
+        }, (failure)=>{});
 }
 )();
