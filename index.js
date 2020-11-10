@@ -22,6 +22,10 @@ class Base {
         }
         );
     }
+    setActiveTab(elm) {
+	$("ul>li>a.active").removeClass("active");
+	$(elm).addClass('active');
+    }
 }
 
 (()=>{
@@ -44,19 +48,22 @@ class Base {
             });
 
             let marked = new showdown.Converter({
-              extensions: ['header-anchors'],
-		      ghCompatibleHeaderId: true
+            	extensions: ['header-anchors'],
+		ghCompatibleHeaderId: true
             });
             
             let ec = new EC("ec1");
 
             $('ul').on('click', 'li.ec-godoc', (event)=>{
-                event.preventDefault();
+                
+		ec.setActiveTab(event.target);
+                    
+		event.preventDefault();
                 if (ec.sdkInnerHTML != "") {
                     $("main").html(ec.sdkInnerHTML);
-                    return;
-                }
-
+		    return;
+                } 
+		    
                 ec.Api('https://api.github.com/repos/ec-release/ng-webui/contents/godoc').then((data)=>{
                     let htmlString = `<div class="list-group d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">`;
                     for (let file of data) {
@@ -67,6 +74,8 @@ class Base {
                     htmlString += '</div>';
                     ec.sdkInnerHTML = htmlString;
                     $("main").html(ec.sdkInnerHTML);
+                    $(event.target).addClass('active');
+                    
                 }
                 ).catch((e)=>{
                     console.log(`Exception: e}`);
@@ -76,10 +85,13 @@ class Base {
             );
             
             $('ul').on('click', 'li.ec-security', (event)=>{
+                ec.setActiveTab(event.target);
                 event.preventDefault();
                 
                 if (ec.securityMd != "") {
                     $("main").html(marked.makeHtml(ec.securityMd));
+		    $(event.target).addClass('active');
+                    
                     return;
                 }
                 
@@ -87,6 +99,7 @@ class Base {
                     
                     ec.securityMd = '<div class="mt-3">'+marked.makeHtml(data)+'</div>';
                     $("main").html(ec.securityMd);
+                    $(event.target).addClass('active');
                     
                 });
             });
