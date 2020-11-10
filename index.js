@@ -26,7 +26,7 @@ class Base {
 
 (()=>{
     let d = new Base();
-    d.load("https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js").catch((err)=>{}
+    d.load("https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js").catch((err)=>{}
     ).then((success)=>{
 
         d.load("./assets/ec.js").catch((err)=>{}
