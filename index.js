@@ -89,7 +89,7 @@ class Base {
                     for (let file of data) {
                         if (file.type == "dir") {
                             htmlString += `<tr><th scope="row">${file.name}</th>`
-                                        + `<td>${ec.getBoolIcon(true,file.path)}<td>`
+                                        + `<td>${ec.getBoolIcon(true,file.path)}</td>`
                                         + `<td>${ec.getBoolIcon(true,file.path)}</td>`
                                         + `<td>${ec.getBoolIcon(true,file.path)}</td>`
                                         + `<td>${ec.getBoolIcon(true,file.path)}</td>`
