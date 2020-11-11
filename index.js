@@ -33,6 +33,12 @@ class Base {
     setActiveState(elm,uri) {
         history.pushState({}, {}, uri);
     }
+    getBoolIcon(ok,uri) {
+        return `<a href="/v1.2beta/assets/${uri}" class="list-group-item list-group-item-action ec-godoc-rev" data-toggle="collapse">`
+              +`<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">`
+              +`<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>`
+              +`<path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/></svg></a>`;
+    }
 }
 
 (()=>{
@@ -73,26 +79,27 @@ class Base {
                 }
 
                 ec.Api('https://api.github.com/repos/ec-release/ng-webui/contents/godoc').then((data)=>{
-                    let htmlString = `<div class="list-group list-group-root pt-3 pb-2 mb-3">`;
+                    let htmlString = `<table class="table"><caption>SDK Matrix</caption><thead><tr>`
+                                   + `<th scope="col">Rev</th>`
+                                   + `<th scope="col">Go</th>`
+                                   + `<th scope="col">Java</th>`
+                                   + `<th scope="col">C++</th>`
+                                   + `<th scope="col">NodeJS</th>`
+                                   + `</tr></thead><tbody>`;
                     for (let file of data) {
                         if (file.type == "dir") {
-                            htmlString += `<a href="/v1.2beta/assets/${file.path}" class="list-group-item list-group-item-action ec-godoc-rev" data-toggle="collapse">`
-                                +`<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">`
-                                +`<path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>`
-                                +`</svg>${file.name}</a>`
-                                + `<div class="list-group">`
-                                + `<a href="#" class="list-group-item">Go</a>`
-                                + `<a href="#" class="list-group-item">Java</a>`
-                                + `<a href="#" class="list-group-item">C++</a>`
-                                + `<a href="#" class="list-group-item">NodeJS</a>`
-                                + `</div>`;
+                            htmlString += `<tr><th scope="row">${file.name}</th>`
+                                        + `<td>${ec.getBoolIcon(true,"/v1.2beta/assets/${file.path}")}<td>`
+                                        + `<td>${ec.getBoolIcon(true),"/v1.2beta/assets/${file.path}"}</td>`
+                                        + `<td>${ec.getBoolIcon(true),"/v1.2beta/assets/${file.path}"}</td>`
+                                        + `<td>${ec.getBoolIcon(true),"/v1.2beta/assets/${file.path}"}</td>`
+                                        + `</tr>`;
                         }
                     }
-                    htmlString += '</div>';
+                    htmlString += '</tbody></table>';
                     ec.sdkInnerHTML = htmlString;
                     $("main").html(ec.sdkInnerHTML);
                     $(event.target).addClass('active');
-
                 }
                 ).catch((e)=>{
                     console.log(`Exception: e}`);
