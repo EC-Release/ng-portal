@@ -79,7 +79,13 @@ class Base {
                             htmlString += `<a href="/v1.2beta/assets/${file.path}" class="list-group-item list-group-item-action ec-godoc-rev" data-toggle="collapse">`
                                 +`<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">`
                                 +`<path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>`
-                                +`</svg>${file.name}</a>`;
+                                +`</svg>${file.name}</a>`
+                                + `<div class="list-group">`
+                                + `<a href="#" class="list-group-item">Go</a>`
+                                + `<a href="#" class="list-group-item">Java</a>`
+                                + `<a href="#" class="list-group-item">C++</a>`
+                                + `<a href="#" class="list-group-item">NodeJS</a>`
+                                + `</div>`;
                         }
                     }
                     htmlString += '</div>';
