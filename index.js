@@ -25,6 +25,9 @@ class Base {
     setActiveTab(elm) {
         $("ul>li>a.active").removeClass("active");
         $(elm).addClass('active');
+        this.setActiveState(elm);
+    }
+    setActiveState(elm) {
         history.pushState({}, {}, $(elm).attr('href'));
     }
 }
@@ -70,7 +73,7 @@ class Base {
                     let htmlString = `<div class="list-group d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">`;
                     for (let file of data) {
                         if (file.type == "dir") {
-                            htmlString += `<a href="./assets/${file.path}" class="list-group-item list-group-item-action ec-godoc-rev">${file.name}</a>`;
+                            htmlString += `<a href="/v1.2beta/assets/${file.path}" class="list-group-item list-group-item-action ec-godoc-rev">${file.name}</a>`;
                         }
                     }
                     htmlString += '</div>';
@@ -110,13 +113,9 @@ class Base {
 
             $('main').on('click', 'a.ec-godoc-rev', (event)=>{
                 event.preventDefault();
-                $("main").html(`<div class="embed-responsive embed-responsive-16by9 mt-3"><iframe class="embed-responsive-item" src="${event.target.href}" allowfullscreen></iframe></div>`);
-
-                //ec.Html(event.target.href).then((data)=>{
-                //let op = atob(data.content);
-                //$("main").innerHTML = marked(op);                
-                //}
-
+                ec.setActiveState(event.target);
+                $("main").html(`<div class="embed-responsive embed-responsive-16by9 mt-3"><iframe class="embed-responsive-item" src="`${event.target.href}`" allowfullscreen></iframe></div>`);
+                
             }
             )
 
