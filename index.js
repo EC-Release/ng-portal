@@ -86,8 +86,8 @@ class Base {
                 }
 
                 ec.Api('https://api.github.com/repos/ec-release/ng-webui/contents/godoc').then((data)=>{
-                    let htmlString = `<table class="table"><caption>SDK Matrix</caption><thead><tr>`
-                                   + `<th scope="col">Rev</th>`
+                    let htmlString = `<table class="table text-center"><caption>SDK Matrix</caption><thead><tr>`
+                                   + `<th scope="col" class="text-left">Rev</th>`
                                    + `<th scope="col">Go</th>`
                                    + `<th scope="col">Java</th>`
                                    + `<th scope="col">C++</th>`
@@ -95,7 +95,7 @@ class Base {
                                    + `</tr></thead><tbody>`;
                     for (let file of data) {
                         if (file.type == "dir") {
-                            htmlString += `<tr class="text-center"><th scope="row">${file.name}</th>`
+                            htmlString += `<tr class="text-left"><th scope="row">${file.name}</th>`
                                         + `<td>${ec.getBoolIcon(true,file.path)}</td>`
                                         + `<td>${ec.getBoolIcon(false,file.path)}</td>`
                                         + `<td>${ec.getBoolIcon(true,file.path)}</td>`
