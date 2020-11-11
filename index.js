@@ -25,6 +25,7 @@ class Base {
     setActiveTab(elm) {
         $("ul>li>a.active").removeClass("active");
         $(elm).addClass('active');
+        history.pushState({}, {}, $(elm).attr('href'));
     }
 }
 
