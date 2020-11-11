@@ -76,7 +76,8 @@ class Base {
                     let htmlString = `<div class="list-group d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">`;
                     for (let file of data) {
                         if (file.type == "dir") {
-                            htmlString += `<a href="/v1.2beta/assets/${file.path}" class="list-group-item list-group-item-action ec-godoc-rev">${file.name}</a>`;
+                            htmlString += `<a href="/v1.2beta/assets/${file.path}" class="list-group-item list-group-item-action ec-godoc-rev" data-toggle="collapse">`+
+                                `<i class="glyphicon glyphicon-chevron-right"></i>${file.name}</a>`;
                         }
                     }
                     htmlString += '</div>';
