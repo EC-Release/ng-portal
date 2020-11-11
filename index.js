@@ -9,6 +9,9 @@
  * author: apolo.yasuda@ge.com
  */
 
+var appRev = 'v1.2beta',
+    appPath = '/'+appRev+'/ec',
+    assetPath = '/'+appRev+'/asset';
 class Base {
     constructor() {}
     load(src) {
@@ -25,10 +28,10 @@ class Base {
     setActiveTab(elm) {
         $("ul>li>a.active").removeClass("active");
         $(elm).addClass('active');
-        this.setActiveState(elm);
+        this.setActiveState(elm,$(elm).attr('href'));
     }
-    setActiveState(elm) {
-        history.pushState({}, {}, $(elm).attr('href'));
+    setActiveState(elm,uri) {
+        history.pushState({}, {}, uri);
     }
 }
 
@@ -37,7 +40,7 @@ class Base {
     d.load("https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js").catch((err)=>{}
     ).then((success)=>{
 
-        d.load("/v1.2beta/assets/ec.js").catch((err)=>{}
+        d.load(assetPath+"/ec.js").catch((err)=>{}
         ).then((success)=>{
 
             showdown.extension('header-anchors', ()=>{
@@ -113,7 +116,7 @@ class Base {
 
             $('main').on('click', 'a.ec-godoc-rev', (event)=>{
                 event.preventDefault();
-                ec.setActiveState(event.target);
+                ec.setActiveState(event.target,appPath+'/godoc/'+$(event.target).text());
                 $("main").html(`<div class="embed-responsive embed-responsive-16by9 mt-3"><iframe class="embed-responsive-item" src="${event.target.href}" allowfullscreen></iframe></div>`);
                 
             }
