@@ -11,7 +11,7 @@
 
 var appRev = 'v1.2beta',
     appPath = '/'+appRev+'/ec',
-    assetPath = '/'+appRev+'/asset';
+    assetPath = '/'+appRev+'/assets';
 class Base {
     constructor() {}
     load(src) {
