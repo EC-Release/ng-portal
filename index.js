@@ -131,7 +131,7 @@ class Base {
                                    + `<th scope="col">Release Note</th>`
                                    + `</tr></thead><tbody>`;
                     for (let rel of data) {
-                         htmlString += `<tr><th scope="row">${rel.tag_name}</th>`
+                         htmlString += `<tr><th scope="row">${rel.name}</th>`
                                         + `<td>${marked.makeHtml(rel.body)}</td>`
                                         + `</tr>`;
                     }
