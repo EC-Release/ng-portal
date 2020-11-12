@@ -12,6 +12,7 @@
 class EC extends Base {
   #sdk = "";
   #security = "";
+  #releases = "";
   
   constructor(id) {
       super();
@@ -42,6 +43,14 @@ class EC extends Base {
 
   get sdkInnerHTML() {
     return this.#sdk;
+  }
+
+  set Releases(c) {
+    this.#releases=c;
+  }
+
+  get Releases() {
+    return this.#releases;
   }
   
 }
