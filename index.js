@@ -179,7 +179,7 @@ class Base {
                     ec.securityMd = '<div class="mt-3">' + marked.makeHtml(data) + '</div>';
                     $("main").html(ec.securityMd);
                     $(event.target).addClass('active');
-
+                    $('p img').css("width", "100%");
                 }
                 );
             }
