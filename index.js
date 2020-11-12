@@ -126,13 +126,13 @@ class Base {
                 }
 
                 ec.Api('https://api.github.com/repos/ec-release/sdk/releases').then((data)=>{
-                    let htmlString = `<table class="table text-center"><caption>Release Matrix</caption><thead><tr>`
-                                   + `<th scope="col" class="text-left">Rev</th>`
+                    let htmlString = `<table class="table"><caption>Release Matrix</caption><thead><tr>`
+                                   + `<th scope="col">Rev</th>`
                                    + `<th scope="col">Release Note</th>`
                                    + `</tr></thead><tbody>`;
                     for (let rel of data) {
-                         htmlString += `<tr><th scope="row" class="text-left">${rel.tag_name}</th>`
-                                        + `<td>${rel.body}</td>`
+                         htmlString += `<tr><th scope="row">${rel.tag_name}</th>`
+                                        + `<td>${marked.makeHtml(rel.body)}</td>`
                                         + `</tr>`;
                     }
                     htmlString += '</tbody></table>';
