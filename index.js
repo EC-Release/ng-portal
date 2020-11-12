@@ -90,7 +90,8 @@ class Base {
             });
 
             let ec = new EC("ec1");
-
+            ec.routing();
+            
             $('ul').on('click', 'li.ec-godoc', (event)=>{
 
                 ec.setActiveTab(event.target);
