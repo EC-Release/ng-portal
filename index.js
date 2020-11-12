@@ -86,7 +86,7 @@ class Base {
                 }
 
                 ec.Api('https://api.github.com/repos/ec-release/ng-webui/contents/godoc').then((data)=>{
-                    let htmlString = `<table class="table text-center"><caption>SDK Matrix</caption><thead><tr>`
+                    let htmlString = `<table class="table text-center"><caption>Agent SDK Matrix</caption><thead><tr>`
                                    + `<th scope="col" class="text-left">Rev</th>`
                                    + `<th scope="col">Go</th>`
                                    + `<th scope="col">Java</th>`
@@ -115,6 +115,38 @@ class Base {
             }
             );
 
+            $('ul').on('click', 'li.ec-releases', (event)=>{
+
+                ec.setActiveTab(event.target);
+
+                event.preventDefault();
+                if (ec.Releases != "") {
+                    $("main").html(ec.Releases);
+                    return;
+                }
+
+                ec.Api('https://api.github.com/repos/ec-release/sdk/releases').then((data)=>{
+                    let htmlString = `<table class="table text-center"><caption>Release Matrix</caption><thead><tr>`
+                                   + `<th scope="col" class="text-left">Rev</th>`
+                                   + `<th scope="col">Release Note</th>`
+                                   + `</tr></thead><tbody>`;
+                    for (let rel of data) {
+                         htmlString += `<tr><th scope="row" class="text-left">${rel.tag_name}</th>`
+                                        + `<td>${rel.body}</td>`
+                                        + `</tr>`;
+                    }
+                    htmlString += '</tbody></table>';
+                    ec.Releases = htmlString;
+                    $("main").html(ec.Releases);
+                    $(event.target).addClass('active');
+                }
+                ).catch((e)=>{
+                    console.log(`Exception: e}`);
+                }
+                );
+            }
+            );
+            
             $('ul').on('click', 'li.ec-security', (event)=>{
                 ec.setActiveTab(event.target);
                 event.preventDefault();
