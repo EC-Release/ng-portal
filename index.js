@@ -139,7 +139,7 @@ class Base {
 
             $('main').on('click', 'a.ec-godoc-rev', (event)=>{
                 event.preventDefault();
-                let p=event.target.parentNode.href.split("/").pop();
+                let p=$(event.target).parents('a')[0].href.split("/").pop();
                 ec.setActiveState(event.target.parentNode,appPath+'/godoc/'+p);
                 $("main").html(`<div class="embed-responsive embed-responsive-16by9 mt-3"><iframe class="embed-responsive-item" src="${event.target.parentNode.href}" allowfullscreen></iframe></div>`);
              }
