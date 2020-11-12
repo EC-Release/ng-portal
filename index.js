@@ -25,6 +25,22 @@ class Base {
         }
         );
     }
+    routing(){
+        let op=window.location.pathname;
+        switch (op) {
+          case appPath+'/godoc':
+            $('ul > li.ec-godoc').click();
+            break;
+          case appPath+'/releases':
+            $('ul > li.ec-releases').click();
+            break;
+          case appPath+'/security':
+            $('ul > li.ec-security').click();
+            break;
+          default:
+        }
+    }
+    
     setActiveTab(elm) {
         $("ul>li>a.active").removeClass("active");
         $(elm).addClass('active');
