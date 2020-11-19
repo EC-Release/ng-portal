@@ -9,9 +9,11 @@
  * author: apolo.yasuda@ge.com
  */
 
+import {EC} from './ec.js'
 var appRev = 'v1.2beta',
     appPath = '/'+appRev+'/ec',
     assetPath = '/'+appRev+'/assets';
+
 class Base {
     constructor() {}
     load(src) {
@@ -65,12 +67,9 @@ class Base {
 }
 
 (()=>{
-    let d = new Base();
-    d.load("https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js").catch((err)=>{}
+    let ec = new EC('ec1');
+    ec.load("https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js").catch((err)=>{}
     ).then((success)=>{
-
-        d.load(assetPath+"/ec.js").catch((err)=>{}
-        ).then((success)=>{
 
             showdown.extension('header-anchors', ()=>{
 
@@ -88,8 +87,6 @@ class Base {
                 extensions: ['header-anchors'],
                 ghCompatibleHeaderId: true
             });
-
-            let ec = new EC("ec1");
             
             $('ul').on('click', 'li.ec-godoc', (event)=>{
 
@@ -197,9 +194,4 @@ class Base {
         }
         , (failure)=>{}
         );
-
-    }
-    , (failure)=>{}
-    );
-}
-)();
+})();
