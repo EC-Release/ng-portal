@@ -54,3 +54,4 @@ class EC extends Base {
   }
   
 }
+export { EC as default };
