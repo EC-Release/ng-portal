@@ -15,7 +15,7 @@
     appPath = '/'+appRev+'/ec',
     assetPath = '/'+appRev+'/assets';
     
-    import EC from './ec.js'
+    import EC from './ec.js';
 
     let ec = new EC('ec1');
     ec.load("https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js").catch((err)=>{}
