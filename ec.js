@@ -9,6 +9,8 @@
  * author: apolo.yasuda@ge.com
  */
 
+import Base from './base.js'
+
 class EC extends Base {
   #sdk = "";
   #security = "";
