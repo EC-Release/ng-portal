@@ -9,7 +9,7 @@
  * author: apolo.yasuda@ge.com
  */
 
-import {EC} from './ec.js'
+import EC from './ec.js'
 var appRev = 'v1.2beta',
     appPath = '/'+appRev+'/ec',
     assetPath = '/'+appRev+'/assets';
