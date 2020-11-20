@@ -15,6 +15,9 @@ class EC extends Base {
   #sdk = "";
   #security = "";
   #releases = "";
+  appRev = 'v1.2beta',
+  appPath = '/'+appRev+'/ec',
+  assetPath = '/'+appRev+'/assets';
   
   constructor(id) {
       super();
