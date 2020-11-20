@@ -25,13 +25,13 @@ class Base {
     routing(){
         let op=window.location.pathname;
         switch (op) {
-          case appPath+'/godoc':
+          case `${this.appPath}/godoc`:
             $('ul > li.ec-godoc').click();
             break;
-          case appPath+'/releases':
+          case `${this.appPath}/releases`:
             $('ul > li.ec-releases').click();
             break;
-          case appPath+'/security':
+          case `${this.appPath}/security`:
             $('ul > li.ec-security').click();
             break;
           default:
