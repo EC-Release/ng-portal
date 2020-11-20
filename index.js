@@ -9,9 +9,9 @@
  * author: apolo.yasuda@ge.com
  */
 
-(()=>{
+import EC from './ec.js'
 
-    import {EC} from './ec.js';
+(()=>{
 
         let ec = new EC('ec1');
 
