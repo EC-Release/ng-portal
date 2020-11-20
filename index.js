@@ -10,13 +10,13 @@
  */
 
 (()=>{
- 
+
     import('./ec.js').then((m)=>{
-    
-    let ec = new m.EC('ec1');
-   
-    ec.load("https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js").catch((err)=>{}
-    ).then((success)=>{
+
+        let ec = new m.EC('ec1');
+
+        ec.load("https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js").catch((err)=>{}
+        ).then((success)=>{
 
             showdown.extension('header-anchors', ()=>{
 
@@ -34,7 +34,7 @@
                 extensions: ['header-anchors'],
                 ghCompatibleHeaderId: true
             });
-            
+
             $('ul').on('click', 'li.ec-godoc', (event)=>{
 
                 ec.setActiveTab(event.target);
@@ -46,21 +46,10 @@
                 }
 
                 ec.Api('https://api.github.com/repos/ec-release/ng-webui/contents/godoc').then((data)=>{
-                    let htmlString = `<table class="table text-center"><caption>Agent SDK Matrix</caption><thead><tr>`
-                                   + `<th scope="col" class="text-left">Rev</th>`
-                                   + `<th scope="col">Go</th>`
-                                   + `<th scope="col">Java</th>`
-                                   + `<th scope="col">C++</th>`
-                                   + `<th scope="col">NodeJS</th>`
-                                   + `</tr></thead><tbody>`;
+                    let htmlString = `<table class="table text-center"><caption>Agent SDK Matrix</caption><thead><tr>` + `<th scope="col" class="text-left">Rev</th>` + `<th scope="col">Go</th>` + `<th scope="col">Java</th>` + `<th scope="col">C++</th>` + `<th scope="col">NodeJS</th>` + `</tr></thead><tbody>`;
                     for (let file of data) {
                         if (file.type == "dir") {
-                            htmlString += `<tr><th scope="row" class="text-left">${file.name}</th>`
-                                        + `<td>${ec.getBoolIcon(true,file.path)}</td>`
-                                        + `<td>${ec.getBoolIcon(false,file.path)}</td>`
-                                        + `<td>${ec.getBoolIcon(true,file.path)}</td>`
-                                        + `<td>${ec.getBoolIcon(false,file.path)}</td>`
-                                        + `</tr>`;
+                            htmlString += `<tr><th scope="row" class="text-left">${file.name}</th>` + `<td>${ec.getBoolIcon(true, file.path)}</td>` + `<td>${ec.getBoolIcon(false, file.path)}</td>` + `<td>${ec.getBoolIcon(true, file.path)}</td>` + `<td>${ec.getBoolIcon(false, file.path)}</td>` + `</tr>`;
                         }
                     }
                     htmlString += '</tbody></table>';
@@ -86,14 +75,9 @@
                 }
 
                 ec.Api('https://api.github.com/repos/ec-release/sdk/releases').then((data)=>{
-                    let htmlString = `<table class="table"><caption>Release Matrix</caption><thead><tr>`
-                                   + `<th scope="col">Rev</th>`
-                                   + `<th scope="col">Release Note</th>`
-                                   + `</tr></thead><tbody>`;
+                    let htmlString = `<table class="table"><caption>Release Matrix</caption><thead><tr><th scope="col">Rev</th><th scope="col">Release Note</th></tr></thead><tbody>`;
                     for (let rel of data) {
-                         htmlString += `<tr><th scope="row">${rel.name}</th>`
-                                        + `<td>${marked.makeHtml(rel.body)}</td>`
-                                        + `</tr>`;
+                        htmlString += `<tr><th scope="row">${rel.name}</th><td>${marked.makeHtml(rel.body)}</td></tr>`;
                     }
                     htmlString += '</tbody></table>';
                     ec.Releases = htmlString;
@@ -101,12 +85,12 @@
                     $(event.target).addClass('active');
                 }
                 ).catch((e)=>{
-                    console.log(`Exception: e}`);
+                    console.log(`Exception: ${e}`);
                 }
                 );
             }
             );
-            
+
             $('ul').on('click', 'li.ec-security', (event)=>{
                 ec.setActiveTab(event.target);
                 event.preventDefault();
@@ -130,16 +114,18 @@
 
             $('main').on('click', 'a.ec-godoc-rev', (event)=>{
                 event.preventDefault();
-                let p=$(event.target).parents('a')[0],
-                    h=p.href.split("/").pop();
-                ec.setActiveState(event.target.parentNode,appPath+'/godoc/'+h);
+                let p = $(event.target).parents('a')[0]
+                  , h = p.href.split("/").pop();
+                ec.setActiveState(event.target.parentNode, appPath + '/godoc/' + h);
                 $("main").html(`<div class="embed-responsive embed-responsive-16by9 mt-3"><iframe class="embed-responsive-item" src="${p.href}" allowfullscreen></iframe></div>`);
-             }
+            }
             );
-            
+
             ec.routing();
         }
         , (failure)=>{}
         );
-     });
-})();
+    }
+    );
+}
+)();
