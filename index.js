@@ -16,7 +16,10 @@
     assetPath = '/'+appRev+'/assets';
     
     let EC = await import('./ec.js');
-
+ 
+    import('./ec.js').then((EC)=>{
+    
+    
     let ec = new EC('ec1');
     ec.load("https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js").catch((err)=>{}
     ).then((success)=>{
@@ -144,4 +147,5 @@
         }
         , (failure)=>{}
         );
+     })
 })();
