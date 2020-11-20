@@ -19,8 +19,8 @@ class EC extends Base {
       super();
       console.log(`EC id# ${id}`);
       this.appRev = rev;
-      this.appPath = '/'+appRev+'/ec';
-      this.assetPath = '/'+appRev+'/assets';
+      this.appPath = `/${this.appRev}/ec`;
+      this.assetPath = `/${this.appRev}/assets`;
   }
   
   Api(url){
