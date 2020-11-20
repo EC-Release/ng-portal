@@ -11,9 +11,9 @@
 
 (()=>{
 
-    import('./ec.js').then((m)=>{
+    import EC from './ec.js';
 
-        let ec = new m.EC('ec1');
+        let ec = new EC('ec1');
 
         ec.load("https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js").catch((err)=>{}
         ).then((success)=>{
@@ -125,7 +125,5 @@
         }
         , (failure)=>{}
         );
-    }
-    );
 }
 )();
