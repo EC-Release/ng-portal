@@ -15,13 +15,13 @@ class EC extends Base {
   #sdk = "";
   #security = "";
   #releases = "";
-  appRev = 'v1.2beta',
-  appPath = '/'+appRev+'/ec',
-  assetPath = '/'+appRev+'/assets';
-  
-  constructor(id) {
+ 
+  constructor(id,rev='v1.2beta',path='/ec') {
       super();
       console.log(`EC id# ${id}`);
+      appRev = rev;
+      appPath = '/'+appRev+'/ec';
+      assetPath = '/'+appRev+'/assets';
   }
   
   Api(url){
