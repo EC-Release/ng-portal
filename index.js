@@ -14,8 +14,6 @@
     var appRev = 'v1.2beta',
     appPath = '/'+appRev+'/ec',
     assetPath = '/'+appRev+'/assets';
-    
-    let EC = await import('./ec.js');
  
     import('./ec.js').then((EC)=>{
     
