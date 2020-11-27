@@ -118,7 +118,7 @@ import EC from './ec.js'
                 event.preventDefault();
                 let p = $(event.target).parents('a')[0]
                   , h = p.href.split("/").pop();
-                ec.setActiveState(event.target.parentNode, appPath + '/godoc/' + h);
+                ec.setActiveState(event.target.parentNode, this.appPath + '/godoc/' + h);
                 $("main").html(`<div class="embed-responsive embed-responsive-16by9 mt-3"><iframe class="embed-responsive-item" src="${p.href}" allowfullscreen></iframe></div>`);
             }
             );
