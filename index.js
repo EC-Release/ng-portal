@@ -120,11 +120,28 @@ import define from "./analytics.js";
                 ec.setActiveTab(event.target);
                 event.preventDefault();
 
-                $("main").html('<div class="chart mx-5 my-5"></div>');
-                (new Runtime).module(define, name => {
-                     if (name === "chart") return Inspector.into(".chart")();
+                let op = document.cookie.split("ec-config=");
+                if op.length!=2 {
+                     console.log(`token expired. refresh browser.`);    
+                     return;
+                }
+                
+                ec.Api(this.apiPath,{
+                     method: 'GET',
+                     headers: {
+                      'Content-Type': 'application/json',
+                      'Authorization': `Bearer ${op[1]}`
+                     }
+                }).then((data)=>{
+                     console.log(`the data ${data}`);
+                     $("main").html('<div class="chart mx-5 my-5"></div>');
+                     (new Runtime).module(define, name => {
+                          if (name === "chart") return Inspector.into(".chart")();
+                     });
+                     $(event.target).addClass('active');
+                }).catch((e)=>{
+                     console.log(`Exception: ${e}`);
                 });
-                $(event.target).addClass('active');
             }
             );
 
