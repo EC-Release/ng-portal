@@ -24,8 +24,8 @@ class EC extends Base {
       this.assetPath = `/${this.appRev}/assets`;
   }
   
-  Api(url){
-    return fetch(url)
+  Api(url,detail){
+    return fetch(url,detail)
     .then(resp => resp.json());
   }
 
