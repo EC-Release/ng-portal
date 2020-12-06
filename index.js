@@ -120,7 +120,7 @@ import define from "./analytics.js";
                 ec.setActiveTab(event.target);
                 event.preventDefault();
 
-                $("main").html('<div class="chart mt-6"></div>');
+                $("main").html('<div class="chart mt-5"></div>');
                 (new Runtime).module(define, name => {
                      if (name === "chart") return Inspector.into(".chart")();
                 });
