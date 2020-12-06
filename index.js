@@ -120,7 +120,7 @@ import define from "https://api.observablehq.com/@ayasuda-ge/zoomable-sunburst.j
                 ec.setActiveTab(event.target);
                 event.preventDefault();
 
-                $("main").html('<div class="chart"></div>');
+                $("main").html('<div class="chart mt-3"></div>');
                 (new Runtime).module(define, name => {
                      if (name === "chart") return Inspector.into(".chart")();
                 });
