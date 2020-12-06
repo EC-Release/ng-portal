@@ -11,7 +11,7 @@
 
 import EC from './ec.js'
 import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-import define from "https://api.observablehq.com/@ayasuda-ge/zoomable-sunburst.js?v=3";
+import define from "./analytics.js";
 
 (()=>{
 
