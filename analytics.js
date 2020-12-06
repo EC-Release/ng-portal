@@ -11,7 +11,7 @@
  
 export default function define(runtime, observer) {
   const main = runtime.module();
-  const fileAttachments = new Map([["flare-2.json","./engineering.json"]]);
+  const fileAttachments = new Map([["flare-2.json","/v1.2beta/assets/engineering.json"]]);
   main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
   main.variable(observer()).define(["md"], function(md){return(
 md`# Zoomable Sunburst
