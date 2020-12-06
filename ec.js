@@ -15,11 +15,12 @@ class EC extends Base {
   #sdk = "";
   #security = "";
   #releases = "";
-  constructor(id,rev='v1.2beta',path='/ec') {
+  constructor(id,rev='v1.2beta',path='/ec',api='api') {
       super();
       console.log(`EC id# ${id}`);
       this.appRev = rev;
       this.appPath = `/${this.appRev}/ec`;
+      this.apiPath = `/${this.appRev}/ec/${api}`;
       this.assetPath = `/${this.appRev}/assets`;
   }
   
