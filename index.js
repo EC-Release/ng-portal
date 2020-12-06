@@ -121,7 +121,7 @@ import define from "./analytics.js";
                 event.preventDefault();
 
                 let op = document.cookie.split("ec-config=");
-                if op.length!=2 {
+                if (op.length!=2) {
                      console.log(`token expired. refresh browser.`);    
                      return;
                 }
