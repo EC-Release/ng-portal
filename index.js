@@ -114,6 +114,20 @@ import EC from './ec.js'
             }
             );
 
+            $('ul').on('click', 'li.ec-analytics', (event)=>{
+                ec.setActiveTab(event.target);
+                event.preventDefault();
+
+                $("main").html('<div class="chart"></div>')
+                import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+                import define from "https://api.observablehq.com/@ayasuda-ge/zoomable-sunburst.js?v=3";
+                (new Runtime).module(define, name => {
+                     if (name === "chart") return Inspector.into(".chart")();
+                });
+                $(event.target).addClass('active');
+            }
+            );
+
             $('main').on('click', 'a.ec-godoc-rev', (event)=>{
                 event.preventDefault();
                 let p = $(event.target).parents('a')[0]
