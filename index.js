@@ -126,7 +126,7 @@ import define from "./analytics.js";
                      return;
                 }
                 
-                ec.Api(this.apiPath,{
+                ec.Api(ec.apiPath,{
                      method: 'GET',
                      headers: {
                       'Content-Type': 'application/json',
