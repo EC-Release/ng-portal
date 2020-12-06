@@ -118,7 +118,7 @@ import EC from './ec.js'
                 ec.setActiveTab(event.target);
                 event.preventDefault();
 
-                $("main").html('<div class="chart"></div>')
+                $("main").html('<div class="chart"></div>');
                 import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
                 import define from "https://api.observablehq.com/@ayasuda-ge/zoomable-sunburst.js?v=3";
                 (new Runtime).module(define, name => {
