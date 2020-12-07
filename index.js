@@ -16,7 +16,7 @@ import define from "./analytics.js";
 (()=>{
 
     let ec = new EC('ec1');
-
+    window.ec=ec;
     ec.load("https://code.jquery.com/jquery-3.5.1.slim.min.js").catch((err)=>{}
     ).then((s)=>{
         ec.load("https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js").catch((err)=>{}
@@ -121,8 +121,9 @@ import define from "./analytics.js";
                 event.preventDefault();
 
                 let op = document.cookie.split("ec-config=");
-                if (op.length!=2) {
-                     console.log(`token expired. refresh browser.`);    
+                if (op.length<2) {
+                     console.log(`token expired. refresh browser.`);
+                     location.reload();
                      return;
                 }
                 
