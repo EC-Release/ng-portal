@@ -8,104 +8,837 @@
           "name": "1.2beta.reiwa.2",
           "children": [
             {
-              "name": "AgglomerativeCluster",
-              "value": 3938
-            },
-            {
-              "name": "CommunityStructure",
-              "value": 3812
-            },
-            {
-              "name": "HierarchicalCluster",
-              "value": 6714
-            },
-            {
-              "name": "MergeEdge",
-              "value": 743
-            }
-          ]
-        },
-        {
-          "name": "v1.hokkaido.213",
-          "children": [
-            {
-              "name": "teamTest",
+              "name": "Test CoE",
               "children": [
                 {
-                  "name": "ayasuda",
+                  "name": "functional",
                   "children": [
                     {
-                      "name":"regression",
-                      "children":[
-                        {
-                          "name":"test101",
-                          "value":80
-                        },
-                        {
-                          "name":"test102",
-                          "value":70
-                        },
-                        {
-                          "name":"test103",
-                          "value":100
-                        }
-                      ]
+                      "name": "Regression test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Integration test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Unit test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Sanity test",
+                      "value": 743
                     }
                   ]
                 },
                 {
-                  "name": "Gayatri",
-                  "value": 20
+                  "name": "non-functional",
+                  "children": [
+                    {
+                      "name": "Performance test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Load test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Stress test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Security test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Compatibility test",
+                      "value": 10
+                    }
+                  ]
                 }
               ]
             },
             {
-              "name": "CommunityStructure",
-              "value": 3812
+              "name": "Gayatri",
+              "children": [
+                {
+                  "name": "functional",
+                  "children": [
+                    {
+                      "name": "Regression test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Integration test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Unit test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Sanity test",
+                      "value": 743
+                    }
+                  ]
+                },
+                {
+                  "name": "non-functional",
+                  "children": [
+                    {
+                      "name": "Performance test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Load test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Stress test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Security test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Compatibility test",
+                      "value": 10
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "HierarchicalCluster",
-              "value": 6714
+              "name": "ayasuda",
+              "children": [
+                {
+                  "name": "functional",
+                  "children": [
+                    {
+                      "name": "Regression test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Integration test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Unit test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Sanity test",
+                      "value": 743
+                    }
+                  ]
+                },
+                {
+                  "name": "non-functional",
+                  "children": [
+                    {
+                      "name": "Performance test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Load test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Stress test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Security test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Compatibility test",
+                      "value": 10
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "MergeEdge",
-              "value": 743
+              "name": "Ram",
+              "children": [
+                {
+                  "name": "functional",
+                  "children": [
+                    {
+                      "name": "Regression test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Integration test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Unit test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Sanity test",
+                      "value": 743
+                    }
+                  ]
+                },
+                {
+                  "name": "non-functional",
+                  "children": [
+                    {
+                      "name": "Performance test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Load test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Stress test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Security test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Compatibility test",
+                      "value": 10
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "name": "v1beta.fukuoka.1727",
           "children": [
             {
-              "name": "BetweennessCentrality",
-              "value": 3534
+              "name": "Test CoE",
+              "children": [
+                {
+                  "name": "functional",
+                  "children": [
+                    {
+                      "name": "Regression test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Integration test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Unit test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Sanity test",
+                      "value": 743
+                    }
+                  ]
+                },
+                {
+                  "name": "non-functional",
+                  "children": [
+                    {
+                      "name": "Performance test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Load test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Stress test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Security test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Compatibility test",
+                      "value": 10
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "LinkDistance",
-              "value": 5731
+              "name": "Gayatri",
+              "children": [
+                {
+                  "name": "functional",
+                  "children": [
+                    {
+                      "name": "Regression test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Integration test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Unit test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Sanity test",
+                      "value": 743
+                    }
+                  ]
+                },
+                {
+                  "name": "non-functional",
+                  "children": [
+                    {
+                      "name": "Performance test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Load test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Stress test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Security test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Compatibility test",
+                      "value": 10
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "MaxFlowMinCut",
-              "value": 7840
+              "name": "ayasuda",
+              "children": [
+                {
+                  "name": "functional",
+                  "children": [
+                    {
+                      "name": "Regression test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Integration test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Unit test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Sanity test",
+                      "value": 743
+                    }
+                  ]
+                },
+                {
+                  "name": "non-functional",
+                  "children": [
+                    {
+                      "name": "Performance test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Load test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Stress test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Security test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Compatibility test",
+                      "value": 10
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "ShortestPaths",
-              "value": 5914
-            },
-            {
-              "name": "SpanningTree",
-              "value": 3416
+              "name": "Ram",
+              "children": [
+                {
+                  "name": "functional",
+                  "children": [
+                    {
+                      "name": "Regression test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Integration test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Unit test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Sanity test",
+                      "value": 743
+                    }
+                  ]
+                },
+                {
+                  "name": "non-functional",
+                  "children": [
+                    {
+                      "name": "Performance test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Load test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Stress test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Security test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Compatibility test",
+                      "value": 10
+                    }
+                  ]
+                }
+              ]
             }
-          ]
+          ],
+          "name": "v1.hokkaido.213"
         },
         {
-          "name": "v1beta.fukuoka.1728",
           "children": [
             {
-              "name": "AspectRatioBanker",
-              "value": 7074
+              "name": "Test CoE",
+              "children": [
+                {
+                  "name": "functional",
+                  "children": [
+                    {
+                      "name": "Regression test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Integration test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Unit test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Sanity test",
+                      "value": 743
+                    }
+                  ]
+                },
+                {
+                  "name": "non-functional",
+                  "children": [
+                    {
+                      "name": "Performance test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Load test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Stress test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Security test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Compatibility test",
+                      "value": 10
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Gayatri",
+              "children": [
+                {
+                  "name": "functional",
+                  "children": [
+                    {
+                      "name": "Regression test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Integration test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Unit test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Sanity test",
+                      "value": 743
+                    }
+                  ]
+                },
+                {
+                  "name": "non-functional",
+                  "children": [
+                    {
+                      "name": "Performance test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Load test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Stress test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Security test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Compatibility test",
+                      "value": 10
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "ayasuda",
+              "children": [
+                {
+                  "name": "functional",
+                  "children": [
+                    {
+                      "name": "Regression test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Integration test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Unit test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Sanity test",
+                      "value": 743
+                    }
+                  ]
+                },
+                {
+                  "name": "non-functional",
+                  "children": [
+                    {
+                      "name": "Performance test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Load test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Stress test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Security test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Compatibility test",
+                      "value": 10
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Ram",
+              "children": [
+                {
+                  "name": "functional",
+                  "children": [
+                    {
+                      "name": "Regression test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Integration test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Unit test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Sanity test",
+                      "value": 743
+                    }
+                  ]
+                },
+                {
+                  "name": "non-functional",
+                  "children": [
+                    {
+                      "name": "Performance test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Load test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Stress test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Security test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Compatibility test",
+                      "value": 10
+                    }
+                  ]
+                }
+              ]
             }
-          ]
+          ],
+          "name": "v1beta.fukuoka.1727"
+        },
+        {
+          "children": [
+            {
+              "name": "Test CoE",
+              "children": [
+                {
+                  "name": "functional",
+                  "children": [
+                    {
+                      "name": "Regression test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Integration test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Unit test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Sanity test",
+                      "value": 743
+                    }
+                  ]
+                },
+                {
+                  "name": "non-functional",
+                  "children": [
+                    {
+                      "name": "Performance test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Load test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Stress test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Security test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Compatibility test",
+                      "value": 10
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Gayatri",
+              "children": [
+                {
+                  "name": "functional",
+                  "children": [
+                    {
+                      "name": "Regression test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Integration test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Unit test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Sanity test",
+                      "value": 743
+                    }
+                  ]
+                },
+                {
+                  "name": "non-functional",
+                  "children": [
+                    {
+                      "name": "Performance test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Load test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Stress test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Security test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Compatibility test",
+                      "value": 10
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "ayasuda",
+              "children": [
+                {
+                  "name": "functional",
+                  "children": [
+                    {
+                      "name": "Regression test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Integration test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Unit test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Sanity test",
+                      "value": 743
+                    }
+                  ]
+                },
+                {
+                  "name": "non-functional",
+                  "children": [
+                    {
+                      "name": "Performance test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Load test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Stress test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Security test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Compatibility test",
+                      "value": 10
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Ram",
+              "children": [
+                {
+                  "name": "functional",
+                  "children": [
+                    {
+                      "name": "Regression test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Integration test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Unit test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Sanity test",
+                      "value": 743
+                    }
+                  ]
+                },
+                {
+                  "name": "non-functional",
+                  "children": [
+                    {
+                      "name": "Performance test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Load test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Stress test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Security test",
+                      "value": 10
+                    },
+                    {
+                      "name": "Compatibility test",
+                      "value": 10
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "name": "v1beta.fukuoka.1728"
         }
       ]
     },
