@@ -29,8 +29,35 @@
           "name": "v1.hokkaido.213",
           "children": [
             {
-              "name": "AgglomerativeCluster",
-              "value": 3938
+              "name": "teamTest",
+              "children": [
+                {
+                  "name": "ayasuda",
+                  "children": [
+                    {
+                      "name":"regression",
+                      "children":[
+                        {
+                          "name":"test101",
+                          "value":80
+                        },
+                        {
+                          "name":"test102",
+                          "value":70
+                        },
+                        {
+                          "name":"test103",
+                          "value":100
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Gayatri",
+                  "value": 20
+                }
+              ]
             },
             {
               "name": "CommunityStructure",
