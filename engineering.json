@@ -5,7 +5,7 @@
       "name": "release",
       "children": [
         {
-          "name": "cluster",
+          "name": "1.2beta.reiwa.2",
           "children": [
             {
               "name": "AgglomerativeCluster",
@@ -26,7 +26,28 @@
           ]
         },
         {
-          "name": "development",
+          "name": "v1.hokkaido.213",
+          "children": [
+            {
+              "name": "AgglomerativeCluster",
+              "value": 3938
+            },
+            {
+              "name": "CommunityStructure",
+              "value": 3812
+            },
+            {
+              "name": "HierarchicalCluster",
+              "value": 6714
+            },
+            {
+              "name": "MergeEdge",
+              "value": 743
+            }
+          ]
+        },
+        {
+          "name": "v1beta.fukuoka.1727",
           "children": [
             {
               "name": "BetweennessCentrality",
@@ -51,7 +72,7 @@
           ]
         },
         {
-          "name": "optimization",
+          "name": "v1beta.fukuoka.1728",
           "children": [
             {
               "name": "AspectRatioBanker",
