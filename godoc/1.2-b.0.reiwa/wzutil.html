@@ -1,0 +1,3782 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>wzutil - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="lib/godoc/style.css">
+
+
+<script>window.initFuncs = [];</script>
+
+<script src="lib/godoc/jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.12.17";</script>
+<script src="lib/godoc/godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="/">Go</a></div>
+<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="/search">
+<div id="menu">
+<a href="/doc/">Documents</a>
+<a href="/pkg/">Packages</a>
+<a href="/project/">The Project</a>
+<a href="/help/">Help</a>
+
+<a href="/blog/">Blog</a>
+
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package wzutil
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/wzlib/wzutil"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="#pkg-constants">Constants</a></dd>
+			
+			
+				<dd><a href="#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="#ART_NAME">func ART_NAME() string</a></dd>
+			
+				
+				<dd><a href="#AppendToFile">func AppendToFile(fname string, b []byte) error</a></dd>
+			
+				
+				<dd><a href="#ArtOps">func ArtOps(fname, revTo string, downloadURL *url.URL) (fa string, err error)</a></dd>
+			
+				
+				<dd><a href="#BRAND_CONFIG">func BRAND_CONFIG() string</a></dd>
+			
+				
+				<dd><a href="#Branding">func Branding(bc *model.BrandingConfig)</a></dd>
+			
+				
+				<dd><a href="#CONFIG_MAIN">func CONFIG_MAIN() string</a></dd>
+			
+				
+				<dd><a href="#CURRENT_PATH">func CURRENT_PATH() string</a></dd>
+			
+				
+				<dd><a href="#ContainsString">func ContainsString(slice []string, element string) bool</a></dd>
+			
+				
+				<dd><a href="#Copyright">func Copyright()</a></dd>
+			
+				
+				<dd><a href="#DBOps">func DBOps(httpmethod, tkn string, url *url.URL, data []byte) []byte</a></dd>
+			
+				
+				<dd><a href="#Decompress">func Decompress(srcFile, tgtFile string) (string, error)</a></dd>
+			
+				
+				<dd><a href="#DownloadArt">func DownloadArt(aurl *url.URL, path string) error</a></dd>
+			
+				
+				<dd><a href="#DownloadFile">func DownloadFile(aurl string) ([]byte, error)</a></dd>
+			
+				
+				<dd><a href="#ENV_CF_INST_IDX">func ENV_CF_INST_IDX() string</a></dd>
+			
+				
+				<dd><a href="#ENV_INST_IDX">func ENV_INST_IDX() string</a></dd>
+			
+				
+				<dd><a href="#EncodeRFC2047">func EncodeRFC2047(String string) string</a></dd>
+			
+				
+				<dd><a href="#ErrResponse">func ErrResponse(w http.ResponseWriter, errcode uint16, err error, str string)</a></dd>
+			
+				
+				<dd><a href="#ExternalIP">func ExternalIP() (string, error)</a></dd>
+			
+				
+				<dd><a href="#GenerateAdmPassphrase">func GenerateAdmPassphrase() (string, error)</a></dd>
+			
+				
+				<dd><a href="#GeneratePassphrase">func GeneratePassphrase(mod string) (string, error)</a></dd>
+			
+				
+				<dd><a href="#GetCurrentIPAddrs">func GetCurrentIPAddrs() (ips []net.IP)</a></dd>
+			
+				
+				<dd><a href="#GetCurrentPrompt">func GetCurrentPrompt(devId, instId, cpath string) string</a></dd>
+			
+				
+				<dd><a href="#GetEnv">func GetEnv() *model.Env</a></dd>
+			
+				
+				<dd><a href="#GetGRId">func GetGRId() uint64</a></dd>
+			
+				
+				<dd><a href="#GetHTTPClientPxyOpt">func GetHTTPClientPxyOpt(turl string) *http.Client</a></dd>
+			
+				
+				<dd><a href="#GetHashedPassphraseInEnv">func GetHashedPassphraseInEnv() (string, error)</a></dd>
+			
+				
+				<dd><a href="#GetHashedPassphraseInRootPath">func GetHashedPassphraseInRootPath() (string, error)</a></dd>
+			
+				
+				<dd><a href="#GetOAuthToken">func GetOAuthToken(cid, csc string, oa2 *url.URL, tkn *model.Token) string</a></dd>
+			
+				
+				<dd><a href="#GetPath">func GetPath(paths []string) string</a></dd>
+			
+				
+				<dd><a href="#GetWinSize">func GetWinSize() (w string, h string)</a></dd>
+			
+				
+				<dd><a href="#HEADER_AUTH">func HEADER_AUTH() string</a></dd>
+			
+				
+				<dd><a href="#HEADER_CF_INST">func HEADER_CF_INST() string</a></dd>
+			
+				
+				<dd><a href="#HEADER_CONFIG">func HEADER_CONFIG() string</a></dd>
+			
+				
+				<dd><a href="#HEADER_INST">func HEADER_INST() string</a></dd>
+			
+				
+				<dd><a href="#HEADER_INST_BY_REFID">func HEADER_INST_BY_REFID(refId string) string</a></dd>
+			
+				
+				<dd><a href="#HEADER_PLUGIN">func HEADER_PLUGIN() string</a></dd>
+			
+				
+				<dd><a href="#HEADER_SUB_ID">func HEADER_SUB_ID() string</a></dd>
+			
+				
+				<dd><a href="#INST_INDEX">func INST_INDEX() string</a></dd>
+			
+				
+				<dd><a href="#InitPtyWinsize">func InitPtyWinsize(w, h string) *pty.Winsize</a></dd>
+			
+				
+				<dd><a href="#InitSystemCltDetails">func InitSystemCltDetails(r *model.Report, ver string, aid string, rd []*model.RequestDetail, c []*model.ClientSession) *model.SystemClt</a></dd>
+			
+				
+				<dd><a href="#InitSystemDetails">func InitSystemDetails(r *model.Report, ver string, aid, refId string) *model.System</a></dd>
+			
+				
+				<dd><a href="#InitSystemGWServerDetails">func InitSystemGWServerDetails(r *model.Report, ses map[string]*model.SessionDetails, cpl []*model.ClientPool, ver string, gtwId string, refId string, ncon int) *model.SystemGWServer</a></dd>
+			
+				
+				<dd><a href="#InitSystemGwyDetails">func InitSystemGwyDetails(r *model.Report, ses map[string]*model.SessionDetails, scs []*model.SuperConns, cpl []*model.ClientPool, ver string, gtwId string, refId string, ncon int) *model.SystemGwy</a></dd>
+			
+				
+				<dd><a href="#InitSystemSrvDetails">func InitSystemSrvDetails(r *model.Report, s []*model.ServerPool, sl []*model.ServerSConnList, ver string, aid string, gurl, refId string) *model.SystemSrv</a></dd>
+			
+				
+				<dd><a href="#InitXTermClient">func InitXTermClient(devId, instId string, exeCB ExeCB) error</a></dd>
+			
+				
+				<dd><a href="#InterfaceConversion">func InterfaceConversion(_cv map[interface{}]interface{}) map[string]interface{}</a></dd>
+			
+				
+				<dd><a href="#LGPrint">func LGPrint()</a></dd>
+			
+				
+				<dd><a href="#MacAddr">func MacAddr() (addr string)</a></dd>
+			
+				
+				<dd><a href="#PASSPHRASE_EXT">func PASSPHRASE_EXT() string</a></dd>
+			
+				
+				<dd><a href="#PROXY_FILTER">func PROXY_FILTER(_turl *url.URL) (pxy *url.URL)</a></dd>
+			
+				
+				<dd><a href="#PanicRecovery">func PanicRecovery(r interface{})</a></dd>
+			
+				
+				<dd><a href="#RandStringRunes">func RandStringRunes(n int, num bool) string</a></dd>
+			
+				
+				<dd><a href="#ReadFile">func ReadFile(path string) (content []byte, err error)</a></dd>
+			
+				
+				<dd><a href="#RefreshPassphrase">func RefreshPassphrase(mod string) (string, error)</a></dd>
+			
+				
+				<dd><a href="#RefreshPassphraseScheduler">func RefreshPassphraseScheduler(mode string)</a></dd>
+			
+				
+				<dd><a href="#RetrieveUploadFile">func RetrieveUploadFile(r *http.Request, s string) (string, error)</a></dd>
+			
+				
+				<dd><a href="#STREAM_PATH">func STREAM_PATH() string</a></dd>
+			
+				
+				<dd><a href="#SaveToFile">func SaveToFile(fname string, b []byte) error</a></dd>
+			
+				
+				<dd><a href="#ServiceReq">func ServiceReq(req *http.Request) []byte</a></dd>
+			
+				
+				<dd><a href="#SetCLog">func SetCLog(l AppLog)</a></dd>
+			
+				
+				<dd><a href="#SetEnv">func SetEnv(ev *model.Env) (err error)</a></dd>
+			
+				
+				<dd><a href="#SingleJoiningSlash">func SingleJoiningSlash(a, b string) string</a></dd>
+			
+				
+				<dd><a href="#StringInSlice">func StringInSlice(a string, list []string) bool</a></dd>
+			
+				
+				<dd><a href="#TheCaller">func TheCaller() string</a></dd>
+			
+				
+				<dd><a href="#TokenRefresh">func TokenRefresh(cid, csc string, oa2 *url.URL) &lt;-chan *model.Token</a></dd>
+			
+				
+				<dd><a href="#TokenValidationV2">func TokenValidationV2(oa2 *url.URL, valTkn, tkn string) &lt;-chan *model.TokenStatus</a></dd>
+			
+				
+				<dd><a href="#URL_CA">func URL_CA() string</a></dd>
+			
+				
+				<dd><a href="#URL_ISSUE_TRACKER">func URL_ISSUE_TRACKER() string</a></dd>
+			
+				
+				<dd><a href="#USER_MAIN">func USER_MAIN() string</a></dd>
+			
+				
+				<dd><a href="#Unzip">func Unzip(src string, dest string) ([]string, error)</a></dd>
+			
+				
+				<dd><a href="#UpsertStr">func UpsertStr(slice []string, element string) []string</a></dd>
+			
+				
+				<dd><a href="#ValidateTokenEligibility">func ValidateTokenEligibility(cid, tkn string) error</a></dd>
+			
+				
+				<dd><a href="#ValidateTokenExp">func ValidateTokenExp(_om string) (string, error)</a></dd>
+			
+				
+				<dd><a href="#WriteResponse">func WriteResponse(w http.ResponseWriter, code int, object interface{})</a></dd>
+			
+			
+				
+				<dd><a href="#AppLog">type AppLog</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#GetCLog">func GetCLog() *AppLog</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewAppLog">func NewAppLog(cp string) *AppLog</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#AppLog.AgtLog">func (l *AppLog) AgtLog(c ...interface{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#AppLog.DbgLog">func (l *AppLog) DbgLog(c ...interface{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#AppLog.Debug">func (l *AppLog) Debug() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#AppLog.ECLog">func (l *AppLog) ECLog(c ...interface{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#AppLog.ErrLog">func (l *AppLog) ErrLog(c ...interface{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#AppLog.FILLog">func (l *AppLog) FILLog(lg *log.Logger, c ...interface{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#AppLog.HTTPLogReq">func (l *AppLog) HTTPLogReq(w http.ResponseWriter, r *http.Request)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#AppLog.InfoLog">func (l *AppLog) InfoLog(c ...interface{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#AppLog.SetDebug">func (l *AppLog) SetDebug()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#AppLog.SetGroupName">func (l *AppLog) SetGroupName(gn string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#AppLog.UnsetDebug">func (l *AppLog) UnsetDebug()</a></dd>
+				
+			
+				
+				<dd><a href="#Cert">type Cert</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewCert">func NewCert(ver string) (*Cert, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.AgentCertVerify">func (c *Cert) AgentCertVerify(d []byte) (*x509.Certificate, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.BcryptComp">func (c *Cert) BcryptComp(d, pw []byte) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.BcryptHash">func (c *Cert) BcryptHash(password []byte) ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.CRTRenewing">func (c *Cert) CRTRenewing(crtToRenew, ppvk, ppwd, cert, scp, rle, lcn string, exp int) (*x509.Certificate, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.CSRSelfSigning">func (c *Cert) CSRSelfSigning(pcsr, ppvk, ppwd string, exp int) (*x509.Certificate, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.CSRSigning">func (c *Cert) CSRSigning(pcsr, ppvk, ppwd, cert, scp, rle, lcn string, exp int) (*x509.Certificate, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.ClearMemory">func (c *Cert) ClearMemory(b []byte)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.CreateSelfSignedCert">func (c *Cert) CreateSelfSignedCert(pk *rsa.PrivateKey, csr *x509.CertificateRequest, exp int) (*x509.Certificate, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.CreateSignatureByPvkStr">func (c *Cert) CreateSignatureByPvkStr(_da string) string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.CreateSignedCert">func (c *Cert) CreateSignedCert(pk *rsa.PrivateKey, csr *x509.CertificateRequest, exp int, crt *x509.Certificate, scope, role, license string) (*x509.Certificate, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.Decrypt">func (c *Cert) Decrypt(ci []byte) ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.DecryptFile">func (c *Cert) DecryptFile(fin string) (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.DecryptFileByKeypair">func (c *Cert) DecryptFileByKeypair(pv, pb, fin string) (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.DecryptFileToStream">func (c *Cert) DecryptFileToStream(fin string) ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.DecryptOneShotByBase64PvkStr">func (c *Cert) DecryptOneShotByBase64PvkStr(_da string) string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.DecryptString">func (c *Cert) DecryptString(encrypted string) (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.EncryptFile">func (c *Cert) EncryptFile(fin string) (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.EncryptFileByKeypair">func (c *Cert) EncryptFileByKeypair(fi string) (asc, sig, pvk, pbk string, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.EncryptOneShotByBase64CertStr">func (c *Cert) EncryptOneShotByBase64CertStr(mod string) string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.EncryptString">func (c *Cert) EncryptString(plaintext string) (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.EncryptV2">func (c *Cert) EncryptV2(d, mod string) []byte</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.GenerateCRTFile">func (c *Cert) GenerateCRTFile(fname string, derBytes, intDERBytes []byte) ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.GenerateCSR">func (c *Cert) GenerateCSR(_pw string, _info *CertReqInfo) string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.GenerateCSRFile">func (c *Cert) GenerateCSRFile(fname string, derBytes []byte) ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.GeneratePVKFile">func (c *Cert) GeneratePVKFile(fname, _pw string, _key *rsa.PrivateKey) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.GetBearToken">func (c *Cert) GetBearToken(mod string) string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.GetCertDetail">func (c *Cert) GetCertDetail() *CertDetail</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.GetDecryptedPrivateKey">func (c *Cert) GetDecryptedPrivateKey() (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.GetDevID">func (c *Cert) GetDevID() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.GetExtensions">func (c *Cert) GetExtensions() *CertExts</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.GetScopeList">func (c *Cert) GetScopeList() ([]string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.GetTLSConfigFromBase64Keys">func (c *Cert) GetTLSConfigFromBase64Keys() (*tls.Config, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.HexRootCert">func (c *Cert) HexRootCert() ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.LoadKeypair">func (c *Cert) LoadKeypair(pub_raw, prv_raw, dat string) (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.LoadPrivateKey">func (c *Cert) LoadPrivateKey(prv_raw string) (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.LoadPublicCrt">func (c *Cert) LoadPublicCrt(pub_raw string) (*x509.Certificate, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.LoadSavedKeypair">func (c *Cert) LoadSavedKeypair() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.LoadUnencryptedPrivateKey">func (c *Cert) LoadUnencryptedPrivateKey(prv_raw string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.ParseCRT">func (c *Cert) ParseCRT(d []byte) (*x509.Certificate, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.ParseCSR">func (c *Cert) ParseCSR(d []byte) (*x509.CertificateRequest, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.Renew">func (c *Cert) Renew()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.RenewSignedCert">func (c *Cert) RenewSignedCert(pk *rsa.PrivateKey, crt, crtToRenew *x509.Certificate, exp int, scope, role, license string) (*x509.Certificate, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.Request">func (c *Cert) Request()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.SetRawPrivateKey">func (c *Cert) SetRawPrivateKey(pkey string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.Sign">func (c *Cert) Sign()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.ValidateClientCreds">func (c *Cert) ValidateClientCreds(cid, csc string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.ValidateClientHashedCreds">func (c *Cert) ValidateClientHashedCreds(cid, csc string) (*ReservedBytes, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.ValidateScope">func (c *Cert) ValidateScope(scp string) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.ValidateSignatureByPublicKey">func (c *Cert) ValidateSignatureByPublicKey(pbk, sig, fil string) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.ValidateToken">func (c *Cert) ValidateToken(_sg, _om string) (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.VerifyStrBySignature">func (c *Cert) VerifyStrBySignature(om, da string) bool</a></dd>
+				
+			
+				
+				<dd><a href="#CertDetail">type CertDetail</a></dd>
+				
+				
+			
+				
+				<dd><a href="#CertExts">type CertExts</a></dd>
+				
+				
+			
+				
+				<dd><a href="#CertReqInfo">type CertReqInfo</a></dd>
+				
+				
+			
+				
+				<dd><a href="#ConfigSet">type ConfigSet</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#InitConfigSet">func InitConfigSet(t, o map[string]interface{}) *ConfigSet</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigSet.GetPropertyName">func (a *ConfigSet) GetPropertyName(shortnm string) string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigSet.LoadConfigMap">func (a *ConfigSet) LoadConfigMap(cfg interface{}) (map[string]interface{}, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigSet.LoadFromEncryptedYAML">func (a *ConfigSet) LoadFromEncryptedYAML(rev string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigSet.LoadFromEnv">func (a *ConfigSet) LoadFromEnv() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigSet.LoadFromJSON">func (a *ConfigSet) LoadFromJSON(j []byte) (map[string]interface{}, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigSet.LoadFromYAML">func (a *ConfigSet) LoadFromYAML() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigSet.OutputPropertyFile">func (a *ConfigSet) OutputPropertyFile(fn string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigSet.SetAgentConfigStr">func (a *ConfigSet) SetAgentConfigStr(f []byte) error</a></dd>
+				
+			
+				
+				<dd><a href="#DB">type DB</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewDB">func NewDB(devId, filePath, purl, host string, dba DBAppIntr, l *AppLog) *DB</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#DB.Del">func (db *DB) Del(key string) []string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#DB.DownloadReq">func (db *DB) DownloadReq(w http.ResponseWriter, r *http.Request)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#DB.Get">func (db *DB) Get(key string) map[string]interface{}</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#DB.GetKeys">func (db *DB) GetKeys() []string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#DB.GetSessionID">func (db *DB) GetSessionID() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#DB.Init">func (db *DB) Init()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#DB.Set">func (db *DB) Set(oid, key string, val map[string]interface{})</a></dd>
+				
+			
+				
+				<dd><a href="#DBAppIntr">type DBAppIntr</a></dd>
+				
+				
+			
+				
+				<dd><a href="#ExeCB">type ExeCB</a></dd>
+				
+				
+			
+				
+				<dd><a href="#IpFilter">type IpFilter</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewIpFilter">func NewIpFilter(l *AppLog, w, b []string) *IpFilter</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#IpFilter.IsInCidrList">func (i *IpFilter) IsInCidrList(ips []string, theip net.IP) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#IpFilter.IsInIpList">func (i *IpFilter) IsInIpList(ips []string, theip net.IP) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#IpFilter.Validate">func (i *IpFilter) Validate(addr string) bool</a></dd>
+				
+			
+				
+				<dd><a href="#PGPObj">type PGPObj</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewPGPObj">func NewPGPObj(c *Cert, ext string) *PGPObj</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PGPObj.DecodePrivateKey">func (p *PGPObj) DecodePrivateKey(filename string) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PGPObj.DecodePublicKey">func (p *PGPObj) DecodePublicKey(filename string) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PGPObj.DecodeSignature">func (p *PGPObj) DecodeSignature(fi string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PGPObj.DecryptFile">func (p *PGPObj) DecryptFile(fi string) (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PGPObj.DecryptFileByKeypair">func (p *PGPObj) DecryptFileByKeypair(fi string) (fo string, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PGPObj.DecryptFileToStream">func (p *PGPObj) DecryptFileToStream(fi string) ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PGPObj.DecryptStr">func (p *PGPObj) DecryptStr(ciphertext []byte) (plaintext []byte, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PGPObj.EncryptFile">func (p *PGPObj) EncryptFile(fi string) (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PGPObj.EncryptFileByRSAPrivateKey">func (p *PGPObj) EncryptFileByRSAPrivateKey(fi string) (otn string, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PGPObj.EncryptStr">func (p *PGPObj) EncryptStr(plaintext []byte) (ciphertext []byte, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PGPObj.LoadKeypair">func (p *PGPObj) LoadKeypair(pv, pb string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PGPObj.SignFile">func (p *PGPObj) SignFile(fi string) (sig string, pvk string, pbk string, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PGPObj.ValidateSignature">func (p *PGPObj) ValidateSignature(fi string) error</a></dd>
+				
+			
+				
+				<dd><a href="#ReservedBytes">type ReservedBytes</a></dd>
+				
+				
+			
+				
+				<dd><a href="#StreamIntr">type StreamIntr</a></dd>
+				
+				
+			
+				
+				<dd><a href="#XTermClient">type XTermClient</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermClient.Close">func (xtc *XTermClient) Close() (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermClient.Read">func (xtc *XTermClient) Read(_b []byte) (n int, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermClient.SetDeadline">func (xtc *XTermClient) SetDeadline(t time.Time) (int, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermClient.Write">func (xtc *XTermClient) Write(_b []byte) (int, error)</a></dd>
+				
+			
+				
+				<dd><a href="#XTermServer">type XTermServer</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewXTermServer">func NewXTermServer(width, height, cmd string) (*XTermServer, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermServer.Close">func (xts *XTermServer) Close() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermServer.Read">func (xts *XTermServer) Read(_b []byte) (int, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermServer.SetDeadline">func (xtc *XTermServer) SetDeadline(t time.Time) (int, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermServer.Write">func (xts *XTermServer) Write(_b []byte) (int, error)</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/github.com/wzlib/wzutil/cert.go">cert.go</a>
+			
+				<a href="/src/github.com/wzlib/wzutil/confset.go">confset.go</a>
+			
+				<a href="/src/github.com/wzlib/wzutil/db.go">db.go</a>
+			
+				<a href="/src/github.com/wzlib/wzutil/ipfilter.go">ipfilter.go</a>
+			
+				<a href="/src/github.com/wzlib/wzutil/log.go">log.go</a>
+			
+				<a href="/src/github.com/wzlib/wzutil/pgp.go">pgp.go</a>
+			
+				<a href="/src/github.com/wzlib/wzutil/wzutil.go">wzutil.go</a>
+			
+				<a href="/src/github.com/wzlib/wzutil/xterm-client.go">xterm-client.go</a>
+			
+				<a href="/src/github.com/wzlib/wzutil/xterm-server.go">xterm-server.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				
+				<pre>const (
+    <span id="VALIDATE_OAEP">VALIDATE_OAEP</span> = &#34;oaep&#34;
+    <span id="VALIDATE_OIDC">VALIDATE_OIDC</span> = &#34;oidc&#34;
+
+    <span id="SCOPE_APP_AUTH">SCOPE_APP_AUTH</span> = &#34;app.auth&#34;
+    <span id="SCOPE_UNKNOWN">SCOPE_UNKNOWN</span>  = &#34;unknown.auth&#34;
+
+    <span id="MODE_LIST">MODE_LIST</span>              = &#34;gateway,server&#34;
+    <span id="TOKEN_EXPIRED_TIME">TOKEN_EXPIRED_TIME</span>     = 20   <span class="comment">//minute</span>
+    <span id="ADM_TOKEN_EXPIRED_TIME">ADM_TOKEN_EXPIRED_TIME</span> = 2160 <span class="comment">//hour</span>
+
+)</pre>
+			
+				
+				<pre>const (
+    <span id="CONFIG_FILE_YML">CONFIG_FILE_YML</span> = &#34;_cf&#34;
+    <span id="CONFIG_CONF">CONFIG_CONF</span>     = &#34;conf&#34;
+    <span id="CONFIG_WATCHER">CONFIG_WATCHER</span>  = &#34;watcher&#34;
+    <span id="CONFIG_CRED">CONFIG_CRED</span>     = &#34;cred&#34;
+    <span id="CONFIG_AUTHGRP">CONFIG_AUTHGRP</span>  = &#34;authGroup&#34;
+    <span id="CONFIG_SUBGRP">CONFIG_SUBGRP</span>   = &#34;subGroup&#34;
+    <span id="CONFIG_FILE_OUT">CONFIG_FILE_OUT</span> = &#34;_ot&#34;
+
+    <span id="CONFIG_FROM_ENV">CONFIG_FROM_ENV</span> = &#34;_ev&#34;
+)</pre>
+			
+				
+				<pre>const (
+    <span id="DB_DEL_KEY">DB_DEL_KEY</span>          = &#34;#to-be-deleted&#34;
+    <span id="SEED_EXPIRED_MINUTE">SEED_EXPIRED_MINUTE</span> = 60
+
+    <span id="SEED_SYNC_SECOND">SEED_SYNC_SECOND</span> = 10
+    <span id="SEED_URL_PATH">SEED_URL_PATH</span>    = &#34;/api/seed&#34;
+    <span id="DB_URL_PATH">DB_URL_PATH</span>      = &#34;/db&#34;
+
+    <span id="SEED_STATUS_ACTIVE">SEED_STATUS_ACTIVE</span> = <a href="/pkg/builtin/#iota">iota</a> + 1001
+    <span id="SEED_STATUS_INACTIVE">SEED_STATUS_INACTIVE</span>
+    <span id="SEED_STATUS_UNKNOWN">SEED_STATUS_UNKNOWN</span>
+)</pre>
+			
+				
+				<pre>const (
+    <span id="LOGFILE">LOGFILE</span>     = &#34;connectivity.log&#34;
+    <span id="LOGFILE_PLG">LOGFILE_PLG</span> = &#34;plugin.log&#34;
+    <span class="comment">//5mb log limitation</span>
+    <span id="LOGSIZE">LOGSIZE</span> = 1024 * 1024 * 5
+)</pre>
+			
+				
+				<pre>const (
+    <span class="comment">//AGENT_INSTANCE_ID = &#34;_is&#34;</span>
+    <span id="BASE64CERT_FLD">BASE64CERT_FLD</span> = &#34;_pb&#34;
+    <span id="BASE64PRVK_FLD">BASE64PRVK_FLD</span> = &#34;_ps&#34;
+    <span id="SIG_FILE_FLD">SIG_FILE_FLD</span>   = &#34;_si&#34;
+
+    <span id="FILE_FLD">FILE_FLD</span>              = &#34;_fl&#34;
+    <span id="VALIDATE_FILE_ENC_FLD">VALIDATE_FILE_ENC_FLD</span> = &#34;_ve&#34;
+    <span id="AGENT_TLS_ENABLED">AGENT_TLS_ENABLED</span>     = &#34;_tl&#34;
+
+    <span class="comment">//OAUTH2_TOKEN_EXPIRED_TIME = 3</span>
+    <span id="OAUTH_TOKEN_VALIDATE">OAUTH_TOKEN_VALIDATE</span> = &#34;/introspect&#34;
+    <span id="OAUTH_TOKEN_FETCH">OAUTH_TOKEN_FETCH</span>    = &#34;/oauth/token&#34;
+    <span id="OAUTH_AUTHORIZATION">OAUTH_AUTHORIZATION</span>  = &#34;/oauth/authorize&#34;
+)</pre>
+			
+				
+				<pre>const (
+    <span id="X_FORWARDED_FOR">X_FORWARDED_FOR</span> = &#34;x-forwarded-for&#34;
+)</pre>
+			
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				
+				<pre>var (
+    <span id="EncryptContentType">EncryptContentType</span> <a href="/pkg/builtin/#string">string</a>
+)</pre>
+			
+		
+		
+			
+			
+			<h2 id="ART_NAME">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=5160:5182#L182">ART_NAME</a>
+				<a class="permalink" href="#ART_NAME">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ART_NAME() <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="AppendToFile">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=17186:17233#L723">AppendToFile</a>
+				<a class="permalink" href="#AppendToFile">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendToFile(fname <a href="/pkg/builtin/#string">string</a>, b []<a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="ArtOps">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=25622:25698#L1155">ArtOps</a>
+				<a class="permalink" href="#ArtOps">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ArtOps(fname, revTo <a href="/pkg/builtin/#string">string</a>, downloadURL *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a>) (fa <a href="/pkg/builtin/#string">string</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="BRAND_CONFIG">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=5267:5293#L190">BRAND_CONFIG</a>
+				<a class="permalink" href="#BRAND_CONFIG">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func BRAND_CONFIG() <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="Branding">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=3725:3764#L124">Branding</a>
+				<a class="permalink" href="#Branding">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Branding(bc *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#BrandingConfig">BrandingConfig</a>)</pre>
+			<p>
+confmain decides the directory to save configuration files.
+plgheader identifies the plugin head mostly in yaml.
+confheader specifies the configuration header in yaml.
+authheader will appear in the HTTP request header for any auth purpose.
+subheader serves as subscription header for any service call.
+instcfheader to indicate the CF instance in the http header
+instcfenv is to indicate the current CF instance index
+instheader to indicate the default instance in the header
+instenv is to show the current instance index by default
+the &#34;brand&#34; shown as part of the agent logs.
+the &#34;logo&#34;,&#34;copyright,&#34;issue&#34; will all display in the product informatin, whereas
+the ca indicates the issuer&#39;s URL and will receive the API calls from the agent
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="CONFIG_MAIN">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=6005:6030#L238">CONFIG_MAIN</a>
+				<a class="permalink" href="#CONFIG_MAIN">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func CONFIG_MAIN() <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="CURRENT_PATH">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=6116:6142#L246">CURRENT_PATH</a>
+				<a class="permalink" href="#CURRENT_PATH">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func CURRENT_PATH() <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="ContainsString">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=15815:15871#L654">ContainsString</a>
+				<a class="permalink" href="#ContainsString">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ContainsString(slice []<a href="/pkg/builtin/#string">string</a>, element <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="Copyright">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=8232:8248#L326">Copyright</a>
+				<a class="permalink" href="#Copyright">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Copyright()</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="DBOps">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=29483:29551#L1361">DBOps</a>
+				<a class="permalink" href="#DBOps">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func DBOps(httpmethod, tkn <a href="/pkg/builtin/#string">string</a>, url *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a>, data []<a href="/pkg/builtin/#byte">byte</a>) []<a href="/pkg/builtin/#byte">byte</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="Decompress">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=21246:21301#L927">Decompress</a>
+				<a class="permalink" href="#Decompress">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Decompress(srcFile, tgtFile <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="DownloadArt">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=25086:25136#L1128">DownloadArt</a>
+				<a class="permalink" href="#DownloadArt">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func DownloadArt(aurl *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a>, path <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="DownloadFile">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=24727:24772#L1108">DownloadFile</a>
+				<a class="permalink" href="#DownloadFile">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func DownloadFile(aurl <a href="/pkg/builtin/#string">string</a>) ([]<a href="/pkg/builtin/#byte">byte</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="ENV_CF_INST_IDX">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=5751:5780#L222">ENV_CF_INST_IDX</a>
+				<a class="permalink" href="#ENV_CF_INST_IDX">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ENV_CF_INST_IDX() <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="ENV_INST_IDX">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=5692:5718#L218">ENV_INST_IDX</a>
+				<a class="permalink" href="#ENV_INST_IDX">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ENV_INST_IDX() <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="EncodeRFC2047">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=8739:8779#L348">EncodeRFC2047</a>
+				<a class="permalink" href="#EncodeRFC2047">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func EncodeRFC2047(String <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="ErrResponse">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=29176:29254#L1351">ErrResponse</a>
+				<a class="permalink" href="#ErrResponse">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ErrResponse(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, errcode <a href="/pkg/builtin/#uint16">uint16</a>, err <a href="/pkg/builtin/#error">error</a>, str <a href="/pkg/builtin/#string">string</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="ExternalIP">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=18698:18731#L810">ExternalIP</a>
+				<a class="permalink" href="#ExternalIP">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ExternalIP() (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GenerateAdmPassphrase">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=72546:72589#L2336">GenerateAdmPassphrase</a>
+				<a class="permalink" href="#GenerateAdmPassphrase">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GenerateAdmPassphrase() (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GeneratePassphrase">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=72924:72974#L2348">GeneratePassphrase</a>
+				<a class="permalink" href="#GeneratePassphrase">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GeneratePassphrase(mod <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+GeneratePassphrase return the passphrase hash generated via stdin or env
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="GetCurrentIPAddrs">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=17487:17525#L744">GetCurrentIPAddrs</a>
+				<a class="permalink" href="#GetCurrentIPAddrs">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GetCurrentIPAddrs() (ips []<a href="/pkg/net/">net</a>.<a href="/pkg/net/#IP">IP</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetCurrentPrompt">func <a href="/src/github.com/wzlib/wzutil/xterm-client.go?s=529:583#L27">GetCurrentPrompt</a>
+				<a class="permalink" href="#GetCurrentPrompt">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GetCurrentPrompt(devId, instId, cpath <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetEnv">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=16243:16269#L674">GetEnv</a>
+				<a class="permalink" href="#GetEnv">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GetEnv() *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Env">Env</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetGRId">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=19427:19448#L847">GetGRId</a>
+				<a class="permalink" href="#GetGRId">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GetGRId() <a href="/pkg/builtin/#uint64">uint64</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetHTTPClientPxyOpt">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=24181:24233#L1077">GetHTTPClientPxyOpt</a>
+				<a class="permalink" href="#GetHTTPClientPxyOpt">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GetHTTPClientPxyOpt(turl <a href="/pkg/builtin/#string">string</a>) *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Client">Client</a></pre>
+			<p>
+return a http client based on the curent HTTP_PROXY and noproxy
+setting in the environment variable to the current process
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="GetHashedPassphraseInEnv">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=75121:75167#L2431">GetHashedPassphraseInEnv</a>
+				<a class="permalink" href="#GetHashedPassphraseInEnv">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GetHashedPassphraseInEnv() (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+GetHashedPassphraseInEnv return the environment variable contains a hashed passphrase
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="GetHashedPassphraseInRootPath">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=75449:75500#L2440">GetHashedPassphraseInRootPath</a>
+				<a class="permalink" href="#GetHashedPassphraseInRootPath">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GetHashedPassphraseInRootPath() (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+ValidateHashedPassphraseInRootPath validate the hashed passphrase in the root path and return it unaltered.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="GetOAuthToken">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=28236:28310#L1296">GetOAuthToken</a>
+				<a class="permalink" href="#GetOAuthToken">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GetOAuthToken(cid, csc <a href="/pkg/builtin/#string">string</a>, oa2 *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a>, tkn *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Token">Token</a>) <a href="/pkg/builtin/#string">string</a></pre>
+			<p>
+GetOAuthToken return a valid token for authorisation purpose
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="GetPath">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=9107:9142#L369">GetPath</a>
+				<a class="permalink" href="#GetPath">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GetPath(paths []<a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetWinSize">func <a href="/src/github.com/wzlib/wzutil/xterm-client.go?s=272:309#L14">GetWinSize</a>
+				<a class="permalink" href="#GetWinSize">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GetWinSize() (w <a href="/pkg/builtin/#string">string</a>, h <a href="/pkg/builtin/#string">string</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="HEADER_AUTH">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=5103:5128#L178">HEADER_AUTH</a>
+				<a class="permalink" href="#HEADER_AUTH">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func HEADER_AUTH() <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="HEADER_CF_INST">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=5389:5417#L198">HEADER_CF_INST</a>
+				<a class="permalink" href="#HEADER_CF_INST">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func HEADER_CF_INST() <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="HEADER_CONFIG">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=5570:5597#L210">HEADER_CONFIG</a>
+				<a class="permalink" href="#HEADER_CONFIG">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func HEADER_CONFIG() <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="HEADER_INST">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=5452:5477#L202">HEADER_INST</a>
+				<a class="permalink" href="#HEADER_INST">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func HEADER_INST() <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="HEADER_INST_BY_REFID">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=4958:5004#L171">HEADER_INST_BY_REFID</a>
+				<a class="permalink" href="#HEADER_INST_BY_REFID">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func HEADER_INST_BY_REFID(refId <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="HEADER_PLUGIN">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=5509:5536#L206">HEADER_PLUGIN</a>
+				<a class="permalink" href="#HEADER_PLUGIN">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func HEADER_PLUGIN() <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="HEADER_SUB_ID">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=5631:5658#L214">HEADER_SUB_ID</a>
+				<a class="permalink" href="#HEADER_SUB_ID">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func HEADER_SUB_ID() <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="INST_INDEX">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=4741:4765#L158">INST_INDEX</a>
+				<a class="permalink" href="#INST_INDEX">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func INST_INDEX() <a href="/pkg/builtin/#string">string</a></pre>
+			<p>
+getting the current instance index indicator
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="InitPtyWinsize">func <a href="/src/github.com/wzlib/wzutil/xterm-server.go?s=165:210#L9">InitPtyWinsize</a>
+				<a class="permalink" href="#InitPtyWinsize">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func InitPtyWinsize(w, h <a href="/pkg/builtin/#string">string</a>) *<a href="/pkg/github.com/creack/pty/">pty</a>.<a href="/pkg/github.com/creack/pty/#Winsize">Winsize</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="InitSystemCltDetails">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=11797:11934#L505">InitSystemCltDetails</a>
+				<a class="permalink" href="#InitSystemCltDetails">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func InitSystemCltDetails(r *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, ver <a href="/pkg/builtin/#string">string</a>, aid <a href="/pkg/builtin/#string">string</a>, rd []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#RequestDetail">RequestDetail</a>, c []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ClientSession">ClientSession</a>) *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#SystemClt">SystemClt</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="InitSystemDetails">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=10970:11055#L473">InitSystemDetails</a>
+				<a class="permalink" href="#InitSystemDetails">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func InitSystemDetails(r *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, ver <a href="/pkg/builtin/#string">string</a>, aid, refId <a href="/pkg/builtin/#string">string</a>) *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#System">System</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="InitSystemGWServerDetails">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=14672:14855#L610">InitSystemGWServerDetails</a>
+				<a class="permalink" href="#InitSystemGWServerDetails">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func InitSystemGWServerDetails(r *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, ses map[<a href="/pkg/builtin/#string">string</a>]*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#SessionDetails">SessionDetails</a>, cpl []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ClientPool">ClientPool</a>, ver <a href="/pkg/builtin/#string">string</a>, gtwId <a href="/pkg/builtin/#string">string</a>, refId <a href="/pkg/builtin/#string">string</a>, ncon <a href="/pkg/builtin/#int">int</a>) *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#SystemGWServer">SystemGWServer</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="InitSystemGwyDetails">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=13644:13842#L574">InitSystemGwyDetails</a>
+				<a class="permalink" href="#InitSystemGwyDetails">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func InitSystemGwyDetails(r *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, ses map[<a href="/pkg/builtin/#string">string</a>]*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#SessionDetails">SessionDetails</a>, scs []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#SuperConns">SuperConns</a>, cpl []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ClientPool">ClientPool</a>, ver <a href="/pkg/builtin/#string">string</a>, gtwId <a href="/pkg/builtin/#string">string</a>, refId <a href="/pkg/builtin/#string">string</a>, ncon <a href="/pkg/builtin/#int">int</a>) *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#SystemGwy">SystemGwy</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="InitSystemSrvDetails">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=12690:12846#L539">InitSystemSrvDetails</a>
+				<a class="permalink" href="#InitSystemSrvDetails">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func InitSystemSrvDetails(r *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, s []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ServerPool">ServerPool</a>, sl []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ServerSConnList">ServerSConnList</a>, ver <a href="/pkg/builtin/#string">string</a>, aid <a href="/pkg/builtin/#string">string</a>, gurl, refId <a href="/pkg/builtin/#string">string</a>) *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#SystemSrv">SystemSrv</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="InitXTermClient">func <a href="/src/github.com/wzlib/wzutil/xterm-client.go?s=1500:1560#L55">InitXTermClient</a>
+				<a class="permalink" href="#InitXTermClient">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func InitXTermClient(devId, instId <a href="/pkg/builtin/#string">string</a>, exeCB <a href="#ExeCB">ExeCB</a>) <a href="/pkg/builtin/#error">error</a></pre>
+			<p>
+InitXTermClient launches the xterm simulator with the prompt format of target @@devId and @@instId. The callback @@exeCB will be invoked on each command line @@cmd ended with the line break.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="InterfaceConversion">func <a href="/src/github.com/wzlib/wzutil/confset.go?s=1342:1422#L51">InterfaceConversion</a>
+				<a class="permalink" href="#InterfaceConversion">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func InterfaceConversion(_cv map[interface{}]interface{}) map[<a href="/pkg/builtin/#string">string</a>]interface{}</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="LGPrint">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=8412:8426#L336">LGPrint</a>
+				<a class="permalink" href="#LGPrint">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func LGPrint()</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="MacAddr">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=19664:19692#L856">MacAddr</a>
+				<a class="permalink" href="#MacAddr">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MacAddr() (addr <a href="/pkg/builtin/#string">string</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="PASSPHRASE_EXT">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=5326:5354#L194">PASSPHRASE_EXT</a>
+				<a class="permalink" href="#PASSPHRASE_EXT">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func PASSPHRASE_EXT() <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="PROXY_FILTER">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=22657:22705#L1002">PROXY_FILTER</a>
+				<a class="permalink" href="#PROXY_FILTER">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func PROXY_FILTER(_turl *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a>) (pxy *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="PanicRecovery">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=18107:18140#L776">PanicRecovery</a>
+				<a class="permalink" href="#PanicRecovery">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func PanicRecovery(r interface{})</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="RandStringRunes">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=8906:8950#L354">RandStringRunes</a>
+				<a class="permalink" href="#RandStringRunes">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func RandStringRunes(n <a href="/pkg/builtin/#int">int</a>, num <a href="/pkg/builtin/#bool">bool</a>) <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="ReadFile">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=9375:9429#L386">ReadFile</a>
+				<a class="permalink" href="#ReadFile">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ReadFile(path <a href="/pkg/builtin/#string">string</a>) (content []<a href="/pkg/builtin/#byte">byte</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="RefreshPassphrase">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=75780:75829#L2453">RefreshPassphrase</a>
+				<a class="permalink" href="#RefreshPassphrase">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func RefreshPassphrase(mod <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+RefreshPassphrase return the renewal of the passing hash @@pps and caches the hash
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="RefreshPassphraseScheduler">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=69824:69868#L2204">RefreshPassphraseScheduler</a>
+				<a class="permalink" href="#RefreshPassphraseScheduler">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func RefreshPassphraseScheduler(mode <a href="/pkg/builtin/#string">string</a>)</pre>
+			<p>
+UpdatePassphraseInMemopry and update the passphrase in the root path. It returns the encrypted and updated passphrase.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="RetrieveUploadFile">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=9761:9826#L412">RetrieveUploadFile</a>
+				<a class="permalink" href="#RetrieveUploadFile">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func RetrieveUploadFile(r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, s <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="STREAM_PATH">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=5211:5236#L186">STREAM_PATH</a>
+				<a class="permalink" href="#STREAM_PATH">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func STREAM_PATH() <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="SaveToFile">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=16104:16148#L668">SaveToFile</a>
+				<a class="permalink" href="#SaveToFile">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func SaveToFile(fname <a href="/pkg/builtin/#string">string</a>, b []<a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="ServiceReq">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=26328:26370#L1191">ServiceReq</a>
+				<a class="permalink" href="#ServiceReq">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ServiceReq(req *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>) []<a href="/pkg/builtin/#byte">byte</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="SetCLog">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=1488:1510#L68">SetCLog</a>
+				<a class="permalink" href="#SetCLog">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func SetCLog(l <a href="#AppLog">AppLog</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="SetEnv">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=16641:16679#L697">SetEnv</a>
+				<a class="permalink" href="#SetEnv">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func SetEnv(ev *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Env">Env</a>) (err <a href="/pkg/builtin/#error">error</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="SingleJoiningSlash">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=17849:17892#L764">SingleJoiningSlash</a>
+				<a class="permalink" href="#SingleJoiningSlash">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func SingleJoiningSlash(a, b <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#string">string</a></pre>
+			<p>
+a mimic function from the reverseproxy pkg
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="StringInSlice">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=18532:18580#L801">StringInSlice</a>
+				<a class="permalink" href="#StringInSlice">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func StringInSlice(a <a href="/pkg/builtin/#string">string</a>, list []<a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="TheCaller">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=18322:18345#L788">TheCaller</a>
+				<a class="permalink" href="#TheCaller">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func TheCaller() <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="TokenRefresh">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=26819:26887#L1220">TokenRefresh</a>
+				<a class="permalink" href="#TokenRefresh">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func TokenRefresh(cid, csc <a href="/pkg/builtin/#string">string</a>, oa2 *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a>) &lt;-chan *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Token">Token</a></pre>
+			<p>
+TokenRefresh fetch the host&#39;s bearer token for HTTP authorisation purpose
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="TokenValidationV2">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=30113:30197#L1384">TokenValidationV2</a>
+				<a class="permalink" href="#TokenValidationV2">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func TokenValidationV2(oa2 *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a>, valTkn, tkn <a href="/pkg/builtin/#string">string</a>) &lt;-chan *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#TokenStatus">TokenStatus</a></pre>
+			<p>
+TokenValidationV2 invokes oauth2 (@@oa2) /introspect call to validate the token (@@tkn)
+@@crt used to extract the validator&#39;s token as the Authorization header
+@@valTkn is the valiodator&#39;s own token
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="URL_CA">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=5816:5836#L226">URL_CA</a>
+				<a class="permalink" href="#URL_CA">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func URL_CA() <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="URL_ISSUE_TRACKER">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=5936:5967#L234">URL_ISSUE_TRACKER</a>
+				<a class="permalink" href="#URL_ISSUE_TRACKER">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func URL_ISSUE_TRACKER() <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="USER_MAIN">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=6063:6086#L242">USER_MAIN</a>
+				<a class="permalink" href="#USER_MAIN">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func USER_MAIN() <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="Unzip">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=20069:20122#L871">Unzip</a>
+				<a class="permalink" href="#Unzip">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Unzip(src <a href="/pkg/builtin/#string">string</a>, dest <a href="/pkg/builtin/#string">string</a>) ([]<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+Unzip will decompress a zip archive, moving all files and folders
+within the zip file (parameter 1) to an output directory (parameter 2).
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UpsertStr">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=15670:15727#L645">UpsertStr</a>
+				<a class="permalink" href="#UpsertStr">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func UpsertStr(slice []<a href="/pkg/builtin/#string">string</a>, element <a href="/pkg/builtin/#string">string</a>) []<a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="ValidateTokenEligibility">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=27879:27931#L1277">ValidateTokenEligibility</a>
+				<a class="permalink" href="#ValidateTokenEligibility">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ValidateTokenEligibility(cid, tkn <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+			<p>
+ValidateTokenEligibility help analyse a basic legitimate of the token
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ValidateTokenExp">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=91643:91690#L3178">ValidateTokenExp</a>
+				<a class="permalink" href="#ValidateTokenExp">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ValidateTokenExp(_om <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+ValidateTokenExp only validate the expiration of the token, it does not garantee the authenticity of the token. it returns the id of the token owner
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="WriteResponse">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=10729:10800#L462">WriteResponse</a>
+				<a class="permalink" href="#WriteResponse">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func WriteResponse(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, code <a href="/pkg/builtin/#int">int</a>, object interface{})</pre>
+			
+			
+			
+
+		
+		
+			
+			
+			<h2 id="AppLog">type <a href="/src/github.com/wzlib/wzutil/log.go?s=775:897#L31">AppLog</a>
+				<a class="permalink" href="#AppLog">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type AppLog struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="GetCLog">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=1447:1469#L64">GetCLog</a>
+					<a class="permalink" href="#GetCLog">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func GetCLog() *<a href="#AppLog">AppLog</a></pre>
+				
+				
+				
+			
+				
+				<h3 id="NewAppLog">func <a href="/src/github.com/wzlib/wzutil/wzutil.go?s=6236:6269#L256">NewAppLog</a>
+					<a class="permalink" href="#NewAppLog">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewAppLog(cp <a href="/pkg/builtin/#string">string</a>) *<a href="#AppLog">AppLog</a></pre>
+				
+				
+				
+			
+
+			
+				
+				<h3 id="AppLog.AgtLog">func (*AppLog) <a href="/src/github.com/wzlib/wzutil/log.go?s=5195:5236#L237">AgtLog</a>
+					<a class="permalink" href="#AppLog.AgtLog">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (l *<a href="#AppLog">AppLog</a>) AgtLog(c ...interface{})</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="AppLog.DbgLog">func (*AppLog) <a href="/src/github.com/wzlib/wzutil/log.go?s=4928:4969#L220">DbgLog</a>
+					<a class="permalink" href="#AppLog.DbgLog">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (l *<a href="#AppLog">AppLog</a>) DbgLog(c ...interface{})</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="AppLog.Debug">func (*AppLog) <a href="/src/github.com/wzlib/wzutil/log.go?s=899:928#L39">Debug</a>
+					<a class="permalink" href="#AppLog.Debug">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (l *<a href="#AppLog">AppLog</a>) Debug() <a href="/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="AppLog.ECLog">func (*AppLog) <a href="/src/github.com/wzlib/wzutil/log.go?s=4352:4392#L176">ECLog</a>
+					<a class="permalink" href="#AppLog.ECLog">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (l *<a href="#AppLog">AppLog</a>) ECLog(c ...interface{})</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="AppLog.ErrLog">func (*AppLog) <a href="/src/github.com/wzlib/wzutil/log.go?s=4685:4726#L201">ErrLog</a>
+					<a class="permalink" href="#AppLog.ErrLog">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (l *<a href="#AppLog">AppLog</a>) ErrLog(c ...interface{})</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="AppLog.FILLog">func (*AppLog) <a href="/src/github.com/wzlib/wzutil/log.go?s=1163:1219#L57">FILLog</a>
+					<a class="permalink" href="#AppLog.FILLog">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (l *<a href="#AppLog">AppLog</a>) FILLog(lg *<a href="/pkg/log/">log</a>.<a href="/pkg/log/#Logger">Logger</a>, c ...interface{})</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="AppLog.HTTPLogReq">func (*AppLog) <a href="/src/github.com/wzlib/wzutil/log.go?s=3689:3756#L136">HTTPLogReq</a>
+					<a class="permalink" href="#AppLog.HTTPLogReq">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (l *<a href="#AppLog">AppLog</a>) HTTPLogReq(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="AppLog.InfoLog">func (*AppLog) <a href="/src/github.com/wzlib/wzutil/log.go?s=4516:4558#L188">InfoLog</a>
+					<a class="permalink" href="#AppLog.InfoLog">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (l *<a href="#AppLog">AppLog</a>) InfoLog(c ...interface{})</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="AppLog.SetDebug">func (*AppLog) <a href="/src/github.com/wzlib/wzutil/log.go?s=949:976#L43">SetDebug</a>
+					<a class="permalink" href="#AppLog.SetDebug">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (l *<a href="#AppLog">AppLog</a>) SetDebug()</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="AppLog.SetGroupName">func (*AppLog) <a href="/src/github.com/wzlib/wzutil/log.go?s=1044:1084#L51">SetGroupName</a>
+					<a class="permalink" href="#AppLog.SetGroupName">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (l *<a href="#AppLog">AppLog</a>) SetGroupName(gn <a href="/pkg/builtin/#string">string</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="AppLog.UnsetDebug">func (*AppLog) <a href="/src/github.com/wzlib/wzutil/log.go?s=995:1024#L47">UnsetDebug</a>
+					<a class="permalink" href="#AppLog.UnsetDebug">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (l *<a href="#AppLog">AppLog</a>) UnsetDebug()</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Cert">type <a href="/src/github.com/wzlib/wzutil/cert.go?s=24269:25002#L147">Cert</a>
+				<a class="permalink" href="#Cert">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Cert struct {
+<span id="Cert.Version"></span>    Version <a href="/pkg/builtin/#string">string</a> `json:&#34;version&#34;`
+
+    <span class="comment">//Cert.Subject.SerialNumber represent the developer Id</span>
+<span id="Cert.Cert"></span>    Cert *<a href="/pkg/crypto/x509/">x509</a>.<a href="/pkg/crypto/x509/#Certificate">Certificate</a> `json:&#34;-&#34;`
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewCert">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=50717:50755#L1407">NewCert</a>
+					<a class="permalink" href="#NewCert">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewCert(ver <a href="/pkg/builtin/#string">string</a>) (*<a href="#Cert">Cert</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+create a cert instance with a custom revision
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Cert.AgentCertVerify">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=51072:51137#L1427">AgentCertVerify</a>
+					<a class="permalink" href="#Cert.AgentCertVerify">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) AgentCertVerify(d []<a href="/pkg/builtin/#byte">byte</a>) (*<a href="/pkg/crypto/x509/">x509</a>.<a href="/pkg/crypto/x509/#Certificate">Certificate</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+The function is made to verify
+1) the intermediate cert is issued by the designated root
+2) the certificate is endorsed by the intermediate cert
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.BcryptComp">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=61787:61832#L1866">BcryptComp</a>
+					<a class="permalink" href="#Cert.BcryptComp">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) BcryptComp(d, pw []<a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+BcryptComp compares given@pw is pwd in plaintext, and @d is pwd in bcrypt hash
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.BcryptHash">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=62007:62064#L1877">BcryptHash</a>
+					<a class="permalink" href="#Cert.BcryptHash">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) BcryptHash(password []<a href="/pkg/builtin/#byte">byte</a>) ([]<a href="/pkg/builtin/#byte">byte</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+BcryptHash turn @password into a new hash reference
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.CRTRenewing">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=42785:42896#L1041">CRTRenewing</a>
+					<a class="permalink" href="#Cert.CRTRenewing">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) CRTRenewing(crtToRenew, ppvk, ppwd, cert, scp, rle, lcn <a href="/pkg/builtin/#string">string</a>, exp <a href="/pkg/builtin/#int">int</a>) (*<a href="/pkg/crypto/x509/">x509</a>.<a href="/pkg/crypto/x509/#Certificate">Certificate</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+uid must be provisioned for the signee&#39;s &#34;crtToRenew&#34;. cert,ppvk,ppwd all refer to the signer.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.CSRSelfSigning">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=41248:41335#L954">CSRSelfSigning</a>
+					<a class="permalink" href="#Cert.CSRSelfSigning">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) CSRSelfSigning(pcsr, ppvk, ppwd <a href="/pkg/builtin/#string">string</a>, exp <a href="/pkg/builtin/#int">int</a>) (*<a href="/pkg/crypto/x509/">x509</a>.<a href="/pkg/crypto/x509/#Certificate">Certificate</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.CSRSigning">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=41883:41987#L990">CSRSigning</a>
+					<a class="permalink" href="#Cert.CSRSigning">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) CSRSigning(pcsr, ppvk, ppwd, cert, scp, rle, lcn <a href="/pkg/builtin/#string">string</a>, exp <a href="/pkg/builtin/#int">int</a>) (*<a href="/pkg/crypto/x509/">x509</a>.<a href="/pkg/crypto/x509/#Certificate">Certificate</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+uid must be provisioned for the signee&#39;s csr. cert,ppvk,ppwd all refer to the signer.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.ClearMemory">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=62170:62205#L1884">ClearMemory</a>
+					<a class="permalink" href="#Cert.ClearMemory">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) ClearMemory(b []<a href="/pkg/builtin/#byte">byte</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.CreateSelfSignedCert">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=43719:43837#L1093">CreateSelfSignedCert</a>
+					<a class="permalink" href="#Cert.CreateSelfSignedCert">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) CreateSelfSignedCert(pk *<a href="/pkg/crypto/rsa/">rsa</a>.<a href="/pkg/crypto/rsa/#PrivateKey">PrivateKey</a>, csr *<a href="/pkg/crypto/x509/">x509</a>.<a href="/pkg/crypto/x509/#CertificateRequest">CertificateRequest</a>, exp <a href="/pkg/builtin/#int">int</a>) (*<a href="/pkg/crypto/x509/">x509</a>.<a href="/pkg/crypto/x509/#Certificate">Certificate</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+for embedded root cert in the agent
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.CreateSignatureByPvkStr">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=38454:38510#L796">CreateSignatureByPvkStr</a>
+					<a class="permalink" href="#Cert.CreateSignatureByPvkStr">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) CreateSignatureByPvkStr(_da <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#string">string</a></pre>
+				<p>
+CreateSignatureByPvkStr create the signature (sha256) based on the given data by the preloaded private key and passphrass.
+@_da is base64 encoded string
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.CreateSignedCert">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=45329:45495#L1156">CreateSignedCert</a>
+					<a class="permalink" href="#Cert.CreateSignedCert">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) CreateSignedCert(pk *<a href="/pkg/crypto/rsa/">rsa</a>.<a href="/pkg/crypto/rsa/#PrivateKey">PrivateKey</a>, csr *<a href="/pkg/crypto/x509/">x509</a>.<a href="/pkg/crypto/x509/#CertificateRequest">CertificateRequest</a>, exp <a href="/pkg/builtin/#int">int</a>, crt *<a href="/pkg/crypto/x509/">x509</a>.<a href="/pkg/crypto/x509/#Certificate">Certificate</a>, scope, role, license <a href="/pkg/builtin/#string">string</a>) (*<a href="/pkg/crypto/x509/">x509</a>.<a href="/pkg/crypto/x509/#Certificate">Certificate</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.Decrypt">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=80092:80138#L2671">Decrypt</a>
+					<a class="permalink" href="#Cert.Decrypt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) Decrypt(ci []<a href="/pkg/builtin/#byte">byte</a>) ([]<a href="/pkg/builtin/#byte">byte</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Decrypt will decrypt the product of EncryptV2 by the private key
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.DecryptFile">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=27457:27509#L299">DecryptFile</a>
+					<a class="permalink" href="#Cert.DecryptFile">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) DecryptFile(fin <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.DecryptFileByKeypair">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=26975:27042#L274">DecryptFileByKeypair</a>
+					<a class="permalink" href="#Cert.DecryptFileByKeypair">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) DecryptFileByKeypair(pv, pb, fin <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.DecryptFileToStream">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=27250:27310#L288">DecryptFileToStream</a>
+					<a class="permalink" href="#Cert.DecryptFileToStream">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) DecryptFileToStream(fin <a href="/pkg/builtin/#string">string</a>) ([]<a href="/pkg/builtin/#byte">byte</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.DecryptOneShotByBase64PvkStr">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=39678:39740#L856">DecryptOneShotByBase64PvkStr</a>
+					<a class="permalink" href="#Cert.DecryptOneShotByBase64PvkStr">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) DecryptOneShotByBase64PvkStr(_da <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#string">string</a></pre>
+				<p>
+Decrypt the given @_da token and return uuid string based on the preloaded private key/passphrase.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.DecryptString">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=27658:27718#L310">DecryptString</a>
+					<a class="permalink" href="#Cert.DecryptString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) DecryptString(encrypted <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.EncryptFile">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=25996:26048#L223">EncryptFile</a>
+					<a class="permalink" href="#Cert.EncryptFile">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) EncryptFile(fin <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.EncryptFileByKeypair">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=26275:26355#L235">EncryptFileByKeypair</a>
+					<a class="permalink" href="#Cert.EncryptFileByKeypair">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) EncryptFileByKeypair(fi <a href="/pkg/builtin/#string">string</a>) (asc, sig, pvk, pbk <a href="/pkg/builtin/#string">string</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+EncryptFileByKeypair produces the encrypt file, a pairkey, and the signature
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.EncryptOneShotByBase64CertStr">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=37588:37651#L757">EncryptOneShotByBase64CertStr</a>
+					<a class="permalink" href="#Cert.EncryptOneShotByBase64CertStr">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) EncryptOneShotByBase64CertStr(mod <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#string">string</a></pre>
+				<p>
+Encrypt a uuid-based string (_da) based on the preloaded cert.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.EncryptString">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=25724:25784#L212">EncryptString</a>
+					<a class="permalink" href="#Cert.EncryptString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) EncryptString(plaintext <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.EncryptV2">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=78873:78919#L2598">EncryptV2</a>
+					<a class="permalink" href="#Cert.EncryptV2">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) EncryptV2(d, mod <a href="/pkg/builtin/#string">string</a>) []<a href="/pkg/builtin/#byte">byte</a></pre>
+				<p>
+EncryptV2 encrypt the string (@@d) in uuid format and a mode (@@mod) in usage with the preloaded public key
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.GenerateCRTFile">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=59822:59910#L1788">GenerateCRTFile</a>
+					<a class="permalink" href="#Cert.GenerateCRTFile">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) GenerateCRTFile(fname <a href="/pkg/builtin/#string">string</a>, derBytes, intDERBytes []<a href="/pkg/builtin/#byte">byte</a>) ([]<a href="/pkg/builtin/#byte">byte</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.GenerateCSR">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=57777:57842#L1699">GenerateCSR</a>
+					<a class="permalink" href="#Cert.GenerateCSR">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) GenerateCSR(_pw <a href="/pkg/builtin/#string">string</a>, _info *<a href="#CertReqInfo">CertReqInfo</a>) <a href="/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.GenerateCSRFile">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=59520:59595#L1777">GenerateCSRFile</a>
+					<a class="permalink" href="#Cert.GenerateCSRFile">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) GenerateCSRFile(fname <a href="/pkg/builtin/#string">string</a>, derBytes []<a href="/pkg/builtin/#byte">byte</a>) ([]<a href="/pkg/builtin/#byte">byte</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.GeneratePVKFile">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=60618:60694#L1822">GeneratePVKFile</a>
+					<a class="permalink" href="#Cert.GeneratePVKFile">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) GeneratePVKFile(fname, _pw <a href="/pkg/builtin/#string">string</a>, _key *<a href="/pkg/crypto/rsa/">rsa</a>.<a href="/pkg/crypto/rsa/#PrivateKey">PrivateKey</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.GetBearToken">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=92700:92745#L3222">GetBearToken</a>
+					<a class="permalink" href="#Cert.GetBearToken">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) GetBearToken(mod <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.GetCertDetail">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=66567:66609#L2093">GetCertDetail</a>
+					<a class="permalink" href="#Cert.GetCertDetail">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) GetCertDetail() *<a href="#CertDetail">CertDetail</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.GetDecryptedPrivateKey">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=89941:89996#L3102">GetDecryptedPrivateKey</a>
+					<a class="permalink" href="#Cert.GetDecryptedPrivateKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) GetDecryptedPrivateKey() (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Print decrypted private key by passing the base64 excrypted private key (pk) and its passphrase (pp)
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.GetDevID">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=25134:25165#L181">GetDevID</a>
+					<a class="permalink" href="#Cert.GetDevID">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) GetDevID() <a href="/pkg/builtin/#string">string</a></pre>
+				<p>
+get the client/developer id
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.GetExtensions">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=66054:66094#L2072">GetExtensions</a>
+					<a class="permalink" href="#Cert.GetExtensions">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) GetExtensions() *<a href="#CertExts">CertExts</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.GetScopeList">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=65734:65780#L2058">GetScopeList</a>
+					<a class="permalink" href="#Cert.GetScopeList">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) GetScopeList() ([]<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.GetTLSConfigFromBase64Keys">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=77237:77299#L2519">GetTLSConfigFromBase64Keys</a>
+					<a class="permalink" href="#Cert.GetTLSConfigFromBase64Keys">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) GetTLSConfigFromBase64Keys() (*<a href="/pkg/crypto/tls/">tls</a>.<a href="/pkg/crypto/tls/#Config">Config</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+getting the tls.Config pair for the tls-secured calls
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.HexRootCert">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=82719:82760#L2800">HexRootCert</a>
+					<a class="permalink" href="#Cert.HexRootCert">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) HexRootCert() ([]<a href="/pkg/builtin/#byte">byte</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.LoadKeypair">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=64778:64848#L2006">LoadKeypair</a>
+					<a class="permalink" href="#Cert.LoadKeypair">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) LoadKeypair(pub_raw, prv_raw, dat <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+LoadKeypair loads the keypair from the given x509 keypair and returns passphrase hash. pub_raw is base64 certficate string, where prv_raw is encrypted private key string, all in der string.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.LoadPrivateKey">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=74196:74256#L2382">LoadPrivateKey</a>
+					<a class="permalink" href="#Cert.LoadPrivateKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) LoadPrivateKey(prv_raw <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+LoadPrivateKey load and evaluate the base64-encoded private key (@@prv_raw) with passphrase and return the passphrase hash
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.LoadPublicCrt">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=69216:69285#L2180">LoadPublicCrt</a>
+					<a class="permalink" href="#Cert.LoadPublicCrt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) LoadPublicCrt(pub_raw <a href="/pkg/builtin/#string">string</a>) (*<a href="/pkg/crypto/x509/">x509</a>.<a href="/pkg/crypto/x509/#Certificate">Certificate</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.LoadSavedKeypair">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=63910:63948#L1969">LoadSavedKeypair</a>
+					<a class="permalink" href="#Cert.LoadSavedKeypair">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) LoadSavedKeypair() <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+load the saved keypair for the current cert object
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.LoadUnencryptedPrivateKey">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=63176:63238#L1924">LoadUnencryptedPrivateKey</a>
+					<a class="permalink" href="#Cert.LoadUnencryptedPrivateKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) LoadUnencryptedPrivateKey(prv_raw <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+LoadPvtKey load an unencrypted plain PKCS1 PrivateKey to the Cert object
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.ParseCRT">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=78080:78138#L2561">ParseCRT</a>
+					<a class="permalink" href="#Cert.ParseCRT">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) ParseCRT(d []<a href="/pkg/builtin/#byte">byte</a>) (*<a href="/pkg/crypto/x509/">x509</a>.<a href="/pkg/crypto/x509/#Certificate">Certificate</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+parse certificate without verifying
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.ParseCSR">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=78380:78445#L2576">ParseCSR</a>
+					<a class="permalink" href="#Cert.ParseCSR">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) ParseCSR(d []<a href="/pkg/builtin/#byte">byte</a>) (*<a href="/pkg/crypto/x509/">x509</a>.<a href="/pkg/crypto/x509/#CertificateRequest">CertificateRequest</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.Renew">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=32317:32338#L512">Renew</a>
+					<a class="permalink" href="#Cert.Renew">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) Renew()</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.RenewSignedCert">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=47753:47900#L1267">RenewSignedCert</a>
+					<a class="permalink" href="#Cert.RenewSignedCert">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) RenewSignedCert(pk *<a href="/pkg/crypto/rsa/">rsa</a>.<a href="/pkg/crypto/rsa/#PrivateKey">PrivateKey</a>, crt, crtToRenew *<a href="/pkg/crypto/x509/">x509</a>.<a href="/pkg/crypto/x509/#Certificate">Certificate</a>, exp <a href="/pkg/builtin/#int">int</a>, scope, role, license <a href="/pkg/builtin/#string">string</a>) (*<a href="/pkg/crypto/x509/">x509</a>.<a href="/pkg/crypto/x509/#Certificate">Certificate</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.Request">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=52894:52917#L1512">Request</a>
+					<a class="permalink" href="#Cert.Request">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) Request()</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.SetRawPrivateKey">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=25336:25379#L191">SetRawPrivateKey</a>
+					<a class="permalink" href="#Cert.SetRawPrivateKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) SetRawPrivateKey(pkey <a href="/pkg/builtin/#string">string</a>)</pre>
+				<p>
+save raw privatekey base64 string for validation
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.Sign">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=28513:28533#L350">Sign</a>
+					<a class="permalink" href="#Cert.Sign">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) Sign()</pre>
+				<p>
+Sign introduces the certificate-signing process and generate a signed x509 certificate (.cer).
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.ValidateClientCreds">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=90570:90628#L3135">ValidateClientCreds</a>
+					<a class="permalink" href="#Cert.ValidateClientCreds">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) ValidateClientCreds(cid, csc <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+ValidateClientCreds validate the @@cid and @csc combine and enable token generation
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.ValidateClientHashedCreds">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=91120:91199#L3158">ValidateClientHashedCreds</a>
+					<a class="permalink" href="#Cert.ValidateClientHashedCreds">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) ValidateClientHashedCreds(cid, csc <a href="/pkg/builtin/#string">string</a>) (*<a href="#ReservedBytes">ReservedBytes</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+ValidateClientHashedCreds validate the @@cid and @csc hash combination and enable token generation.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.ValidateScope">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=65492:65536#L2042">ValidateScope</a>
+					<a class="permalink" href="#Cert.ValidateScope">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) ValidateScope(scp <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.ValidateSignatureByPublicKey">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=25409:25483#L195">ValidateSignatureByPublicKey</a>
+					<a class="permalink" href="#Cert.ValidateSignatureByPublicKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) ValidateSignatureByPublicKey(pbk, sig, fil <a href="/pkg/builtin/#string">string</a>) (err <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.ValidateToken">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=92311:92371#L3206">ValidateToken</a>
+					<a class="permalink" href="#Cert.ValidateToken">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) ValidateToken(_sg, _om <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+export ValidateToken
+ValidateToken validate against the expiration, and the overall authenticity of the token. It returns the owner&#39;s uuid
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.VerifyStrBySignature">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=39051:39105#L824">VerifyStrBySignature</a>
+					<a class="permalink" href="#Cert.VerifyStrBySignature">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) VerifyStrBySignature(om, da <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+				<p>
+VerifyStrBySignature verifyas signature @da based on the original content @om by the preloaded public key. All strings are base64 encoded.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="CertDetail">type <a href="/src/github.com/wzlib/wzutil/cert.go?s=22519:23252#L102">CertDetail</a>
+				<a class="permalink" href="#CertDetail">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type CertDetail struct {
+<span id="CertDetail.CommonName"></span>    CommonName         <a href="/pkg/builtin/#string">string</a> `json:&#34;commonName&#34;`
+<span id="CertDetail.Country"></span>    Country            <a href="/pkg/builtin/#string">string</a> `json:&#34;country&#34;`
+<span id="CertDetail.DNSName"></span>    DNSName            <a href="/pkg/builtin/#string">string</a> `json:&#34;dnsName&#34;`
+<span id="CertDetail.EmailAddress"></span>    EmailAddress       <a href="/pkg/builtin/#string">string</a> `json:&#34;emailAddress&#34;`
+<span id="CertDetail.Locality"></span>    Locality           <a href="/pkg/builtin/#string">string</a> `json:&#34;locality&#34;`
+<span id="CertDetail.Organization"></span>    Organization       <a href="/pkg/builtin/#string">string</a> `json:&#34;organization&#34;`
+<span id="CertDetail.OrganizationalUnit"></span>    OrganizationalUnit <a href="/pkg/builtin/#string">string</a> `json:&#34;organizationalUnit&#34;`
+<span id="CertDetail.PostalCode"></span>    PostalCode         <a href="/pkg/builtin/#string">string</a> `json:&#34;postalCode&#34;`
+<span id="CertDetail.Province"></span>    Province           <a href="/pkg/builtin/#string">string</a> `json:&#34;province&#34;`
+    <span class="comment">//SignatureAlgorithm string    `json:&#34;signatureAlgorithm&#34;`</span>
+    <span class="comment">//Size               string    `json:&#34;size&#34;`</span>
+<span id="CertDetail.StreetAddress"></span>    StreetAddress <a href="/pkg/builtin/#string">string</a>    `json:&#34;streetAddress&#34;`
+<span id="CertDetail.SerialNumber"></span>    SerialNumber  <a href="/pkg/builtin/#string">string</a>    `json:&#34;serialNumber&#34;`
+<span id="CertDetail.Extensions"></span>    Extensions    *<a href="#CertExts">CertExts</a> `json:&#34;exts&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="CertExts">type <a href="/src/github.com/wzlib/wzutil/cert.go?s=23254:23442#L119">CertExts</a>
+				<a class="permalink" href="#CertExts">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type CertExts struct {
+<span id="CertExts.Role"></span>    Role    <a href="/pkg/builtin/#string">string</a> `json:&#34;role&#34;`
+<span id="CertExts.Env"></span>    Env     <a href="/pkg/builtin/#string">string</a> `json:&#34;env&#34;`
+<span id="CertExts.License"></span>    License <a href="/pkg/builtin/#string">string</a> `json:&#34;license&#34;`
+<span id="CertExts.Scope"></span>    Scope   <a href="/pkg/builtin/#string">string</a> `json:&#34;scope&#34;`
+<span id="CertExts.CSRID"></span>    CSRID   <a href="/pkg/builtin/#string">string</a> `json:&#34;csrId&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="CertReqInfo">type <a href="/src/github.com/wzlib/wzutil/cert.go?s=23444:24267#L127">CertReqInfo</a>
+				<a class="permalink" href="#CertReqInfo">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type CertReqInfo struct {
+<span id="CertReqInfo.CommonName"></span>    CommonName         <a href="/pkg/builtin/#string">string</a> `json:&#34;commonName&#34;`
+<span id="CertReqInfo.Country"></span>    Country            <a href="/pkg/builtin/#string">string</a> `json:&#34;country&#34;`
+<span id="CertReqInfo.CSR"></span>    CSR                <a href="/pkg/builtin/#string">string</a> `json:&#34;-&#34;`
+<span id="CertReqInfo.DNSName"></span>    DNSName            <a href="/pkg/builtin/#string">string</a> `json:&#34;dnsName&#34;`
+<span id="CertReqInfo.EmailAddress"></span>    EmailAddress       <a href="/pkg/builtin/#string">string</a> `json:&#34;emailAddress&#34;`
+<span id="CertReqInfo.Locality"></span>    Locality           <a href="/pkg/builtin/#string">string</a> `json:&#34;locality&#34;`
+<span id="CertReqInfo.Organization"></span>    Organization       <a href="/pkg/builtin/#string">string</a> `json:&#34;organization&#34;`
+<span id="CertReqInfo.OrganizationalUnit"></span>    OrganizationalUnit <a href="/pkg/builtin/#string">string</a> `json:&#34;organizationalUnit&#34;`
+<span id="CertReqInfo.Passphrase"></span>    Passphrase         <a href="/pkg/builtin/#string">string</a> `json:&#34;passphrase&#34;`
+<span id="CertReqInfo.PostalCode"></span>    PostalCode         <a href="/pkg/builtin/#string">string</a> `json:&#34;postalCode&#34;`
+<span id="CertReqInfo.Privatekey"></span>    Privatekey         <a href="/pkg/builtin/#string">string</a> `json:&#34;privateKey&#34;`
+<span id="CertReqInfo.Province"></span>    Province           <a href="/pkg/builtin/#string">string</a> `json:&#34;province&#34;`
+<span id="CertReqInfo.SignatureAlgorithm"></span>    SignatureAlgorithm <a href="/pkg/builtin/#string">string</a> `json:&#34;signatureAlgorithm&#34;`
+<span id="CertReqInfo.Size"></span>    Size               <a href="/pkg/builtin/#string">string</a> `json:&#34;size&#34;`
+<span id="CertReqInfo.StreetAddress"></span>    StreetAddress      <a href="/pkg/builtin/#string">string</a> `json:&#34;streetAddress&#34;`
+<span id="CertReqInfo.ProxyURL"></span>    ProxyURL           <a href="/pkg/builtin/#string">string</a> `json:&#34;-&#34;`
+<span id="CertReqInfo.SerialNumber"></span>    SerialNumber       <a href="/pkg/builtin/#string">string</a> `json:&#34;-&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ConfigSet">type <a href="/src/github.com/wzlib/wzutil/confset.go?s=878:1150#L31">ConfigSet</a>
+				<a class="permalink" href="#ConfigSet">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+AgentConfig persists overall agent configuration used across the agent ops cycle
+</p>
+
+			<pre>type ConfigSet struct {
+<span id="ConfigSet.OriginConf"></span>    OriginConf  map[<a href="/pkg/builtin/#string">string</a>]interface{}
+<span id="ConfigSet.Template"></span>    Template    map[<a href="/pkg/builtin/#string">string</a>]interface{}
+<span id="ConfigSet.WatcherConf"></span>    WatcherConf map[<a href="/pkg/builtin/#string">string</a>]interface{}
+<span id="ConfigSet.CredConf"></span>    CredConf    map[<a href="/pkg/builtin/#string">string</a>]interface{}
+<span id="ConfigSet.AgtConf"></span>    AgtConf     map[<a href="/pkg/builtin/#string">string</a>]interface{}
+<span id="ConfigSet.AuthGrpConf"></span>    AuthGrpConf []interface{}
+<span id="ConfigSet.SubGrpConf"></span>    SubGrpConf  []interface{}
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="InitConfigSet">func <a href="/src/github.com/wzlib/wzutil/confset.go?s=1224:1281#L42">InitConfigSet</a>
+					<a class="permalink" href="#InitConfigSet">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func InitConfigSet(t, o map[<a href="/pkg/builtin/#string">string</a>]interface{}) *<a href="#ConfigSet">ConfigSet</a></pre>
+				<p>
+InitAgentConfig gives an instance of AgentConfig with a template set.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="ConfigSet.GetPropertyName">func (*ConfigSet) <a href="/src/github.com/wzlib/wzutil/confset.go?s=1561:1619#L62">GetPropertyName</a>
+					<a class="permalink" href="#ConfigSet.GetPropertyName">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (a *<a href="#ConfigSet">ConfigSet</a>) GetPropertyName(shortnm <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ConfigSet.LoadConfigMap">func (*ConfigSet) <a href="/src/github.com/wzlib/wzutil/confset.go?s=7870:7951#L358">LoadConfigMap</a>
+					<a class="permalink" href="#ConfigSet.LoadConfigMap">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (a *<a href="#ConfigSet">ConfigSet</a>) LoadConfigMap(cfg interface{}) (map[<a href="/pkg/builtin/#string">string</a>]interface{}, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+LoadConfigMap maps pre-defined flags in main package.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigSet.LoadFromEncryptedYAML">func (*ConfigSet) <a href="/src/github.com/wzlib/wzutil/confset.go?s=5953:6012#L260">LoadFromEncryptedYAML</a>
+					<a class="permalink" href="#ConfigSet.LoadFromEncryptedYAML">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (a *<a href="#ConfigSet">ConfigSet</a>) LoadFromEncryptedYAML(rev <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+LoadFromEncryptedYAML bootstrap/decrypted configuration set for watcher, credential, authorization group, and agent setting.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigSet.LoadFromEnv">func (*ConfigSet) <a href="/src/github.com/wzlib/wzutil/confset.go?s=6692:6733#L295">LoadFromEnv</a>
+					<a class="permalink" href="#ConfigSet.LoadFromEnv">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (a *<a href="#ConfigSet">ConfigSet</a>) LoadFromEnv() <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ConfigSet.LoadFromJSON">func (*ConfigSet) <a href="/src/github.com/wzlib/wzutil/confset.go?s=7550:7623#L343">LoadFromJSON</a>
+					<a class="permalink" href="#ConfigSet.LoadFromJSON">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (a *<a href="#ConfigSet">ConfigSet</a>) LoadFromJSON(j []<a href="/pkg/builtin/#byte">byte</a>) (map[<a href="/pkg/builtin/#string">string</a>]interface{}, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+LoadFromJSON unlike LoadFromYAML, it returns only agent setting.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigSet.LoadFromYAML">func (*ConfigSet) <a href="/src/github.com/wzlib/wzutil/confset.go?s=6424:6464#L281">LoadFromYAML</a>
+					<a class="permalink" href="#ConfigSet.LoadFromYAML">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (a *<a href="#ConfigSet">ConfigSet</a>) LoadFromYAML() <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+LoadFromYAML bootstrap configuration set for watcher, credential, authorization group, and agent setting.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigSet.OutputPropertyFile">func (*ConfigSet) <a href="/src/github.com/wzlib/wzutil/confset.go?s=1917:1972#L75">OutputPropertyFile</a>
+					<a class="permalink" href="#ConfigSet.OutputPropertyFile">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (a *<a href="#ConfigSet">ConfigSet</a>) OutputPropertyFile(fn <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+OutputPropertyFile turns the current setting from either flags or the yaml config file into
+a properties file. This feature i createddd for k8s configmap conversion purpose.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigSet.SetAgentConfigStr">func (*ConfigSet) <a href="/src/github.com/wzlib/wzutil/confset.go?s=5009:5062#L222">SetAgentConfigStr</a>
+					<a class="permalink" href="#ConfigSet.SetAgentConfigStr">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (a *<a href="#ConfigSet">ConfigSet</a>) SetAgentConfigStr(f []<a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+LoadFromYAML bootstrap configuration set for watcher, credential, authorization group, and agent setting.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="DB">type <a href="/src/github.com/wzlib/wzutil/db.go?s=510:716#L31">DB</a>
+				<a class="permalink" href="#DB">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type DB struct {
+    <a href="/pkg/sync/">sync</a>.<a href="/pkg/sync/#RWMutex">RWMutex</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewDB">func <a href="/src/github.com/wzlib/wzutil/db.go?s=718:794#L42">NewDB</a>
+					<a class="permalink" href="#NewDB">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewDB(devId, filePath, purl, host <a href="/pkg/builtin/#string">string</a>, dba <a href="#DBAppIntr">DBAppIntr</a>, l *<a href="#AppLog">AppLog</a>) *<a href="#DB">DB</a></pre>
+				
+				
+				
+			
+
+			
+				
+				<h3 id="DB.Del">func (*DB) <a href="/src/github.com/wzlib/wzutil/db.go?s=1231:1269#L72">Del</a>
+					<a class="permalink" href="#DB.Del">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (db *<a href="#DB">DB</a>) Del(key <a href="/pkg/builtin/#string">string</a>) []<a href="/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="DB.DownloadReq">func (*DB) <a href="/src/github.com/wzlib/wzutil/db.go?s=1970:2035#L121">DownloadReq</a>
+					<a class="permalink" href="#DB.DownloadReq">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (db *<a href="#DB">DB</a>) DownloadReq(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="DB.Get">func (*DB) <a href="/src/github.com/wzlib/wzutil/db.go?s=992:1044#L58">Get</a>
+					<a class="permalink" href="#DB.Get">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (db *<a href="#DB">DB</a>) Get(key <a href="/pkg/builtin/#string">string</a>) map[<a href="/pkg/builtin/#string">string</a>]interface{}</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="DB.GetKeys">func (*DB) <a href="/src/github.com/wzlib/wzutil/db.go?s=1773:1805#L107">GetKeys</a>
+					<a class="permalink" href="#DB.GetKeys">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (db *<a href="#DB">DB</a>) GetKeys() []<a href="/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="DB.GetSessionID">func (*DB) <a href="/src/github.com/wzlib/wzutil/db.go?s=11153:11188#L595">GetSessionID</a>
+					<a class="permalink" href="#DB.GetSessionID">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (db *<a href="#DB">DB</a>) GetSessionID() <a href="/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="DB.Init">func (*DB) <a href="/src/github.com/wzlib/wzutil/db.go?s=2805:2825#L159">Init</a>
+					<a class="permalink" href="#DB.Init">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (db *<a href="#DB">DB</a>) Init()</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="DB.Set">func (*DB) <a href="/src/github.com/wzlib/wzutil/db.go?s=9696:9758#L519">Set</a>
+					<a class="permalink" href="#DB.Set">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (db *<a href="#DB">DB</a>) Set(oid, key <a href="/pkg/builtin/#string">string</a>, val map[<a href="/pkg/builtin/#string">string</a>]interface{})</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="DBAppIntr">type <a href="/src/github.com/wzlib/wzutil/db.go?s=457:508#L27">DBAppIntr</a>
+				<a class="permalink" href="#DBAppIntr">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type DBAppIntr interface {
+    GetOAuthToken() <a href="/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ExeCB">type <a href="/src/github.com/wzlib/wzutil/xterm-client.go?s=1271:1304#L52">ExeCB</a>
+				<a class="permalink" href="#ExeCB">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ExeCB used as a callback contains the @@widthx@@height of the xterm. The callback will be invoked on each command line @@cmd ended with the line break.
+</p>
+
+			<pre>type ExeCB func(xtc *<a href="#XTermClient">XTermClient</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="IpFilter">type <a href="/src/github.com/wzlib/wzutil/ipfilter.go?s=550:639#L17">IpFilter</a>
+				<a class="permalink" href="#IpFilter">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type IpFilter struct {
+<span id="IpFilter.WhiteList"></span>    WhiteList []<a href="/pkg/builtin/#string">string</a>
+<span id="IpFilter.BlockList"></span>    BlockList []<a href="/pkg/builtin/#string">string</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewIpFilter">func <a href="/src/github.com/wzlib/wzutil/ipfilter.go?s=641:691#L23">NewIpFilter</a>
+					<a class="permalink" href="#NewIpFilter">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewIpFilter(l *<a href="#AppLog">AppLog</a>, w, b []<a href="/pkg/builtin/#string">string</a>) *<a href="#IpFilter">IpFilter</a></pre>
+				
+				
+				
+			
+
+			
+				
+				<h3 id="IpFilter.IsInCidrList">func (*IpFilter) <a href="/src/github.com/wzlib/wzutil/ipfilter.go?s=2212:2274#L107">IsInCidrList</a>
+					<a class="permalink" href="#IpFilter.IsInCidrList">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="#IpFilter">IpFilter</a>) IsInCidrList(ips []<a href="/pkg/builtin/#string">string</a>, theip <a href="/pkg/net/">net</a>.<a href="/pkg/net/#IP">IP</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="IpFilter.IsInIpList">func (*IpFilter) <a href="/src/github.com/wzlib/wzutil/ipfilter.go?s=2483:2543#L125">IsInIpList</a>
+					<a class="permalink" href="#IpFilter.IsInIpList">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="#IpFilter">IpFilter</a>) IsInIpList(ips []<a href="/pkg/builtin/#string">string</a>, theip <a href="/pkg/net/">net</a>.<a href="/pkg/net/#IP">IP</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="IpFilter.Validate">func (*IpFilter) <a href="/src/github.com/wzlib/wzutil/ipfilter.go?s=796:839#L32">Validate</a>
+					<a class="permalink" href="#IpFilter.Validate">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="#IpFilter">IpFilter</a>) Validate(addr <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+				<p>
+addr from x-forwrded-for ip:port
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="PGPObj">type <a href="/src/github.com/wzlib/wzutil/pgp.go?s=330:512#L15">PGPObj</a>
+				<a class="permalink" href="#PGPObj">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type PGPObj struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewPGPObj">func <a href="/src/github.com/wzlib/wzutil/pgp.go?s=514:556#L25">NewPGPObj</a>
+					<a class="permalink" href="#NewPGPObj">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewPGPObj(c *<a href="#Cert">Cert</a>, ext <a href="/pkg/builtin/#string">string</a>) *<a href="#PGPObj">PGPObj</a></pre>
+				
+				
+				
+			
+
+			
+				
+				<h3 id="PGPObj.DecodePrivateKey">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=10963:11024#L584">DecodePrivateKey</a>
+					<a class="permalink" href="#PGPObj.DecodePrivateKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#PGPObj">PGPObj</a>) DecodePrivateKey(filename <a href="/pkg/builtin/#string">string</a>) (err <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="PGPObj.DecodePublicKey">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=11608:11668#L621">DecodePublicKey</a>
+					<a class="permalink" href="#PGPObj.DecodePublicKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#PGPObj">PGPObj</a>) DecodePublicKey(filename <a href="/pkg/builtin/#string">string</a>) (err <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="PGPObj.DecodeSignature">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=10291:10339#L549">DecodeSignature</a>
+					<a class="permalink" href="#PGPObj.DecodeSignature">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#PGPObj">PGPObj</a>) DecodeSignature(fi <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="PGPObj.DecryptFile">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=5444:5497#L300">DecryptFile</a>
+					<a class="permalink" href="#PGPObj.DecryptFile">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#PGPObj">PGPObj</a>) DecryptFile(fi <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="PGPObj.DecryptFileByKeypair">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=3863:3932#L208">DecryptFileByKeypair</a>
+					<a class="permalink" href="#PGPObj.DecryptFileByKeypair">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#PGPObj">PGPObj</a>) DecryptFileByKeypair(fi <a href="/pkg/builtin/#string">string</a>) (fo <a href="/pkg/builtin/#string">string</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="PGPObj.DecryptFileToStream">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=4952:5013#L269">DecryptFileToStream</a>
+					<a class="permalink" href="#PGPObj.DecryptFileToStream">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#PGPObj">PGPObj</a>) DecryptFileToStream(fi <a href="/pkg/builtin/#string">string</a>) ([]<a href="/pkg/builtin/#byte">byte</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="PGPObj.DecryptStr">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=5877:5953#L329">DecryptStr</a>
+					<a class="permalink" href="#PGPObj.DecryptStr">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#PGPObj">PGPObj</a>) DecryptStr(ciphertext []<a href="/pkg/builtin/#byte">byte</a>) (plaintext []<a href="/pkg/builtin/#byte">byte</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="PGPObj.EncryptFile">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=2453:2507#L119">EncryptFile</a>
+					<a class="permalink" href="#PGPObj.EncryptFile">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#PGPObj">PGPObj</a>) EncryptFile(fi <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="PGPObj.EncryptFileByRSAPrivateKey">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=3084:3161#L159">EncryptFileByRSAPrivateKey</a>
+					<a class="permalink" href="#PGPObj.EncryptFileByRSAPrivateKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#PGPObj">PGPObj</a>) EncryptFileByRSAPrivateKey(fi <a href="/pkg/builtin/#string">string</a>) (otn <a href="/pkg/builtin/#string">string</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+EncryptFileByRSAPrivateKey use the RSA private key to encrypt the file.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="PGPObj.EncryptStr">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=1633:1708#L79">EncryptStr</a>
+					<a class="permalink" href="#PGPObj.EncryptStr">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#PGPObj">PGPObj</a>) EncryptStr(plaintext []<a href="/pkg/builtin/#byte">byte</a>) (ciphertext []<a href="/pkg/builtin/#byte">byte</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="PGPObj.LoadKeypair">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=1452:1499#L67">LoadKeypair</a>
+					<a class="permalink" href="#PGPObj.LoadKeypair">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#PGPObj">PGPObj</a>) LoadKeypair(pv, pb <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="PGPObj.SignFile">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=7016:7096#L391">SignFile</a>
+					<a class="permalink" href="#PGPObj.SignFile">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#PGPObj">PGPObj</a>) SignFile(fi <a href="/pkg/builtin/#string">string</a>) (sig <a href="/pkg/builtin/#string">string</a>, pvk <a href="/pkg/builtin/#string">string</a>, pbk <a href="/pkg/builtin/#string">string</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="PGPObj.ValidateSignature">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=9936:9986#L528">ValidateSignature</a>
+					<a class="permalink" href="#PGPObj.ValidateSignature">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#PGPObj">PGPObj</a>) ValidateSignature(fi <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ReservedBytes">type <a href="/src/github.com/wzlib/wzutil/cert.go?s=22141:22517#L91">ReservedBytes</a>
+				<a class="permalink" href="#ReservedBytes">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type ReservedBytes struct {
+<span id="ReservedBytes.Mode"></span>    Mode       <a href="/pkg/builtin/#string">string</a> `json:&#34;mode&#34;`
+<span id="ReservedBytes.IsFuseMode"></span>    IsFuseMode <a href="/pkg/builtin/#bool">bool</a>   `json:isFuseMode`
+<span id="ReservedBytes.IsXMode"></span>    IsXMode    <a href="/pkg/builtin/#bool">bool</a>   `json:isXMode`
+    <span class="comment">//PID                 int32 `json:&#34;pid&#34;`</span>
+    <span class="comment">//TimeStamp           time.Time `json:time`</span>
+<span id="ReservedBytes.IsRefreshed"></span>    IsRefreshed        <a href="/pkg/builtin/#bool">bool</a> `json:isRefresh`
+<span id="ReservedBytes.IsValidatedByOwner"></span>    IsValidatedByOwner <a href="/pkg/builtin/#bool">bool</a> `json:isValidated`
+<span id="ReservedBytes.IsExpired"></span>    IsExpired          <a href="/pkg/builtin/#bool">bool</a> `json:isExpired`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="StreamIntr">type <a href="/src/github.com/wzlib/wzutil/xterm-client.go?s=142:270#L7">StreamIntr</a>
+				<a class="permalink" href="#StreamIntr">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type StreamIntr interface {
+    Read([]<a href="/pkg/builtin/#byte">byte</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#error">error</a>)
+    Write([]<a href="/pkg/builtin/#byte">byte</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#error">error</a>)
+    SetDeadline(<a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a>) <a href="/pkg/builtin/#error">error</a>
+    Close() <a href="/pkg/builtin/#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="XTermClient">type <a href="/src/github.com/wzlib/wzutil/xterm-client.go?s=963:1113#L43">XTermClient</a>
+				<a class="permalink" href="#XTermClient">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+XTermClient implemented StreamIntr interface for two-way-binding at requster&#39;s end
+</p>
+
+			<pre>type XTermClient struct {
+<span id="XTermClient.DevId"></span>    DevId, InstId, Cmd,
+    Width, Height <a href="/pkg/builtin/#string">string</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="XTermClient.Close">func (*XTermClient) <a href="/src/github.com/wzlib/wzutil/xterm-client.go?s=2940:2983#L136">Close</a>
+					<a class="permalink" href="#XTermClient.Close">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xtc *<a href="#XTermClient">XTermClient</a>) Close() (err <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="XTermClient.Read">func (*XTermClient) <a href="/src/github.com/wzlib/wzutil/xterm-client.go?s=2667:2725#L123">Read</a>
+					<a class="permalink" href="#XTermClient.Read">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xtc *<a href="#XTermClient">XTermClient</a>) Read(_b []<a href="/pkg/builtin/#byte">byte</a>) (n <a href="/pkg/builtin/#int">int</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="XTermClient.SetDeadline">func (*XTermClient) <a href="/src/github.com/wzlib/wzutil/xterm-client.go?s=2836:2896#L131">SetDeadline</a>
+					<a class="permalink" href="#XTermClient.SetDeadline">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xtc *<a href="#XTermClient">XTermClient</a>) SetDeadline(t <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="XTermClient.Write">func (*XTermClient) <a href="/src/github.com/wzlib/wzutil/xterm-client.go?s=2754:2806#L127">Write</a>
+					<a class="permalink" href="#XTermClient.Write">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xtc *<a href="#XTermClient">XTermClient</a>) Write(_b []<a href="/pkg/builtin/#byte">byte</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="XTermServer">type <a href="/src/github.com/wzlib/wzutil/xterm-server.go?s=431:482#L18">XTermServer</a>
+				<a class="permalink" href="#XTermServer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+XTermServer implemented StreamIntr interface for two-way-binding at resource&#39;s end
+</p>
+
+			<pre>type XTermServer struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewXTermServer">func <a href="/src/github.com/wzlib/wzutil/xterm-server.go?s=659:724#L24">NewXTermServer</a>
+					<a class="permalink" href="#NewXTermServer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewXTermServer(width, height, cmd <a href="/pkg/builtin/#string">string</a>) (*<a href="#XTermServer">XTermServer</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+NewXTerminalServer gives a ptty control of the target process to the app.
+@@width, @@height resize the window of the process. @@cmd will be executed in the filo fashion
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="XTermServer.Close">func (*XTermServer) <a href="/src/github.com/wzlib/wzutil/xterm-server.go?s=1683:1720#L78">Close</a>
+					<a class="permalink" href="#XTermServer.Close">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xts *<a href="#XTermServer">XTermServer</a>) Close() <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="XTermServer.Read">func (*XTermServer) <a href="/src/github.com/wzlib/wzutil/xterm-server.go?s=1427:1478#L65">Read</a>
+					<a class="permalink" href="#XTermServer.Read">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xts *<a href="#XTermServer">XTermServer</a>) Read(_b []<a href="/pkg/builtin/#byte">byte</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="XTermServer.SetDeadline">func (*XTermServer) <a href="/src/github.com/wzlib/wzutil/xterm-server.go?s=1591:1651#L73">SetDeadline</a>
+					<a class="permalink" href="#XTermServer.SetDeadline">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xtc *<a href="#XTermServer">XTermServer</a>) SetDeadline(t <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="XTermServer.Write">func (*XTermServer) <a href="/src/github.com/wzlib/wzutil/xterm-server.go?s=1508:1560#L69">Write</a>
+					<a class="permalink" href="#XTermServer.Write">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xts *<a href="#XTermServer">XTermServer</a>) Write(_b []<a href="/pkg/builtin/#byte">byte</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.12.17.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
+<a href="/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+</body>
+</html>
+
