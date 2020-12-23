@@ -120,31 +120,18 @@ import define from "./analytics.js";
                 ec.setActiveTab(event.target);
                 event.preventDefault();
 
-                let op = document.cookie.split("ec-config=");
-                if (op.length<2) {
-                     console.log(`token expired. refresh browser.`);
-                     location.reload();
-                     return;
-                }
-                
-                ec.Api(ec.apiPath,{
-                     method: 'GET',
-                     headers: {
-                      'Content-Type': 'application/json',
-                      'Authorization': `Bearer ${op[1]}`
-                     }
-                }).then((data)=>{
-                     console.log(`the data ${data}`);
-                     $("main").html('<div class="chart mx-5 my-5"></div>');
-                     (new Runtime).module(define, name => {
-                          if (name === "chart") return Inspector.into(".chart")();
-                     });
-                     $(event.target).addClass('active');
+                ec.TenguAPI(ec.apiPath,'GET').then(data=>{
+                    console.log(`the data ${data}`);
+                    $("main").html('<div class="chart mx-5 my-5"></div>');
+                    (new Runtime).module(define, name => {
+                        if (name === "chart") return Inspector.into(".chart")();
+                    });
+                    $(event.target).addClass('active');
                 }).catch((e)=>{
                      console.log(`Exception: ${e}`);
                 });
-            }
-            );
+                
+            });
 
             $('main').on('click', 'a.ec-godoc-rev', (event)=>{
                 event.preventDefault();
