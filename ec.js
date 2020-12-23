@@ -29,6 +29,11 @@ class EC extends Base {
     .then(resp => resp.json());
   }
 
+  TenguAPI(url,mtd='GET'){
+    let obj = this.GetTenguAPIObj(mtd);
+    return this.Api(url,obj);
+  }
+
   GetTenguAPIObj(mtd='GET'){
     let op = document.cookie.split("ec-config=");
     if (op.length<2) {
