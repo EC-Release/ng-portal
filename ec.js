@@ -15,6 +15,7 @@ class EC extends Base {
   #sdk = "";
   #security = "";
   #releases = "";
+  #ngObj = "";
   constructor(id,rev='v1.2beta',path='/ec',api='api') {
       super();
       console.log(`EC id# ${id}`);
@@ -54,6 +55,14 @@ class EC extends Base {
   Html(url){
     return fetch(url)
     .then(resp => resp.text());
+  }
+
+  get ngObj(){
+    return this.#ngObj;
+  }
+
+  set ngObj(c){
+    this.#ngObj=c;
   }
 
   set securityMd(c) {
