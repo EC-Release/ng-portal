@@ -29,6 +29,23 @@ class EC extends Base {
     .then(resp => resp.json());
   }
 
+  GetTenguAPIObj(mtd='GET'){
+    let op = document.cookie.split("ec-config=");
+    if (op.length<2) {
+      console.log(`token expired. refresh browser.`);
+      location.reload();
+      return;
+    }
+    
+    return {
+      method: mtd,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${op[1]}`
+      }
+    };   
+  }
+
   Html(url){
     return fetch(url)
     .then(resp => resp.text());
