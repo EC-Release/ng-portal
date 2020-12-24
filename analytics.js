@@ -115,16 +115,14 @@ This variant of a [sunburst diagram](/@d3/sunburst) shows only two layers of the
   return svg.node();
 }
 );
-  main.variable(observer("data")).define("data", ["FileAttachment"], function(FileAttachment){
+  main.variable(observer("data")).define("data", ["FileAttachment"], FileAttachment=>{
+   //FileAttachment("flare-2.json").json()
    let pv={
      name: "flare"
    };
    console.log(`the map ${JSON.stringify(pv)}`);
-   return (
-    ec.TenguDataConversionI("qa",pv)
-    //FileAttachment("flare-2.json").json()
-)});
-)});
+   return ec.TenguDataConversionI("qa",pv);
+  });
   main.variable(observer("partition")).define("partition", ["d3"], function(d3){return(
 data => {
   const root = d3.hierarchy(data)
