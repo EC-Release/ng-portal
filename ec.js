@@ -15,7 +15,6 @@ class EC extends Base {
   #sdk = "";
   #security = "";
   #releases = "";
-  #ngObj = "";
   constructor(id,rev='v1.2beta',path='/ec',api='api') {
       super();
       console.log(`EC id# ${id}`);
@@ -23,6 +22,7 @@ class EC extends Base {
       this.appPath = `/${this.appRev}/ec`;
       this.apiPath = `/${this.appRev}/ec/${api}`;
       this.assetPath = `/${this.appRev}/assets`;
+      this.ngObj = new Map();  
   }
   
   Api(url,detail){
@@ -30,11 +30,11 @@ class EC extends Base {
     .then(resp => resp.json());
   }
 
-  TenguAPI(url,mtd='GET'){
+  TenguAPI(key,mtd='GET'){
     let obj = this.GetTenguAPIObj(mtd);
-    return this.Api(url,obj).then(data=>{
-      this.ngObj = data;
-      return this.ngObj;
+    return this.Api(`${this.apiPath}/${key}`,obj).then(data=>{
+      this.ngObj.set(key,data);
+      return this.ngObj.get(key);
     });
   }
 
