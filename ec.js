@@ -15,7 +15,7 @@ class EC extends Base {
   #sdk = "";
   #security = "";
   #releases = "";
-  #ngObj = {};
+  #ngObj = new Map();
   constructor(id,rev='v1.2beta',path='/ec',api='api') {
       super();
       console.log(`EC id# ${id}`);
@@ -49,11 +49,11 @@ class EC extends Base {
     if (key!='') path=`${path}/${key}`;
     return this.Api(path,obj).then(data=>{
       if (key!='') {
-        this.#ngObj[key]=data;
-        return this.#ngObj[key];
+        this.#ngObj.set(key,data);
+        return this.#ngObj.get(key);
       }
       
-      return data
+      return data;
     });
   }
 
