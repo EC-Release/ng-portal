@@ -40,9 +40,9 @@ class EC extends Base {
          pv["children"].push(val);         
       }
     }
-    if pv["children"].length==0 {
+    if (pv["children"].length==0) {
       delete pv.children;
-      if !pv.hasOwnProperty("value") {
+      if (!pv.hasOwnProperty("value")) {
         pv[value]=10;
       }
     }
