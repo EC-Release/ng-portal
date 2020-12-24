@@ -123,7 +123,7 @@ This variant of a [sunburst diagram](/@d3/sunburst) shows only two layers of the
    return (
     ec.TenguDataConversionI("qa",pv)
     //FileAttachment("flare-2.json").json()
-);});
+)});
 )});
   main.variable(observer("partition")).define("partition", ["d3"], function(d3){return(
 data => {
