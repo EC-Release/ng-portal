@@ -43,7 +43,7 @@ class EC extends Base {
     if (pv["children"].length==0) {
       delete pv.children;
       if (!pv.hasOwnProperty("value")) {
-        pv[value]=10;
+        pv["value"]=10;
       }
     }
     //pt["children"].push(op);
