@@ -32,7 +32,9 @@ class EC extends Base {
 
   TenguAPI(key,mtd='GET'){
     let obj = this.GetTenguAPIObj(mtd);
-    return this.Api(`${this.apiPath}/${key}`,obj).then(data=>{
+    let path=this.apiPath;
+    if (key!='') path=`${path}/${key}`;
+    return this.Api(path,obj).then(data=>{
       this.ngObj.set(key,data);
       return this.ngObj.get(key);
     });
