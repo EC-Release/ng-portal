@@ -138,7 +138,8 @@ import define from "./analytics.js";
                                      name: "flare"
                                  };
                                  //console.log(`the map ${JSON.stringify(pv)}`);
-                                 window.ngData=ec.TenguDataConversionI("qa",pv);
+                                 ec.TenguDataConversionI("qa",pv);
+                                 window.ngData=pv;
                                  $("main").html('<div class="chart mx-5 my-5"></div>');
                                  (new Runtime).module(define, name => {
                                      if (name === "chart") return Inspector.into(".chart")();
