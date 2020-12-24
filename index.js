@@ -136,7 +136,7 @@ import define from "./analytics.js";
                                  let pv={
                                     name: "flare"
                                  };
-                                 TenguDataConversionI("qa",pv);
+                                 ec.TenguDataConversionI("qa",pv);
                                  console.log(`the map ${JSON.stringify(pv)}`);
                              }
                          }).catch(e=>{console.log(`Exception ${e}`);});
