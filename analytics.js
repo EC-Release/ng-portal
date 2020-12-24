@@ -116,8 +116,9 @@ This variant of a [sunburst diagram](/@d3/sunburst) shows only two layers of the
 }
 );
   main.variable(observer("data")).define("data", ["FileAttachment"], function(FileAttachment){
-   return FileAttachment("flare-2.json").json();
+   return window.ngData;
   });
+    //return FileAttachment("flare-2.json").json();
    /*let pv={
      name: "flare"
    };
