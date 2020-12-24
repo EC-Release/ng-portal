@@ -48,8 +48,12 @@ class EC extends Base {
     let path=this.apiPath;
     if (key!='') path=`${path}/${key}`;
     return this.Api(path,obj).then(data=>{
-      this.#ngObj[key]=data;
-      return this.#ngObj[key];
+      if (key!='') {
+        this.#ngObj[key]=data;
+        return this.#ngObj[key];
+      }
+      
+      return data
     });
   }
 
