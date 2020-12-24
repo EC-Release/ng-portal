@@ -129,14 +129,11 @@ import define from "./analytics.js";
                     return obj;
                 }
                 
-                ec.TenguAPI(ec.apiPath,'GET').then(data1=>{
-                    console.log(`the data ${data1}`);
-                    let kv = new Map();
+                ec.TenguAPI('','GET').then(data1=>{
                     for (const val of data1) {
-                         ec.TenguAPI(`${ec.apiPath}/${val}`,'GET').then(data=>{
-                             kv.set(val,data);
-                             if (kv.size==data1.length){
-                                 console.log(`the map ${JSON.stringify(strMapToObj(kv))}`);
+                         ec.TenguAPI(val,'GET').then(data=>{
+                             if (ec.ngObj.size==data1.length){
+                                 console.log(`the map ${JSON.stringify(strMapToObj(ec.ngObj))}`);
                              }
                          }).catch(e=>{console.log(`Exception ${e}`);});
                     }
