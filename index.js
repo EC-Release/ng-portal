@@ -133,8 +133,11 @@ import define from "./analytics.js";
                     for (const val of data1) {
                          ec.TenguAPI(val,'GET').then(data=>{
                              if (ec.ngObj.size==data1.length){
-                                 //TenguDataConversionI("qa",pv){
-                                 console.log(`the map ${JSON.stringify(strMapToObj(ec.ngObj))}`);
+                                 let pv={
+                                    name: "flare"
+                                 };
+                                 TenguDataConversionI("qa",pv);
+                                 console.log(`the map ${JSON.stringify(pv)}`);
                              }
                          }).catch(e=>{console.log(`Exception ${e}`);});
                     }
