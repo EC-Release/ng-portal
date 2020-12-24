@@ -133,6 +133,12 @@ import define from "./analytics.js";
                     for (const val of data1) {
                          ec.TenguAPI(val,'GET').then(data=>{
                              if (ec.ngObj.size==data1.length){
+                                 
+                                 let pv={
+                                     name: "flare"
+                                 };
+                                 //console.log(`the map ${JSON.stringify(pv)}`);
+                                 window.ngData=ec.TenguDataConversionI("qa",pv);
                                  $("main").html('<div class="chart mx-5 my-5"></div>');
                                  (new Runtime).module(define, name => {
                                      if (name === "chart") return Inspector.into(".chart")();
