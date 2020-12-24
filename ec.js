@@ -62,14 +62,6 @@ class EC extends Base {
     .then(resp => resp.text());
   }
 
-  get ngObj(){
-    return this.#ngObj;
-  }
-
-  set ngObj(c){
-    this.#ngObj=c;
-  }
-
   set securityMd(c) {
     this.#security=c;
   }
