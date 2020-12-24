@@ -120,6 +120,15 @@ import define from "./analytics.js";
                 ec.setActiveTab(event.target);
                 event.preventDefault();
 
+                   
+                let strMapToObj=(strMap)=>{
+                    let obj = Object.create(null);
+                    for (let [k,v] of strMap) {
+                        obj[k] = v;
+                    }
+                    return obj;
+                }
+                
                 ec.TenguAPI(ec.apiPath,'GET').then(data=>{
                     console.log(`the data ${data}`);
                     let kv = new Map();
@@ -128,7 +137,8 @@ import define from "./analytics.js";
                              kv.set(val,data);
                          }).catch(e=>{console.log(`Exception ${e}`);});
                     }
-                    console.log(`the map ${kv}`);
+                    
+                    console.log(`the map ${JSON.stringify(strMapToObj(kv))}`);
                     
                     $("main").html('<div class="chart mx-5 my-5"></div>');
                     (new Runtime).module(define, name => {
