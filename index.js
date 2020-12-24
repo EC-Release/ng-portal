@@ -129,16 +129,19 @@ import define from "./analytics.js";
                     return obj;
                 }
                 
-                ec.TenguAPI(ec.apiPath,'GET').then(data=>{
-                    console.log(`the data ${data}`);
+                ec.TenguAPI(ec.apiPath,'GET').then(data1=>{
+                    console.log(`the data ${data1}`);
                     let kv = new Map();
-                    for (const val of data) {
+                    for (const val of data1) {
                          ec.TenguAPI(`${ec.apiPath}/${val}`,'GET').then(data=>{
                              kv.set(val,data);
+                             if (kv.size==data1.length){
+                                 console.log(`the map ${JSON.stringify(strMapToObj(kv))}`);
+                             }
                          }).catch(e=>{console.log(`Exception ${e}`);});
                     }
+          
                     
-                    console.log(`the map ${JSON.stringify(strMapToObj(kv))}`);
                     
                     $("main").html('<div class="chart mx-5 my-5"></div>');
                     (new Runtime).module(define, name => {
