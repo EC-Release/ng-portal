@@ -122,6 +122,14 @@ import define from "./analytics.js";
 
                 ec.TenguAPI(ec.apiPath,'GET').then(data=>{
                     console.log(`the data ${data}`);
+                    let kv = new Map();
+                    for (const val of data) {
+                         ec.TenguAPI(`${ec.apiPath}/${val}`,'GET').then(data=>{
+                             kv.set(val,data);
+                         }).catch(e=>{console.log(`Exception ${e}`);});
+                    }
+                    console.log(`the map ${kv}`);
+                    
                     $("main").html('<div class="chart mx-5 my-5"></div>');
                     (new Runtime).module(define, name => {
                         if (name === "chart") return Inspector.into(".chart")();
