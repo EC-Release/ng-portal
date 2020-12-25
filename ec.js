@@ -52,9 +52,14 @@ class EC extends Base {
     //pt["children"].push(op);
   }
 
-  TenguAPI(key,mtd='GET'){
+  TenguAPI(key,val='',mtd='GET'){
     let obj = this.GetTenguAPIObj(mtd);
     let path=this.apiPath;
+    
+    if (val!='') {
+      obj.body=JSON.stringify(val);
+    }
+    
     if (key!='') path=`${path}/${key}`;
     return this.Api(path,obj).then(data=>{
       if (key!='') {
