@@ -124,14 +124,18 @@ import define from "./analytics.js";
                       .css({position: "fixed",left: $('body')[0].getBoundingClientRect().width-100, bottom: 20, color: 'grey'}).text('[ + data ]')
                       .on( "click", ()=>{
                     $('body').append($('<div class="ec-block"></div>')
-                      .css({width:$('body')[0].getBoundingClientRect().width,height:$('body')[0].getBoundingClientRect().height,opacity:0.8,top:$('body')[0].getBoundingClientRect().top,left:$('body')[0].getBoundingClientRect().left,position:"absolute","z-index":5000,display:"block",background:"black"})
+                      .css({width:$('body')[0].getBoundingClientRect().width,height:$('body')[0].getBoundingClientRect().height,opacity:0.6,top:window.screenY,left:window.screenX,position:"absolute","z-index":5000,display:"block",background:"black"})
                       .on("click", (e)=>{
-                      
+                      e.preventDefault();
+
                       //$('.ec-info').remove();
                       $('.ec-data-model').remove();
                       $('.ec-block').remove();
                       
+                    }).on("touchstart touchmove", (e)=>{
+                      e.preventDefault();
                     }));
+                    
                     $('body').append($('<div class="ec-data-model"></div>')
                       .css({width: 640,height: 480,position: 'fixed',top: '50%',left: '50%',transform: 'translate(-50%, -50%)','z-index': 5001,'background-color': 'whitesmoke','border-radius': 3}));
                     
