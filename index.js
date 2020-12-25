@@ -132,7 +132,7 @@ import define from "./analytics.js";
                       $('.ec-data-model').remove();
                       $('.ec-block').remove();
                       
-                    });
+                    }));
                     $('body').append($('<div class="ec-data-model"></div>')
                       .css({width: 640,height: 480,position: 'fixed',top: '50%',left: '50%';transform: 'translate(-50%, -50%)';'z-index': 5001,'background-color': 'whitesmoke';'border-radius': 3}));
                 }));
