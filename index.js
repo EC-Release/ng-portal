@@ -128,7 +128,7 @@ import define from "./analytics.js";
                       .css({width:$('body')[0].getBoundingClientRect().width,height:$('body')[0].getBoundingClientRect().height,opacity:0.8,top:$('body')[0].getBoundingClientRect().top,left:$('body')[0].getBoundingClientRect().left,position:"absolute","z-index":5000,display:"block",background:"black"})
                       .on("click", ()=>{
                         
-                      $('.ec-info').remove();
+                      //$('.ec-info').remove();
                       $('.ec-data-model').remove();
                       $('.ec-block').remove();
                       
