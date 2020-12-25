@@ -132,7 +132,7 @@ import define from "./analytics.js";
                       $('.ec-data-model').remove();
                       $('.ec-block').remove();
                       
-                    }).on("touchstart touchmove", (e)=>{
+                    }).on("touchstart touchmove scroll", (e)=>{
                       e.preventDefault();
                     }));
                     
