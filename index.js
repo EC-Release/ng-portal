@@ -11,7 +11,7 @@
 
 import EC from './ec.js'
 import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-import {*} as JSONEditor from "https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.1.6/jsoneditor.min.js";
+import JSONEditor from "https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.1.6/jsoneditor.min.js";
 import define from "./analytics.js";
 
 (()=>{
