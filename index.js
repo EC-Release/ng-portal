@@ -134,7 +134,7 @@ import define from "./analytics.js";
                       
                     }));
                     $('body').append($('<div class="ec-data-model"></div>')
-                      .css({width: 640,height: 480,position: 'fixed',top: '50%',left: '50%';transform: 'translate(-50%, -50%)';'z-index': 5001,'background-color': 'whitesmoke';'border-radius': 3}));
+                      .css({width: 640,height: 480,position: 'fixed',top: '50%',left: '50%',transform: 'translate(-50%, -50%)','z-index': 5001,'background-color': 'whitesmoke';'border-radius': 3}));
                 }));
    
                 let strMapToObj=(strMap)=>{
