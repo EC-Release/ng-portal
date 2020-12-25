@@ -121,7 +121,13 @@ import define from "./analytics.js";
                 ec.setActiveTab(event.target);
                 event.preventDefault();
 
-                   
+                $('body').append($('<div class="ec-info"></div>')
+                      .css({position: "fixed",left: $('body')[0].getBoundingClientRect().width-100, bottom: 20, color: 'grey'}).text('[ + data ]')
+                      .on( "click", function() {
+                    $('body').append($('<div class="ec-block"></div>')
+                      .css({width:$('body')[0].getBoundingClientRect().width,height:$('body')[0].getBoundingClientRect().height,opacity:0.8,top:$('body')[0].getBoundingClientRect().top,left:$('body')[0].getBoundingClientRect().left,position:"absolute","z-index":5000,display:"block",background:"black"}));
+                }));
+   
                 let strMapToObj=(strMap)=>{
                     let obj = Object.create(null);
                     for (let [k,v] of strMap) {
