@@ -11,7 +11,6 @@
 
 import EC from './ec.js'
 import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-import * as JSONEditor from "https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.1.6/jsoneditor.min.js";
 import define from "./analytics.js";
 
 (()=>{
@@ -136,7 +135,7 @@ import define from "./analytics.js";
                     $('body').append($('<div class="ec-data-model"></div>')
                       .css({width: 640,height: 480,position: 'fixed',top: '50%',left: '50%',transform: 'translate(-50%, -50%)','z-index': 5001,'background-color': 'whitesmoke','border-radius': 3}));
                     
-                    const editor = new JSONEditor.default($('.ec-data-model')[0], {});
+                    const editor = new JSONEditor($('.ec-data-model')[0], {});
                     editor.set(window.ngData);
                     const updatedJson = editor.get();
                     
