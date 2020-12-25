@@ -142,7 +142,29 @@ import define from "./analytics.js";
                     $('body').append($('<div class="ec-data-model"></div>')
                       .css({width: 640,height: 480,position: 'fixed',top: '50%',left: '50%',transform: 'translate(-50%, -50%)','z-index': 5001,'background-color': 'whitesmoke','border-radius': 3}));
                     
-                    const editor = new JSONEditor($('.ec-data-model')[0], {});
+                    const options = {
+                        //mode: 'tree',
+                        //modes: ['code', 'form', 'text', 'tree', 'view', 'preview'],
+                        name: "ec-ng-data-visual",
+                        onError: function (err) {
+                          alert(err.toString())
+                        },
+                        onEvent: function(node, event) {
+                          if (node.value !== undefined) {
+                            console.log(event.type + ' event ' +
+                              'on value ' + JSON.stringify(node.value) + ' ' +
+                              'at path ' + JSON.stringify(node.path)
+                            )
+                          } else {
+                            console.log(event.type + ' event ' +
+                              'on field ' + JSON.stringify(node.field) + ' ' +
+                              'at path ' + JSON.stringify(node.path)
+                            )
+                          }
+                        }
+                      }
+                    
+                    const editor = new JSONEditor($('.ec-data-model')[0], options);
                     editor.set(window.ngData);
                     const updatedJson = editor.get();
                     
