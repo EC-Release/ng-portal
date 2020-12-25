@@ -178,9 +178,9 @@ import define from "./analytics.js";
                     return obj;
                 }
                 
-                ec.TenguAPI('','GET').then(data1=>{
+                ec.TenguAPI('','','GET').then(data1=>{
                     for (const val of data1) {
-                         ec.TenguAPI(val,'GET').then(data=>{
+                         ec.TenguAPI(val,'','GET').then(data=>{
                              if (ec.ngObj.size==data1.length){
                                  
                                  let pv={
