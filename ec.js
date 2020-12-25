@@ -33,6 +33,9 @@ class EC extends Base {
   TenguDataConversionI(pk,pv){
     //let op = this.#ngObj[pk];
     pv["children"] = [];
+    if (!pv.hasOwnProperty("name")) {
+      pv["name"]=pk;
+    }
    
     for (const [key, val] of this.#ngObj) {
       if (val["parent"]==pk) { 
