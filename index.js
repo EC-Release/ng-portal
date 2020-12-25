@@ -122,7 +122,9 @@ import define from "./analytics.js";
 
                 $('body').append($('<div class="ec-info"></div>')
                       .css({position: "fixed",left: $('body')[0].getBoundingClientRect().width-100, bottom: 20, color: 'grey'}).text('[ + data ]')
-                      .on( "click", ()=>{
+                      .on( "click", (e)=>{
+                    e.preventDefault();
+                    $("body").css("overflow", "hidden");
                     $('body').append($('<div class="ec-block"></div>')
                       .css({width:$('body')[0].getBoundingClientRect().width,height:$('body')[0].getBoundingClientRect().height,opacity:0.6,top:window.screenY,left:window.screenX,position:"absolute","z-index":5000,display:"block",background:"black"})
                       .on("click", (e)=>{
@@ -131,7 +133,8 @@ import define from "./analytics.js";
                       //$('.ec-info').remove();
                       $('.ec-data-model').remove();
                       $('.ec-block').remove();
-                      
+                      $("body").css("overflow", "auto");
+                    
                     }).on("touchstart touchmove scroll", (e)=>{
                       e.preventDefault();
                     }));
