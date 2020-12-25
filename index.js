@@ -11,7 +11,7 @@
 
 import EC from './ec.js'
 import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-//import JSONEditor from "https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.1.6/jsoneditor.min.js";
+import JSONEditor from "https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.1.6/jsoneditor.min.js";
 import define from "./analytics.js";
 
 (()=>{
@@ -123,9 +123,18 @@ import define from "./analytics.js";
 
                 $('body').append($('<div class="ec-info"></div>')
                       .css({position: "fixed",left: $('body')[0].getBoundingClientRect().width-100, bottom: 20, color: 'grey'}).text('[ + data ]')
-                      .on( "click", function() {
+                      .on( "click", ()=>{
                     $('body').append($('<div class="ec-block"></div>')
-                      .css({width:$('body')[0].getBoundingClientRect().width,height:$('body')[0].getBoundingClientRect().height,opacity:0.8,top:$('body')[0].getBoundingClientRect().top,left:$('body')[0].getBoundingClientRect().left,position:"absolute","z-index":5000,display:"block",background:"black"}));
+                      .css({width:$('body')[0].getBoundingClientRect().width,height:$('body')[0].getBoundingClientRect().height,opacity:0.8,top:$('body')[0].getBoundingClientRect().top,left:$('body')[0].getBoundingClientRect().left,position:"absolute","z-index":5000,display:"block",background:"black"})
+                      .on("click", ()=>{
+                        
+                      $('.ec-info').remove();
+                      $('.ec-data-model').remove();
+                      $('.ec-block').remove();
+                      
+                    });
+                    $('body').append($('<div class="ec-data-model"></div>')
+                      .css({width: 640,height: 480,position: 'fixed',top: '50%',left: '50%';transform: 'translate(-50%, -50%)';'z-index': 5001,'background-color': 'whitesmoke';'border-radius': 3}));
                 }));
    
                 let strMapToObj=(strMap)=>{
