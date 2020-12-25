@@ -126,7 +126,7 @@ import define from "./analytics.js";
                     e.preventDefault();
                     $("body").css("overflow", "hidden");
                     $('body').append($('<div class="ec-block"></div>')
-                      .css({width:$('body')[0].getBoundingClientRect().width,height:$('body')[0].getBoundingClientRect().height,opacity:0.6,top:window.screenY,left:window.screenX,position:"absolute","z-index":5000,display:"block",background:"black"})
+                      .css({width:$('body')[0].getBoundingClientRect().width,height:$('body')[0].getBoundingClientRect().height,opacity:0.6,top:window.pageYOffset,left:window.pageXOffset,position:"absolute","z-index":5000,display:"block",background:"black"})
                       .on("click", (e)=>{
                       e.preventDefault();
 
