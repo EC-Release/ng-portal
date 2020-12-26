@@ -10,7 +10,6 @@
  */
 
 import EC from './ec.js'
-import define from "./analytics.js";
 
 (()=>{
 
