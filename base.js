@@ -94,6 +94,7 @@ class Base {
  
     showDataModel(){
         this.setBlock();
+        let ngData=this.ngData;
      
         $('body').append($('<div class="ec-data-model"></div>').css({
          width: 640,
@@ -125,7 +126,7 @@ class Base {
            };
 
            //console.log(`event.type: ${event.type}, obj: ${obj}`);
-           let sp = this.ngData;
+           let sp = ngData;
            for (const elm of node.path) {
             if (sp[elm] == undefined) {
              aq.push(obj);
@@ -145,7 +146,7 @@ class Base {
         }
          
         const editor = new JSONEditor($('.ec-data-model')[0],options);
-        editor.set(this.ngData);
+        editor.set(ngData);
         $('.jsoneditor-menu').append($('<button type="button" class="jsoneditor-repair" title="apply" id="ec-apply-button" disabled></button>').on("click", (e)=>{
          e.preventDefault();
          console.log('db updated');
