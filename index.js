@@ -143,7 +143,7 @@ import define from "./analytics.js";
                       .css({width: 640,height: 480,position: 'fixed',top: '50%',left: '50%',transform: 'translate(-50%, -50%)','z-index': 5001,'background-color': 'whitesmoke','border-radius': 3}));
                     
                     const options = {
-                        //mode: 'tree',
+                        mode: 'form',
                         //modes: ['code', 'form', 'text', 'tree', 'view', 'preview'],
                         name: "ec-ng-data-visual",
                         onError: function (err) {
