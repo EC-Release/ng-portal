@@ -122,7 +122,7 @@ class Base {
            };
 
            //console.log(`event.type: ${event.type}, obj: ${obj}`);
-           let sp = ec.ngData;
+           let sp = this.ngData;
            for (const elm of node.path) {
             if (sp[elm] == undefined) {
              aq.push(obj);
@@ -142,7 +142,7 @@ class Base {
         }
          
         const editor = new JSONEditor($('.ec-data-model')[0],options);
-        editor.set(ec.ngData);
+        editor.set(this.ngData);
         $('.jsoneditor-menu').append($('<button type="button" class="jsoneditor-repair" title="apply" id="ec-apply-button" disabled></button>').on("click", (e)=>{
          e.preventDefault();
          console.log('db updated');
@@ -157,13 +157,12 @@ class Base {
     }
  
     showTenguChartI(){
-     ec.TenguDataInit('qa');
+     this.TenguDataInit('qa');
      $("main").html('<div class="chart mx-5 my-5"></div>');
      (new Runtime).module(define, name=>{
       if (name === "chart")
        return Inspector.into(".chart")();
      });
-     $(event.target).addClass('active');
     }
 }
 
