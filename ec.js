@@ -37,7 +37,7 @@ class EC extends Base {
   }
 
   TenguDataConversionI(pk){
-    let pv = this.#ngObj.get(pk);
+    let pv = this.ngObjVal(pk);
     
     if (pv==undefined)
       return {};
