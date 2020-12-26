@@ -15,7 +15,8 @@ class EC extends Base {
   #sdk = "";
   #security = "";
   #releases = "";
-  #ngObj = new Map();
+  const #ngObj = new Map();
+  #ngData = {};
   constructor(id,rev='v1.2beta',path='/ec',api='api') {
       super();
       console.log(`EC id# ${id}`);
@@ -28,6 +29,14 @@ class EC extends Base {
   Api(url,detail){
     return fetch(url,detail)
     .then(resp => resp.json());
+  }
+ 
+  TenguDataInit(pkey){
+    let pv = {
+      name: "EC Analytics"
+    };
+    ec.TenguDataConversionI(pkey, pv);
+    this.#ngData = pv;
   }
 
   TenguDataConversionI(pk,pv){
@@ -95,6 +104,10 @@ class EC extends Base {
 
   get ngObj() {
     return this.#ngObj;
+  }
+
+  get ngData() {
+    return this.#ngData;
   }
 
   set securityMd(c) {
