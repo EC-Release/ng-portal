@@ -154,7 +154,7 @@ class Base {
          e.preventDefault();
          for (const _k in aq) {             
              let _v = aq[_k];
-             let _val=_this.ngObj.get(_v.key);
+             let _val=_this.ngObjVal(_v.key);
              _val&&(_val[_v.field]=_v.value);
              _this.TenguAPI(_v.key,_val,'POST').then(data=>{
                console.log(`return data: ${data}}`);
