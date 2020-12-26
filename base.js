@@ -157,7 +157,8 @@ class Base {
              let _val=_this.ngObjVal(_v.key);
              _val&&(_val[_v.field]=_v.value);
              _this.TenguAPI(_v.key,_val,'POST').then(data=>{
-               console.log(`return data: ${data}}`);
+               _this.setNgObjVal(_v.key,_v.field,_v.value);             
+               console.log(`return data: ${data}`);
              }).catch((e)=>{
                console.log(`Exception: ${e}`);
              });
