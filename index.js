@@ -122,30 +122,23 @@ import define from "./analytics.js";
                     ec.showDataModel();
                 }));
                 
-                ec.TenguAPI('', '', 'GET').then(data1=>{
-                    for (const val of data1) {
-                        ec.TenguAPI(val, '', 'GET').then(data=>{
-                            if (ec.ngObj.size == data1.length) {
-
-                                ec.TenguDataInit('qa');
-                                
-                                $("main").html('<div class="chart mx-5 my-5"></div>');
-                                (new Runtime).module(define, name=>{
-                                    if (name === "chart")
-                                        return Inspector.into(".chart")();
+                if (ec.ngObj.size>0){
+                    ec.showTenguChartI();
+                } else {
+                    ec.TenguAPI('', '', 'GET').then(data1=>{
+                        for (const val of data1) {
+                            ec.TenguAPI(val, '', 'GET').then(data=>{
+                                if (ec.ngObj.size == data1.length) {
+                                    ec.showTenguChartI();
                                 }
-                                );
-                                $(event.target).addClass('active');
-                            }
-                        }).catch(e=>{
-                            console.log(`Exception ${e}`);
-                        });
-                    }
-
-                }).catch((e)=>{
-                    console.log(`Exception: ${e}`);
-                });
-
+                            }).catch(e=>{
+                                console.log(`Exception ${e}`);
+                            });
+                        }
+                    }).catch((e)=>{
+                        console.log(`Exception: ${e}`);
+                    });
+                }
             });
 
             $('main').on('click', 'a.ec-godoc-rev', (event)=>{
