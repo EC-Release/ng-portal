@@ -15,7 +15,7 @@ class EC extends Base {
   #sdk = "";
   #security = "";
   #releases = "";
-  const #ngObj = new Map();
+  #ngObj = new Map();
   #ngData = {};
   constructor(id,rev='v1.2beta',path='/ec',api='api') {
       super();
