@@ -62,6 +62,110 @@ class Base {
         }
         return `<a href="${this.assetPath}/${uri}" class="ec-godoc-rev">${html}</a>`;
     }
+ 
+    setBlock(){
+        $("body").css("overflow", "hidden");
+        $('body').append($('<div class="ec-block"></div>').css({
+         width: $('body')[0].getBoundingClientRect().width,
+         height: $('body')[0].getBoundingClientRect().height,
+         opacity: 0.6,
+         top: window.pageYOffset,
+         left: window.pageXOffset,
+         position: "absolute",
+         "z-index": 5000,
+         display: "block",
+         background: "black"
+        }).on("click", (e)=>{
+         e.preventDefault();
+         
+         this.hideDataModel();
+        }).on("touchstart touchmove scroll", (e)=>{
+         e.preventDefault();
+        }));     
+    }
+ 
+    unsetBlock(){
+        $('.ec-block').remove();
+        $("body").css("overflow", "auto");
+    }
+ 
+    showDataModel(){
+        this.setBlock();
+        $('body').append($('<div class="ec-data-model"></div>').css({
+         width: 640,
+         height: 480,
+         position: 'fixed',
+         top: '50%',
+         left: '50%',
+         transform: 'translate(-50%, -50%)',
+         'z-index': 5001,
+         'background-color': 'whitesmoke',
+         'border-radius': 3
+        }));
+     
+        $('body').append($('<div class="ec-data-model"></div>').css({
+         width: 640,
+         height: 480,
+         position: 'fixed',
+         top: '50%',
+         left: '50%',
+         transform: 'translate(-50%, -50%)',
+         'z-index': 5001,
+         'background-color': 'whitesmoke',
+         'border-radius': 3
+        }));
+            
+        let aq = [];
+        const options = {
+         //mode: 'form',
+         //modes: ['form', 'text', 'view'],
+         //modes: ['code', 'form', 'text', 'view', 'preview'],
+         name: "ec-ng-data-visual",
+         onError: function(err) {
+          console.error(`err: ${err}`);
+         },
+         onEvent: function(node, event) {
+          if (event.type == 'blur' && node.field != undefined) {
+           let obj = {
+            key: node.field,
+            value: node.value,
+            path: node.path
+           };
+
+           //console.log(`event.type: ${event.type}, obj: ${obj}`);
+           let sp = ec.ngData;
+           for (const elm of node.path) {
+            if (sp[elm] == undefined) {
+             aq.push(obj);
+             $('#ec-apply-button').removeAttr('disabled');
+             return;
+            }
+
+            sp = sp[elm];
+           }
+
+           if (node.value != undefined && sp != node.value) {
+            aq.push(obj);
+            $('#ec-apply-button').removeAttr('disabled');
+           }
+          }
+         }        
+        }
+         
+        const editor = new JSONEditor($('.ec-data-model')[0],options);
+        editor.set(ec.ngData);
+        $('.jsoneditor-menu').append($('<button type="button" class="jsoneditor-repair" title="apply" id="ec-apply-button" disabled></button>').on("click", (e)=>{
+         e.preventDefault();
+         console.log('db updated');
+         $('#ec-apply-button').prop("disabled", true);
+        }));
+        //const updatedJson = editor.get();     
+    }
+ 
+    hideDataModel(){
+        $('.ec-data-model').remove();
+        this.unsetBlock();
+    }
 }
 
 export { Base as default };
