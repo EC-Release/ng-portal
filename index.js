@@ -16,7 +16,7 @@ import define from "./analytics.js";
 (()=>{
 
     let ec = new EC('ec1');
-    window.ec=ec;
+    window.ec = ec;
     ec.load("https://code.jquery.com/jquery-3.5.1.slim.min.js").catch((err)=>{}
     ).then((s)=>{
         ec.load("https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js").catch((err)=>{}
@@ -120,81 +120,139 @@ import define from "./analytics.js";
                 ec.setActiveTab(event.target);
                 event.preventDefault();
 
-                $('body').append($('<div class="ec-info"></div>')
-                      .css({position: "fixed",left: $('body')[0].getBoundingClientRect().width-100, bottom: 20, color: 'grey'}).text('[ + data ]')
-                      .on( "click", (e)=>{
+                $('body').append($('<div class="ec-info"></div>').css({
+                    position: "fixed",
+                    left: $('body')[0].getBoundingClientRect().width - 100,
+                    bottom: 20,
+                    color: 'grey'
+                }).text('[ + data ]').on("click", (e)=>{
                     e.preventDefault();
                     $("body").css("overflow", "hidden");
-                    $('body').append($('<div class="ec-block"></div>')
-                      .css({width:$('body')[0].getBoundingClientRect().width,height:$('body')[0].getBoundingClientRect().height,opacity:0.6,top:window.pageYOffset,left:window.pageXOffset,position:"absolute","z-index":5000,display:"block",background:"black"})
-                      .on("click", (e)=>{
-                      e.preventDefault();
+                    $('body').append($('<div class="ec-block"></div>').css({
+                        width: $('body')[0].getBoundingClientRect().width,
+                        height: $('body')[0].getBoundingClientRect().height,
+                        opacity: 0.6,
+                        top: window.pageYOffset,
+                        left: window.pageXOffset,
+                        position: "absolute",
+                        "z-index": 5000,
+                        display: "block",
+                        background: "black"
+                    }).on("click", (e)=>{
+                        e.preventDefault();
 
-                      //$('.ec-info').remove();
-                      $('.ec-data-model').remove();
-                      $('.ec-block').remove();
-                      $("body").css("overflow", "auto");
-                    
-                    }).on("touchstart touchmove scroll", (e)=>{
-                      e.preventDefault();
+                        //$('.ec-info').remove();
+                        $('.ec-data-model').remove();
+                        $('.ec-block').remove();
+                        $("body").css("overflow", "auto");
+
+                    }
+                    ).on("touchstart touchmove scroll", (e)=>{
+                        e.preventDefault();
+                    }
+                    ));
+
+                    $('body').append($('<div class="ec-data-model"></div>').css({
+                        width: 640,
+                        height: 480,
+                        position: 'fixed',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        'z-index': 5001,
+                        'background-color': 'whitesmoke',
+                        'border-radius': 3
                     }));
-                    
-                    $('body').append($('<div class="ec-data-model"></div>')
-                      .css({width: 640,height: 480,position: 'fixed',top: '50%',left: '50%',transform: 'translate(-50%, -50%)','z-index': 5001,'background-color': 'whitesmoke','border-radius': 3}));
-                    
+
+                    let aq = [];
                     const options = {
-                        mode: 'form',
-                        //modes: ['code', 'form', 'text', 'tree', 'view', 'preview'],
+                        //mode: 'form',
+                        //modes: ['form', 'text', 'view'],
+                        //modes: ['code', 'form', 'text', 'view', 'preview'],
                         name: "ec-ng-data-visual",
-                        onError: function (err) {
-                          console.error(`err: ${err}`);
+                        onError: function(err) {
+                            console.error(`err: ${err}`);
                         },
                         onEvent: function(node, event) {
-                          console.log(`event.type: ${event.type}, node.field: ${node.field}, node.value: ${node.value}, node.path: ${node.path}`);
+                            if (event.type == 'mouseout' && node.field != undefined) {
+                                let obj = {
+                                    key: node.field,
+                                    value: node.value,
+                                    path: node.path
+                                };
+
+                                console.log(`event.type: ${event.type}, obj: ${obj}`);
+
+                                let sp = window.ngData;
+                                for (const elm of node.path) {
+                                    if (sp[elm] == undefined) {
+                                        aq.push(obj);
+                                        $('#ec-apply-button').removeAttr('disabled');
+                                        return;
+                                    }
+
+                                    sp = sp[elm];
+                                }
+
+                                if (node.value != undefined && sp != node.value) {
+                                    aq.push(obj);
+                                    $('#ec-apply-button').removeAttr('disabled');
+                                }
+                            }
                         }
-                      }
-                    
-                    const editor = new JSONEditor($('.ec-data-model')[0], options);
+
+                    }
+
+                    const editor = new JSONEditor($('.ec-data-model')[0],options);
                     editor.set(window.ngData);
-                    $('<button type="button" class="jsoneditor-repair" title="apply" disabled></button>').appendTo('.jsoneditor-menu');
+                    $('<button type="button" class="jsoneditor-repair" title="apply" id="ec-apply-button" disabled></button>').appendTo('.jsoneditor-menu');
                     //const updatedJson = editor.get();
-                    
-                }));
-   
-                let strMapToObj=(strMap)=>{
+
+                }
+                ));
+
+                let strMapToObj = (strMap)=>{
                     let obj = Object.create(null);
-                    for (let [k,v] of strMap) {
+                    for (let[k,v] of strMap) {
                         obj[k] = v;
                     }
                     return obj;
                 }
-                
-                ec.TenguAPI('','','GET').then(data1=>{
+
+                ec.TenguAPI('', '', 'GET').then(data1=>{
                     for (const val of data1) {
-                         ec.TenguAPI(val,'','GET').then(data=>{
-                             if (ec.ngObj.size==data1.length){
-                                 
-                                 let pv={
-                                     name: "flare"
-                                 };
-                                 //console.log(`the map ${JSON.stringify(pv)}`);
-                                 ec.TenguDataConversionI("qa",pv);
-                                 window.ngData=pv;
-                                 $("main").html('<div class="chart mx-5 my-5"></div>');
-                                 (new Runtime).module(define, name => {
-                                     if (name === "chart") return Inspector.into(".chart")();
-                                 });
-                                 $(event.target).addClass('active');
-                             }
-                         }).catch(e=>{console.log(`Exception ${e}`);});
+                        ec.TenguAPI(val, '', 'GET').then(data=>{
+                            if (ec.ngObj.size == data1.length) {
+
+                                let pv = {
+                                    name: "flare"
+                                };
+                                //console.log(`the map ${JSON.stringify(pv)}`);
+                                ec.TenguDataConversionI("qa", pv);
+                                window.ngData = pv;
+                                $("main").html('<div class="chart mx-5 my-5"></div>');
+                                (new Runtime).module(define, name=>{
+                                    if (name === "chart")
+                                        return Inspector.into(".chart")();
+                                }
+                                );
+                                $(event.target).addClass('active');
+                            }
+                        }
+                        ).catch(e=>{
+                            console.log(`Exception ${e}`);
+                        }
+                        );
                     }
-          
-                    
-                }).catch((e)=>{
-                     console.log(`Exception: ${e}`);
-                });
-                
-            });
+
+                }
+                ).catch((e)=>{
+                    console.log(`Exception: ${e}`);
+                }
+                );
+
+            }
+            );
 
             $('main').on('click', 'a.ec-godoc-rev', (event)=>{
                 event.preventDefault();
