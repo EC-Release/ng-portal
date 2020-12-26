@@ -147,26 +147,17 @@ import define from "./analytics.js";
                         //modes: ['code', 'form', 'text', 'tree', 'view', 'preview'],
                         name: "ec-ng-data-visual",
                         onError: function (err) {
-                          alert(err.toString())
+                          console.error(`err: ${err}`);
                         },
                         onEvent: function(node, event) {
-                          if (node.value !== undefined) {
-                            console.log(event.type + ' event ' +
-                              'on value ' + JSON.stringify(node.value) + ' ' +
-                              'at path ' + JSON.stringify(node.path)
-                            )
-                          } else {
-                            console.log(event.type + ' event ' +
-                              'on field ' + JSON.stringify(node.field) + ' ' +
-                              'at path ' + JSON.stringify(node.path)
-                            )
-                          }
+                          console.log(`event.type: ${event.type}, node.field: ${node.field}, node.value: ${node.value}, node.path: ${node.path}`);
                         }
                       }
                     
                     const editor = new JSONEditor($('.ec-data-model')[0], options);
                     editor.set(window.ngData);
-                    const updatedJson = editor.get();
+                    $('<button type="button" class="jsoneditor-repair" title="apply" disabled></button>').appendTo('.jsoneditor-menu');
+                    //const updatedJson = editor.get();
                     
                 }));
    
