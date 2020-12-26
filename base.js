@@ -120,7 +120,7 @@ class Base {
          onEvent: function(node, event) {
           if (event.type == 'blur' && node.field != undefined) {
            let obj = {
-            key: node.field,
+            field: node.field,
             value: node.value,
             path: node.path
            };
@@ -129,6 +129,7 @@ class Base {
            let sp = ngData;
            for (const elm of node.path) {
             if (sp[elm] == undefined) {
+             obj['key']=sp.name;
              aq.push(obj);
              $('#ec-apply-button').removeAttr('disabled');
              return;
@@ -138,6 +139,7 @@ class Base {
            }
 
            if (node.value != undefined && sp != node.value) {
+            obj['key']=sp.name;                
             aq.push(obj);
             $('#ec-apply-button').removeAttr('disabled');
            }
