@@ -174,14 +174,14 @@ import define from "./analytics.js";
                             console.error(`err: ${err}`);
                         },
                         onEvent: function(node, event) {
-                            if (event.type == 'mouseout' && node.field != undefined) {
+                            if (event.type == 'blur' && node.field != undefined) {
                                 let obj = {
                                     key: node.field,
                                     value: node.value,
                                     path: node.path
                                 };
 
-                                console.log(`event.type: ${event.type}, obj: ${obj}`);
+                                //console.log(`event.type: ${event.type}, obj: ${obj}`);
 
                                 let sp = window.ngData;
                                 for (const elm of node.path) {
@@ -205,7 +205,12 @@ import define from "./analytics.js";
 
                     const editor = new JSONEditor($('.ec-data-model')[0],options);
                     editor.set(window.ngData);
-                    $('<button type="button" class="jsoneditor-repair" title="apply" id="ec-apply-button" disabled></button>').appendTo('.jsoneditor-menu');
+                    $('.jsoneditor-menu').append($('<button type="button" class="jsoneditor-repair" title="apply" id="ec-apply-button" disabled></button>').on("click", (e)=>{
+                        e.preventDefault();
+                        console.log('db updated');
+                        $('#ec-apply-button').prop("disabled", true);
+                    }
+                    ));
                     //const updatedJson = editor.get();
 
                 }
