@@ -134,8 +134,8 @@ class Base {
              $('#ec-apply-button').removeAttr('disabled');
              return;
             }
-
-            sp = sp[elm];
+            if (typeof sp[elm] === 'object' && sp[elm] !== null)               
+              sp = sp[elm];
            }
 
            if (node.value != undefined && sp != node.value) {
