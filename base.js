@@ -10,7 +10,8 @@
  */
 
 import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
- 
+import define from "./analytics.js";
+
 class Base {
     constructor() {}
     load(src) {
