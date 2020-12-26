@@ -32,9 +32,9 @@ class EC extends Base {
   }
  
   TenguDataInit(pkey){
-    let pv = {
-      name: "EC Analytics"
-    };
+    let pv = {};
+    //  name: "EC Analytics"
+    //};
     ec.TenguDataConversionI(pkey, pv);
     this.#ngData = pv;
   }
