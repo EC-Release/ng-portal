@@ -32,15 +32,17 @@ class EC extends Base {
   }
  
   TenguDataInit(pkey){
-    let pv = {};
-    //  name: "EC Analytics"
-    //};
-    ec.TenguDataConversionI(pkey, pv);
+    let pv = ec.TenguDataConversionI(pkey);
     this.#ngData = pv;
   }
 
-  TenguDataConversionI(pk,pv){
+  TenguDataConversionI(pk){
     //let op = this.#ngObj[pk];
+    let pv = this.#ngObj[pk];
+    
+    if (pv==undefined)
+      return {};
+    
     pv["children"] = [];
     if (!pv.hasOwnProperty("name")) {
       pv["name"]=pk;
@@ -48,16 +50,18 @@ class EC extends Base {
    
     for (const [key, val] of this.#ngObj) {
       if (val["parent"]==pk) { 
-         this.TenguDataConversionI(key,val);
-         pv["children"].push(val);         
+         let _pv = this.TenguDataConversionI(key);
+         pv["children"].push(_pv);         
       }
     }
+
     if (pv["children"].length==0) {
       delete pv.children;
       if (!pv.hasOwnProperty("value")) {
         pv["value"]=10;
       }
     }
+    return pv;
     //pt["children"].push(op);
   }
 
