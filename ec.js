@@ -109,6 +109,10 @@ class EC extends Base {
     let _k = JSON.parse(JSON.stringify(this.#ngObj[k]));
     return _k;
   }
+  
+  get ngObjSize() {
+    return this.#ngObj.size;
+  }
 
   get ngData() {
     return this.#ngData;
