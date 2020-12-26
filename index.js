@@ -31,8 +31,7 @@ import define from "./analytics.js";
                     regex: /(<h([1-5]) id="([^"]+?)">)(.*<\/h\2>)/g,
                     replace: ancTpl
                 }];
-            }
-            );
+            });
 
             let marked = new showdown.Converter({
                 extensions: ['header-anchors'],
@@ -60,11 +59,9 @@ import define from "./analytics.js";
                     ec.sdkInnerHTML = htmlString;
                     $("main").html(ec.sdkInnerHTML);
                     $(event.target).addClass('active');
-                }
-                ).catch((e)=>{
+                }).catch((e)=>{
                     console.log(`Exception: e}`);
-                }
-                );
+                });
             }
             );
 
@@ -87,13 +84,10 @@ import define from "./analytics.js";
                     ec.Releases = htmlString;
                     $("main").html(ec.Releases);
                     $(event.target).addClass('active');
-                }
-                ).catch((e)=>{
+                }).catch((e)=>{
                     console.log(`Exception: ${e}`);
-                }
-                );
-            }
-            );
+                });
+            });
 
             $('ul').on('click', 'li.ec-security', (event)=>{
                 ec.setActiveTab(event.target);
@@ -111,10 +105,8 @@ import define from "./analytics.js";
                     ec.securityMd = '<div class="mt-3">' + marked.makeHtml(data) + '</div>';
                     $("main").html(ec.securityMd);
                     $(event.target).addClass('active');
-                }
-                );
-            }
-            );
+                });
+            });
 
             $('ul').on('click', 'li.ec-analytics', (event)=>{
                 ec.setActiveTab(event.target);
@@ -146,11 +138,9 @@ import define from "./analytics.js";
                         $('.ec-block').remove();
                         $("body").css("overflow", "auto");
 
-                    }
-                    ).on("touchstart touchmove scroll", (e)=>{
+                    }).on("touchstart touchmove scroll", (e)=>{
                         e.preventDefault();
-                    }
-                    ));
+                    }));
 
                     $('body').append($('<div class="ec-data-model"></div>').css({
                         width: 640,
@@ -209,21 +199,11 @@ import define from "./analytics.js";
                         e.preventDefault();
                         console.log('db updated');
                         $('#ec-apply-button').prop("disabled", true);
-                    }
-                    ));
+                    }));
                     //const updatedJson = editor.get();
 
-                }
-                ));
-
-                /*let strMapToObj = (strMap)=>{
-                    let obj = Object.create(null);
-                    for (let[k,v] of strMap) {
-                        obj[k] = v;
-                    }
-                    return obj;
-                }*/
-
+                }));
+                
                 ec.TenguAPI('', '', 'GET').then(data1=>{
                     for (const val of data1) {
                         ec.TenguAPI(val, '', 'GET').then(data=>{
@@ -239,21 +219,16 @@ import define from "./analytics.js";
                                 );
                                 $(event.target).addClass('active');
                             }
-                        }
-                        ).catch(e=>{
+                        }).catch(e=>{
                             console.log(`Exception ${e}`);
-                        }
-                        );
+                        });
                     }
 
-                }
-                ).catch((e)=>{
+                }).catch((e)=>{
                     console.log(`Exception: ${e}`);
-                }
-                );
+                });
 
-            }
-            );
+            });
 
             $('main').on('click', 'a.ec-godoc-rev', (event)=>{
                 event.preventDefault();
