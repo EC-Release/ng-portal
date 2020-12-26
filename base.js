@@ -95,6 +95,7 @@ class Base {
     showDataModel(){
         this.setBlock();
         let ngData=this.ngData;
+        let _this=this;
      
         $('body').append($('<div class="ec-data-model"></div>').css({
          width: 640,
@@ -151,6 +152,18 @@ class Base {
         editor.set(ngData);
         $('.jsoneditor-menu').append($('<button type="button" class="jsoneditor-repair" title="apply" id="ec-apply-button" disabled></button>').on("click", (e)=>{
          e.preventDefault();
+         for (const _k in aq) {             
+             let _v = aq[_k];
+             let _val=_this.ngObj.get(_v.key);
+             _val&&(_val[_v.field]=_v.value);
+             _this.TenguAPI(_v.key,_val,'POST').then(data=>{
+               console.log(`return data: ${data}}`);
+             }).catch((e)=>{
+               console.log(`Exception: ${e}`);
+             });
+             
+         }
+         aq={};
          console.log('db updated');
          $('#ec-apply-button').prop("disabled", true);
         }));
