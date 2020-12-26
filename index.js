@@ -147,15 +147,10 @@ import define from "./analytics.js";
                   , h = p.href.split("/").pop();
                 ec.setActiveState(event.target.parentNode, ec.appPath + '/godoc/' + h);
                 $("main").html(`<div class="embed-responsive embed-responsive-16by9 mt-3"><iframe class="embed-responsive-item" src="${p.href}" allowfullscreen></iframe></div>`);
-            }
-            );
+            });
 
             ec.routing();
-        }
-        , (failure)=>{}
-        );
-    }
-    , (failure)=>{}
-    );
-}
-)();
+        }, (failure)=>{});
+    }, (failure)=>{});
+    
+})();
