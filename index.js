@@ -124,12 +124,14 @@ import define from "./analytics.js";
                 
                 if (ec.ngObj.size>0){
                     ec.showTenguChartI();
+                    $(event.target).addClass('active');
                 } else {
                     ec.TenguAPI('', '', 'GET').then(data1=>{
                         for (const val of data1) {
                             ec.TenguAPI(val, '', 'GET').then(data=>{
                                 if (ec.ngObj.size == data1.length) {
                                     ec.showTenguChartI();
+                                    $(event.target).addClass('active');
                                 }
                             }).catch(e=>{
                                 console.log(`Exception ${e}`);
