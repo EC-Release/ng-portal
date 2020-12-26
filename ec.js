@@ -105,8 +105,9 @@ class EC extends Base {
     .then(resp => resp.text());
   }
 
-  get ngObj() {
-    return this.#ngObj;
+  get ngObjVal(k) {
+    let _k = JSON.parse(JSON.stringify(this.#ngObj[k]));
+    return _k;
   }
 
   get ngData() {
