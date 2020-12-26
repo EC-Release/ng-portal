@@ -108,7 +108,7 @@ class Base {
          'border-radius': 3
         }));
             
-        let aq = [];
+        let aq = {};
         const options = {
          //mode: 'form',
          //modes: ['form', 'text', 'view'],
@@ -130,7 +130,7 @@ class Base {
            for (const elm of node.path) {
             if (sp[elm] == undefined) {
              obj['key']=sp.name;
-             aq.push(obj);
+             aq[`${obj.key}-${obj.field}`]=obj;
              $('#ec-apply-button').removeAttr('disabled');
              return;
             }
@@ -140,7 +140,7 @@ class Base {
 
            if (node.value != undefined && sp != node.value) {
             obj['key']=sp.name;                
-            aq.push(obj);
+            aq[`${obj.key}-${obj.field}`]=obj;
             $('#ec-apply-button').removeAttr('disabled');
            }
           }
