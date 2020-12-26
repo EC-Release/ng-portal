@@ -183,7 +183,7 @@ import define from "./analytics.js";
 
                                 //console.log(`event.type: ${event.type}, obj: ${obj}`);
 
-                                let sp = window.ngData;
+                                let sp = ec.ngData;
                                 for (const elm of node.path) {
                                     if (sp[elm] == undefined) {
                                         aq.push(obj);
@@ -204,7 +204,7 @@ import define from "./analytics.js";
                     }
 
                     const editor = new JSONEditor($('.ec-data-model')[0],options);
-                    editor.set(window.ngData);
+                    editor.set(ec.ngData);
                     $('.jsoneditor-menu').append($('<button type="button" class="jsoneditor-repair" title="apply" id="ec-apply-button" disabled></button>').on("click", (e)=>{
                         e.preventDefault();
                         console.log('db updated');
@@ -216,25 +216,21 @@ import define from "./analytics.js";
                 }
                 ));
 
-                let strMapToObj = (strMap)=>{
+                /*let strMapToObj = (strMap)=>{
                     let obj = Object.create(null);
                     for (let[k,v] of strMap) {
                         obj[k] = v;
                     }
                     return obj;
-                }
+                }*/
 
                 ec.TenguAPI('', '', 'GET').then(data1=>{
                     for (const val of data1) {
                         ec.TenguAPI(val, '', 'GET').then(data=>{
                             if (ec.ngObj.size == data1.length) {
 
-                                let pv = {
-                                    name: "flare"
-                                };
-                                //console.log(`the map ${JSON.stringify(pv)}`);
-                                ec.TenguDataConversionI("qa", pv);
-                                window.ngData = pv;
+                                ec.TenguDataInit('qa');
+                                
                                 $("main").html('<div class="chart mx-5 my-5"></div>');
                                 (new Runtime).module(define, name=>{
                                     if (name === "chart")
