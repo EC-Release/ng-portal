@@ -117,7 +117,7 @@ import define from "./analytics.js";
                     left: $('body')[0].getBoundingClientRect().width - 100,
                     bottom: 20,
                     color: 'grey'
-                }).text('[ + data ]').on("click", (e)=>{
+                }).text('[ + data@EC ]').on("click", (e)=>{
                     e.preventDefault();                    
                     ec.showDataModel();
                 }));
