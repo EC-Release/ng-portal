@@ -120,14 +120,14 @@ import EC from './ec.js'
                     ec.showDataModel();
                 }));
                 
-                if (ec.ngObj.size>0){
+                if (ec.ngObjSize>0){
                     ec.showTenguChartI();
                     $(event.target).addClass('active');
                 } else {
                     ec.TenguAPI('', '', 'GET').then(data1=>{
                         for (const val of data1) {
                             ec.TenguAPI(val, '', 'GET').then(data=>{
-                                if (ec.ngObj.size == data1.length) {
+                                if (ec.ngObjSize == data1.length) {
                                     ec.showTenguChartI();
                                     $(event.target).addClass('active');
                                 }
