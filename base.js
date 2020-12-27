@@ -142,6 +142,7 @@ class Base {
          onCreateMenu: (items, node)=>{
              items.forEach((item, index, items)=>{
                  if (item.className=='jsoneditor-remove') {
+                     op=item.click.clone();
                      item.click = ()=>{
                          let obj = {
                              field: node.field,
