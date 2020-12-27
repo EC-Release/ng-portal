@@ -128,11 +128,12 @@ class Base {
 
            //console.log(`event.type: ${event.type}, obj: ${obj}`);
            let sp = ngData;
-           if (sp.name == undefined)
-               return;
-              
+             
            for (const elm of node.path) {
             if (sp[elm] == undefined) {
+             if (sp.name == undefined)
+               return;
+            
              obj['key']=sp.name;
              aq[`${obj.key}-${obj.field}`]=obj;
              $('#ec-apply-button').removeAttr('disabled');
@@ -143,6 +144,9 @@ class Base {
            }
 
            if (node.value != undefined && sp != node.value) {
+            if (sp.name == undefined)
+               return;
+            
             obj['key']=sp.name;                
             aq[`${obj.key}-${obj.field}`]=obj;
             $('#ec-apply-button').removeAttr('disabled');
