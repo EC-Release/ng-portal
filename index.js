@@ -116,7 +116,8 @@ import EC from './ec.js'
                     bottom: 20,
                     color: 'grey'
                 }).text('[ + data@EC ]').on("click", (e)=>{
-                    e.preventDefault();                    
+                    e.preventDefault();
+                    ec.TenguDataInit('qa');
                     ec.showDataModel();
                 }));
                 
