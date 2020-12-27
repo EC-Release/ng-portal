@@ -118,6 +118,9 @@ class Base {
          onError: function(err) {
           console.error(`err: ${err}`);
          },
+         onCreateMenu: function(items, node) {
+             console.log(`item: ${item}, node: ${node}`);
+         },
          onEvent: function(node, event) {
           if (event.type == 'blur' && node.field != undefined) {
            let obj = {
