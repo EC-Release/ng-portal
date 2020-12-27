@@ -125,6 +125,12 @@ class Base {
              });
              return items;
          },
+         onTextSelectionChange: function(start, end, text) {
+             console.log(`start: ${start}, end: ${end}, text: ${text}`);
+         },
+         onSelectionChange: function(start, end) {
+             console.log(`start: ${start}, end: ${end}`);
+         },
          onEvent: function(node, event) {
           if (event.type == 'blur' && node.field != undefined) {
            let obj = {
