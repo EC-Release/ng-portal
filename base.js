@@ -119,7 +119,7 @@ class Base {
           console.error(`err: ${err}`);
          },
          onCreateMenu: function(items, node) {
-             console.log(`item: ${item}, node: ${node}`);
+             console.log(`items: ${items}, node: ${node}`);
          },
          onEvent: function(node, event) {
           if (event.type == 'blur' && node.field != undefined) {
