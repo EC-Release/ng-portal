@@ -128,6 +128,9 @@ class Base {
 
            //console.log(`event.type: ${event.type}, obj: ${obj}`);
            let sp = ngData;
+           if (sp.name == undefined)
+               return;
+              
            for (const elm of node.path) {
             if (sp[elm] == undefined) {
              obj['key']=sp.name;
