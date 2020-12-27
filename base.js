@@ -148,7 +148,10 @@ class Base {
                              value: node.value,
                              path: node.path
                          };
-                         console.log(`item: ${item}, index: ${index}, node: ${node}`);                           
+                         _this.updateJsonNodeOps(aq,obj);
+                         if (Object.keys(aq).length>0) {
+                             $('#ec-apply-button').removeAttr('disabled');
+                         }  
                      }
                  }
              });
@@ -168,6 +171,9 @@ class Base {
             path: node.path
            };
            _this.updateJsonNodeOps(aq,obj);
+           if (Object.keys(aq).length>0) {
+               $('#ec-apply-button').removeAttr('disabled');
+           }    
           }
          }        
         }
