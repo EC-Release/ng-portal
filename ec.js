@@ -100,6 +100,32 @@ class EC extends Base {
     };   
   }
 
+  updateJsonNodeOps(aq,obj){
+    //console.log(`event.type: ${event.type}, obj: ${obj}`);    
+    let sp = this.#ngData;    
+    for (const elm of obj.path) {
+      if (sp[elm] == undefined) {      
+        if (sp.name == undefined)        
+          return;
+                      
+        obj['key']=sp.name;        
+        aq[`${obj.key}-${obj.field}`]=obj;        
+        return;        
+      }
+      
+      if (typeof sp[elm] === 'object' && sp[elm] !== null)                     
+        sp = sp[elm];        
+    }
+        
+    if (obj.value != undefined) {    
+      if (sp.name == undefined)      
+        return;            
+      
+      obj['key']=sp.name;                      
+      aq[`${obj.key}-${obj.field}`]=obj;      
+    }
+  }
+
   Html(url){
     return fetch(url)
     .then(resp => resp.text());
