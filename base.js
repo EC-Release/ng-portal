@@ -114,23 +114,27 @@ class Base {
          //mode: 'form',
          //modes: ['form', 'text', 'view'],
          //modes: ['code', 'form', 'text', 'view', 'preview'],
-         languages: 'en',
+         language: 'en',
          name: "ec-ng-data-visual",
          onError: function(err) {
           console.error(`err: ${err}`);
          },
          onCreateMenu: function(items, node) {
              items.forEach(function (item, index, items) {
-                 console.log(`item: ${item}, index: ${index}, node: ${node}`);
+                 if (item.className=='jsoneditor-remove') {
+                     item.click = (e)=>{
+                         console.log(`event: ${e}, item: ${item}, index: ${index}, node: ${node}`);                               
+                     }
+                 }
              });
              return items;
          },
-         onTextSelectionChange: function(start, end, text) {
-             console.log(`start: ${start}, end: ${end}, text: ${text}`);
-         },
-         onSelectionChange: function(start, end) {
-             console.log(`start: ${start}, end: ${end}`);
-         },
+         //onTextSelectionChange: function(start, end, text) {
+         //    console.log(`start: ${start}, end: ${end}, text: ${text}`);
+         //},
+         //onSelectionChange: function(start, end) {
+         //    console.log(`start: ${start}, end: ${end}`);
+         //},
          onEvent: function(node, event) {
           if (event.type == 'blur' && node.field != undefined) {
            let obj = {
