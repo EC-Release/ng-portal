@@ -119,7 +119,10 @@ class Base {
           console.error(`err: ${err}`);
          },
          onCreateMenu: function(items, node) {
-             console.log(`items: ${items}, node: ${node}`);
+             items.forEach(function (item, index, items) {
+                 console.log(`item: ${item}, index: ${index}, node: ${node}`);
+             });
+             return items;
          },
          onEvent: function(node, event) {
           if (event.type == 'blur' && node.field != undefined) {
