@@ -91,11 +91,32 @@ class Base {
         $('.ec-block').remove();
         $("body").css("overflow", "auto");
     }
+    
+    updateJsonNodeOps(obj){
+        let aq = {};        
+        //console.log(`event.type: ${event.type}, obj: ${obj}`);
+        let sp = this.ngData;
+        for (const elm of node.path) {
+            if (sp[elm] == undefined) {
+                if (sp.name == undefined)
+                    return;
+            
+                obj['key']=sp.name;
+                aq[`${obj.key}-${obj.field}`]=obj;
+                $('#ec-apply-button').removeAttr('disabled');
+                return;
+            }
+            if (typeof sp[elm] === 'object' && sp[elm] !== null)               
+              sp = sp[elm];
+        }
+        
+    }
  
     showDataModel(){
         this.setBlock();
-        let ngData=this.ngData;
-        let _this=this;
+        //let ngData=this.ngData;
+        let _this=this,
+            aq = {};
      
         $('body').append($('<div class="ec-data-model"></div>').css({
          width: 640,
@@ -109,21 +130,25 @@ class Base {
          'border-radius': 3
         }));
             
-        let aq = {};
         const options = {
          //mode: 'form',
          //modes: ['form', 'text', 'view'],
          //modes: ['code', 'form', 'text', 'view', 'preview'],
          language: 'en',
          name: "ec-ng-data-visual",
-         onError: function(err) {
+         onError: (err)=>{
           console.error(`err: ${err}`);
          },
-         onCreateMenu: function(items, node) {
-             items.forEach(function (item, index, items) {
+         onCreateMenu: (items, node)=>{
+             items.forEach((item, index, items)=>{
                  if (item.className=='jsoneditor-remove') {
-                     item.click = (e)=>{
-                         console.log(`event: ${e}, item: ${item}, index: ${index}, node: ${node}`);                               
+                     item.click = ()=>{
+                         let obj = {
+                             field: node.field,
+                             value: node.value,
+                             path: node.path
+                         };
+                         console.log(`item: ${item}, index: ${index}, node: ${node}`);                           
                      }
                  }
              });
@@ -142,38 +167,13 @@ class Base {
             value: node.value,
             path: node.path
            };
-
-           //console.log(`event.type: ${event.type}, obj: ${obj}`);
-           let sp = ngData;
-             
-           for (const elm of node.path) {
-            if (sp[elm] == undefined) {
-             if (sp.name == undefined)
-               return;
-            
-             obj['key']=sp.name;
-             aq[`${obj.key}-${obj.field}`]=obj;
-             $('#ec-apply-button').removeAttr('disabled');
-             return;
-            }
-            if (typeof sp[elm] === 'object' && sp[elm] !== null)               
-              sp = sp[elm];
-           }
-
-           if (node.value != undefined && sp != node.value) {
-            if (sp.name == undefined)
-               return;
-            
-            obj['key']=sp.name;                
-            aq[`${obj.key}-${obj.field}`]=obj;
-            $('#ec-apply-button').removeAttr('disabled');
-           }
+           _this.updateJsonNodeOps(aq,obj);
           }
          }        
         }
          
         const editor = new JSONEditor($('.ec-data-model')[0],options);
-        editor.set(ngData);
+        editor.set(this.ngData);
         $('.jsoneditor-menu').append($('<button type="button" class="jsoneditor-repair" title="apply" id="ec-apply-button" disabled></button>').on("click", (e)=>{
          e.preventDefault();
          for (const _k in aq) {             
