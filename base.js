@@ -114,6 +114,7 @@ class Base {
          //mode: 'form',
          //modes: ['form', 'text', 'view'],
          //modes: ['code', 'form', 'text', 'view', 'preview'],
+         languages: 'en',
          name: "ec-ng-data-visual",
          onError: function(err) {
           console.error(`err: ${err}`);
