@@ -113,10 +113,11 @@ class EC extends Base {
 
   updateJsonNodeOps(aq,obj){
     //console.log(`event.type: ${event.type}, obj: ${obj}`);    
+    //console.log(`event.type: ${event.type}, obj: ${obj}`);    
     let sp = this.#ngData;    
     for (const elm of obj.path) {
       if (sp[elm] == undefined) {      
-        if (sp.name == undefined)        
+        if (sp.name == undefined)     
           return;
                       
         obj['key']=sp.name;        
@@ -124,16 +125,31 @@ class EC extends Base {
         return;        
       }
       
-      if (typeof sp[elm] === 'object' && sp[elm] !== null)                     
-        sp = sp[elm];        
+      obj.field = elm
+      if (typeof sp[elm] === 'object') {                     
+        sp = sp[elm];
+        continue;
+      }
     }
-        
-    if (obj.value != undefined) {    
-      if (sp.name == undefined)      
-        return;            
       
-      obj['key']=sp.name;                      
-      aq[`${obj.key}-${obj.field}`]=obj;      
+    if (sp.name == undefined) { 
+        console.log('invalid target format.');
+        return;
+    }
+
+    obj['key']=sp.name;
+            
+    if (obj.value != undefined){
+
+      if (sp[obj.field]!=obj.value){                      
+        aq[`${obj.key}-${obj.field}`]=obj;
+        return;
+      }
+    }
+
+    if (obj.method=='DELETE') {                   
+      aq[`${obj.key}`]=obj;
+      return;
     }
   }
 
