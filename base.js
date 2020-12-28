@@ -122,7 +122,7 @@ class Base {
          onCreateMenu: (items, node)=>{
              items.forEach((item, index, items)=>{
                  if (item.className=='jsoneditor-remove') {
-                     op=item.click.clone();
+                     let op=item.click;
                      item.click = ()=>{
                          let obj = {
                              field: node.field,
@@ -133,7 +133,8 @@ class Base {
                          _this.updateJsonNodeOps(aq,obj);
                          if (Object.keys(aq).length>0) {
                              $('#ec-apply-button').removeAttr('disabled');
-                         }  
+                         }
+                         op();
                      }
                  }
              });
