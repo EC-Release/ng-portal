@@ -92,26 +92,6 @@ class Base {
         $("body").css("overflow", "auto");
     }
     
-    updateJsonNodeOps(obj){
-        let aq = {};        
-        //console.log(`event.type: ${event.type}, obj: ${obj}`);
-        let sp = this.ngData;
-        for (const elm of node.path) {
-            if (sp[elm] == undefined) {
-                if (sp.name == undefined)
-                    return;
-            
-                obj['key']=sp.name;
-                aq[`${obj.key}-${obj.field}`]=obj;
-                $('#ec-apply-button').removeAttr('disabled');
-                return;
-            }
-            if (typeof sp[elm] === 'object' && sp[elm] !== null)               
-              sp = sp[elm];
-        }
-        
-    }
- 
     showDataModel(){
         this.setBlock();
         //let ngData=this.ngData;
@@ -147,7 +127,8 @@ class Base {
                          let obj = {
                              field: node.field,
                              value: node.value,
-                             path: node.path
+                             path: node.path,
+                             method: 'DELETE'
                          };
                          _this.updateJsonNodeOps(aq,obj);
                          if (Object.keys(aq).length>0) {
@@ -169,7 +150,8 @@ class Base {
            let obj = {
             field: node.field,
             value: node.value,
-            path: node.path
+            path: node.path,
+            method: 'POST'
            };
            _this.updateJsonNodeOps(aq,obj);
            if (Object.keys(aq).length>0) {
