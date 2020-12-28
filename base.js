@@ -147,7 +147,7 @@ class Base {
          //    console.log(`start: ${start}, end: ${end}`);
          //},
          onEvent: function(node, event) {
-          if (event.type == 'blur' && node.field != undefined) {
+          if (event.type == 'blur' && node.field && node.value) {
            let obj = {
             field: node.field,
             value: node.value,
