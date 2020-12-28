@@ -177,7 +177,8 @@ class Base {
                _val&&(_val[_v.field]=_v.value);
              }
              _this.TenguAPI(_v.key,_val,_v.method).then(data=>{
-               _this.setNgObjVal(_v.key,_v.field,_v.value);             
+               //if (_v.method!='DELETE') {
+               //_this.setNgObjVal(data.name,_v.field,_v.value);             
                console.log(`return data: ${data}`);
              }).catch((e)=>{
                console.log(`Exception: ${e}`);
