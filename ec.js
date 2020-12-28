@@ -25,7 +25,7 @@ class EC extends Base {
       this.apiPath = `/${this.appRev}/ec/${api}`;
       this.assetPath = `/${this.appRev}/assets`;
     
-      Function.prototype.clone = ()=>{
+      /*Function.prototype.clone = ()=>{
         var that = this;
         var temp = function temporary() { return that.apply(this, arguments); };
         for(var key in this) {
@@ -34,7 +34,7 @@ class EC extends Base {
           }
         }
         return temp;
-      };
+      };*/
   }
   
   Api(url,detail){
