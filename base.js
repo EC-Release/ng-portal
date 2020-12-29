@@ -172,6 +172,7 @@ class Base {
              if (_v.method=='DELETE'){             
                if (_v.field!=undefined) {
                    delete _val[_v.field];
+                   _v.method='PUT';
                }
              } else {             
                _val&&(_val[_v.field]=_v.value);
