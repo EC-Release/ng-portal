@@ -111,9 +111,7 @@ class EC extends Base {
     };   
   }
 
-  updateJsonNodeOps(aq,obj){
-    //console.log(`event.type: ${event.type}, obj: ${obj}`);    
-    //console.log(`event.type: ${event.type}, obj: ${obj}`);    
+  updateJsonNodeOps(aq,obj){  
     let sp = this.#ngData;    
     for (const elm of obj.path) {
       if (sp[elm] == undefined) {      
@@ -121,7 +119,7 @@ class EC extends Base {
           return;
                       
         obj['key']=sp.name;    
-        if (typeof this.editor.get()[elm]=='object')){
+        if (typeof this.editor.get()[elm]=='object'){
           obj.value=this.editor.get()[elm];
           obj.method='POST';
         }
