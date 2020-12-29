@@ -137,11 +137,19 @@ class Base {
                             }
                             op();
                         }
-                    case 'jsoneditor-insert':
+                    /*case 'jsoneditor-insert':
                         let op1 = item.click;
                         item.click = ()=>{
                             op1();
                         }
+                        if ('submenu' in item) {
+                            items.forEach((sitem, index, item.submenu)=>{
+                                let op2 = sitem.click;
+                                sitem.click = ()=>{
+                                    op2();
+                                }
+                            }
+                        }*/
                     }
              });
              return items;
