@@ -121,6 +121,7 @@ class EC extends Base {
     obj['key']=sp.name;    
 
     for (const elm of obj.path) {
+      obj.field = elm;
       if (sp[elm] == undefined) {      
                       
         if (typeof this.editor.get()[elm]=='object'){
@@ -132,7 +133,6 @@ class EC extends Base {
         return;        
       }
       
-      obj.field = elm;
       obj.value=this.editor.get()[elm];          
     }
     
