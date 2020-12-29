@@ -121,22 +121,28 @@ class Base {
          },
          onCreateMenu: (items, node)=>{
              items.forEach((item, index, items)=>{
-                 if (item.className=='jsoneditor-remove') {
-                     let op=item.click;
-                     item.click = ()=>{
-                         let obj = {
-                             field: node.field,
-                             value: node.value,
-                             path: node.path,
-                             method: 'DELETE'
-                         };
-                         _this.updateJsonNodeOps(aq,obj);
-                         if (Object.keys(aq).length>0) {
-                             $('#ec-apply-button').removeAttr('disabled');
-                         }
-                         op();
-                     }
-                 }
+                 switch (item.className) {
+                    case 'jsoneditor-remove':
+                        let op = item.click;
+                        item.click = ()=>{
+                            let obj = {
+                                field: node.field,
+                                value: node.value,
+                                path: node.path,
+                                method: 'DELETE'
+                            };
+                            _this.updateJsonNodeOps(aq, obj);
+                            if (Object.keys(aq).length > 0) {
+                                $('#ec-apply-button').removeAttr('disabled');
+                            }
+                            op();
+                        }
+                    case 'jsoneditor-insert':
+                        let op1 = item.click;
+                        item.click = ()=>{
+                            op1();
+                        }
+                    }
              });
              return items;
          },
