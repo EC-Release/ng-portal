@@ -120,16 +120,21 @@ class EC extends Base {
         if (sp.name == undefined)     
           return;
                       
-        obj['key']=sp.name;        
-        aq[`${obj.key}-${obj.field}`]=obj;        
+        obj['key']=sp.name;    
+        if (typeof this.editor.get()[elm]=='object')){
+          obj.value=this.editor.get()[elm];
+          obj.method='POST';
+        }
+         
+        aq[`${obj.key}-${elm}`]=obj;       
         return;        
       }
       
-      obj.field = elm
-      if (typeof sp[elm] === 'object') {                     
-        sp = sp[elm];
-        continue;
-      }
+      obj.field = elm;
+      //if (typeof sp[elm] === 'object') {                     
+      //  sp = sp[elm];
+      //  continue;
+      //}
     }
       
     if (sp.name == undefined) { 
