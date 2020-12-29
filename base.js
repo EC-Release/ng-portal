@@ -176,8 +176,8 @@ class Base {
          }        
         }
          
-        const editor = new JSONEditor($('.ec-data-model')[0],options);
-        editor.set(this.ngData);
+        this.editor = new JSONEditor($('.ec-data-model')[0],options);
+        this.editor.set(this.ngData);
         $('.jsoneditor-menu').append($('<button type="button" class="jsoneditor-repair" title="apply" id="ec-apply-button" disabled></button>').on("click", (e)=>{
          e.preventDefault();
          for (const _k in aq) {             
