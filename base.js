@@ -125,17 +125,17 @@ class Base {
                     case 'jsoneditor-remove':
                         let op = item.click;
                         item.click = ()=>{
+                            op();
                             let obj = {
-                                field: node.field,
-                                value: node.value,
+                                //field: node.field,
+                                //value: node.value,
                                 path: node.path,
-                                method: 'DELETE'
+                                method: 'PUT'
                             };
                             _this.updateJsonNodeOps(aq, obj);
                             if (Object.keys(aq).length > 0) {
                                 $('#ec-apply-button').removeAttr('disabled');
                             }
-                            op();
                         }
                     /*case 'jsoneditor-insert':
                         let op1 = item.click;
