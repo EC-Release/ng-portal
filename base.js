@@ -163,10 +163,8 @@ class Base {
          onEvent: function(node, event) {
           if (event.type == 'blur' && node.field && node.value) {
            let obj = {
-            field: node.field,
-            value: node.value,
-            path: node.path,
-            method: 'POST'
+               path: node.path,
+               method: 'PUT'
            };
            _this.updateJsonNodeOps(aq,obj);
            if (Object.keys(aq).length>0) {
