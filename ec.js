@@ -25,16 +25,6 @@ class EC extends Base {
       this.apiPath = `/${this.appRev}/ec/${api}`;
       this.assetPath = `/${this.appRev}/assets`;
     
-      /*Function.prototype.clone = ()=>{
-        var that = this;
-        var temp = function temporary() { return that.apply(this, arguments); };
-        for(var key in this) {
-          if (this.hasOwnProperty(key)) {
-            temp[key] = this[key];
-          }
-        }
-        return temp;
-      };*/
   }
   
   Api(url,detail){
@@ -48,7 +38,7 @@ class EC extends Base {
   }
 
   TenguDataConversionI(pk){
-    let pv = this.ngObjVal(pk);
+    let pv = this.getNgObjVal(pk);
     
     if (pv==undefined)
       return {};
@@ -72,7 +62,6 @@ class EC extends Base {
       }
     }
     return pv;
-    //pt["children"].push(op);
   }
 
   TenguAPI(key,val='',mtd='GET'){
@@ -110,17 +99,15 @@ class EC extends Base {
       }
     };   
   }
-
+     
   updateJsonNodeOps(aq,obj){  
     let sp = this.#ngData; 
     let lp = this.editor.get();
 
     for (const elm of obj.path) {
       if (sp['name']!=undefined){
-        obj.key=sp['name'];
-        obj.field = elm;
-        obj.value = lp[elm];
-        //obj.fromValue = sp[elm];
+          obj.key=sp['name'];
+          obj.value = cloneNgObjVal(lp);
       }
 
       sp=sp[elm];
@@ -135,7 +122,14 @@ class EC extends Base {
     .then(resp => resp.text());
   }
 
-  ngObjVal(k) {
+  cloneNgObjVal(obj){
+    let _s = JSON.parse(JSON.stringify(obj));
+    delete _s.children;
+    delete _s.audit;
+    return _s;
+  }
+
+  getNgObjVal(k) {
     let _k = JSON.parse(JSON.stringify(this.#ngObj.get(k)));
     return _k;
   }
