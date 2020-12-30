@@ -111,9 +111,9 @@ class EC extends Base {
           obj.value = this.cloneNgObjVal(lp);
       } else if (obj.path[idx-2]=='children'){
           obj.method='POST'
-          obj.key=obj.path.join('-');
           obj.value = this.cloneNgObjVal(lp);
-          obj.value['parent']=obj.path[idx-3];
+          obj.value['parent']=(obj.key);
+          obj.key=obj.path.join('-');
       }
 
       sp=(sp&&sp[elm]);
