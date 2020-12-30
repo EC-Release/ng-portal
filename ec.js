@@ -105,13 +105,13 @@ class EC extends Base {
     let lp = this.editor.get();
 
     for (const elm of obj.path) {
-      if (sp['name']!=undefined){
+      if (sp&&sp['name']!=undefined){
           obj.key=sp['name'];
           obj.value = this.cloneNgObjVal(lp);
       }
 
-      sp=sp[elm];
-      lp=lp[elm];
+      sp=(sp&&sp[elm]);
+      lp=(lp&&lp[elm]);
     }
 
     aq[`${obj.key}-${obj.method}`]=obj;
