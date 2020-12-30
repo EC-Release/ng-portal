@@ -125,7 +125,7 @@ class EC extends Base {
   cloneNgObjVal(obj){
     let _s = JSON.parse(JSON.stringify(obj));
     delete _s.children;
-    delete _s.audit;
+    //delete _s.audit;
     return _s;
   }
 
