@@ -188,7 +188,7 @@ class Base {
                if (_v.method=='DELETE'){
                    _this.delNgObj(_v.key);
                } else {
-                   _this.setNgObj(_v.key,_v.value);
+                   _this.setNgObj(_v.key,data);
                }
                this.TenguDataInit('qa');
                console.log(`return data: ${data}`);
