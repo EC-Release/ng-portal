@@ -180,8 +180,11 @@ class Base {
          e.preventDefault();
          for (const _k in aq) {             
              let _v = aq[_k];
-             
+             if (!_v.value.hasOwnProperty('parent'))
+               console.err(`invalid keyvalue pair ${_v.value}`);
+                 
              _this.TenguAPI(_v.key,_v.value,_v.method).then(data=>{
+               
                if (_v.method=='DELETE'){
                    _this.delNgObj(_v.key);
                } else {
