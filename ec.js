@@ -140,11 +140,11 @@ class EC extends Base {
     return _k;
   }
   
-  setNgObjVal(key,val) {
+  setNgObj(key,val) {
     this.#ngObj.set(key,val);
   }
-                        
-  delNgObjVal(key) {
+
+  delNgObj(key) {
     this.#ngObj.delete(key);
   }
   
