@@ -112,28 +112,37 @@ class EC extends Base {
   }
 
   updateJsonNodeOps(aq,obj){  
-    let sp = this.#ngData;    
+    let sp = this.#ngData; 
     if (sp.name == undefined) { 
         console.log('invalid target format.');
         return;
     }
+    let lp = this.editor.get();
 
-    obj['key']=sp.name;    
+    //obj['key']=sp.name;    
 
     for (const elm of obj.path) {
-      obj.field = elm;
-      if (sp[elm] == undefined) {      
+      if (sp['name']==undefined){
+        sp=sp[elm];
+        lp=lp[elm];
+        continue;
+      }
+
+      //sp=sp[elm];
+      //lp=lp[elm];
+      
+      if (sp[elm] == undefined) {    
                       
-        if (typeof this.editor.get()[elm]=='object'){
-          obj.value=this.editor.get()[elm];
+        if (typeof lp[elm]=='object'){
+          obj.value=lp[elm];
           obj.method='POST';
         }
-         
+        obj.field = elm;      
         aq[`${obj.key}-${elm}`]=obj;       
         return;        
       }
       
-      obj.value=this.editor.get()[elm];          
+      obj.value=sp[elm];          
     }
     
     if (obj.value != undefined){
