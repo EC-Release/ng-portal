@@ -182,18 +182,16 @@ class Base {
          e.preventDefault();
          for (const _k in aq) {             
              let _v = aq[_k];
-             let _val=_this.ngObjVal(_v.key);
-             if (_v.method=='DELETE'){             
-               if (_v.field!=undefined) {
-                   delete _val[_v.field];
-                   _v.method='PUT';
-               }
-             } else {             
-               _val&&(_val[_v.field]=_v.value);
-             }
+             let _val=_this.ngObjVal(_v.key);                         
+             _val&&(_val[_v.field]=_v.value);
+             
              _this.TenguAPI(_v.key,_val,_v.method).then(data=>{
-               //if (_v.method!='DELETE') {
-               //_this.setNgObjVal(data.name,_v.field,_v.value);             
+               if (_v.method=='DELETE'){
+                   delNgObj(_v.key);
+               } else {
+                   setNgObj(_v.key,_val);
+               }
+               this.TenguDataInit('qa');
                console.log(`return data: ${data}`);
              }).catch((e)=>{
                console.log(`Exception: ${e}`);
