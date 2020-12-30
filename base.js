@@ -182,10 +182,8 @@ class Base {
          e.preventDefault();
          for (const _k in aq) {             
              let _v = aq[_k];
-             let _val=_this.ngObjVal(_v.key);                         
-             _val&&(_val[_v.field]=_v.value);
              
-             _this.TenguAPI(_v.key,_val,_v.method).then(data=>{
+             _this.TenguAPI(_v.key,_v.value,_v.method).then(data=>{
                if (_v.method=='DELETE'){
                    delNgObj(_v.key);
                } else {
