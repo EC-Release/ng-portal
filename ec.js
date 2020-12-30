@@ -140,10 +140,8 @@ class EC extends Base {
     return _k;
   }
   
-  setNgObjVal(key,fld,val) {
-    let op = this.#ngObj.get(key);
-    op[fld]=val;                    
-    this.#ngObj.set(key,op);
+  setNgObjVal(key,val) {
+    this.#ngObj.set(key,val);
   }
   
   get ngObjSize() {
