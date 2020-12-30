@@ -127,11 +127,12 @@ class Base {
                         item.click = ()=>{
                             op();
                             let obj = {
-                                //field: node.field,
-                                //value: node.value,
                                 path: node.path,
                                 method: 'PUT'
                             };
+                            if (node.path[node.path.length-2]=='children')
+                              obj.method='DELETE';
+                            
                             _this.updateJsonNodeOps(aq, obj);
                             if (Object.keys(aq).length > 0) {
                                 $('#ec-apply-button').removeAttr('disabled');
