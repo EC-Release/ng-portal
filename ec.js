@@ -104,15 +104,22 @@ class EC extends Base {
     let sp = this.#ngData; 
     let lp = this.editor.get();
 
-    for (const elm of obj.path) {
-      if (sp&&sp['name']!=undefined){
+    obj.path.forEach((elm,idx)=>{
+      if (sp&&sp['name']!=undefined&&
+          lp&&lp['name']==sp['name']){
           obj.key=sp['name'];
           obj.value = this.cloneNgObjVal(lp);
+      } else if (obj.path[idx-2]=='children'){
+          obj.method='POST'
+          obj.key=obj.path.join('-');
+          obj.value = this.cloneNgObjVal(lp);
+          obj.value['parent']=obj.path[idx-3];
       }
 
       sp=(sp&&sp[elm]);
       lp=(lp&&lp[elm]);
-    }
+
+    });
 
     aq[`${obj.key}-${obj.method}`]=obj;
   }
