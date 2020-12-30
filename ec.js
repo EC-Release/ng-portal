@@ -114,7 +114,7 @@ class EC extends Base {
       lp=lp[elm];
     }
 
-    aq[`${obj.key}-${obj.field}`]=obj;
+    aq[`${obj.key}-${obj.path[obj.path.length-1]}`]=obj;
   }
 
   Html(url){
