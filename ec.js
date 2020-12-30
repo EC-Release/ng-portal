@@ -107,7 +107,7 @@ class EC extends Base {
     for (const elm of obj.path) {
       if (sp['name']!=undefined){
           obj.key=sp['name'];
-          obj.value = cloneNgObjVal(lp);
+          obj.value = this.cloneNgObjVal(lp);
       }
 
       sp=sp[elm];
