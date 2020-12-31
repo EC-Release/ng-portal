@@ -103,14 +103,24 @@ import EC from './ec.js'
                 ec.setActiveTab(event.target);
                 event.preventDefault();
 
+                let tc = (ms)=>{
+                    var date = new Date(ms * 1000);
+                    return date.toLocaleTimeString('en-US');
+                }
+                
+                let up = (url)=>{
+                    var _u = new URL(url);
+                    return _u.hostname.split('.')[0];
+                }
+                
                 ec.TenguAPI('seed', '', 'GET').then(data=>{
-                    let htmlString = `<table class="table text-center"><caption>System Seeders</caption><thead><tr>` + `<th scope="col" class="text-left">Seeder</th>` + `<th scope="col">Status</th>` + `<th scope="col">Reboot</th>` + `<th scope="col">Updated</th>` + `<th scope="col">Created</th>` + `</tr></thead><tbody>`;
+                    let htmlString = `<table class="table text-center"><caption>System Seeders</caption><thead><tr>` + `<th scope="col" class="text-left">Seeder</th>` + `<th scope="col">Status</th>` + `<th scope="col">Reboot</th>` + `<th scope="col">Updated On</th>` + `<th scope="col">Joined On</th>` + `</tr></thead><tbody>`;
                     for (const [key, seed] of Object.entries(data)) {
-                        htmlString += `<tr><th scope="row" class="text-left"><a class="ec-seed-link">${seed.Node}</a></th>` +
-                            `<td>Current</td>` + 
+                        htmlString += `<tr><th scope="row" class="text-left"><a class="ec-seed-link" href="${seed.Node}">${up(seed.Node)}</a></th>` +
+                            `<td><i data-feather="sun"></i></td>` + 
                             `<td>${seed.Retry}</td>` + 
-                            `<td>${seed.UpdatedOn}</td>` + 
-                            `<td>${seed.CreatedOn}</td>` + `</tr>`;
+                            `<td>${tc(seed.UpdatedOn)}</td>` + 
+                            `<td>${tc(seed.CreatedOn)}</td>` + `</tr>`;
                     };
                     $("main").html(htmlString);
                     $(event.target).addClass('active');
