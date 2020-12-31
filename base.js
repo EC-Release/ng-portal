@@ -115,11 +115,13 @@ class Base {
     }
     
     showDataModel(){
+        if (document.getElementById("ec-data-model").length>0)
+            return;
+        
         this.setBlock();
-        //let ngData=this.ngData;
         let _this=this,
             aq = {};
-     
+        
         $('body').append($('<div class="ec-data-model"></div>').css({
          width: 640,
          height: 480,
@@ -223,6 +225,7 @@ class Base {
          console.log('db updated');
          $('#ec-apply-button').prop("disabled", true);
         }));
+        
         //const updatedJson = editor.get();     
     }
  
