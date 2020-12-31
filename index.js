@@ -104,13 +104,13 @@ import EC from './ec.js'
                 event.preventDefault();
 
                 let tc = (ms)=>{
-                    var d = new Date(ms * 1000);
-                    return [(d.getMonth()+1).padLeft(),
-                               d.getDate().padLeft(),
-                               d.getFullYear()].join('/') +' ' +
-                              [d.getHours().padLeft(),
-                               d.getMinutes().padLeft(),
-                               d.getSeconds().padLeft()].join(':');
+                    var currentdate = new Date(ms * 1000);
+                    return currentdate.getFullYear() + "-"
+                            + (currentdate.getMonth()+1)  + "-" 
+                            + currentdate.getDate() + " "  
+                            + currentdate.getHours() + ":"  
+                            + currentdate.getMinutes() + ":" 
+                            + currentdate.getSeconds();
                 }
                 
                 let up = (url)=>{
