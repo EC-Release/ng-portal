@@ -104,7 +104,7 @@ import EC from './ec.js'
                 event.preventDefault();
 
                 let tc = (ms)=>{
-                    var date = new Date(ms * 1000);
+                    var d = new Date(ms * 1000);
                     return [(d.getMonth()+1).padLeft(),
                                d.getDate().padLeft(),
                                d.getFullYear()].join('/') +' ' +
