@@ -117,7 +117,7 @@ class Base {
     }
     
     showDataModel(){
-        if (document.getElementById("ec-data-model").length>0)
+        if (document.getElementsByClassName("ec-data-model").length>0)
             return;
         
         this.setBlock();
