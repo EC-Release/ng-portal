@@ -87,6 +87,27 @@ import EC from './ec.js'
                 });
             });
 
+            $('ul').on('click', 'li.ec-status', (event)=>{
+                ec.setActiveTab(event.target);
+                event.preventDefault();
+
+                ec.TenguAPI('seed', '', 'GET').then(data=>{
+                    let htmlString = `<table class="table text-center"><caption>System Seeders</caption><thead><tr>` + `<th scope="col" class="text-left">Seeder</th>` + `<th scope="col">Status</th>` + `<th scope="col">Reboot</th>` + `<th scope="col">Updated</th>` + `<th scope="col">Created</th>` + `</tr></thead><tbody>`;
+                    data.forEach(seed, idx) {
+                        htmlString += `<tr><th scope="row" class="text-left">${file.name}</th>` + 
+                            `<td><a class="ec-seed-link">${seed.Node}</a></td>` + 
+                            `<td>Current</td>` + 
+                            `<td>${seed.Retry}</td>` + 
+                            `<td>${seed.UpdatedOn}</td>` + 
+                            `<td>${seed.CreatedOn}</td>` + `</tr>`;
+                    }
+                    $("main").html(ec.htmlString);
+                    $(event.target).addClass('active');
+                }).catch((e)=>{
+                    console.log(`Exception: ${e}`);
+                });
+            });
+            
             $('ul').on('click', 'li.ec-security', (event)=>{
                 ec.setActiveTab(event.target);
                 event.preventDefault();
@@ -110,7 +131,7 @@ import EC from './ec.js'
                 ec.setActiveTab(event.target);
                 event.preventDefault();
 
-                $('body').append($('<div class="ec-info"></div>').css({
+                $('main').append($('<div class="ec-info"></div>').css({
                     position: "fixed",
                     left: $('body')[0].getBoundingClientRect().width - 100,
                     bottom: 20,
