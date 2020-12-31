@@ -81,9 +81,9 @@ class Base {
     getBoolIcon(ok,uri) {
         let html='';
         if (ok){
-            html+=`${feather['check-circle'].toSvg()}`;
+            html+=`${feather.icons['check-circle'].toSvg()}`;
         } else {
-            html+=`${feather['circle'].toSvg()}`;
+            html+=`${feather.icons['circle'].toSvg()}`;
         }
         return `<a href="${this.assetPath}/${uri}" class="ec-godoc-rev">${html}</a>`;
     }
