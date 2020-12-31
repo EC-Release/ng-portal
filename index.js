@@ -59,7 +59,7 @@ import EC from './ec.js'
                 }
 
                 ec.Api('https://api.github.com/repos/ec-release/ng-webui/contents/godoc').then((data)=>{
-                    let htmlString = `<table class="table text-center"><caption>Agent SDK Matrix</caption><thead><tr>` + `<th scope="col" class="text-left">Rev</th>` + `<th scope="col">Go</th>` + `<th scope="col">Java</th>` + `<th scope="col">C++</th>` + `<th scope="col">NodeJS</th>` + `</tr></thead><tbody>`;
+                    let htmlString = `<table class="table text-center table-striped"><caption>Agent SDK Matrix</caption><thead><tr>` + `<th scope="col" class="text-left">Rev</th>` + `<th scope="col">Go</th>` + `<th scope="col">Java</th>` + `<th scope="col">C++</th>` + `<th scope="col">NodeJS</th>` + `</tr></thead><tbody>`;
                     for (let file of data) {
                         if (file.type == "dir") {
                             htmlString += `<tr><th scope="row" class="text-left">${file.name}</th>` + `<td>${ec.getBoolIcon(true, file.path)}</td>` + `<td>${ec.getBoolIcon(false, file.path)}</td>` + `<td>${ec.getBoolIcon(true, file.path)}</td>` + `<td>${ec.getBoolIcon(false, file.path)}</td>` + `</tr>`;
@@ -86,7 +86,7 @@ import EC from './ec.js'
                 }
 
                 ec.Api('https://api.github.com/repos/ec-release/sdk/releases').then((data)=>{
-                    let htmlString = `<table class="table"><caption>Release Matrix</caption><thead><tr><th scope="col">Rev</th><th scope="col">Release Note</th></tr></thead><tbody>`;
+                    let htmlString = `<table class="table table-striped"><caption>Release Matrix</caption><thead><tr><th scope="col">Rev</th><th scope="col">Release Note</th></tr></thead><tbody>`;
                     for (let rel of data) {
                         htmlString += `<tr><th scope="row">${rel.name}</th><td>${marked.makeHtml(rel.body)}</td></tr>`;
                     }
