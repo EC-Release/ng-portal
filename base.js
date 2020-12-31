@@ -14,13 +14,15 @@ import define from "./analytics.js";
 import {default as build} from "./build.js";
 
 class Base {
-    constructor(){}
+    constructor(){
+        this.worker = new Worker('./worker.js');
+    }
     
     tokenChecker(){
         let op = document.cookie.split("ec-config=");
         if (op.length<2) {
             console.log(`token expired. refresh browser.`);
-            location.reload();
+            this.worker.postMessage({"action":"reload"});
             return;
         }
         return op;
