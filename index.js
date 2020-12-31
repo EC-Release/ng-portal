@@ -70,7 +70,7 @@ import EC from './ec.js'
                     $("main").html(ec.sdkInnerHTML);
                     $(event.target).addClass('active');
                 }).catch((e)=>{
-                    console.log(`Exception: e}`);
+                    console.log(`Exception: ${e}`);
                 });
             }
             );
