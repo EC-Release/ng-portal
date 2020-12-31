@@ -24,7 +24,7 @@ class EC extends Base {
       this.appPath = `/${this.appRev}/ec`;
       this.apiPath = `/${this.appRev}/ec/${api}`;
       this.assetPath = `/${this.appRev}/assets`;
-    
+      this.tokenChecker();
   }
   
   Api(url,detail){
@@ -84,12 +84,7 @@ class EC extends Base {
   }
 
   GetTenguAPIObj(mtd='GET'){
-    let op = document.cookie.split("ec-config=");
-    if (op.length<2) {
-      console.log(`token expired. refresh browser.`);
-      location.reload();
-      return;
-    }
+    this.tokenChecker();
     
     return {
       method: mtd,
