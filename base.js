@@ -239,6 +239,15 @@ class Base {
        return Inspector.into(".chart")();
      });
     }
+    
+    showTenguChartII(){
+     //this.TenguDataInit('qa');
+     $("main").html('<div class="chart mx-5 my-5"></div>');
+     (new Runtime).module(build, name=>{
+      if (name === "chart")
+       return Inspector.into(".chart")();
+     });
+    }
 }
 
 export { Base as default };
