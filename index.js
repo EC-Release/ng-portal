@@ -123,7 +123,7 @@ import EC from './ec.js'
                     for (const [key, seed] of Object.entries(data)) {
                         htmlString += `<tr><th scope="row" class="text-left"><a class="ec-seed-link" href="${seed.Node}">${up(seed.Node)}</a></th>` +
                             `<td><a class="ec-seed-link" href="${seed.Seed}">${up(seed.Seed)}</a></td>` + 
-                            `<td>${seed.SeqID})}</td>` + 
+                            `<td>${seed.SeqID}</td>` + 
                             `<td>${feather.icons.sun.toSvg({'color':'grey'})}</td>` + 
                             `<td>${seed.Retry}</td>` + 
                             `<td>${tc(seed.UpdatedOn)}</td>` + 
