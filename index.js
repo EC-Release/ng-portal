@@ -35,6 +35,18 @@ import EC from './ec.js'
                 extensions: ['header-anchors'],
                 ghCompatibleHeaderId: true
             });
+            
+            ec.TenguAPI('', '', 'GET').then(data1=>{
+                for (const val of data1) {
+                    ec.TenguAPI(val, '', 'GET').then(data=>{
+                        console.log(`key: ${val} added`);
+                    }).catch(e=>{
+                        console.error(`Exception ${e}`);
+                    });
+                }
+            }).catch((e)=>{
+                console.error(`Exception: ${e}`);
+            });
 
             $('ul').on('click', 'li.ec-godoc', (event)=>{
 
@@ -145,20 +157,7 @@ import EC from './ec.js'
                     ec.showTenguChartI();
                     $(event.target).addClass('active');
                 } else {
-                    ec.TenguAPI('', '', 'GET').then(data1=>{
-                        for (const val of data1) {
-                            ec.TenguAPI(val, '', 'GET').then(data=>{
-                                if (ec.ngObjSize == data1.length) {
-                                    ec.showTenguChartI();
-                                    $(event.target).addClass('active');
-                                }
-                            }).catch(e=>{
-                                console.log(`Exception ${e}`);
-                            });
-                        }
-                    }).catch((e)=>{
-                        console.log(`Exception: ${e}`);
-                    });
+                    console.log(`no data obj available`);
                 }
             });
 
