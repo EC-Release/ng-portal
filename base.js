@@ -21,7 +21,8 @@ class Base {
             console.log(`token expired. refresh browser.`);
             location.reload();
             return;
-        }                
+        }
+        return op;
     }
     
     windowEventBinder(){
