@@ -15,7 +15,6 @@ import {default as build} from "./build.js";
 
 class Base {
     constructor(){
-        this.worker = new Worker('./worker.js');
         this.windowEventBinder();
     }
     
@@ -30,6 +29,11 @@ class Base {
     }
     
     windowEventBinder(){
+        this.worker = new Worker('./worker.js');
+        this.worker.onmessage = function(e) {
+          console.log(`worker comunication: ${e}`);
+        }
+        
         Object.keys(window).forEach(key => {
             if (/^on(key|mouse)/.test(key)) {
                 window.addEventListener(key.slice(2), event => {
