@@ -16,6 +16,7 @@ import {default as build} from "./build.js";
 class Base {
     constructor(){
         this.worker = new Worker('./worker.js');
+        this.windowEventBinder();
     }
     
     tokenChecker(){
