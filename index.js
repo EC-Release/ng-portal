@@ -168,17 +168,18 @@ import EC from './ec.js'
             $('ul').on('click', 'li.ec-analytics', (event)=>{
                 ec.setActiveTab(event.target);
                 event.preventDefault();
-
-                $('main').append($('<div class="ec-info"></div>').css({
-                    position: "fixed",
-                    left: $('body')[0].getBoundingClientRect().width - 100,
-                    bottom: 20,
-                    color: 'grey'
-                }).text('[ + data@EC ]').on("click", (e)=>{
-                    e.preventDefault();
-                    ec.TenguDataInit('qa');
-                    ec.showDataModel();
-                }));
+                if (document.getElementsByClassName('ec-info').length<1) {                
+                    $('body').append($('<div class="ec-info"></div>').css({
+                        position: "fixed",
+                        left: $('body')[0].getBoundingClientRect().width - 100,
+                        bottom: 20,
+                        color: 'grey'
+                    }).text('[ + data@EC ]').on("click", (e)=>{
+                        e.preventDefault();
+                        ec.TenguDataInit('qa');
+                        ec.showDataModel();
+                    }));
+                }
                 
                 if (ec.ngObjSize>0){
                     ec.showTenguChartI();
