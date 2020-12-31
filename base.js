@@ -14,9 +14,7 @@ import define from "./analytics.js";
 import {default as build} from "./build.js";
 
 class Base {
-    constructor(){
-        this.windowEventBinder();
-    }
+    constructor(){}
     
     tokenChecker(){
         let op = document.cookie.split("ec-config=");
@@ -29,8 +27,8 @@ class Base {
     }
     
     windowEventBinder(){
-        this.worker = new Worker('./worker.js');
-        this.worker.onmessage = function(e) {
+        this.worker = new Worker(`${this.assetPath}/worker.js`);
+        this.worker.onmessage = (e)=>{
           console.log(`worker comunication: ${e}`);
         }
         
