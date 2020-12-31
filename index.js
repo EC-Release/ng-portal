@@ -105,7 +105,12 @@ import EC from './ec.js'
 
                 let tc = (ms)=>{
                     var date = new Date(ms * 1000);
-                    return date.toLocaleTimeString('en-US');
+                    return [(d.getMonth()+1).padLeft(),
+                               d.getDate().padLeft(),
+                               d.getFullYear()].join('/') +' ' +
+                              [d.getHours().padLeft(),
+                               d.getMinutes().padLeft(),
+                               d.getSeconds().padLeft()].join(':');
                 }
                 
                 let up = (url)=>{
@@ -117,7 +122,7 @@ import EC from './ec.js'
                     let htmlString = `<table class="table text-center"><caption>System Seeders</caption><thead><tr>` + `<th scope="col" class="text-left">Seeder</th>` + `<th scope="col">Status</th>` + `<th scope="col">Reboot</th>` + `<th scope="col">Updated On</th>` + `<th scope="col">Joined On</th>` + `</tr></thead><tbody>`;
                     for (const [key, seed] of Object.entries(data)) {
                         htmlString += `<tr><th scope="row" class="text-left"><a class="ec-seed-link" href="${seed.Node}">${up(seed.Node)}</a></th>` +
-                            `<td><i data-feather="sun"></i></td>` + 
+                            `<td>${feather.icons.sun.toSvg({'color':'grey'})}</td>` + 
                             `<td>${seed.Retry}</td>` + 
                             `<td>${tc(seed.UpdatedOn)}</td>` + 
                             `<td>${tc(seed.CreatedOn)}</td>` + `</tr>`;
