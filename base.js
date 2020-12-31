@@ -11,6 +11,7 @@
 
 import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
 import define from "./analytics.js";
+import {default as build} from "./build.js";
 
 class Base {
     constructor(){}
