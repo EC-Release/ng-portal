@@ -13,7 +13,20 @@ import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/run
 import define from "./analytics.js";
 
 class Base {
-    constructor() {}
+    constructor() {
+        Object.keys(window).forEach(key => {
+            if (/^on(key|mouse)/.test(key)) {
+                window.addEventListener(key.slice(2), event => {
+                    let op = document.cookie.split("ec-config=");
+                    if (op.length<2) {
+                      console.log(`token expired. refresh browser.`);
+                      location.reload();
+                      return;
+                    }
+                });
+            }
+        });
+    }
     load(src) {
         return new Promise((resolve,reject)=>{
             var s;
