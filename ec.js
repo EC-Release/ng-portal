@@ -84,7 +84,7 @@ class EC extends Base {
   }
 
   GetTenguAPIObj(mtd='GET'){
-    this.tokenChecker();
+    let op = this.tokenChecker();
     
     return {
       method: mtd,
