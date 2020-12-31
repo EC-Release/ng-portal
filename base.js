@@ -91,8 +91,10 @@ class Base {
     setBlock(){
         $("body").css("overflow", "hidden");
         $('body').append($('<div class="ec-block"></div>').css({
-         width: $('body')[0].getBoundingClientRect().width,
-         height: $('body')[0].getBoundingClientRect().height,
+         //width: $('body')[0].getBoundingClientRect().width,
+         //height: $('body')[0].getBoundingClientRect().height,
+         width: 100%,
+         height: 100%,
          opacity: 0.6,
          top: window.pageYOffset,
          left: window.pageXOffset,
