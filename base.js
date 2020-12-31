@@ -37,6 +37,9 @@ class Base {
           case `${this.appPath}/security`:
             $('ul > li.ec-security').click();
             break;
+          case `${this.appPath}/status`:
+            $('ul > li.ec-status').click();
+            break;
           case `${this.appPath}/analytics`:
             $('ul > li.ec-analytics').click();
             break;
