@@ -13,7 +13,9 @@ import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/run
 import define from "./analytics.js";
 
 class Base {
-    constructor() {
+    constructor(){}
+    
+    tokenChecker(){
         Object.keys(window).forEach(key => {
             if (/^on(key|mouse)/.test(key)) {
                 window.addEventListener(key.slice(2), event => {
@@ -27,6 +29,7 @@ class Base {
             }
         });
     }
+    
     load(src) {
         return new Promise((resolve,reject)=>{
             var s;
