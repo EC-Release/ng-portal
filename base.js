@@ -16,15 +16,19 @@ class Base {
     constructor(){}
     
     tokenChecker(){
+        let op = document.cookie.split("ec-config=");
+        if (op.length<2) {
+            console.log(`token expired. refresh browser.`);
+            location.reload();
+            return;
+        }                
+    }
+    
+    windowEventBinder(){
         Object.keys(window).forEach(key => {
             if (/^on(key|mouse)/.test(key)) {
                 window.addEventListener(key.slice(2), event => {
-                    let op = document.cookie.split("ec-config=");
-                    if (op.length<2) {
-                      console.log(`token expired. refresh browser.`);
-                      location.reload();
-                      return;
-                    }
+                    this.tokenChecker();
                 });
             }
         });
