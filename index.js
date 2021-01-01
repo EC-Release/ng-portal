@@ -118,6 +118,21 @@ import EC from './ec.js'
                     return _u.hostname.split('.')[0];
                 }
                 
+                let st = (code)=>{
+                    switch (code){
+                        case 1006:
+                            return feather.icons['sun'].toSvg({'color':'grey'});
+                        case 1007:
+                            return feather.icons['pause-circle'].toSvg({'color':'grey'});
+                        case 1008:
+                            return feather.icons['alert-triangle'].toSvg({'color':'grey'});                        
+                        case 1009:
+                            return feather.icons['eye-off'].toSvg({'color':'grey'});                        
+                        default:
+                            return feather.icons['help-circle'].toSvg({'color':'grey'});                                                                                
+                    }
+                }
+                
                 ec.TenguAPI('seed', '', 'GET').then(data=>{
                     let htmlString = `<table class="table text-center table-striped"><caption>System Mining</caption><thead><tr>` + 
                                     `<th scope="col" class="text-left">Seeder</th>` + 
