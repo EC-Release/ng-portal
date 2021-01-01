@@ -17,12 +17,12 @@ class EC extends Base {
   #releases = "";
   #ngObj = new Map();
   #ngData = {};
-  constructor(id,rev='v1.2beta',path='/ec',api='api') {
+  constructor(id,rev='v1.2beta',path='ec',api='api') {
       super();
       console.log(`EC id# ${id}`);
       this.appRev = rev;
-      this.appPath = `/${this.appRev}/ec`;
-      this.apiPath = `/${this.appRev}/ec/${api}`;
+      this.appPath = `/${this.appRev}/${path}`;
+      this.apiPath = `/${this.appRev}/${path}/${api}`;
       this.assetPath = `/${this.appRev}/assets`;
       this.tokenChecker();
       this.windowEventBinder();
