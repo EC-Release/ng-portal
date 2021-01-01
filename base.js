@@ -20,11 +20,14 @@ class Base {
         let op = document.cookie.split("ec-config=");
         if (op.length<2) {
             console.log(`token expired. refresh browser.`);
-            location.reload();
-            //this.worker.postMessage({"action":"reload"});
-            return;
+            var ref1 = document.createElement('iframe');
+            ref1.style.display = 'none';
+            ref1.onload = ()=>{ ref1.parentNode.removeChild(ref1); };
+            ref1.src = `${this.appPath}`;
+            document.body.appendChild(ref1);
+            return this.tokenChecker();
         }
-        return op;
+        return op[1];
     }
     
     windowEventBinder(){
