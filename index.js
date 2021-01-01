@@ -149,7 +149,7 @@ import EC from './ec.js'
                             `<td><a class="ec-seed-link" href="${seed.Seed}">${up(seed.Seed)}</a></td>` + 
                             `<td><a class="ec-oauth-link" href="${seed.OAuth}">${up(seed.OAuth)}</a></td>` + 
                             `<td>${seed.SeqID}</td>` + 
-                            `<td>${feather.icons.sun.toSvg({'color':'grey'})}</td>` + 
+                            `<td>${st(seed.Status)}</td>` + 
                             `<td>${seed.Retry}</td>` + 
                             `<td>${tc(seed.UpdatedOn)}</td>` + 
                             `<td>${tc(seed.CreatedOn)}</td>` + `</tr>`;
