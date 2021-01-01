@@ -20,17 +20,18 @@ class Base {
         let op = document.cookie.split("ec-config=");
         if (op.length<2) {
             console.log(`token expired. refresh browser.`);
-            this.worker.postMessage({"action":"reload"});
+            location.reload();
+            //this.worker.postMessage({"action":"reload"});
             return;
         }
         return op;
     }
     
     windowEventBinder(){
-        this.worker = new Worker(`${this.assetPath}/worker.js`);
+        /*this.worker = new Worker(`${this.assetPath}/worker.js`);
         this.worker.onmessage = (e)=>{
           console.log(`worker comunication: ${e}`);
-        }
+        }*/
         
         Object.keys(window).forEach(key => {
             if (/^on(key|mouse)/.test(key)) {
