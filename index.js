@@ -60,7 +60,7 @@ import EC from './ec.js'
                                                 zip:data.postal,
                                                 state:data.region_code
                                             };
-                                            return ec.TenguAPI(browseHistory,bh,'POST').then((data)=>{
+                                            return ec.TenguAPI('browseHistory',bh,'POST').then((data)=>{
                                                 console.log('geolocation updated. ${JSON.stringify(data)}');
                                             });
                                         }).catch(e=>{
