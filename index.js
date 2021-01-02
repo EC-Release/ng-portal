@@ -47,8 +47,22 @@ import EC from './ec.js'
                                 let ay=ec.getNgObjVal('ay');
                                 data1.list.split(', ').forEach((ip)=>{
                                     if (!ip.startsWith('10.')){
-                                        ec.Api(`${ay.cred.ipdata.url}/${ip}?${ay.cred.ipdata.key}=${ay.cred.ipdata.value}`).then((data)=>{                                         
-                                            console.log(`geo svc: ${data} browsHistory: ${ec.getNgObjVal('browseHistory')}`);
+                                        ec.Api(`${ay.cred.ipdata.url}/${ip}?${ay.cred.ipdata.key}=${ay.cred.ipdata.value}`).then((data)=>{                                   
+                                            //console.log(`geo svc: ${data} browsHistory: ${ec.getNgObjVal('browseHistory')}`);
+                                            let bh = ec.getNgObjVal('browseHistory'),
+                                                ts = (new Date()).getTime();
+                                            bh.list[`${ts}`]={
+                                                ip:ip,
+                                                lat:data.latitude,
+                                                lng:data.longitude,
+                                                city:data.city,
+                                                country:data.country_name,
+                                                zip:data.postal,
+                                                state:data.region_code
+                                            };
+                                            return ec.TenguAPI(browseHistory,bh,'POST').then((data)=>{
+                                                console.log('geolocation updated. ${JSON.stringify(data)}');
+                                            });
                                         }).catch(e=>{
                                             console.log(`Exception: ${e}`);
                                         });
