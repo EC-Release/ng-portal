@@ -42,12 +42,12 @@ import EC from './ec.js'
                 for (const val of data1) {
                     ec.TenguAPI(val, '', 'GET').then(data=>{
                         if (ec.ngObjSize>=data1.length) {
-                            console.debug(`all keys: ${data1} added. continue geo analysis.`);
+                            console.log(`all keys: ${data1} added. continue geo analysis.`);
                             return ec.TenguAPI('ip', '', 'GET').then(data1=>{
                                 let ay=ec.getNgObjVal('ay');
                                 data1.list.split(', ').forEach((ip)=>{
                                     ec.Api(`${ay.cred.ipdata.url}/${ip}?${ay.cred.ipdata.key}=${ay.cred.ipdata.value}`).then((data)=>{                                         
-                                        console.debug(`geo svc: ${data} browsHistory: ${ec.getNgObjVal('browseHistory')}`);
+                                        console.log(`geo svc: ${data} browsHistory: ${ec.getNgObjVal('browseHistory')}`);
                                     }).catch(e=>{
                                         console.log(`Exception: ${e}`);
                                     });
@@ -62,7 +62,7 @@ import EC from './ec.js'
                     });
                 }
             }).catch((e)=>{
-                console.error(`Exception: ${e}`);
+                console.log(`Exception: ${e}`);
             });
             
             $('ul').on('click', 'li.ec-godoc', (event)=>{
