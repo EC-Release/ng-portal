@@ -16,7 +16,9 @@ import EC from './ec.js'
     let ec = new EC('ec1');
     window.ec = ec;
     ec.load("https://code.jquery.com/jquery-3.5.1.slim.min.js").catch((err)=>{}
-    ).then((s)=>{
+    ).then((s)=>{        
+        ec.windowEventBinder();
+        
         ec.load("https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js").catch((err)=>{}
         ).then((success)=>{
 
