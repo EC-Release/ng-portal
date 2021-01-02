@@ -46,7 +46,7 @@ import EC from './ec.js'
                             ec.TenguAPI('ip', '', 'GET').then(data1=>{
                                 let ay=ec.getNgObjVal('ay');
                                 data1.list.split(', ').forEach((ip)=>{
-                                    ec.Api(`http://api.ipstack.com/${ip}?access_key=${ay.cred['ipstack-api-key']}`).then((data)=>{
+                                    ec.Api(`${ay.cred.ipdata.url}/${ip}?${ay.cred.ipdata.key}=${ay.cred.ipdata.value}`).then((data)=>{
                                          console.debug(`geo svc: ${data} browsHistory: ${ec.getNgObjVal('browseHistory')}`);
                                     }).catch(e=>{
                                         throw e;
