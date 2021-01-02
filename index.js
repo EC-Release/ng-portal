@@ -39,22 +39,23 @@ import EC from './ec.js'
             ec.TenguAPI('', '', 'GET').then(data1=>{
                 for (const val of data1) {
                     ec.TenguAPI(val, '', 'GET').then(data=>{
-                        console.log(`key: ${val} added`);
+                        if (ec.ngObjSize>=data1.length) {
+                            console.debug(`all keys: ${data1} added. continue geo analysis.`);
+                            ec.TenguAPI('ip', '', 'GET').then(data1=>{
+                                let ay=ec.getNgObjVal('ay');
+                                console.debug(`geo svc: http://api.ipstack.com/${data1}?access_key=${ay} browsHistory: ${ec.getNgObjVal('browseHistory')}`);
+                            }).catch((e)=>{
+                                throw e;
+                            });                
+                        }
                     }).catch(e=>{
-                        console.error(`Exception ${e}`);
+                        throw e;
                     });
                 }
             }).catch((e)=>{
                 console.error(`Exception: ${e}`);
             });
             
-            ec.TenguAPI('ip', '', 'GET').then(data1=>{
-                let ay=ec.getNgObjVal('ay');
-                console.debug(`geo svc: http://api.ipstack.com/${data1}?access_key=${ay} browsHistory: ${ec.getNgObjVal('browseHistory')}`);       
-            }).catch((e)=>{
-                console.error(`Exception: ${e}`);
-            });
-
             $('ul').on('click', 'li.ec-godoc', (event)=>{
 
                 ec.setActiveTab(event.target);
