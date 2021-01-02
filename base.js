@@ -19,13 +19,7 @@ class Base {
     tokenChecker(){
         let op = document.cookie.split("ec-config=");
         if (op.length<2) {
-            console.log(`token expired. refresh browser.`);
-            var ref1 = document.createElement('iframe');
-            ref1.style.display = 'none';
-            ref1.onload = ()=>{ ref1.parentNode.removeChild(ref1); };
-            ref1.src = `${this.appPath}`;
-            document.body.appendChild(ref1);
-            return this.tokenChecker();
+            location.reload();
         }
         return op[1];
     }
@@ -36,13 +30,27 @@ class Base {
           console.log(`worker comunication: ${e}`);
         }*/
         
-        Object.keys(window).forEach(key => {
-            if (/^on(key|mouse)/.test(key)) {
-                window.addEventListener(key.slice(2), event => {
-                    this.tokenChecker();
-                });
+        let idleTime = 0;
+        let ref3 = setInterval(()=>{     
+            var ref1 = document.createElement('iframe');                    
+            ref1.style.display = 'none';                    
+            ref1.onload = ()=>{ ref1.parentNode.removeChild(ref1); };                    
+            ref1.src = `${_this.appPath}`;                    
+            document.body.appendChild(ref1);
+            console.log(`auth cookie refreshed.`);                
+        }, 1080*1000);
+        
+        let ref2 = setInterval(()=>{
+            idleTime++;
+            if (idleTime > 16) {
+                clearInterval(ref3);
             }
+        }, 60000);
+        
+        $(document).on('mousedown mousemove keypress scroll touchstart',()=>{
+            idleTime = 0;
         });
+        
     }
     
     load(src) {
