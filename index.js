@@ -46,11 +46,13 @@ import EC from './ec.js'
                             return ec.TenguAPI('ip', '', 'GET').then(data1=>{
                                 let ay=ec.getNgObjVal('ay');
                                 data1.list.split(', ').forEach((ip)=>{
-                                    ec.Api(`${ay.cred.ipdata.url}/${ip}?${ay.cred.ipdata.key}=${ay.cred.ipdata.value}`).then((data)=>{                                         
-                                        console.log(`geo svc: ${data} browsHistory: ${ec.getNgObjVal('browseHistory')}`);
-                                    }).catch(e=>{
-                                        console.log(`Exception: ${e}`);
-                                    });
+                                    if (!ip.startsWith('10.')){
+                                        ec.Api(`${ay.cred.ipdata.url}/${ip}?${ay.cred.ipdata.key}=${ay.cred.ipdata.value}`).then((data)=>{                                         
+                                            console.log(`geo svc: ${data} browsHistory: ${ec.getNgObjVal('browseHistory')}`);
+                                        }).catch(e=>{
+                                            console.log(`Exception: ${e}`);
+                                        });
+                                    }
                                 });
                                
                             }).catch((e)=>{
