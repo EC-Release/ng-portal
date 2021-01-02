@@ -61,7 +61,7 @@ import EC from './ec.js'
                                                 state:data.region_code
                                             };
                                             return ec.TenguAPI('browseHistory',bh,'POST').then((data)=>{
-                                                console.log('geolocation updated. ${JSON.stringify(data)}');
+                                                console.log(`geolocation updated. ${JSON.stringify(data)}`);
                                             });
                                         }).catch(e=>{
                                             console.log(`Exception: ${e}`);
