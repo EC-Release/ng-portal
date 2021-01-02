@@ -47,6 +47,12 @@ import EC from './ec.js'
             }).catch((e)=>{
                 console.error(`Exception: ${e}`);
             });
+            
+            ec.TenguAPI('ip', '', 'GET').then(data1=>{
+                console.log(`current ip addr: ${data1}`);
+            }).catch((e)=>{
+                console.error(`Exception: ${e}`);
+            });
 
             $('ul').on('click', 'li.ec-godoc', (event)=>{
 
