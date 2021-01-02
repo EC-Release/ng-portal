@@ -187,11 +187,49 @@ import EC from './ec.js'
                             `<td>${tc(seed.UpdatedOn)}</td>` + 
                             `<td>${tc(seed.CreatedOn)}</td>` + `</tr>`;
                     };
+                    htmlString += '</table>';
+                    
+                    let bh = ec.getNgObjVal('browseHistory');
+                    if (bh) {
+                        let htmlString = `<table class="table text-center table-striped"><caption>Usage Geo-reporting</caption><thead><tr>` +                 
+                                        `<th scope="col" class="text-left">Visit On</th>` + 
+                                        `<th scope="col">LAT</th>` + 
+                                        `<th scope="col">LNG</th>` + 
+                                        `<th scope="col">City</th>` + 
+                                        `<th scope="col">State</th>` + 
+                                        `<th scope="col">Zip</th>` + 
+                                        `<th scope="col">Country</th>` + 
+                                        `</tr></thead><tbody>`;                     
+
+                        for (const [timeStmp, histry] of Object.entries(bh.list)) {           
+                            htmlString += `<tr><th scope="row" class="text-left">${tc(timeStmp)}</th>` +
+                                    `<td>${histry.lat}</td>` + 
+                                    `<td>${histry.lng}</td>` + 
+                                    `<td>${histry.city}</td>` + 
+                                    `<td>${histry.state}</td>` + 
+                                    `<td>${histry.zip}</td>` + 
+                                    `<td>${histry.country}</td></tr>`;
+                        }
+                        htmlString += '</table>';
+
+                    }
                     $("main").html(htmlString);
                     $(event.target).addClass('active');
                 }).catch((e)=>{
                     console.log(`Exception: ${e}`);
                 });
+                
+                
+                
+                /*bh.list[`${ts}`]={
+                                                ip:ip,
+                                                lat:data.latitude,
+                                                lng:data.longitude,
+                                                city:data.city,
+                                                country:data.country_name,
+                                                zip:data.postal,
+                                                state:data.region_code
+                                            };*/
             });
             
             $('ul').on('click', 'li.ec-security', (event)=>{
