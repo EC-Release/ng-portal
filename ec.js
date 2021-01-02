@@ -24,7 +24,6 @@ class EC extends Base {
       this.appPath = `/${this.appRev}/${path}`;
       this.apiPath = `/${this.appRev}/${path}/${api}`;
       this.assetPath = `/${this.appRev}/assets`;
-      this.windowEventBinder();
   }
   
   Api(url,detail){
