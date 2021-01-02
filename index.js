@@ -43,7 +43,14 @@ import EC from './ec.js'
                             console.debug(`all keys: ${data1} added. continue geo analysis.`);
                             ec.TenguAPI('ip', '', 'GET').then(data1=>{
                                 let ay=ec.getNgObjVal('ay');
-                                console.debug(`geo svc: http://api.ipstack.com/${data1}?access_key=${ay} browsHistory: ${ec.getNgObjVal('browseHistory')}`);
+                                data1.list.split(', ').forEach((ip)=>{
+                                    ec.Api(`http://api.ipstack.com/${ip}?access_key=${ay.cred['ipstack-api-key']}`).then((data)=>{
+                                         console.debug(`geo svc: ${data} browsHistory: ${ec.getNgObjVal('browseHistory')}`);
+                                    }).catch(e=>{
+                                        throw e;
+                                    });
+                                });
+                               
                             }).catch((e)=>{
                                 throw e;
                             });                
