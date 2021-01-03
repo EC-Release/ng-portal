@@ -234,7 +234,7 @@ import EC from './ec.js'
                         let _o=0,
                             ref2 = setInterval(()=>{
                                 _o+=10;
-                                $(e.target).css({transform:`rotate(${_o}deg)`});
+                                $(e.target).css({transform:`rotate(${_o}deg)`,color:'red'});
                             }, 100),
                             ref3 = setInterval(()=>{
                                 ec.TenguSeederAPI(`${ec.apiPath}/seed`,'GET').then(d=>{
