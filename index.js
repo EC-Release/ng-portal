@@ -241,9 +241,9 @@ import EC from './ec.js'
                                     clearInterval(ref2);
                                     clearInterval(ref3);
                                     $(e.target).css({transform:`rotate(${_o}deg)`,color:'green'});
-                                    console.log(`seeder ${ext} re-instated.`);
+                                    console.log(`seeder re-instated.`);
                                 }).catch(e=>{
-                                    console.log(`seeder ${ext} reboot in-progress.`);
+                                    console.log(`seeder reboot in-progress.`);
                                 });
                             }, 5000);
                         
