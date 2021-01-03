@@ -173,7 +173,7 @@ import EC from './ec.js'
                                     `<th scope="col">OAuth</th>` + 
                                     `<th scope="col">Sequence</th>` + 
                                     `<th scope="col">Status</th>` + 
-                                    `<th scope="col">Reboot</th>` + 
+                                    `<th scope="col">Retry</th>` + 
                                     `<th scope="col">Updated On</th>` + 
                                     `<th scope="col">Joined On</th>` + 
                                     `</tr></thead><tbody>`;
