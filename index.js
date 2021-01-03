@@ -191,7 +191,7 @@ import EC from './ec.js'
                     
                     let bh = ec.getNgObjVal('browseHistory');
                     if (bh) {
-                        let htmlString = `<table class="table text-center table-striped"><caption>Usage Geo-reporting</caption><thead><tr>` +                 
+                        htmlString += `<table class="table text-center table-striped"><caption>Usage Geo-reporting</caption><thead><tr>` +                 
                                         `<th scope="col" class="text-left">Visit On</th>` + 
                                         `<th scope="col">LAT</th>` + 
                                         `<th scope="col">LNG</th>` + 
