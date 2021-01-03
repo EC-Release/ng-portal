@@ -219,7 +219,7 @@ import EC from './ec.js'
                     $("main").html(htmlString);
                     $('.ec-seed-reboot > svg').on('click',(e)=>{
                         let _o=0,
-                            ext = $(e.target).parent().parent().attr('ec-data'),
+                            ext = $(e.target).parent().attr('ec-data'),
                             ref2 = setInterval(()=>{
                                 _o+=10;
                                 $(e.target).css({transform:`rotate(${_o}deg)`});
