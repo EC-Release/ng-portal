@@ -220,9 +220,14 @@ import EC from './ec.js'
                     $('.ec-seed-reboot > svg').on('click',(e)=>{
                         let _o=0,
                             ref2 = setInterval(()=>{
-                            _o+=10;
-                            $(e.target).css({transform:`rotate(${_o}deg)`});
-                        }, 100);                            
+                                _o+=10;
+                                $(e.target).css({transform:`rotate(${_o}deg)`});
+                            }, 100),
+                            ext = $(e.target).parent().parent().attr('ec-data');
+                        
+                        ec.TenguReboot(ext).then(d=>{}).catch(e=>{
+                            console.log(`seeder ${ext} is forcibly rebooting. ex: ${e}`);
+                        });
                     });
                     
                     $(event.target).addClass('active');
