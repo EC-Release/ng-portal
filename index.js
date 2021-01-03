@@ -186,7 +186,7 @@ import EC from './ec.js'
                             `<td>${seed.SeqID}</td>` + 
                             `<td>${st(seed.Status)}</td>` + 
                             `<td>${seed.Retry}</td>` + 
-                            `<td><a class="ec-seed-reboot" href="${seed.Node}/exit">${feather.icons['refresh-cw'].toSvg({'color':'grey'})}</a></td>` + 
+                            `<td><a class="ec-seed-reboot" href="javascript:void(0)" ec-data="${seed.Node}/exit">${feather.icons['refresh-cw'].toSvg({'color':'grey'})}</a></td>` + 
                             `<td>${tc(seed.UpdatedOn*1000)}</td>` + 
                             `<td>${tc(seed.CreatedOn*1000)}</td>` + `</tr>`;
                     };
