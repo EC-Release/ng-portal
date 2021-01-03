@@ -82,6 +82,11 @@ class EC extends Base {
     });
   }
 
+  TenguReboot(epath){
+    let obj = this.GetTenguAPIObj('GET');    
+    return this.Api(epath,obj);
+  }
+
   GetTenguAPIObj(mtd='GET'){
     let op = this.tokenChecker();
     
