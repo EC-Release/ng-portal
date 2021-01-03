@@ -84,7 +84,7 @@ import EC from './ec.js'
             
             $('ul').on('click', 'li.ec-godoc', (event)=>{
 
-                ec.setActiveTab(event.target);
+                ec.setActiveTab(event.target,`${ec.appPath}/godoc`);
 
                 event.preventDefault();
                 if (ec.sdkInnerHTML != "") {
@@ -111,7 +111,7 @@ import EC from './ec.js'
 
             $('ul').on('click', 'li.ec-releases', (event)=>{
 
-                ec.setActiveTab(event.target);
+                ec.setActiveTab(event.target,`${ec.appPath}/releases`);
 
                 event.preventDefault();
                 if (ec.Releases != "") {
@@ -134,7 +134,7 @@ import EC from './ec.js'
             });
 
             $('ul').on('click', 'li.ec-status', (event)=>{
-                ec.setActiveTab(event.target);
+                ec.setActiveTab(event.target,`${ec.appPath}/status`);
                 event.preventDefault();
 
                 let tc = (ms)=>{
@@ -262,7 +262,7 @@ import EC from './ec.js'
             });
             
             $('ul').on('click', 'li.ec-security', (event)=>{
-                ec.setActiveTab(event.target);
+                ec.setActiveTab(event.target,`${ec.appPath}/security`);
                 event.preventDefault();
 
                 if (ec.securityMd != "") {
@@ -281,7 +281,7 @@ import EC from './ec.js'
             });
 
             $('ul').on('click', 'li.ec-analytics', (event)=>{
-                ec.setActiveTab(event.target);
+                ec.setActiveTab(event.target,`${ec.appPath}/analytics`);
                 event.preventDefault();
                 if (document.getElementsByClassName('ec-info').length<1) {                
                     $('body').append($('<div class="ec-info"></div>').css({
