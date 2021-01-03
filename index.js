@@ -13,7 +13,8 @@ import EC from './ec.js'
 
 (()=>{
 
-    let ec = new EC('ec1');
+    let _s = window.location.pathname.split('/'),
+        ec = new EC('ec1',_s[1],_s[2]);
     window.ec = ec;
     ec.load("https://code.jquery.com/jquery-3.5.1.slim.min.js").catch((err)=>{}
     ).then((s)=>{        
