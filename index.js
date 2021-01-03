@@ -232,13 +232,12 @@ import EC from './ec.js'
                         }
                         
                         let _o=0,
-                            ext = $(e.target).parent().attr('ec-data'),
                             ref2 = setInterval(()=>{
                                 _o+=10;
                                 $(e.target).css({transform:`rotate(${_o}deg)`});
                             }, 100),
                             ref3 = setInterval(()=>{
-                                ec.TenguSeederAPI(`${ext}/api/seed`,'GET').then(d=>{
+                                ec.TenguSeederAPI(`${ec.apiPath}/seed`,'GET').then(d=>{
                                     clearInterval(ref2);
                                     clearInterval(ref3);
                                     console.log(`seeder ${ext} re-instated.`);
@@ -247,7 +246,7 @@ import EC from './ec.js'
                                 });
                             }, 5000);
                         
-                        ec.TenguSeederAPI(`/${ec.appPath}/exit`,'POST').then(d=>{
+                        ec.TenguSeederAPI(`${ec.appPath}/exit`,'POST').then(d=>{
                             console.log(`seeder is being rebooted. d: ${d}`);
                         }).catch(e=>{
                             console.log(`error whilst rebooting. e: ${e}`);
