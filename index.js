@@ -175,6 +175,7 @@ import EC from './ec.js'
                                     `<th scope="col">Sequence</th>` + 
                                     `<th scope="col">Status</th>` + 
                                     `<th scope="col">Retry</th>` + 
+                                    `<th scope="col">Reboot</th>` + 
                                     `<th scope="col">Updated On</th>` + 
                                     `<th scope="col">Joined On</th>` + 
                                     `</tr></thead><tbody>`;
@@ -185,6 +186,7 @@ import EC from './ec.js'
                             `<td>${seed.SeqID}</td>` + 
                             `<td>${st(seed.Status)}</td>` + 
                             `<td>${seed.Retry}</td>` + 
+                            `<td><a class="ec-seed-reboot" href="${seed.Node}/exit">${feather.icons['refresh-cw'].toSvg({'color':'grey'})}</a></td>` + 
                             `<td>${tc(seed.UpdatedOn*1000)}</td>` + 
                             `<td>${tc(seed.CreatedOn*1000)}</td>` + `</tr>`;
                     };
