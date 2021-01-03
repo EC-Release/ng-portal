@@ -226,7 +226,7 @@ import EC from './ec.js'
                     }
                     $("main").html(htmlString);
                     $('.ec-seed-reboot > svg').on('click',(e)=>{
-                        event.preventDefault();                
+                        e.preventDefault();                
                         if (!$(e.target).parent().hasClass('ec-seed-reboot')) {
                             return;
                         }
