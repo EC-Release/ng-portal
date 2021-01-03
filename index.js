@@ -202,7 +202,7 @@ import EC from './ec.js'
                                         `</tr></thead><tbody>`;                     
 
                         for (const [timeStmp, histry] of Object.entries(bh.list)) {           
-                            htmlString += `<tr><th scope="row" class="text-left">${tc(timeStmp)}</th>` +
+                            htmlString += `<tr><th scope="row" class="text-left">${tc(parseInt(timeStmp))}</th>` +
                                     `<td>${histry.lat}</td>` + 
                                     `<td>${histry.lng}</td>` + 
                                     `<td>${histry.city}</td>` + 
