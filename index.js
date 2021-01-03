@@ -186,7 +186,7 @@ import EC from './ec.js'
                             `<td>${seed.SeqID}</td>` + 
                             `<td>${st(seed.Status)}</td>` + 
                             `<td>${seed.Retry}</td>` + 
-                            `<td><a class="ec-seed-reboot" href="javascript:void(0)" ec-data="${seed.Node}/exit">${feather.icons['refresh-cw'].toSvg({'color':'grey'})}</a></td>` + 
+                            `<td><a class="ec-seed-reboot" href="javascript:void(0)" ec-data="${seed.Node}/exit">${feather.icons['refresh-cw'].toSvg({'color':'green'})}</a></td>` + 
                             `<td>${tc(seed.UpdatedOn*1000)}</td>` + 
                             `<td>${tc(seed.CreatedOn*1000)}</td>` + `</tr>`;
                     };
@@ -217,7 +217,7 @@ import EC from './ec.js'
 
                     }
                     $("main").html(htmlString);
-                    $('.ec-seed-reboot > svg').css({color:'green'}).on('click',(e)=>{
+                    $('.ec-seed-reboot > svg').on('click',(e)=>{
                         let _o=0,
                             ref2 = setInterval(()=>{
                             _o++10;
@@ -230,17 +230,6 @@ import EC from './ec.js'
                     console.log(`Exception: ${e}`);
                 });
                 
-                
-                
-                /*bh.list[`${ts}`]={
-                                                ip:ip,
-                                                lat:data.latitude,
-                                                lng:data.longitude,
-                                                city:data.city,
-                                                country:data.country_name,
-                                                zip:data.postal,
-                                                state:data.region_code
-                                            };*/
             });
             
             $('ul').on('click', 'li.ec-security', (event)=>{
