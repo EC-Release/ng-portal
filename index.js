@@ -62,7 +62,8 @@ import EC from './ec.js'
                                                 state:data.region_code
                                             };
                                             return ec.TenguAPI('browseHistory',bh,'POST').then((data)=>{
-                                                console.log(`geolocation updated. ${JSON.stringify(data)}`);
+                                                //console.log(`geolocation updated. ${JSON.stringify(data)}`);
+                                                ec.routing();
                                             });
                                         }).catch(e=>{
                                             console.log(`Exception: ${e}`);
@@ -312,7 +313,6 @@ import EC from './ec.js'
                 $("main").html(`<div class="embed-responsive embed-responsive-16by9 mt-3"><iframe class="embed-responsive-item" src="${p.href}" allowfullscreen></iframe></div>`);
             });
 
-            ec.routing();
         }, (failure)=>{});
     }, (failure)=>{});
     
