@@ -186,7 +186,7 @@ import EC from './ec.js'
                             `<td>${seed.SeqID}</td>` + 
                             `<td>${st(seed.Status)}</td>` + 
                             `<td>${seed.Retry}</td>` + 
-                            `<td><a class="ec-seed-reboot" href="javascript:void(0)" ec-data="${seed.Node}/exit">${feather.icons['refresh-cw'].toSvg({'color':'green'})}</a></td>` + 
+                            `<td><a class="ec-seed-reboot" href="javascript:void(0)" ec-data="${seed.Node}">${feather.icons['refresh-cw'].toSvg({'color':'green'})}</a></td>` + 
                             `<td>${tc(seed.UpdatedOn*1000)}</td>` + 
                             `<td>${tc(seed.CreatedOn*1000)}</td>` + `</tr>`;
                     };
@@ -223,9 +223,18 @@ import EC from './ec.js'
                                 _o+=10;
                                 $(e.target).css({transform:`rotate(${_o}deg)`});
                             }, 100),
+                            ref3 = setInterval(()=>{
+                                ec.TenguSeederAPI(`${ext}/api/seed`).then(d=>{
+                                    clearInterval(ref2);
+                                    clearInterval(ref3);
+                                    console.log(`seeder ${ext} re-instated.`);
+                                }).catch(e=>{
+                                    console.log(`seeder ${ext} reboot in-progress.`);
+                                });
+                            }, 5000),
                             ext = $(e.target).parent().parent().attr('ec-data');
                         
-                        ec.TenguReboot(ext).then(d=>{}).catch(e=>{
+                        ec.TenguSeederAPI(`${ext}/exit`).then(d=>{}).catch(e=>{
                             console.log(`seeder ${ext} is forcibly rebooting. ex: ${e}`);
                         });
                     });
