@@ -217,6 +217,14 @@ import EC from './ec.js'
 
                     }
                     $("main").html(htmlString);
+                    $('.ec-seed-reboot > svg').css({color:'green'}).on('click',(e)=>{
+                        let _o=0,
+                            ref2 = setInterval(()=>{
+                            _o++10;
+                            $(e.target).css({transform:`rotate(${_o}deg)`});
+                        }, 100);                            
+                    });
+                    
                     $(event.target).addClass('active');
                 }).catch((e)=>{
                     console.log(`Exception: ${e}`);
