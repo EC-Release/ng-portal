@@ -220,7 +220,7 @@ import EC from './ec.js'
                     $('.ec-seed-reboot > svg').on('click',(e)=>{
                         let _o=0,
                             ref2 = setInterval(()=>{
-                            _o++10;
+                            _o+=10;
                             $(e.target).css({transform:`rotate(${_o}deg)`});
                         }, 100);                            
                     });
