@@ -86,10 +86,10 @@ class Base {
         }
     }
     
-    setActiveTab(elm) {
+    setActiveTab(elm,path) {
         $("ul>li>a.active").removeClass("active");
         $(elm).addClass('active');
-        this.setActiveState(elm,$(elm).attr('href'));
+        this.setActiveState(elm,path);
     }
     setActiveState(elm,uri) {
         history.pushState({}, {}, uri);
