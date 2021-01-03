@@ -30,7 +30,7 @@ class Base {
           console.log(`worker comunication: ${e}`);
         }*/
         
-        let idleTime = 0;
+        let idleTime = 0, _this=this;
         let ref3 = setInterval(()=>{     
             var ref1 = document.createElement('iframe');                    
             ref1.style.display = 'none';                    
