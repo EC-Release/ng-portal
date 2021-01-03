@@ -172,7 +172,7 @@ import EC from './ec.js'
                         return `<a class="ec-seed-reboot" href="javascript:void(0)">${feather.icons['refresh-cw'].toSvg({'color':'green'})}</a>`;
                     }
                     
-                    return feather.icons['refresh-cw'].toSvg({'color':'grey'});
+                    return '&nbsp;';
                 }
                 
                 ec.TenguAPI('seed', '', 'GET').then(data=>{
