@@ -82,7 +82,7 @@ class EC extends Base {
     });
   }
 
-  TenguReboot(epath){
+  TenguSeederAPI(epath){
     let obj = this.GetTenguAPIObj('GET');    
     return this.Api(epath,obj);
   }
