@@ -137,7 +137,7 @@ import EC from './ec.js'
                 event.preventDefault();
 
                 let tc = (ms)=>{
-                    var currentdate = new Date(ms * 1000);
+                    var currentdate = new Date(ms);
                     return currentdate.getFullYear() + "-"
                             + (currentdate.getMonth()+1)  + "-" 
                             + currentdate.getDate() + " "  
@@ -184,8 +184,8 @@ import EC from './ec.js'
                             `<td>${seed.SeqID}</td>` + 
                             `<td>${st(seed.Status)}</td>` + 
                             `<td>${seed.Retry}</td>` + 
-                            `<td>${tc(seed.UpdatedOn)}</td>` + 
-                            `<td>${tc(seed.CreatedOn)}</td>` + `</tr>`;
+                            `<td>${tc(seed.UpdatedOn*1000)}</td>` + 
+                            `<td>${tc(seed.CreatedOn*1000)}</td>` + `</tr>`;
                     };
                     htmlString += '</table>';
                     
