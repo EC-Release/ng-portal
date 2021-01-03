@@ -240,6 +240,7 @@ import EC from './ec.js'
                                 ec.TenguSeederAPI(`${ec.apiPath}/seed`,'GET').then(d=>{
                                     clearInterval(ref2);
                                     clearInterval(ref3);
+                                    $(e.target).css({transform:`rotate(${_o}deg)`,color:'green'});
                                     console.log(`seeder ${ext} re-instated.`);
                                 }).catch(e=>{
                                     console.log(`seeder ${ext} reboot in-progress.`);
