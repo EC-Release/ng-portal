@@ -225,7 +225,7 @@ import EC from './ec.js'
                                 $(e.target).css({transform:`rotate(${_o}deg)`});
                             }, 100),
                             ref3 = setInterval(()=>{
-                                ec.TenguSeederAPI(`${ext}/api/seed`).then(d=>{
+                                ec.TenguSeederAPI(`${ext}/api/seed`,'GET').then(d=>{
                                     clearInterval(ref2);
                                     clearInterval(ref3);
                                     console.log(`seeder ${ext} re-instated.`);
@@ -234,7 +234,7 @@ import EC from './ec.js'
                                 });
                             }, 5000);
                         
-                        ec.TenguSeederAPI(`${ext}/exit`).then(d=>{}).catch(e=>{
+                        ec.TenguSeederAPI(`${ext}/exit`,'POST').then(d=>{}).catch(e=>{
                             console.log(`seeder ${ext} is forcibly rebooting. ex: ${e}`);
                         });
                     });
