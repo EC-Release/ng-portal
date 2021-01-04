@@ -44,6 +44,7 @@ class Base {
             idleTime++;
             if (idleTime > 16) {
                 clearInterval(ref3);
+                console.log(`auth expiring soon`);
             }
         }, 60000);
         
