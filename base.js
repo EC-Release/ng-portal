@@ -83,6 +83,9 @@ class Base {
           case `${this.appPath}/analytics`:
             $('ul > li.ec-analytics').click();
             break;
+          case `${this.appPath}/communicator`:
+            $('ul > li.ec-communicator').click();
+            break;
           default:
         }
     }
