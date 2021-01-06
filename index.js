@@ -214,26 +214,23 @@ import EC from './ec.js'
 			    return rv;
 			  }, {});
 			};
-			console.log(groupBy(bhArr, 'city'));
+			let hits = groupBy(bhArr, 'ip');
 
                         htmlString += `<table class="table text-center table-striped"><caption>Usage Geo-reporting</caption><thead><tr>` +                 
-                                        `<th scope="col" class="text-left">Visited On</th>` + 
+                                        `<th scope="col" class="text-left">Ip</th>` + 
                                         `<th scope="col">LAT</th>` + 
                                         `<th scope="col">LNG</th>` + 
                                         `<th scope="col">City</th>` + 
-                                        `<th scope="col">State</th>` + 
-                                        `<th scope="col">Zip</th>` + 
-                                        `<th scope="col">Country</th>` + 
+                                        `<th scope="col">Visit</th>` + 
                                         `</tr></thead><tbody>`;                     
 
-                        for (const [timeStmp, histry] of Object.entries(bh.list)) {           
-                            htmlString += `<tr><th scope="row" class="text-left">${tc(parseInt(timeStmp))}</th>` +
+                        for (const [ip, grp] of Object.entries(hits)) {
+                        	let histry = grp[0], visit = grp.length;
+                            htmlString += `<tr><th scope="row" class="text-left">${ip}</th>` +
                                     `<td>${histry.lat}</td>` + 
                                     `<td>${histry.lng}</td>` + 
                                     `<td>${histry.city}</td>` + 
-                                    `<td>${histry.state}</td>` + 
-                                    `<td>${histry.zip}</td>` + 
-                                    `<td>${histry.country}</td></tr>`;
+                                    `<td>${visit}</td></tr>`;
                         }
                         htmlString += '</table>';
 
