@@ -27,6 +27,13 @@ class EC extends Base {
       this.assetPath = `/${this.appRev}/assets`;
   }
   
+  attachWorker(f){
+    this.worker = new SharedWorker('worker.js');
+    this.worker.port.onmessage = (e)=>{
+      console.log(`${e.data}`);
+    }
+  }
+
   Api(url,detail){
     return fetch(url,detail)
     .then(resp => resp.json());
