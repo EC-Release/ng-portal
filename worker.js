@@ -1,4 +1,4 @@
-onconnect = (e)=>{
+onconnect = function(e){
     let port = e.ports[0];
 
     /*port.onmessage = function(e) {
@@ -8,7 +8,7 @@ onconnect = (e)=>{
 
     console.log('worker thread set interval')
     //port.start();
-    setInterval(()=>{
+    setInterval(function(){
       port.postMessage({status:'ok',time: new Date().toLocaleTimeString()});
     },3000);
 }
