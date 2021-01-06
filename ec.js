@@ -75,8 +75,12 @@ class EC extends Base {
     if (key!='') path=`${path}/${key}`;
     return this.Api(path,obj).then(data=>{
       if (key!='') {
-        this.#ngObj.set(key,data);
-        return this.#ngObj.get(key);
+        if (obj.method=='DELETE') {
+          this.#ngObj.delete(key);
+        } else {
+          this.#ngObj.set(key,data);
+          return this.#ngObj.get(key);
+        }
       }
       
       return data;
