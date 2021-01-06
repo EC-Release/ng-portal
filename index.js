@@ -1,4 +1,4 @@
-Z/*
+/*
  * Copyright (c) 2020 General Electric Company. All rights reserved.
  * The copyright to the computer software herein is the property of
  * General Electric Company. The software may be used and/or copied only
