@@ -6,7 +6,7 @@ onconnect = (e)=>{
       port.postMessage(workerResult);
     }*/
 
-    port.start();
+    //port.start();
     setTimeInterval(()=>{
       port.postMessage({status:'ok',time: new Date().toLocaleTimeString()});
     },3000);
