@@ -347,16 +347,6 @@ import EC from './ec.js'
 							</div>
 						</div>
 					</a>
-					<a href="#" class="list-group-item list-group-item-action border-0">
-						<div class="d-flex align-items-start">
-							<img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Jennifer Chang" width="40" height="40">
-							<div class="flex-grow-1 ml-3">
-								Jennifer Chang
-								<div class="small"><span class="fas fa-circle chat-offline"></span> Offline</div>
-							</div>
-						</div>
-					</a>
-
 					<hr class="d-block d-lg-none mt-1 mb-0">
 				</div>
 				<div class="col-12 col-lg-7 col-xl-9">
