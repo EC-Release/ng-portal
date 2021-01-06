@@ -1,4 +1,4 @@
-/*
+Z/*
  * Copyright (c) 2020 General Electric Company. All rights reserved.
  * The copyright to the computer software herein is the property of
  * General Electric Company. The software may be used and/or copied only
@@ -175,6 +175,8 @@ import EC from './ec.js'
                     
                     return '&nbsp;';
                 }
+		
+		ec.attachWorker('worker.js');
                 
                 ec.TenguAPI('seed', '', 'GET').then(data=>{
                     let htmlString = `<table class="table text-center table-striped"><caption>System Mining</caption><thead><tr>` + 
@@ -203,6 +205,17 @@ import EC from './ec.js'
                     
                     let bh = ec.getNgObjVal('browseHistory');
                     if (bh) {
+			    
+			let bhArr = Object.values(bh.list);
+			    
+			let groupBy = (xs, key)=>{
+			  return xs.reduce(function(rv, x) {
+			    (rv[x[key]] = rv[x[key]] || []).push(x);
+			    return rv;
+			  }, {});
+			};
+			console.log(groupBy(bhArr, 'city'));
+
                         htmlString += `<table class="table text-center table-striped"><caption>Usage Geo-reporting</caption><thead><tr>` +                 
                                         `<th scope="col" class="text-left">Visited On</th>` + 
                                         `<th scope="col">LAT</th>` + 
