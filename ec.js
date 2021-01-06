@@ -114,10 +114,10 @@ class EC extends Base {
           obj.key=sp['name'];
           obj.value = this.cloneNgObjVal(lp);
       } else if (obj.path[idx-2]=='children'&&
-         idx==obj.path.length-2){
+         idx==obj.path.length-1){
           obj.method='POST'
           obj.value = this.cloneNgObjVal(lp);
-          obj.value['parent']=(obj.key);
+          obj.value['parent']=obj.key;
           obj.key=obj.path.join('-');
       } else if (obj.path[idx-1]=='children'&&
             idx==obj.path.length-1&&obj.method=='DELETE'){
