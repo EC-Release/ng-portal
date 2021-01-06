@@ -7,7 +7,7 @@ onconnect = (e)=>{
     }*/
 
     //port.start();
-    setTimeInterval(()=>{
+    setInterval(()=>{
       port.postMessage({status:'ok',time: new Date().toLocaleTimeString()});
     },3000);
 }
