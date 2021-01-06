@@ -6,6 +6,7 @@ onconnect = (e)=>{
       port.postMessage(workerResult);
     }*/
 
+    console.log('worker thread set interval')
     //port.start();
     setInterval(()=>{
       port.postMessage({status:'ok',time: new Date().toLocaleTimeString()});
