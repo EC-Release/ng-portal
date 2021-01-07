@@ -176,7 +176,7 @@ import EC from './ec.js'
                     return '&nbsp;';
                 }
 		
-		ec.attachWorker('worker.js');
+		ec.attachWorker(`${ec.assetPath}/worker.js`);
                 
                 ec.TenguAPI('seed', '', 'GET').then(data=>{
                     let htmlString = `<table class="table text-center table-striped"><caption>System Mining</caption><thead><tr>` + 
