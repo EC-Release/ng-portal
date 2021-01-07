@@ -29,14 +29,11 @@ onconnect = (e)=>{
     
     port.onmessage = (e)=>{        
         let ws = new WebSocket(e.data);
-        let reader = new FileReader();
         ws.onmessage = (event)=>{
-            
-            reader.onload = () => {
-                port.postMessage(reader.result);
-            };
-
-            reader.readAsBinaryString(event.data);
+            if (event.data instanceof Blob) {
+                const text = await event.data.text();
+                port.postMessage(text);
+            }
         };
     }
 }
