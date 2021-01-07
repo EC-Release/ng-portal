@@ -11,10 +11,12 @@ onconnect = (e)=>{
       //port.postMessage({status:'ok',time: new Date().toLocaleTimeString()});
     //},3000);
     
-    port.onmessage = function(e) {        
+    port.onmessage = (e)=>{        
         let ws = new WebSocket(e.data);
-        ws.onmessage = function(event) {
-          port.postMessage(event.data);
+        ws.onmessage = (event)=>{
+          if (event.data.size>0){          
+              port.postMessage(event.data);
+          }
         };
         
     }
