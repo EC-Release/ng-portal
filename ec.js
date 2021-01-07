@@ -29,7 +29,7 @@ class EC extends Base {
   
   attachWorker(f){
     this.worker = new SharedWorker(f); 
-    this.worker.port.postMessage(`${this.appPath}/log`);
+    this.worker.port.postMessage(`wss://${location.host+this.appPath}/log`);
     this.worker.port.onmessage = (e)=>{
       console.log(`${e.data}`);
     }
