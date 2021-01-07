@@ -31,7 +31,16 @@ class EC extends Base {
     this.worker = new SharedWorker(f); 
     this.worker.port.postMessage(`wss://${location.host+this.appPath}/log`);
     this.worker.port.onmessage = (e)=>{
-      console.log(`${e.data}`);
+      if (e.data instanceof Blob) {
+        reader = new FileReader();
+
+        reader.onload = () => {
+            console.log(reader.result);
+        };
+
+        reader.readAsText(event.data);
+      }
+      //console.log(`${e.data}`);
     }
   }
 
