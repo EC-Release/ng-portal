@@ -190,8 +190,14 @@ import EC from './ec.js'
                                     `<th scope="col">Updated On</th>` + 
                                     `<th scope="col">Joined On</th>` + 
                                     `</tr></thead><tbody>`;
-                    for (const [key, seed] of Object.entries(data)) {
-                        htmlString += `<tr><th scope="row" class="text-left"><a class="ec-seed-link" href="${seed.Node}">${up(seed.Node)}</a></th>` +
+			
+			let sdArr = Object.values(data);
+			sdArr.sort((a, b)=>{
+			  return a.SeqID - b.SeqID;
+			});
+			
+                    sdArr.forEach((seed, idx)=>{
+			 htmlString += `<tr><th scope="row" class="text-left"><a class="ec-seed-link" href="${seed.Node}">${up(seed.Node)}</a></th>` +
                             `<td><a class="ec-seed-link" href="${seed.Seed}">${up(seed.Seed)}</a></td>` + 
                             `<td><a class="ec-oauth-link" href="${seed.OAuth}">${up(seed.OAuth)}</a></td>` + 
                             `<td>${seed.SeqID}</td>` + 
@@ -200,7 +206,8 @@ import EC from './ec.js'
                             `<td>${refreshOps(seed.Node)}</td>` + 
                             `<td>${tc(seed.UpdatedOn*1000)}</td>` + 
                             `<td>${tc(seed.CreatedOn*1000)}</td>` + `</tr>`;
-                    };
+		    });
+			
                     htmlString += '</table>';
                     
                     let bh = ec.getNgObjVal('browseHistory');
