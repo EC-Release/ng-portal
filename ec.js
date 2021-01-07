@@ -28,8 +28,7 @@ class EC extends Base {
   }
   
   attachWorker(f){
-    this.worker = new SharedWorker('worker.js');
-    //this.worker.port.start();
+    this.worker = new SharedWorker(f); 
     this.worker.port.onmessage = (e)=>{
       console.log(`${e.data}`);
     }
