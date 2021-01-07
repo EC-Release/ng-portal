@@ -32,7 +32,7 @@ class EC extends Base {
     this.worker.port.postMessage(`wss://${location.host+this.appPath}/log`);
     this.worker.port.onmessage = (e)=>{
       if (e.data instanceof Blob) {
-        reader = new FileReader();
+        let reader = new FileReader();
 
         reader.onload = () => {
             console.log(reader.result);
