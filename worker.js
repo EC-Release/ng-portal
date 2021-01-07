@@ -31,7 +31,7 @@ onconnect = (e)=>{
         let ws = new WebSocket(e.data);
         ws.onmessage = (event)=>{
             if (event.data instanceof Blob) {
-                const text = await event.data.text();
+                const text = await (new Response(blob)).text();
                 port.postMessage(text);
             }
         };
