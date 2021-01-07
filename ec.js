@@ -28,7 +28,7 @@ class EC extends Base {
   }
   
   attachWorker(f){
-    this.worker = new SharedWorker(f); 
+    /*this.worker = new SharedWorker(f); 
     this.worker.port.postMessage(`wss://${location.host+this.appPath}/log`);
     this.worker.port.onmessage = (e)=>{
       if (e.data instanceof Blob) {
@@ -41,7 +41,20 @@ class EC extends Base {
         reader.readAsText(event.data);
       }
       //console.log(`${e.data}`);
-    }
+    }*/
+    let ws = new WebSocket(`wss://${location.host+this.appPath}/log`);
+    ws.binaryType = 'blob';
+    ws.onmessage = (event)=>{
+      if (event.data instanceof Blob) {
+        let reader = new FileReader();
+
+        reader.onload = () => {
+            console.log(reader.result);
+        };
+
+        reader.readAsText(event.data);
+      }
+    };
   }
 
   Api(url,detail){
