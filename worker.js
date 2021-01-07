@@ -30,9 +30,13 @@ onconnect = (e)=>{
     port.onmessage = (e)=>{        
         let ws = new WebSocket(e.data);
         ws.binaryType = 'arraybuffer';
-        ws.onmessage = (event)=>{
-          port.postMessage(event.data);
-            
+        
+        let reader = new FileReader();
+
+        reader.onload = () => {
+            port.postMessage(reader.result);
         };
+
+        reader.readAsArrayBuffer(event.data);
     }
 }
