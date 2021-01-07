@@ -29,13 +29,14 @@ onconnect = (e)=>{
     
     port.onmessage = (e)=>{        
         let ws = new WebSocket(e.data);
-        
         let reader = new FileReader();
+        ws.onmessage = (event)=>{
+            
+            reader.onload = () => {
+                port.postMessage(reader.result);
+            };
 
-        reader.addEventListener('loadend', () => {
-           port.postMessage(reader.result);
-        });
-
-        reader.readAsArrayBuffer(event.data);
+            reader.readAsBinaryString(event.data);
+        };
     }
 }
