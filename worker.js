@@ -13,10 +13,11 @@ onconnect = (e)=>{
     
     port.onmessage = (e)=>{        
         let ws = new WebSocket(e.data);
+        ws.binaryType = 'blob';
         ws.onmessage = (event)=>{
-          if (event.data.size>0){          
+          //if (event.data.size>0){          
               port.postMessage(event.data);
-          }
+          //}
         };
         
     }
