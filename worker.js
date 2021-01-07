@@ -11,7 +11,7 @@ onconnect = (e)=>{
       //port.postMessage({status:'ok',time: new Date().toLocaleTimeString()});
     //},3000);
     
-    port.onmessage = (e)=>{        
+    /*port.onmessage = (e)=>{        
         let ws = new WebSocket(e.data);
         ws.binaryType = 'blob';
         ws.onmessage = (event)=>{
@@ -24,6 +24,15 @@ onconnect = (e)=>{
 
             reader.readAsText(event.data);
           }
+        };
+    }*/
+    
+    port.onmessage = (e)=>{        
+        let ws = new WebSocket(e.data);
+        ws.binaryType = 'arraybuffer';
+        ws.onmessage = (event)=>{
+          port.postMessage(event.data);
+            
         };
     }
 }
