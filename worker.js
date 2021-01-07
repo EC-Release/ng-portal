@@ -7,7 +7,15 @@ onconnect = (e)=>{
     }*/
 
     //port.start();
-    setInterval(()=>{
-      port.postMessage({status:'ok',time: new Date().toLocaleTimeString()});
-    },3000);
+    //setInterval(()=>{
+      //port.postMessage({status:'ok',time: new Date().toLocaleTimeString()});
+    //},3000);
+    
+    port.onmessage = function(e) {        
+        let ws = new WebSocket(e.data);
+        ws.onmessage = function(event) {
+          port.postMessage(event.data);
+        };
+        
+    }
 }
