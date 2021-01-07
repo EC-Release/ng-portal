@@ -12,7 +12,7 @@ onconnect = (e)=>{
     //},3000);
     
     port.onmessage = (e)=>{        
-        let ws = new WebSocket(`wss://${location.host+this.appPath}/log`);
+        let ws = new WebSocket(e.data);
         ws.binaryType = 'blob';
         ws.onmessage = (event)=>{
           if (event.data instanceof Blob) {
