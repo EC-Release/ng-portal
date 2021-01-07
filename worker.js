@@ -30,10 +30,11 @@ onconnect = (e)=>{
     port.onmessage = (e)=>{        
         let ws = new WebSocket(e.data);
         ws.onmessage = (event)=>{
-            if (event.data instanceof Blob) {
-                const text = await (new Response(event.data)).text();
-                port.postMessage(text);
-            }
+            const reader = new FileReader();
+            reader.addEventListener('loadend', () => {
+               port.postMessage(reader.result);
+            });
+            reader.readAsArrayBuffer(event.data);
         };
     }
 }
