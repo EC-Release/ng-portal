@@ -180,15 +180,15 @@ import EC from './ec.js'
                 
                 ec.TenguAPI('seed', '', 'GET').then(data=>{
                     let htmlString = `<table class="table text-center table-striped"><caption>System Mining</caption><thead><tr>` + 
+                                    `<th scope="col">Sequence</th>` + 
                                     `<th scope="col" class="text-left">Seeder</th>` + 
                                     `<th scope="col">Ancestor</th>` + 
                                     `<th scope="col">OAuth</th>` + 
-                                    `<th scope="col">Sequence</th>` + 
                                     `<th scope="col">Status</th>` + 
                                     `<th scope="col">Retry</th>` + 
                                     `<th scope="col">Reboot</th>` + 
-                                    `<th scope="col">Updated On</th>` + 
-                                    `<th scope="col">Joined On</th>` + 
+                                    `<th scope="col" class="text-left">Updated On</th>` + 
+                                    `<th scope="col" class="text-left">Joined On</th>` + 
                                     `</tr></thead><tbody>`;
 			
 			let sdArr = Object.values(data);
@@ -197,15 +197,15 @@ import EC from './ec.js'
 			});
 			
                     sdArr.forEach((seed, idx)=>{
-			 htmlString += `<tr><th scope="row" class="text-left"><a class="ec-seed-link" href="${seed.Node}">${up(seed.Node)}</a></th>` +
+			 htmlString += `<tr><td>${seed.SeqID}</td>` + 
+                            `<th scope="row" class="text-left"><a class="ec-seed-link" href="${seed.Node}">${up(seed.Node)}</a></th>` +
                             `<td><a class="ec-seed-link" href="${seed.Seed}">${up(seed.Seed)}</a></td>` + 
                             `<td><a class="ec-oauth-link" href="${seed.OAuth}">${up(seed.OAuth)}</a></td>` + 
-                            `<td>${seed.SeqID}</td>` + 
                             `<td>${st(seed.Status)}</td>` + 
                             `<td>${seed.Retry}</td>` + 
                             `<td>${refreshOps(seed.Node)}</td>` + 
                             `<td>${tc(seed.UpdatedOn*1000)}</td>` + 
-                            `<td>${tc(seed.CreatedOn*1000)}</td>` + `</tr>`;
+                            `<td>${tc(seed.CreatedOn*1000)}</td></tr>`;
 		    });
 			
                     htmlString += '</table>';
