@@ -10,6 +10,8 @@
  */
 
 import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/xterm-addon-fit@0.3.0/lib/xterm-addon-fit.js";
+import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/xterm@4.5.0/lib/xterm.js";
 import define from "./analytics.js";
 import {default as build} from "./build.js";
 
@@ -137,13 +139,37 @@ class Base {
         $("body").css("overflow", "auto");
     }
     
+    showTerminal(){
+        if (document.getElementsByClassName("ec-xterm").length>0)
+            return;
+        
+        this.setBlock();
+        let _this=this;
+        
+        $('body').append($('<div class="ec-xterm"></div>').css({
+         width: 640,
+         height: 480,
+         position: 'fixed',
+         top: '50%',
+         left: '50%',
+         transform: 'translate(-50%, -50%)',
+         'z-index': 5001,
+         'background-color': 'whitesmoke',
+         'border-radius': 3
+        }));
+        
+        const t = new Terminal(),
+        f = new FitAddon.FitAddon();
+        t.loadAddon(f);
+        t.open(document.getElementById('ec-xterm'));
+    }
+    
     showDataModel(){
         if (document.getElementsByClassName("ec-data-model").length>0)
             return;
         
         this.setBlock();
-        let _this=this,
-            aq = {};
+        let _this=this;
         
         $('body').append($('<div class="ec-data-model"></div>').css({
          width: 640,
