@@ -139,6 +139,11 @@ class Base {
         $("body").css("overflow", "auto");
     }
     
+    hideTerminal(){
+        $('.ec-xterm').remove();
+        this.unsetBlock();
+    }
+    
     showTerminal(){
         if (document.getElementsByClassName("ec-xterm").length>0)
             return;
