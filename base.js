@@ -11,7 +11,7 @@
 
 import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
 import {WebLinksAddon} from "https://cdn.jsdelivr.net/npm/xterm-addon-fit@0.3.0/lib/xterm-addon-fit.js";
-import {default as Terminal} from "https://cdn.jsdelivr.net/npm/xterm@4.5.0/lib/xterm.js";
+import {Terminal} from "./xterm.js";
 import define from "./analytics.js";
 import {default as build} from "./build.js";
 
