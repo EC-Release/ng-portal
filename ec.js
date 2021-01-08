@@ -35,6 +35,10 @@ class EC extends Base {
     this.worker.port.postMessage(`wss://${location.host+this.appPath}/log`);
   }
 
+  detachWorker(){
+    this.worker.terminate();
+  }
+
   Api(url,detail){
     return fetch(url,detail)
     .then(resp => resp.json());
