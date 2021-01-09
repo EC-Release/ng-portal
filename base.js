@@ -149,7 +149,7 @@ class Base {
         this.setBlock();
         let _this=this;
         
-        $('body').append($('<div class="ec-xterm"></div>').css({
+        $('body').append($('<div class="ec-xterm" id="ec-xterm"></div>').css({
          width: 640,
          height: 480,
          position: 'fixed',
@@ -161,9 +161,9 @@ class Base {
          'border-radius': 3
         }));
         
-        const t = new Terminal(),
-        f = new FitAddon.FitAddon();
-        t.loadAddon(f);
+        const t = new Terminal();
+        //f = new FitAddon.FitAddon();
+        //t.loadAddon(f);
         t.open(document.getElementById('ec-xterm'));
     }
     
