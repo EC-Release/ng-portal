@@ -60,9 +60,8 @@ import EC from './ec.js'
 				 }).catch(e=>{                                 
 					 console.log(`Exception: ${e}`);                                        
 				 });                                 
-			 }                         
-		    });                               
-                }
+			 }                      
+		    });                                    
             }).catch((e)=>{
                 console.log(`Exception: ${e}`);
             });
