@@ -48,11 +48,12 @@ class EC extends Base {
  
   TenguObjInit(){
     let _this=this;
-    this.TenguAPI('snapshot').then(d=>{
+    return this.TenguAPI('snapshot').then(d=>{
       for (const [key, val] of d) {
         _this.#ngObj.set(key,data);           
       }
-    }).catch(e=>{console.log(e);});
+      return _this.#ngObj.keys();
+    });
   }
 
   TenguDataInit(pkey){
