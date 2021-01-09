@@ -10,6 +10,9 @@
  */
 
 import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+import { Terminal } from './xterm/xterm.js';
+import { WebLinksAddon } from './xterm/xterm-addon-web-links.js';
+
 import define from "./analytics.js";
 import {default as build} from "./build.js";
 
