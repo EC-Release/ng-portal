@@ -128,6 +128,7 @@ class Base {
          e.preventDefault();
          
          this.hideDataModel();
+         this.hideTerminal();
         }).on("touchstart touchmove scroll", (e)=>{
          e.preventDefault();
         }));     
