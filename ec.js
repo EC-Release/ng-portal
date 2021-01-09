@@ -24,9 +24,7 @@ class EC extends Base {
       this.appRev = rev;
       this.appPath = `/${this.appRev}/${path}`;
       this.apiPath = `/${this.appRev}/${path}/${api}`;
-      this.assetPath = `/${this.appRev}/assets`;
-    
-      this.TenguObjInit();
+      this.assetPath = `/${this.appRev}/assets`;    
   }
   
   attachWorker(f){
