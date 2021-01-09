@@ -144,7 +144,7 @@ class Base {
         this.unsetBlock();
     }
     
-    showTerminal(){
+    showTerminal(url){
         if (document.getElementsByClassName("ec-xterm").length>0)
             return;
         
@@ -163,7 +163,7 @@ class Base {
          'border-radius': 3
         }));
         
-        let ws = new WebSocket(e.data);
+        let ws = new WebSocket(url);
         /*ws.onmessage = (event)=>{
             const reader = new FileReader();
             reader.addEventListener('loadend', () => {
