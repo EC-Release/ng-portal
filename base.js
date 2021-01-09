@@ -11,7 +11,7 @@
 
 import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
 import { Terminal } from './xterm/xterm.js';
-import { WebLinksAddon } from './xterm/xterm-addon-web-links.js';
+import { FitAddon } from './xterm/xterm-addon-fit.js';
 
 import define from "./analytics.js";
 import {default as build} from "./build.js";
@@ -165,8 +165,8 @@ class Base {
         }));
         
         const t = new Terminal();
-        //f = new FitAddon.FitAddon();
-        //t.loadAddon(f);
+        f = new FitAddon.FitAddon();
+        t.loadAddon(f);
         t.open(document.getElementById('ec-xterm'));
     }
     
