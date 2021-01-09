@@ -163,10 +163,42 @@ class Base {
          'border-radius': 3
         }));
         
-        const t = new Terminal();
-        f = new FitAddon.FitAddon();
-        t.loadAddon(f);
-        t.open(document.getElementById('ec-xterm'));
+        let ws = new WebSocket(e.data);
+        /*ws.onmessage = (event)=>{
+            const reader = new FileReader();
+            reader.addEventListener('loadend', () => {
+               port.postMessage(reader.result);
+            });
+            reader.readAsArrayBuffer(event.data);
+        };*/
+        
+        ws.onerror = (e)=>{
+            console.log("socket error", e);          
+        };
+        
+        ws.onopen = (e)=>{
+            const t = new Terminal({
+                //cols: 120,
+                //rows: 30,
+                useStyle: true
+                //screenKeys: true
+            });
+            //      f = new FitAddon.FitAddon();
+            //t.loadAddon(f);
+            t.open(document.getElementById('ec-xterm'));
+
+            t.on('title', (title)=>{ document.title = title;});
+
+            //term.on('data', function(data) {
+            //  sock.send(btoa(data));
+            //});
+
+            ws.onmessage = (msg)=>{
+              t.write(atob(msg.data));
+            };
+        };
+        
+        
     }
     
     showDataModel(){
