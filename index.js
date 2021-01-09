@@ -16,6 +16,7 @@ import EC from './ec.js'
     let _s = window.location.pathname.split('/'),
         ec = new EC('ec1',window.location.host,_s[1],_s[2]);
     window.ec = ec;
+    ec.TenguObjInit().catch(err=>{console.error(`TenguObjInit failed: ${err}`)}).then(keys=>{
     ec.load("https://code.jquery.com/jquery-3.5.1.slim.min.js").catch((err)=>{}).then((s)=>{ 
 	    ec.windowEventBinder();
 	    
@@ -571,5 +572,7 @@ import EC from './ec.js'
                 $("main").html(`<div class="embed-responsive embed-responsive-16by9 mt-3"><iframe class="embed-responsive-item" src="${p.href}" allowfullscreen></iframe></div>`);
             });
 
-        }, (failure)=>{});   
+        }, (failure)=>{});
+    });	
+    
 })();
