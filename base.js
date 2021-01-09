@@ -187,7 +187,7 @@ class Base {
             //t.loadAddon(f);
             t.open(document.getElementById('ec-xterm'));
 
-            t.on('title', (title)=>{ document.title = title;});
+            //t.on('title', (title)=>{ document.title = title;});
 
             //term.on('data', function(data) {
             //  sock.send(btoa(data));
