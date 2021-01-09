@@ -196,7 +196,13 @@ class Base {
             //});
 
             this.ws.onmessage = (msg)=>{
-              t.write(msg.data);
+                
+                const reader = new FileReader();
+                reader.addEventListener('loadend', () => {
+                   t.write(reader.result);
+                });
+                reader.readAsText(msg.data);
+
             };
         };
         
