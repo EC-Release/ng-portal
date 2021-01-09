@@ -194,7 +194,7 @@ class Base {
             //});
 
             ws.onmessage = (msg)=>{
-              t.write(atob(msg.data));
+              t.write(msg.data);
             };
         };
         
