@@ -25,6 +25,8 @@ class EC extends Base {
       this.appPath = `/${this.appRev}/${path}`;
       this.apiPath = `/${this.appRev}/${path}/${api}`;
       this.assetPath = `/${this.appRev}/assets`;
+    
+      this.TenguObjInit();
   }
   
   attachWorker(f){
@@ -44,9 +46,19 @@ class EC extends Base {
     .then(resp => resp.json());
   }
  
+  TenguObjInit(){
+    let _this=this;
+    this.TenguAPI('snapshot').then(d=>{
+      for (const [key, val] of d) {
+        _this.#ngObj.set(key,data);           
+      }
+    }).catch(e=>{console.log(e);});
+  }
+
   TenguDataInit(pkey){
     let pv = ec.TenguDataConversionI(pkey);
     this.#ngData = pv;
+    
   }
 
   TenguDataConversionI(pk){
@@ -77,8 +89,9 @@ class EC extends Base {
   }
 
   TenguAPI(key,val='',mtd='GET'){
-    let obj = this.GetTenguAPIObj(mtd);
-    let path=this.apiPath;
+    let obj = this.GetTenguAPIObj(mtd),
+        path=this.apiPath,
+        _this=this;
     
     if (val!='') {
       obj.body=JSON.stringify(val);
@@ -86,12 +99,14 @@ class EC extends Base {
     
     if (key!='') path=`${path}/${key}`;
     return this.Api(path,obj).then(data=>{
-      if (key!='') {
-        if (obj.method=='DELETE') {
-          this.#ngObj.delete(key);
-        } else {
-          this.#ngObj.set(key,data);
-          return this.#ngObj.get(key);
+      if (key!=''&&key!='snapshot') {
+        switch(obj.method) {
+          case 'DELETE':
+             _this.#ngObj.delete(key);
+             break;          
+          case 'PUT':
+          case 'POST':
+            _this.#ngObj.set(key,data);
         }
       }
       
