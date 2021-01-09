@@ -165,7 +165,7 @@ class Base {
         }));
         
         const t = new Terminal();
-        f = new FitAddon.FitAddon();
+        f = new FitAddon();
         t.loadAddon(f);
         t.open(document.getElementById('ec-xterm'));
     }
