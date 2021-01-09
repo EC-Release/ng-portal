@@ -179,14 +179,9 @@ class Base {
         };
         
         this.ws.onopen = (e)=>{
-            const t = new Terminal({
-                //cols: 120,
-                //rows: 30,
-                useStyle: true
-                //screenKeys: true
-            });
-            //      f = new FitAddon.FitAddon();
-            //t.loadAddon(f);
+            const t = new Terminal(),
+                  f = new FitAddon.FitAddon();
+            t.loadAddon(f);
             t.open(document.getElementById('ec-xterm'));
 
             //t.on('title', (title)=>{ document.title = title;});
