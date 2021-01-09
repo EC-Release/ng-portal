@@ -63,12 +63,9 @@ import EC from './ec.js'
 					 });                                 
 				 }                      
 			    });   
-		    }).catch(e=>{console.log(`get up err: ${e}`)});                        
-            }).catch((e)=>{
-                console.log(`Exception: ${e}`);
-            });
-            
-            $('ul').on('click', 'li.ec-godoc', (event)=>{
+		    }).catch(e=>{console.log(`get up err: ${e}`)});
+		    
+		    $('ul').on('click', 'li.ec-godoc', (event)=>{
 
                 ec.setActiveTab(event.target,`${ec.appPath}/godoc`);
                 event.preventDefault();
@@ -571,6 +568,10 @@ import EC from './ec.js'
                   , h = p.href.split("/").pop();
                 ec.setActiveState(event.target.parentNode, ec.appPath + '/godoc/' + h);
                 $("main").html(`<div class="embed-responsive embed-responsive-16by9 mt-3"><iframe class="embed-responsive-item" src="${p.href}" allowfullscreen></iframe></div>`);
+            });
+		    
+            }).catch((e)=>{
+                console.log(`Exception: ${e}`);
             });
 
         }, (failure)=>{});
