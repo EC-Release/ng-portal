@@ -140,8 +140,10 @@ class Base {
     }
     
     hideTerminal(){
+        this.ws.close();
         $('.ec-xterm').remove();
         this.unsetBlock();
+        
     }
     
     showTerminal(url){
@@ -163,7 +165,7 @@ class Base {
          'border-radius': 3
         }));
         
-        let ws = new WebSocket(url);
+        this.ws = new WebSocket(url);
         /*ws.onmessage = (event)=>{
             const reader = new FileReader();
             reader.addEventListener('loadend', () => {
@@ -172,11 +174,11 @@ class Base {
             reader.readAsArrayBuffer(event.data);
         };*/
         
-        ws.onerror = (e)=>{
+        this.ws.onerror = (e)=>{
             console.log("socket error", e);          
         };
         
-        ws.onopen = (e)=>{
+        this.ws.onopen = (e)=>{
             const t = new Terminal({
                 //cols: 120,
                 //rows: 30,
@@ -193,7 +195,7 @@ class Base {
             //  sock.send(btoa(data));
             //});
 
-            ws.onmessage = (msg)=>{
+            this.ws.onmessage = (msg)=>{
               t.write(msg.data);
             };
         };
