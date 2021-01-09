@@ -571,7 +571,5 @@ import EC from './ec.js'
                 $("main").html(`<div class="embed-responsive embed-responsive-16by9 mt-3"><iframe class="embed-responsive-item" src="${p.href}" allowfullscreen></iframe></div>`);
             });
 
-        }, (failure)=>{});
-    }, (failure)=>{});
-    
+        }, (failure)=>{});   
 })();
