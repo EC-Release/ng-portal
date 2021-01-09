@@ -151,8 +151,8 @@ class Base {
         let _this=this;
         
         $('body').append($('<div class="ec-xterm" id="ec-xterm"></div>').css({
-         width: 640,
-         height: 480,
+         //width: 640,
+         //height: 480,
          position: 'fixed',
          top: '50%',
          left: '50%',
