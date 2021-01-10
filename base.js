@@ -209,7 +209,7 @@ class Base {
             return;
         
         this.setBlock();
-        let _this=this;
+        let _this=this,aq={};
         
         $('body').append($('<div class="ec-data-model"></div>').css({
          width: 640,
