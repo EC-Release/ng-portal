@@ -157,9 +157,17 @@ import EC from './ec.js'
                     return '&nbsp;';
                 }
 		
-		let remoteOps = (node)=>{
+		let debugOps = (node)=>{
                     if (node.startsWith(`https://${ec.appHost}`)){
                         return `<a class="ec-seed-remote" href="javascript:void(0)">${feather.icons['monitor'].toSvg({'color':'blue'})}</a>`;
+                    }
+                    
+                    return '&nbsp;';
+                }
+		
+		let remoteOps = (node)=>{
+                    if (node.startsWith(`https://${ec.appHost}`)){
+                        return `<a class="ec-seed-remote" href="javascript:void(0)">${feather.icons['terminal'].toSvg({'color':'black'})}</a>`;
                     }
                     
                     return '&nbsp;';
@@ -176,6 +184,7 @@ import EC from './ec.js'
                                     `<th scope="col">Status</th>` + 
                                     `<th scope="col">Retry</th>` + 
                                     `<th scope="col">Reboot</th>` + 
+                                    `<th scope="col">Debug</th>` + 
                                     `<th scope="col">Remote</th>` + 
                                     `<th scope="col" class="text-left">Updated On</th>` + 
                                     `<th scope="col" class="text-left">Joined On</th>` + 
@@ -194,6 +203,7 @@ import EC from './ec.js'
                             `<td>${st(seed.Status)}</td>` + 
                             `<td>${seed.Retry}</td>` + 
                             `<td>${refreshOps(seed.Node)}</td>` + 
+                            `<td>${debugOps(seed.Node)}</td>` + 
                             `<td>${remoteOps(seed.Node)}</td>` + 
                             `<td>${tc(seed.UpdatedOn*1000)}</td>` + 
                             `<td>${tc(seed.CreatedOn*1000)}</td></tr>`;
