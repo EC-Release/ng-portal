@@ -179,7 +179,7 @@ class Base {
         };
         
         this.ws.onopen = (e)=>{
-            const t = new Terminal(),
+            const t = new Terminal({cols:100,rows:40,convertEol:true}),
                   f = new FitAddon.FitAddon();
             t.loadAddon(f);
             t.open(document.getElementById('ec-xterm'));
