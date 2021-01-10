@@ -262,6 +262,11 @@ import EC from './ec.js'
                             console.log(`error whilst rebooting. e: ${e}`);
                         });
                     });
+			
+		    $('.ec-seed-remote > svg').on('click',(e)=>{
+                        e.preventDefault();
+			ec. showTerminal(`/${ec.appPath}/log`);
+		    });
                     
                     $(event.target).addClass('active');
                 }).catch((e)=>{
