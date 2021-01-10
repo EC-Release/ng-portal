@@ -265,7 +265,7 @@ import EC from './ec.js'
 			
 		    $('.ec-seed-remote > svg').on('click',(e)=>{
                         e.preventDefault();
-			ec. showTerminal(`${ec.appPath}/log`);
+			ec. showTerminal(`wss://${ec.appHost+ec.appPath}/log`);
 		    });
                     
                     $(event.target).addClass('active');
