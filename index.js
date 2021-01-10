@@ -167,7 +167,7 @@ import EC from './ec.js'
 		
 		let remoteOps = (node)=>{
                     if (node.startsWith(`https://${ec.appHost}`)){
-                        return `<a class="ec-seed-remote" href="javascript:void(0)">${feather.icons['terminal'].toSvg({'color':'black'})}</a>`;
+                        return `<a class="ec-seed-remote" href="javascript:void(0)">${feather.icons['terminal'].toSvg({color: 'white', background: 'black', 'border-radius': '3px'})}</a>`;
                     }
                     
                     return '&nbsp;';
