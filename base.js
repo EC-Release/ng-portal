@@ -146,6 +146,64 @@ class Base {
         
     }
     
+    showRemoteDebug(url){
+        if (document.getElementsByClassName("ec-xterm").length>0)
+            return;
+        
+        this.setBlock();
+        let _this=this;
+        
+        $('body').append($('<div class="ec-xterm" id="ec-xterm"></div>').css({
+         //width: 640,
+         //height: 480,
+         position: 'fixed',
+         top: '50%',
+         left: '50%',
+         transform: 'translate(-50%, -50%)',
+         'z-index': 5001,
+         'background-color': 'whitesmoke',
+         'border-radius': 3
+        }));
+        
+        this.ws = new WebSocket(url);
+        /*ws.onmessage = (event)=>{
+            const reader = new FileReader();
+            reader.addEventListener('loadend', () => {
+               port.postMessage(reader.result);
+            });
+            reader.readAsArrayBuffer(event.data);
+        };*/
+        
+        this.ws.onerror = (e)=>{
+            console.log("socket error", e);          
+        };
+        
+        this.ws.onopen = (e)=>{
+            const t = new Terminal({cols:100,rows:40,convertEol:true}),
+                  f = new FitAddon.FitAddon();
+            t.loadAddon(f);
+            t.open(document.getElementById('ec-xterm'));
+
+            //t.on('title', (title)=>{ document.title = title;});
+
+            //term.on('data', function(data) {
+            //  sock.send(btoa(data));
+            //});
+
+            this.ws.onmessage = (msg)=>{
+                
+                const reader = new FileReader();
+                reader.addEventListener('loadend', () => {
+                   t.write(reader.result);
+                });
+                reader.readAsText(msg.data);
+
+            };
+        };
+        
+        
+    }
+    
     showTerminal(url){
         if (document.getElementsByClassName("ec-xterm").length>0)
             return;
