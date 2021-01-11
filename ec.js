@@ -125,7 +125,7 @@ class EC extends Base {
       method: mtd,
       headers: {
         //'Authorization': `Bearer ${op}`,
-        'Content-Type': 'application/json
+        'Content-Type': 'application/json'
       }
     };   
   }
