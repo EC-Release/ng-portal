@@ -236,13 +236,6 @@ class Base {
         
         
         this.ws = new WebSocket(url);
-        /*ws.onmessage = (event)=>{
-            const reader = new FileReader();
-            reader.addEventListener('loadend', () => {
-               port.postMessage(reader.result);
-            });
-            reader.readAsArrayBuffer(event.data);
-        };*/
         
         this.ws.onerror = (e)=>{
             console.log("socket error", e);          
@@ -259,7 +252,7 @@ class Base {
             f = new FitAddon.FitAddon();
             t.loadAddon(f);
             t.open(document.getElementById('ec-xterm'));            
-			t.fit();
+			//t.fit();
 
             //t.on('title', (title)=>{ document.title = title;});
 
@@ -267,37 +260,35 @@ class Base {
             //  sock.send(btoa(data));
             //});
             
-            t.on('data', (data)=>{
+            t.onData(data=>{
                 this.ws.send(new TextEncoder().encode("\x00" + data));
             });
             
-            t.on('resize', (evt)=>{
+            t.onResize(evt=>{
                 this.ws.send(new TextEncoder().encode("\x01" + JSON.stringify({cols: evt.cols, rows: evt.rows})))
             });
             
-            t.on('title', function(title) {
+            t.onTitleChange(title=>{
                 document.title = title;
             });
             
             this.ws.onmessage = (msg)=>{
-                if (msg.data instanceof ArrayBuffer) {
-                    t.write(ab2str(msg.data));
-                } else {
-                    alert(msg.data)
-                }
+                const reader = new FileReader();
+                reader.addEventListener('loadend', () => {
+                   t.write(reader.result);
+                });
+                reader.readAsText(msg.data);
             };
             
             this.ws.onclose = (evt)=>{
                 t.write("session terminated");
-                t.destroy();
+                t.dispose();
             }
 
     		this.ws.onerror = (e)=>{
                 console.log("socket error", e);          
             }
         };
-        
-        
     }
     
     showDataModel(){
