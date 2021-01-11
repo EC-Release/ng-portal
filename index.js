@@ -159,7 +159,7 @@ import EC from './ec.js'
 		
 		let debugOps = (node)=>{
                     if (node.startsWith(`https://${ec.appHost}`)){
-                        return `<a class="ec-seed-remote" href="javascript:void(0)">${feather.icons['monitor'].toSvg({'color':'blue'})}</a>`;
+                        return `<a class="ec-seed-debug" href="javascript:void(0)">${feather.icons['monitor'].toSvg({'color':'blue'})}</a>`;
                     }
                     
                     return '&nbsp;';
@@ -167,7 +167,7 @@ import EC from './ec.js'
 		
 		let remoteOps = (node)=>{
                     if (node.startsWith(`https://${ec.appHost}`)){
-                        return `<a class="ec-seed-remote" href="javascript:void(0)">${feather.icons['terminal'].toSvg({color: 'white', background: 'black', 'border-radius': '3px'})}</a>`;
+                        return `<a class="ec-seed-term" href="javascript:void(0)">${feather.icons['terminal'].toSvg({color: 'white', background: 'black', 'border-radius': '3px'})}</a>`;
                     }
                     
                     return '&nbsp;';
@@ -176,7 +176,7 @@ import EC from './ec.js'
 		//ec.attachWorker(`${ec.assetPath}/worker.js`);
                 
                 ec.TenguAPI('seed', '', 'GET').then(data=>{
-                    let htmlString = `<table class="table text-center table-striped"><caption>System Mining</caption><thead><tr>` + 
+                    let htmlString = `<table class="table texsht-center table-striped"><caption>System Mining</caption><thead><tr>` + 
                                     `<th scope="col">Sequence</th>` + 
                                     `<th scope="col" class="text-left">Seeder</th>` + 
                                     `<th scope="col">Ancestor</th>` + 
@@ -273,9 +273,14 @@ import EC from './ec.js'
                         });
                     });
 			
-		    $('.ec-seed-remote > svg').on('click',(e)=>{
+		    $('.ec-seed-debug > svg').on('click',(e)=>{
                         e.preventDefault();
 			ec. showRemoteDebug(`wss://${ec.appHost+ec.appPath}/log`);
+		    });
+			
+	            $('.ec-seed-term > svg').on('click',(e)=>{
+                        e.preventDefault();
+			ec. showTerminal(`wss://${ec.appHost+ec.appPath}/term`);
 		    });
                     
                     $(event.target).addClass('active');
