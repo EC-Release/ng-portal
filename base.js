@@ -190,7 +190,7 @@ class Base {
             const t = new Terminal({cols:100,rows:40,convertEol:true}),
                   f = new FitAddon.FitAddon();
             t.loadAddon(f);
-            t.open(document.getElementById('ec-xterm'));
+            t.open(document.getElementById('ec-xdbg'));
 
             //t.on('title', (title)=>{ document.title = title;});
 
