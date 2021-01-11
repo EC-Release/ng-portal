@@ -128,6 +128,7 @@ class Base {
          e.preventDefault();
          
          this.hideDataModel();
+         this.hideRemoteDebug();
          this.hideTerminal();
         }).on("touchstart touchmove scroll", (e)=>{
          e.preventDefault();
@@ -146,14 +147,21 @@ class Base {
         
     }
     
+    hideRemoteDebug(){
+        this.ws.close();
+        $('.ec-xdbg').remove();
+        this.unsetBlock();
+        
+    }
+    
     showRemoteDebug(url){
-        if (document.getElementsByClassName("ec-xterm").length>0)
+        if (document.getElementsByClassName("ec-xdbg").length>0)
             return;
         
         this.setBlock();
         let _this=this;
         
-        $('body').append($('<div class="ec-xterm" id="ec-xterm"></div>').css({
+        $('body').append($('<div class="ec-xdbg" id="ec-xdbg"></div>').css({
          //width: 640,
          //height: 480,
          position: 'fixed',
@@ -237,7 +245,13 @@ class Base {
         };
         
         this.ws.onopen = (e)=>{
-            const t = new Terminal({cols:100,rows:40,convertEol:true}),
+            const t = new Terminal({
+                cols:100,
+                rows:40,
+                convertEol:true,
+                screenKeys: true,
+                useStyle: true,
+                cursorBlink: true}),
                   f = new FitAddon.FitAddon();
             t.loadAddon(f);
             t.open(document.getElementById('ec-xterm'));
