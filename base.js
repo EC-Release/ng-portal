@@ -217,7 +217,10 @@ class Base {
             return;
         
         this.setBlock();
-        let _this=this;
+        let _this=this,
+            ab2str=(buf)=>{
+                return String.fromCharCode.apply(null, new Uint8Array(buf));
+            };
         
         $('body').append($('<div class="ec-xterm" id="ec-xterm"></div>').css({
          //width: 640,
@@ -230,6 +233,7 @@ class Base {
          'background-color': 'whitesmoke',
          'border-radius': 3
         }));
+        
         
         this.ws = new WebSocket(url);
         /*ws.onmessage = (event)=>{
@@ -252,25 +256,45 @@ class Base {
                 screenKeys: true,
                 useStyle: true,
                 cursorBlink: true}),
-                  f = new FitAddon.FitAddon();
+            f = new FitAddon.FitAddon();
             t.loadAddon(f);
-            t.open(document.getElementById('ec-xterm'));
+            t.open(document.getElementById('ec-xterm'));            
+			t.fit();
 
             //t.on('title', (title)=>{ document.title = title;});
 
             //term.on('data', function(data) {
             //  sock.send(btoa(data));
             //});
-
+            
+            t.on('data', (data)=>{
+                this.ws.send(new TextEncoder().encode("\x00" + data));
+            });
+            
+            t.on('resize', (evt)=>{
+                this.ws.send(new TextEncoder().encode("\x01" + JSON.stringify({cols: evt.cols, rows: evt.rows})))
+            });
+            
+            t.on('title', function(title) {
+                document.title = title;
+            });
+            
             this.ws.onmessage = (msg)=>{
-                
-                const reader = new FileReader();
-                reader.addEventListener('loadend', () => {
-                   t.write(reader.result);
-                });
-                reader.readAsText(msg.data);
-
+                if (msg.data instanceof ArrayBuffer) {
+                    t.write(ab2str(msg.data));
+                } else {
+                    alert(msg.data)
+                }
             };
+            
+            this.ws.onclose = (evt)=>{
+                t.write("session terminated");
+                t.destroy();
+            }
+
+    		this.ws.onerror = (e)=>{
+                console.log("socket error", e);          
+            }
         };
         
         
