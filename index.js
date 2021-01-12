@@ -615,7 +615,7 @@ import EC from './ec.js'
 		}).then(fs=>{
 			let htmlString = "";
 			fs.features.forEach((ft,idx)=>{
-				ec.Api(`https://ge-dw.aha.io/api/v1/api/v1/features/${ft.id}`,h).then(f=>{
+				ec.Api(`https://ge-dw.aha.io/api/v1/features/${ft.id}`,h).then(f=>{
 				
 				}).catch(e=>{console.log(e)});
 				htmlString += `<div class="card bg-light mb-3" style="max-width: 18rem;">` +
