@@ -606,7 +606,12 @@ import EC from './ec.js'
 		    h={method: 'GET',
 		 	headers: {'Content-Type': 'application/json',
 				'Accept': 'application/json',
-				'Authorization': `Bearer ${v}`}};
+				'Authorization': `Bearer ${v}`}},
+			hs=(html)=>{
+			   let tmp = document.createElement("DIV");
+			   tmp.innerHTML = html;
+			   return tmp.textContent || tmp.innerText || "";
+			};
 		
 		v&&ec.Api('https://ge-dw.aha.io/api/v1/products/DTEC/releases?q=Release%202021',h).then(op=>{
 			return op.releases[0].id;
@@ -617,10 +622,10 @@ import EC from './ec.js'
 			fs.features.forEach((ft,idx)=>{
 				ec.Api(`https://ge-dw.aha.io/api/v1/features/${ft.id}`,h).then(f=>{
 					htmlString += `<div class="card bg-light mb-3" style="max-width: 18rem;">` +
-							 `<div class="card-header">${f.reference_num}</div>` +
+							 `<div class="card-header">${f.feature.reference_num}</div>` +
 							 `<div class="card-body">` +
-							  `<h5 class="card-title">${f.name}</h5>` +
-							  `<p class="card-text">${f.description.body.substring(0, 30)}..</p>` +
+							  `<h5 class="card-title">${f.feature.name}</h5>` +
+							  `<p class="card-text">${hs(f.feature.description.body).substring(0, 50)} ..</p>` +
 							 `</div>` +
 							 `</div>`;
 					if (idx==fs.features.length-1){
