@@ -599,7 +599,24 @@ import EC from './ec.js'
                 ec.setActiveState(event.target.parentNode, ec.appPath + '/godoc/' + h);
                 $("main").html(`<div class="embed-responsive embed-responsive-16by9 mt-3"><iframe class="embed-responsive-item" src="${p.href}" allowfullscreen></iframe></div>`);
             });
+		 
+            $('main').on('click', 'a.ec-feature', (event)=>{
+                event.preventDefault();
+		let v=ec.vendorTokenChecker();
+		
+		v&&ec.Api('https://ge-dw.aha.io/api/v1/me',{
+		    method: 'GET',headers: {
+		      'Content-Type': 'application/json',
+		      'Accept': 'application/json',
+		      `Authorization':'Bearer ${v}`
+		    }}).then(op=>{console.log(op)}).catch(e=>{console.log(e)});
 		    
+                let p = $(event.target).parents('a')[0]
+                  , h = p.href.split("/").pop();
+                ec.setActiveTab(event.target,`${ec.appPath}/features`);
+                $("main").html(`feature`);
+            });
+	
             }).catch((e)=>{
                 console.log(`Exception: ${e}`);
             });
