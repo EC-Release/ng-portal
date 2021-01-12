@@ -608,7 +608,7 @@ import EC from './ec.js'
 		    method: 'GET',headers: {
 		      'Content-Type': 'application/json',
 		      'Accept': 'application/json',
-		      `Authorization':'Bearer ${v}`
+		      'Authorization': `Bearer ${v}`
 		    }}).then(op=>{console.log(op)}).catch(e=>{console.log(e)});
 		    
                 let p = $(event.target).parents('a')[0]
