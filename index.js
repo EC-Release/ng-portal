@@ -600,7 +600,7 @@ import EC from './ec.js'
                 $("main").html(`<div class="embed-responsive embed-responsive-16by9 mt-3"><iframe class="embed-responsive-item" src="${p.href}" allowfullscreen></iframe></div>`);
             });
 		 
-            $('main').on('click', 'a.ec-feature', (event)=>{
+            $('main').on('click', 'li.ec-feature', (event)=>{
                 event.preventDefault();
 		let v=ec.vendorTokenChecker();
 		
