@@ -602,7 +602,7 @@ import EC from './ec.js'
 		 
             $('ul').on('click', 'li.ec-feature', (event)=>{
                 event.preventDefault();
-		let v=ec.vendorTokenChecker(),
+		let v=ec.getToken('v_tkn'),
 		    h={method: 'GET',
 		 	headers: {'Content-Type': 'application/json',
 				'Accept': 'application/json',
