@@ -17,20 +17,10 @@ import {default as build} from "./build.js";
 class Base {
     constructor(){}
     
-    tokenChecker(){
-        let op = document.cookie.split("ec-config=");
-        if (op.length<2) {
-            location.reload();
-        }
-        return op[1];
-    }
-	
-    vendorTokenChecker(){
-        let op = document.cookie.split("v_tkn=");
-        if (op.length==2) {
-            return op[1];
-        }
-        return;
+    getToken(name) {
+	const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);	 
+	if (parts.length === 2) return parts.pop().split(';').shift();
     }
     
     windowEventBinder(){
