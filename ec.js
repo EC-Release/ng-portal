@@ -15,6 +15,7 @@ class EC extends Base {
   #sdk = "";
   #security = "";
   #releases = "";
+  #features = "";
   #ngObj = new Map();
   #ngData = {};
   constructor(id,host,rev='v1.2beta',path='ec',api='api') {
@@ -197,6 +198,14 @@ class EC extends Base {
 
   get securityMd() {
     return this.#security;
+  }
+    
+  set featureHTML(c) {
+    this.#features=c;
+  }
+
+  get featureHTML() {
+    return this.#features;
   }
 
   set sdkInnerHTML(c) {
