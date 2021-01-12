@@ -611,8 +611,6 @@ import EC from './ec.js'
 		      'Authorization': `Bearer ${v}`
 		    }}).then(op=>{console.log(op)}).catch(e=>{console.log(e)});
 		    
-                let p = $(event.target).parents('a')[0]
-                  , h = p.href.split("/").pop();
                 ec.setActiveTab(event.target,`${ec.appPath}/features`);
                 $("main").html(`feature`);
             });
