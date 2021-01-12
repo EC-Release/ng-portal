@@ -119,7 +119,7 @@ class EC extends Base {
   }
 
   GetTenguAPIObj(mtd='GET'){
-    let op = this.tokenChecker();
+    let op = this.getToken('ec-config');
     
     return {
       method: mtd,
