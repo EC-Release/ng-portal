@@ -602,17 +602,37 @@ import EC from './ec.js'
 		 
             $('ul').on('click', 'li.ec-feature', (event)=>{
                 event.preventDefault();
-		let v=ec.vendorTokenChecker();
+		let v=ec.vendorTokenChecker(),
+		    h={method: 'GET',
+		 	headers: {'Content-Type': 'application/json',
+				'Accept': 'application/json',
+				'Authorization': `Bearer ${v}`}};
 		
-		v&&ec.Api('https://ge-dw.aha.io/api/v1/me',{
-		    method: 'GET',headers: {
-		      'Content-Type': 'application/json',
-		      'Accept': 'application/json',
-		      'Authorization': `Bearer ${v}`
-		    }}).then(op=>{console.log(op)}).catch(e=>{console.log(e)});
+		v&&ec.Api('https://ge-dw.aha.io/api/v1/products/DTEC/releases?q=Release%202021',h).then(op=>{
+			return op.releases[0].id;
+		}).then(rid=>{
+			return ec.Api(`https://ge-dw.aha.io/api/v1/releases/${rid}/features`,h);
+		}).then(fs=>{
+			let htmlString = "";
+			fs.features.forEach((ft,idx)=>{
+				ec.Api(`https://ge-dw.aha.io/api/v1/api/v1/features/${ft.id}`,h).then(f=>{
+				
+				}).catch(e=>{console.log(e)});
+				htmlString += `<div class="card bg-light mb-3" style="max-width: 18rem;">` +
+						 `<div class="card-header">${f.reference_num}</div>` +
+						 `<div class="card-body">` +
+						  `<h5 class="card-title">${f.name}</h5>` +
+						  `<p class="card-text">${f.description.body.substring(0, 30)}..</p>` +
+						 `</div>` +
+						 `</div>`;
+				if (idx==fs.features.length-1){
+					ec.setActiveTab(event.target,`${ec.appPath}/features`);
+                			$("main").html(htmlString);
+				}
+			});
+		}).catch(e=>{console.log(e)});
 		    
-                ec.setActiveTab(event.target,`${ec.appPath}/features`);
-                $("main").html(`feature`);
+                
             });
 	
             }).catch((e)=>{
