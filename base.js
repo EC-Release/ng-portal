@@ -24,6 +24,14 @@ class Base {
         }
         return op[1];
     }
+	
+    vendorTokenChecker(){
+        let op = document.cookie.split("v_tkn=");
+        if (op.length==2) {
+            return op[1];
+        }
+        return;
+    }
     
     windowEventBinder(){
         /*this.worker = new Worker(`${this.assetPath}/worker.js`);
