@@ -602,6 +602,12 @@ import EC from './ec.js'
 		 
             $('ul').on('click', 'li.ec-feature', (event)=>{
                 event.preventDefault();
+		if (ec.featureHTML!=""){
+			ec.setActiveTab(event.target,`${ec.appPath}/features`);
+			$("main").html(ec.featureHTML);
+			return;
+		}
+		    
 		let v=ec.getToken('v_tkn'),
 		    h={method: 'GET',
 		 	headers: {'Content-Type': 'application/json',
@@ -630,7 +636,8 @@ import EC from './ec.js'
 							 `</div>`;
 					if (idx==fs.features.length-1){
 						ec.setActiveTab(event.target,`${ec.appPath}/features`);
-						$("main").html(htmlString);
+						ec.featureHTML = htmlString;
+						$("main").html(ec.featureHTML);
 					}
 				}).catch(e=>{console.log(e)});
 				
