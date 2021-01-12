@@ -616,19 +616,19 @@ import EC from './ec.js'
 			let htmlString = "";
 			fs.features.forEach((ft,idx)=>{
 				ec.Api(`https://ge-dw.aha.io/api/v1/features/${ft.id}`,h).then(f=>{
-				
+					htmlString += `<div class="card bg-light mb-3" style="max-width: 18rem;">` +
+							 `<div class="card-header">${f.reference_num}</div>` +
+							 `<div class="card-body">` +
+							  `<h5 class="card-title">${f.name}</h5>` +
+							  `<p class="card-text">${f.description.body.substring(0, 30)}..</p>` +
+							 `</div>` +
+							 `</div>`;
+					if (idx==fs.features.length-1){
+						ec.setActiveTab(event.target,`${ec.appPath}/features`);
+						$("main").html(htmlString);
+					}
 				}).catch(e=>{console.log(e)});
-				htmlString += `<div class="card bg-light mb-3" style="max-width: 18rem;">` +
-						 `<div class="card-header">${f.reference_num}</div>` +
-						 `<div class="card-body">` +
-						  `<h5 class="card-title">${f.name}</h5>` +
-						  `<p class="card-text">${f.description.body.substring(0, 30)}..</p>` +
-						 `</div>` +
-						 `</div>`;
-				if (idx==fs.features.length-1){
-					ec.setActiveTab(event.target,`${ec.appPath}/features`);
-                			$("main").html(htmlString);
-				}
+				
 			});
 		}).catch(e=>{console.log(e)});
 		    
