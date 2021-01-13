@@ -632,27 +632,31 @@ import EC from './ec.js'
 							 `<div class="card-header">${f.feature.reference_num}</div>` +
 							 `<div class="card-body">` +
 							  `<h5 class="card-title">${f.feature.name}</h5>` +
-							  `<p class="card-text">${hs(f.feature.description.body).substring(0, 50)} ..</p>` +
+							  `<p class="card-text">${hs(f.feature.description.body).substring(0, 100)} ..</p>` +
 							 `</div>` +
 							 `</div>`;
 					if (idx==fs.features.length-1){
-						htmlString += `</div><div class="col-4">
-								<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-								  <div class="card-header">Header</div>
-								  <div class="card-body">
-								    <h5 class="card-title">Dark card title</h5>
-								    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-								  </div>
-								</div><div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-								  <div class="card-header">Header</div>
-								  <div class="card-body">
-								    <h5 class="card-title">Secondary card title</h5>
-								    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-								  </div>
-								</div></div></div>`;
-						ec.setActiveTab(event.target,`${ec.appPath}/features`);
-						ec.featureHTML = htmlString;
-						$("main").html(ec.featureHTML);
+						htmlString += `</div><div class="col-4">`;
+						ec.Api('https://api.github.com/repos/ec-release/oci/pulls').then((data)=>{
+							data.forEach((pr,idx)=>{
+								setTimeout(() => {
+									htmlString += `<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+									  <div class="card-header">#${pr.number}</div>
+									  <div class="card-body">
+									    <h5 class="card-title">${pr.title}</h5>
+									    <p class="card-text">${pr.body.substring(0, 100)}</p>
+									  </div>
+									</div>`
+									if (idx==data.length-1) {
+										htmlString += `</div></div>`;
+										ec.setActiveTab(event.target,`${ec.appPath}/features`);
+										ec.featureHTML = htmlString;
+										$("main").html(ec.featureHTML);
+									}
+								},100);
+							});
+						});
+						
 					}
 					}).catch(e=>{console.log(e)});
 				},100);
