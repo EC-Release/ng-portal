@@ -653,7 +653,7 @@ import EC from './ec.js'
 									  </div>
 									</div>`
 									if (idx==data.length-1) {
-										htmlString += `</div><div class="col-4">
+										htmlString += `</div><div class="col-4">`;
 										ec.Api(`https://api.github.com/orgs/EC-Release/projects`,
 										       {method: 'GET',
 											headers:{Accept: 'application/vnd.github.inertia-preview+json'}}).then(pl=>{
