@@ -626,7 +626,8 @@ import EC from './ec.js'
 		}).then(fs=>{
 			let htmlString = `<div class="row justify-content-around"><div class="col-4">`;
 			fs.features.forEach((ft,idx)=>{
-				ec.Api(`https://ge-dw.aha.io/api/v1/features/${ft.id}`,h).then(f=>{
+				setTimeout(() => {
+					ec.Api(`https://ge-dw.aha.io/api/v1/features/${ft.id}`,h).then(f=>{
 					htmlString += `<div class="card bg-light mb-3" style="max-width: 18rem;">` +
 							 `<div class="card-header">${f.feature.reference_num}</div>` +
 							 `<div class="card-body">` +
@@ -653,8 +654,8 @@ import EC from './ec.js'
 						ec.featureHTML = htmlString;
 						$("main").html(ec.featureHTML);
 					}
-				}).catch(e=>{console.log(e)});
-				
+					}).catch(e=>{console.log(e)});
+				},100);
 			});
 			   
 			
