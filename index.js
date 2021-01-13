@@ -666,13 +666,13 @@ import EC from './ec.js'
 										ec.featureHTML = htmlString;
 										$("main").html(ec.featureHTML);
 									}
-								},100);
+								},200);
 							});
 						});
 						
 					}
 					}).catch(e=>{console.log(e)});
-				},100);
+				},200);
 			});
 			   
 			
