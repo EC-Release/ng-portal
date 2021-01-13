@@ -649,22 +649,29 @@ import EC from './ec.js'
 									  <div class="card-header">PR#${pr.number}</div>
 									  <div class="card-body">
 									    <h5 class="card-title">${pr.title}</h5>
-									    <p class="card-text">${pr.body.substring(0, 100)}</p>
+									    <p class="card-text">${pr.body.substring(0, 100)} ..</p>
 									  </div>
 									</div>`
 									if (idx==data.length-1) {
 										htmlString += `</div><div class="col-4">
-										<div class="card bg-light mb-3" style="max-width: 18rem;">
-										  <div class="card-header">Issue#${pr.number}</div>
-										  <div class="card-body">
-										    <h5 class="card-title">${pr.title}</h5>
-										    <p class="card-text">${pr.body.substring(0, 100)}</p>
-										  </div>
-										</div>
-										</div></div>`;
+										ec.Api(`https://api.github.com/orgs/EC-Release/projects`,
+										       {method: 'GET',
+											headers:{Accept: 'application/vnd.github.inertia-preview+json'}}).then(pl=>{
+											pl.forEach((pt,idx)=>{
+												htmlString += `<div class="card bg-light mb-3" style="max-width: 18rem;">
+												  <div class="card-header">Project#${pt.number}</div>
+												  <div class="card-body">
+												    <h5 class="card-title">${pt.name}</h5>
+												    <p class="card-text">${pt.body.substring(0, 100)} ..</p>
+												  </div>
+												</div>`
+											});
+										htmlString += `</div></div>`;
 										ec.setActiveTab(event.target,`${ec.appPath}/features`);
 										ec.featureHTML = htmlString;
 										$("main").html(ec.featureHTML);
+
+										}).catch(e=>{console.log(e)});
 									}
 								},200);
 							});
