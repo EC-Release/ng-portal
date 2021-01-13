@@ -637,11 +637,11 @@ import EC from './ec.js'
 							 `</div>`;
 					if (idx==fs.features.length-1){
 						htmlString += `</div><div class="col-4">`;
-						ec.Api('https://api.github.com/repos/ec-release/oci/pulls').then((data)=>{
+						ec.Api('https://api.github.com/repos/ec-release/oci/issues').then((data)=>{
 							//let sdArr = Object.values(data);
-							data.sort((a, b)=>{
-							  return a.number - b.SeqID;
-							});
+							//data.sort((a, b)=>{
+							//  return a.number - b.SeqID;
+							//});
 							let htmlString2 = "";
 							data.forEach((pr,idx)=>{
 								setTimeout(() => {
