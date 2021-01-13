@@ -139,14 +139,14 @@ class Base {
     }
     
     hideTerminal(){
-        this.ws.close();
+        this.ws&&this.ws.close();
         $('.ec-xterm').remove();
         this.unsetBlock();
         
     }
     
     hideRemoteDebug(){
-        this.ws.close();
+        this.ws&&this.ws.close();
         $('.ec-xdbg').remove();
         this.unsetBlock();
         
