@@ -655,7 +655,7 @@ import EC from './ec.js'
 									if (idx==data.length-1) {
 										htmlString += `</div><div class="col-4">
 										<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-										  <div class="card-header">PR#${pr.number}</div>
+										  <div class="card-header">Issue#${pr.number}</div>
 										  <div class="card-body">
 										    <h5 class="card-title">${pr.title}</h5>
 										    <p class="card-text">${pr.body.substring(0, 100)}</p>
