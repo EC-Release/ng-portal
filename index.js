@@ -628,7 +628,7 @@ import EC from './ec.js'
 			fs.features.forEach((ft,idx)=>{
 				setTimeout(() => {
 					ec.Api(`https://ge-dw.aha.io/api/v1/features/${ft.id}`,h).then(f=>{
-					htmlString += `<div class="card bg-light mb-3" style="max-width: 18rem;">` +
+					htmlString += `<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">` +
 							 `<div class="card-header">${f.feature.reference_num}</div>` +
 							 `<div class="card-body">` +
 							  `<h5 class="card-title">${f.feature.name}</h5>` +
@@ -642,7 +642,7 @@ import EC from './ec.js'
 							//data.sort((a, b)=>{
 							//  return a.number - b.SeqID;
 							//});
-							let htmlString2 = "";
+							//let htmlString2 = "";
 							data.forEach((pr,idx)=>{
 								setTimeout(() => {
 									htmlString += `<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
@@ -654,7 +654,7 @@ import EC from './ec.js'
 									</div>`
 									if (idx==data.length-1) {
 										htmlString += `</div><div class="col-4">
-										<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+										<div class="card bg-light mb-3" style="max-width: 18rem;">
 										  <div class="card-header">Issue#${pr.number}</div>
 										  <div class="card-body">
 										    <h5 class="card-title">${pr.title}</h5>
