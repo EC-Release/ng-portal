@@ -290,6 +290,34 @@ import EC from './ec.js'
                 
             });
             
+		    
+	    $('ul').on('click', 'li.ec-scheduler', (event)=>{
+                ec.setActiveTab(event.target,`${ec.appPath}/scheduler`);
+                event.preventDefault();
+		    
+		let htmlString = "";
+		htmlString += `<table class="table text-center table-striped"><caption>Script Scheduler</caption><thead><tr>` +                 
+                                        `<th scope="col" class="text-left">git commit</th>` + 
+                                        `<th scope="col">source vendor</th>` +
+                                        `<th scope="col">time</th>` + 
+                                        `<th scope="col">freq</th>` + 
+                                        `<th scope="col">owner</th>` + 
+                                        `</tr></thead><tbody>`;                     
+
+                        //for (const [ip, grp] of Object.entries(hits)) {
+                        //	let histry = grp[0], visit = grp.length;
+                            htmlString += `<tr><td scope="row" class="text-left"><a href="https://raw.githubusercontent.com/EC-Release/sdk/88965e046a37549a75a7529cd33828b5d7bd0878/scripts/agt/v1.linux64.txt">a288b6e</td>` +
+                                    `<td>github</td>` + 
+                                    `<td>2021-FEB-2</td>` + 
+                                    `<td>Hourly</td>` + 
+                                    `<td>apolo.yasuda</td></tr>`;
+                        //}
+                        htmlString += '</table>';
+
+                $("main").html(htmlString);
+                $(event.target).addClass('active');
+            });
+		    
             $('ul').on('click', 'li.ec-communicator', (event)=>{
                 ec.setActiveTab(event.target,`${ec.appPath}/communicator`);
                 event.preventDefault();
