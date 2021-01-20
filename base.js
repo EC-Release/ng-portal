@@ -70,6 +70,9 @@ class Base {
           case `${this.appPath}/godoc`:
             $('ul > li.ec-godoc').click();
             break;
+          case `${this.appPath}/scheduler`:
+            $('ul > li.ec-scheduler').click();
+            break;
           case `${this.appPath}/releases`:
             $('ul > li.ec-releases').click();
             break;
