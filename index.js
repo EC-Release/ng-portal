@@ -312,7 +312,7 @@ import EC from './ec.js'
                                     `<td>2021-FEB-2</td>` + 
                                     `<td>Hourly</td>` + 
                                     `<td>apolo.yasuda</td>` + 
-                                    `<td><a href="void(0);">${feather.icons['edit'].toSvg({'color':'grey'})}</a></td></tr>`;
+                                    `<td><a href="javascript:void(0);">${feather.icons['edit'].toSvg({'color':'black'})}</a></td></tr>`;
                         //}
                         htmlString += '</table>';
 
