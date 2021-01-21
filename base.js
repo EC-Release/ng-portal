@@ -346,7 +346,8 @@ class Base {
             transform: 'translate(-50%, -50%)',
             'z-index': 5001,
             'background-color': 'whitesmoke',
-            'border-radius': 3
+            'border-radius': 3,
+            'padding': 20
         }).html(`<form>
   <div class="form-group">
     <label for="exampleFormControlInput1">Email address</label>
