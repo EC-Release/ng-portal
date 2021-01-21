@@ -98,7 +98,7 @@ class Base {
         this.setActiveState(elm,path);
     }
     setActiveState(elm,uri) {
-        history.pushState({}, {}, uri);
+        history.replaceState({}, {}, uri);
     }
     
     getBoolIcon(ok,uri) {
