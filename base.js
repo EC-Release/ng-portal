@@ -50,7 +50,10 @@ class Base {
         $(document).on('mousedown mousemove keypress scroll touchstart',()=>{
             idleTime = 0;
         });
-        
+	    
+	$(window).bind("popstate", (e)=>{
+	    e.preventDefault();
+	});
     }
     
     load(src) {
