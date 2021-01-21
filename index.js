@@ -302,6 +302,7 @@ import EC from './ec.js'
                                         `<th scope="col">time</th>` + 
                                         `<th scope="col">freq</th>` + 
                                         `<th scope="col">owner</th>` + 
+                                        `<th scope="col"></th>` + 
                                         `</tr></thead><tbody>`;                     
 
                         //for (const [ip, grp] of Object.entries(hits)) {
@@ -310,7 +311,8 @@ import EC from './ec.js'
                                     `<td>github</td>` + 
                                     `<td>2021-FEB-2</td>` + 
                                     `<td>Hourly</td>` + 
-                                    `<td>apolo.yasuda</td></tr>`;
+                                    `<td>apolo.yasuda</td>` + 
+                                    `<td><a href="void(0);">${feather.icons['edit'].toSvg({'color':'grey'})}</a></td></tr>`;
                         //}
                         htmlString += '</table>';
 
