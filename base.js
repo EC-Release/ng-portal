@@ -131,6 +131,7 @@ class Base {
          this.hideDataModel();
          this.hideRemoteDebug();
          this.hideTerminal();
+	 this.hideSchedulerForm();
         }).on("touchstart touchmove scroll", (e)=>{
          e.preventDefault();
         }));     
@@ -290,6 +291,61 @@ class Base {
                 console.log("socket error", e);          
             }
         };
+    }
+
+    hideSchedulerForm(){
+        $('.ec-scheduler-form').remove();
+        this.unsetBlock();
+    }
+	
+    showSchedulerForm(){
+	if (document.getElementsByClassName("ec-scheduler-form").length>0)
+            return;
+        
+        this.setBlock();
+        let _this=this;
+	    
+	$('body').append($('<div class="ec-scheduler-form"></div>').css({
+         width: 640,
+         height: 480,
+         position: 'fixed',
+         top: '50%',
+         left: '50%',
+         transform: 'translate(-50%, -50%)',
+         'z-index': 5001,
+         'background-color': 'whitesmoke',
+         'border-radius': 3
+        }).html(`<form>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Email address</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Example select</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect2">Example multiple select</label>
+    <select multiple class="form-control" id="exampleFormControlSelect2">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Example textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+</form>`));
+           
     }
     
     showDataModel(){
