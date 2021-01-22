@@ -351,14 +351,14 @@ class Base {
         }).html(`<form>
   <div class="form-group">
     <label for="exampleFormControlInput1">Git Commit</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="79fds6gupo8">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlInput1">Downloadable Link (HTTP)</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    <label for="exampleFormControlInput1">Downloadable Link (HTTPS)</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="https://raw.githubusercontent.com/EC-Release/..">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlSelect1">Repo Vendor</label>
+    <label for="exampleFormControlSelect1" class="col-2 col-form-label">Repo Vendor</label>
     <select class="form-control" id="exampleFormControlSelect1">
       <option>github</option>
       <option>gitlab</option>
