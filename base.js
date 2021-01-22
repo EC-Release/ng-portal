@@ -358,7 +358,7 @@ class Base {
     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="https://raw.githubusercontent.com/EC-Release/..">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlSelect1" class="col-5 col-form-label">Repo Vendor</label>
+    <label for="exampleFormControlSelect1" class="col-3 col-form-label">Repo Vendor</label>
     <select class="form-control" id="exampleFormControlSelect1">
       <option>github</option>
       <option>gitlab</option>
@@ -366,14 +366,14 @@ class Base {
       <option>bitbucket</option>
     </select>
   </div>
-  <div class="form-group row">
-  <label for="example-datetime-local-input" class="col-5 col-form-label">Date/time</label>
+  <div class="form-group">
+  <label for="example-datetime-local-input" class="col-3 col-form-label">Date/time</label>
   <div class="col-10">
     <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
   </div>
   </div>
-  <div class="form-group row">
-  <label for="example-number-input" class="col-5 col-form-label">Interval (seconds)</label>
+  <div class="form-group">
+  <label for="example-number-input" class="col-3 col-form-label">Interval (seconds)</label>
   <div class="col-10">
     <input class="form-control" type="number" value="42" id="example-number-input">
   </div>
