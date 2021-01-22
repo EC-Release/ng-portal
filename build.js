@@ -41,7 +41,7 @@ svg`<svg width="${width}" height="${data.layout.height}">
     <line class="node" stroke="white" stroke-width="4" x1="${ n.x }" y1="${ n.y-n.height/2 }" x2="${ n.x }" y2="${ n.y+n.height/2 }"/>
 
     <text x="${ n.x+4}" y="${ n.y-n.height/2-4 }" stroke="white" stroke-width="2">${ n.id }</text>
-    <text x="${ n.x+4}" y="${ n.y-n.height/2-4 }" class="ec-visual-ngObj-${n.id}">${ n.id }</text>
+    <text x="${ n.x+4}" y="${ n.y-n.height/2-4 }" class="ec-visual-ngObj">${ n.id }</text>
   `)}
 
   </svg>`
