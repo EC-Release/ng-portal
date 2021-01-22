@@ -289,7 +289,6 @@ import EC from './ec.js'
                 });
                 
             });
-            
 		    
 	    $('ul').on('click', 'li.ec-scheduler', (event)=>{
                 ec.setActiveTab(event.target,`${ec.appPath}/scheduler`);
@@ -326,13 +325,13 @@ import EC from './ec.js'
                 $(event.target).addClass('active');
             });
 		    
-            $('ul').on('click', 'li.ec-communicator', (event)=>{
-                ec.setActiveTab(event.target,`${ec.appPath}/communicator`);
+            $('ul').on('click', 'li.ec-social', (event)=>{
+                ec.setActiveTab(event.target,`${ec.appPath}/social`);
                 event.preventDefault();
 
                 $("main").html(`<div class="container p-0">
 
-		<h1 class="h3 mb-3">EC Communicator (WIP)</h1>
+		<h1 class="h3 mb-3">EC Social (WIP)</h1>
 
 		<div class="card">
 			<div class="row g-0">
