@@ -109,14 +109,14 @@ class EC extends Base {
       
       if (pk=='') {        
          if (!val['parent']||val['parent']==undefined) {
-              lvl=this.TenguDataConversionII(key,lvl);
+              this.TenguDataConversionII(key,lvl);
               val['id']=key;
               val['parents']=[pk];
               cArr.push(val);    
          }
       }
     }  
-    return lvl.unshift(cArr);
+    lvl.unshift(cArr);
   }
 
   TenguAPI(key,val='',mtd='GET'){
