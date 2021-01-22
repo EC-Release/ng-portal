@@ -357,9 +357,9 @@ class Base {
     <label for="exampleFormControlInput1">Downloadable Link (HTTPS)</label>
     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="https://raw.githubusercontent.com/EC-Release/..">
   </div>
-  <div class="form-group row">
-    <label for="exampleFormControlSelect1" class="col-4 col-form-label">Repo Vendor</label>
-    <select class="form-control col-8" id="exampleFormControlSelect1">
+  <div class="form-group">
+    <label for="exampleFormControlSelect1" class="col-form-label">Repo Vendor</label>
+    <select class="form-control" id="exampleFormControlSelect1">
       <option>github</option>
       <option>gitlab</option>
       <option>build.ge</option>
