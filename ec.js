@@ -87,6 +87,37 @@ class EC extends Base {
     }
     return pv;
   }
+  
+  TenguDataConversionII(pk='', lvl=[]){
+    let cArr=[];
+    
+    //if (pv==undefined)
+    //  return {};
+    
+    /*pv["children"] = [];
+    if (!pv.hasOwnProperty("name")) {
+      pv["name"]=pk;
+    }*/
+   
+    for (const [key, val] of this.#ngObj) {
+      if (val["parent"]==pk) { 
+         lvl=this.TenguDataConversionII(key,lvl);
+         val['id']=key;
+         val['parents']=[pk];
+         cArr.push(val);
+      }
+      
+      if (pk=='') {        
+         if (!val['parent']||val['parent']==undefined) {
+              lvl=this.TenguDataConversionII(key,lvl);
+              val['id']=key;
+              val['parents']=[pk];
+              cArr.push(val);    
+         }
+      }
+    }  
+    return lvl.unshift(cArr);
+  }
 
   TenguAPI(key,val='',mtd='GET'){
     let obj = this.GetTenguAPIObj(mtd),
@@ -175,7 +206,7 @@ class EC extends Base {
     let _k = JSON.parse(JSON.stringify(this.#ngObj.get(k)));
     return _k;
   }
-  
+                        
   setNgObj(key,val) {
     this.#ngObj.set(key,val);
   }
