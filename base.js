@@ -354,6 +354,10 @@ class Base {
     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
   </div>
   <div class="form-group">
+    <label for="exampleFormControlInput1">Downloadable Link (HTTP)</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+  <div class="form-group">
     <label for="exampleFormControlSelect1">Repo Vendor</label>
     <select class="form-control" id="exampleFormControlSelect1">
       <option>github</option>
@@ -362,24 +366,19 @@ class Base {
       <option>bitbucket</option>
     </select>
   </div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Git Commit</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  <div class="form-group row">
+  <label for="example-datetime-local-input" class="col-2 col-form-label">Date and time</label>
+  <div class="col-10">
+    <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
   </div>
-  <div class="form-group">
-    <label for="exampleFormControlSelect2">Example multiple select</label>
-    <select multiple class="form-control" id="exampleFormControlSelect2">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
   </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  <div class="form-group row">
+  <label for="example-number-input" class="col-2 col-form-label">Interval (in seconds)</label>
+  <div class="col-10">
+    <input class="form-control" type="number" value="42" id="example-number-input">
   </div>
+  </div>
+  <button type="button" class="btn btn-primary">Create</button>
 </form>`));
 
     }
