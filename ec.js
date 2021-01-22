@@ -115,8 +115,10 @@ class EC extends Base {
               cArr.push(val);    
          }
       }
-    }  
-    lvl.unshift(cArr);
+    }
+    if (cArr.length>0) {
+      lvl.unshift(cArr);
+    }
   }
 
   TenguAPI(key,val='',mtd='GET'){
