@@ -359,7 +359,7 @@ class Base {
   </div>
   <div class="form-group row">
     <label for="exampleFormControlSelect1" class="col-4 col-form-label">Repo Vendor</label>
-    <select class="form-control col-7" id="exampleFormControlSelect1">
+    <select class="form-control col-8" id="exampleFormControlSelect1">
       <option>github</option>
       <option>gitlab</option>
       <option>build.ge</option>
