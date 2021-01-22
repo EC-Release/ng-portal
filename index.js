@@ -286,6 +286,7 @@ import EC from './ec.js'
                     $(event.target).addClass('active');
                 }).catch((e)=>{
                     console.log(`Exception: ${e}`);
+		    location.reload();
                 });
                 
             });
