@@ -100,25 +100,25 @@ class EC extends Base {
     }*/
    
     for (const [key, val] of this.#ngObj) {
-      if (val["parent"]==pk) { 
+      
+      
+      if (pk==''&&(!val['parent']||val['parent']==undefined)) {
+              lvl=this.TenguDataConversionII(key,lvl);
+              val['id']=key;
+              val['parents']=[];
+              cArr.push(val);    
+         
+      } else if (val["parent"]==pk) { 
          lvl=this.TenguDataConversionII(key,lvl);
          val['id']=key;
          val['parents']=[pk];
          cArr.push(val);
       }
-      
-      if (pk=='') {        
-         if (!val['parent']||val['parent']==undefined) {
-              this.TenguDataConversionII(key,lvl);
-              val['id']=key;
-              val['parents']=[pk];
-              cArr.push(val);    
-         }
-      }
     }
     if (cArr.length>0) {
       lvl.unshift(cArr);
     }
+    return lvl;
   }
 
   TenguAPI(key,val='',mtd='GET'){
