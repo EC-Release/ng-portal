@@ -314,7 +314,8 @@ import EC from './ec.js'
                                     `<td>apolo.yasuda</td>` + 
                                     `<td><a class="ec-show-scheduler-form p-1" href="javascript:void(0);">${feather.icons['edit'].toSvg({'color':'darkgreen'})}</a><a class="ec-delete-scheduler p-1" href="javascript:void(0);">${feather.icons['delete'].toSvg({'color':'darkred'})}</a></td></tr>`;
                         //}
-                        htmlString += '</table>';
+                        htmlString += `</table>`;
+		    htmlString += `<button type="button" class="btn btn-primary">Create A Schedule</button>`
 
                 $("main").html(htmlString);
 		$('.ec-show-scheduler-form > svg').on('click',(e)=>{
