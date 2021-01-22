@@ -375,7 +375,7 @@ class Base {
   <div class="form-group row">
   <label for="example-number-input" class="col-4 col-form-label">Interval (seconds)</label>
   <div class="col-8">
-    <input class="form-control" type="number" value="42" id="example-number-input">
+    <input class="form-control" type="number" value="-1" id="example-number-input">
   </div>
   </div>
   <button type="button" class="btn btn-primary">Create Scheduler</button>
