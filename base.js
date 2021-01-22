@@ -378,7 +378,7 @@ class Base {
     <input class="form-control" type="number" value="-1" id="example-number-input">
   </div>
   </div>
-  <button type="button" class="btn btn-primary">Create Scheduler</button>
+  <button type="button" class="btn btn-primary">Update Scheduler</button>
 </form>`));
 
     }
