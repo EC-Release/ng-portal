@@ -94,10 +94,13 @@ class Base {
         case `${this.appPath}/status`:
             $('ul > li.ec-status').click();
             break;
+        case `${this.appPath}/visualisation`:
+            $('ul > li.ec-visualisation').click();
+            break;
         case `${this.appPath}/analytics`:
             $('ul > li.ec-analytics').click();
             break;
-        case `${this.appPath}/communicator`:
+        case `${this.appPath}/social`:
             $('ul > li.ec-communicator').click();
             break;
         default:
@@ -511,7 +514,7 @@ class Base {
 
     showTenguChartI() {
         this.TenguDataInit('qa');
-        $("main").html('<div class="chart mx-5 my-5"></div>');
+        $("main").html('<div class="chart mx-1 my-1"></div>');
         (new Runtime).module(define, name=>{
             if (name === "chart")
                 return Inspector.into(".chart")();
@@ -521,7 +524,7 @@ class Base {
 
     showTenguChartII() {
         //this.TenguDataInit('qa');
-        $("main").html('<div class="chart mx-5 my-5"></div>');
+        $("main").html('<div class="chart mx-1 my-1"></div>');
         (new Runtime).module(build, name=>{
             if (name === "chart")
                 return Inspector.into(".chart")();
