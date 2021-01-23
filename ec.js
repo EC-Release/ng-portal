@@ -65,7 +65,7 @@ class EC extends Base {
     let pv = this.getNgObjVal(pk);
     
     if (pk=='root')
-      pv=={};
+      pv={};
     
     if (pv==undefined)
       return {};
