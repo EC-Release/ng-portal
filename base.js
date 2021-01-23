@@ -490,7 +490,8 @@ class Base {
                     } else {
                         _this.setNgObj(_v.key, data);
                     }
-                    this.TenguDataInit('qa');
+                    this.TenguDataInit();
+                    this.TenguDataInit();
                     console.log(`return data: ${data}`);
                 }
                 ).catch((e)=>{
@@ -513,7 +514,8 @@ class Base {
     }
 
     showTenguChartI() {
-        this.TenguDataInit('qa');
+        $('.chart').remove();
+        this.TenguDataInit('qa');        
         $("main").html('<div class="chart mx-1 my-1"></div>');
         (new Runtime).module(define, name=>{
             if (name === "chart")
@@ -524,6 +526,7 @@ class Base {
 
     showTenguChartII() {
         //this.TenguDataInit('qa');
+        $('.chart').remove();        
         $("main").html('<div class="chart mx-1 my-1"></div>');
         (new Runtime).module(build, name=>{
             if (name === "chart")
