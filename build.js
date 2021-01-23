@@ -48,7 +48,8 @@ svg`<svg width="${width}" height="${data.layout.height}">
 )});
   main.variable(observer("data")).define("data", ["d3"], function(d3)
 {
-  var levels = ec.TenguDataConversionII();/*[
+  var levels = [];
+    ec.TenguDataConversionII('',levels);/*[
     [{id: 'Chaos'}],
     [
       {id: 'Gaea', parents: ['Chaos']},
