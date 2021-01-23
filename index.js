@@ -315,10 +315,15 @@ import EC from './ec.js'
                                     `<td><a class="ec-show-scheduler-form p-1" href="javascript:void(0);">${feather.icons['edit'].toSvg({'color':'darkgreen'})}</a><a class="ec-delete-scheduler p-1" href="javascript:void(0);">${feather.icons['delete'].toSvg({'color':'darkred'})}</a></td></tr>`;
                         //}
                         htmlString += `</table>`;
-		    htmlString += `<button type="button" class="btn btn-primary">Schedule An Executor</button>`
+		    htmlString += `<button type="button" class="btn btn-primary ec-show-scheduler-form">Schedule An Executor</button>`
 
                 $("main").html(htmlString);
 		$('.ec-show-scheduler-form > svg').on('click',(e)=>{
+			e.preventDefault();
+			ec.showSchedulerForm();
+		});
+		    
+		$('button.ec-show-scheduler-form').on('click',(e)=>{
 			e.preventDefault();
 			ec.showSchedulerForm();
 		});
