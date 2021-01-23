@@ -11,7 +11,7 @@ svg`<svg width="${width}" height="${data.layout.height}">
   <style>
     text {
       font-family: sans-serif;
-      font-size: 10px;
+      font-size: 13px;
     }
     .node {
       stroke-linecap: round;
