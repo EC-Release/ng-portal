@@ -528,8 +528,11 @@ class Base {
         (new Runtime).module(build, name=>{
             if (name === "chart")
                 return Inspector.into(".chart")();
-        }
-        );
+        });
+        
+        $('.ec-visual-ngObj').click(e=>{
+            let op=$(e.target);
+        });
     }
 }
 
