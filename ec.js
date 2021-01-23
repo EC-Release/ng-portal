@@ -207,6 +207,9 @@ class EC extends Base {
   }
 
   getNgObjVal(k) {
+    if (this.#ngObj.get(k)==undefined){
+        return;
+        
     let _k = JSON.parse(JSON.stringify(this.#ngObj.get(k)));
     return _k;
   }
