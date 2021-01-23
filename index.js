@@ -644,7 +644,7 @@ import EC from './ec.js'
                         color: 'grey'
                     }).text('[ + data@EC ]').on("click", (e)=>{
                         e.preventDefault();
-                        ec.TenguDataInit('');
+                        ec.TenguDataInit();
                         ec.showDataModel();
                     }));
                 }
