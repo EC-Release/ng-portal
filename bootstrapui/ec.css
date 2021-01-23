@@ -54,6 +54,6 @@ main {
     border-color: #dfe0e1;   
 }
 
-text.ec-visual-ngObj {     
+text.ec-visual-ngObj, div.ec-info {     
     cursor: pointer;    
 }
