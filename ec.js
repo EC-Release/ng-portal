@@ -106,8 +106,10 @@ class EC extends Base {
               let _val=JSON.parse(JSON.stringify(val));
               _val['id']=key;
               pArr.push(_val);    
-         
-      } else if (val["parent"]==pk) { 
+              continue
+      }
+    
+      if (val["parent"]==pk) { 
          cArr=cArr.concat(this.TenguDataConversionII(key,lvl));
          let _val=JSON.parse(JSON.stringify(val));
          _val['id']=key;
