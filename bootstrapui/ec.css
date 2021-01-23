@@ -53,3 +53,7 @@ main {
     border-bottom-style: none;
     border-color: #dfe0e1;   
 }
+
+text.ec-visual-ngObj {     
+    cursor: pointer;    
+}
