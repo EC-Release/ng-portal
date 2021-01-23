@@ -89,10 +89,10 @@ class EC extends Base {
   }
   
   TenguDataConversionII(pk='', lvl=[]){
-    let cArr=[];
+    let cArr=[],pArr=[];
     
-    //if (pv==undefined)
-    //  return {};
+    if (pk==undefined)
+      return pArr;
     
     /*pv["children"] = [];
     if (!pv.hasOwnProperty("name")) {
@@ -102,23 +102,25 @@ class EC extends Base {
     for (const [key, val] of this.#ngObj) {
       
       
-      if (pk==''&&(!val['parent']||val['parent']==undefined)) {
-              lvl=this.TenguDataConversionII(key,lvl);
-              val['id']=key;
-              val['parents']=[];
-              cArr.push(val);    
+      if (pk==''&&(!val['parent']||val['parent']==undefined||val['parent']=='self')) {              
+              cArr=cArr.concat(this.TenguDataConversionII(key,lvl));
+              let _val=JSON.parse(JSON.stringify(val));
+              _val['id']=key;
+              _val['parents']=[];
+              pArr.push(_val);    
          
       } else if (val["parent"]==pk) { 
-         lvl=this.TenguDataConversionII(key,lvl);
-         val['id']=key;
-         val['parents']=[pk];
-         cArr.push(val);
+         cArr=cArr.concat(this.TenguDataConversionII(key,lvl));
+         let _val=JSON.parse(JSON.stringify(val));
+         _val['id']=key;
+         _val['parents']=[pk];
+         pArr.push(_val);
       }
     }
     if (cArr.length>0) {
       lvl.unshift(cArr);
     }
-    return lvl;
+    return pArr;
   }
 
   TenguAPI(key,val='',mtd='GET'){
