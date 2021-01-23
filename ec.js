@@ -78,7 +78,7 @@ class EC extends Base {
          pv["children"].push(_pv);
          continue
       }
-      if ((val["parent"]==undefine||val["parent"]=='')&&pk=='root'){
+      if ((val["parent"]==undefined||val["parent"]=='')&&pk=='root'){
          let _pv = this.TenguDataConversionI(key);
          pv["children"].push(_pv);
       }
