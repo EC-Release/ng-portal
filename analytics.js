@@ -38,7 +38,7 @@ This variant of a [sunburst diagram](/@d3/sunburst) shows only two layers of the
 
         path.append("title").text(d=>`${d.ancestors().map(d=>d.data.name).reverse().join("/")}\n${format(d.value)}`);
 
-        const label = g.append("g").attr("pointer-events", "none").attr("text-anchor", "middle").style("user-select", "none").selectAll("text").data(root.descendants().slice(1)).join("text").attr("dy", "0.35em").attr("fill-opacity", d=>+labelVisible(d.current)).attr("transform", d=>labelTransform(d.current)).text(d=>d.data.name).attr("pointer-events", "all").addClass('ec-visual-ngObj').on("click", (e,p)=>{
+        const label = g.append("g").attr("pointer-events", "none").attr("text-anchor", "middle").style("user-select", "none").selectAll("text").data(root.descendants().slice(1)).join("text").attr("dy", "0.35em").attr("fill-opacity", d=>+labelVisible(d.current)).attr("transform", d=>labelTransform(d.current)).text(d=>d.data.name).attr("pointer-events", "all").on("click", (e,p)=>{
             e.preventDefault();
             ec.TenguDataInit(p.data.name);
             ec.showDataModel();
