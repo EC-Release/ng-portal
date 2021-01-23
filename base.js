@@ -532,7 +532,9 @@ class Base {
         
         setTimeout(()=>{
           $('.ec-visual-ngObj').on('click',e=>{
-            console.log(e);
+            e.preventDefault();
+            ec.TenguDataInit($(e.target).text());
+            ec.showDataModel();
           });
         },1000)
     }
