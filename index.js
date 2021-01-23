@@ -612,7 +612,8 @@ import EC from './ec.js'
             $('ul').on('click', 'li.ec-analytics', (event)=>{
                 ec.setActiveTab(event.target,`${ec.appPath}/analytics`);
                 event.preventDefault();
-                if (document.getElementsByClassName('ec-info').length<1) {                
+                //if (document.getElementsByClassName('ec-info').length<1) { 
+		    $('.ec-info').remove();
                     $('body').append($('<div class="ec-info"></div>').css({
                         position: "fixed",
                         left: $('body')[0].getBoundingClientRect().width - 100,
@@ -623,7 +624,7 @@ import EC from './ec.js'
                         ec.TenguDataInit('qa');
                         ec.showDataModel();
                     }));
-                }
+                //}
                 
                 if (ec.ngObjSize>0){
                     ec.showTenguChartI();
@@ -636,8 +637,9 @@ import EC from './ec.js'
 	    $('ul').on('click', 'li.ec-visualisation', (event)=>{
                 ec.setActiveTab(event.target,`${ec.appPath}/visualisation`);
                 event.preventDefault();
-                if (document.getElementsByClassName('ec-info').length<1) {                
-                    $('body').append($('<div class="ec-info"></div>').css({
+                //if (document.getElementsByClassName('ec-info').length<1) {                
+                    $('.ec-info').remove();
+		    $('body').append($('<div class="ec-info"></div>').css({
                         position: "fixed",
                         left: $('body')[0].getBoundingClientRect().width - 100,
                         bottom: 20,
@@ -647,7 +649,7 @@ import EC from './ec.js'
                         ec.TenguDataInit();
                         ec.showDataModel();
                     }));
-                }
+                //}
                 
                 if (ec.ngObjSize>0){
                     ec.showTenguChartII();
