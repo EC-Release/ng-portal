@@ -93,20 +93,13 @@ class EC extends Base {
     
     if (pk==undefined)
       return pArr;
-    
-    /*pv["children"] = [];
-    if (!pv.hasOwnProperty("name")) {
-      pv["name"]=pk;
-    }*/
    
     for (const [key, val] of this.#ngObj) {
-      
       
       if (pk==''&&(!val['parent']||val['parent']==undefined||val['parent']=='self')) {              
               cArr=cArr.concat(this.TenguDataConversionII(key,lvl));
               let _val=JSON.parse(JSON.stringify(val));
               _val['id']=key;
-              //_val['parents']=[];
               pArr.push(_val);    
          
       } else if (val["parent"]==pk) { 
