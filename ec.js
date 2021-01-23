@@ -61,10 +61,10 @@ class EC extends Base {
     
   }
 
-  TenguDataConversionI(pk){
+  TenguDataConversionI(pk='root'){
     let pv = this.getNgObjVal(pk);
     
-    if (pv==undefined)
+    if (pv==undefined&&pk!='root')
       return {};
     
     pv["children"] = [];
@@ -75,7 +75,12 @@ class EC extends Base {
     for (const [key, val] of this.#ngObj) {
       if (val["parent"]==pk) { 
          let _pv = this.TenguDataConversionI(key);
-         pv["children"].push(_pv);         
+         pv["children"].push(_pv);
+         continue
+      }
+      if ((val["parent"]==undefine||val["parent"]=='')&&pk=='root'){
+         let _pv = this.TenguDataConversionI(key);
+         pv["children"].push(_pv);
       }
     }
 
