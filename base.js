@@ -530,9 +530,11 @@ class Base {
                 return Inspector.into(".chart")();
         });
         
-        $('.ec-visual-ngObj').click(e=>{
-            let op=$(e.target);
-        });
+        setTimeout(()=>{
+          $('.ec-visual-ngObj').on('click',e=>{
+            console.log(e);
+          });
+        },1000)
     }
 }
 
