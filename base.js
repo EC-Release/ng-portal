@@ -13,6 +13,8 @@ import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/run
 
 import define from "./analytics.js";
 import {default as build} from "./build.js";
+import zooming from "./zooming.js";
+
 
 class Base {
     constructor() {}
@@ -491,7 +493,6 @@ class Base {
                         _this.setNgObj(_v.key, data);
                     }
                     this.TenguDataInit();
-                    this.TenguDataInit();
                     console.log(`return data: ${data}`);
                 }
                 ).catch((e)=>{
@@ -540,6 +541,23 @@ class Base {
             ec.showDataModel();
           });
         },1000)
+    }
+    
+    showTenguChartIII() {
+        $('.chart').remove();        
+        $("main").html('<div class="chart mx-1 my-1"></div>');
+        (new Runtime).module(zooming, name=>{
+            if (name === "chart")
+                return Inspector.into(".chart")();
+        });
+        
+        /*setTimeout(()=>{
+          $('.ec-visual-ngObj').on('click',e=>{
+            e.preventDefault();
+            ec.TenguDataInit($(e.target).text());
+            ec.showDataModel();
+          });
+        },1000)*/
     }
 }
 
