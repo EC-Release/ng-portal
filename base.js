@@ -90,6 +90,9 @@ class Base {
         case `${this.appPath}/releases`:
             $('ul > li.ec-releases').click();
             break;
+        case `${this.appPath}/usage`:
+            $('ul > li.ec-usage').click();
+            break;
         case `${this.appPath}/security`:
             $('ul > li.ec-security').click();
             break;
