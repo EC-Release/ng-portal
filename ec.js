@@ -220,6 +220,17 @@ class EC extends Base {
     let _k = JSON.parse(JSON.stringify(this.#ngObj.get(k)));
     return _k;
   }
+        
+  getNgObjByName(k) {
+    let o=undefined;
+    this.#ngObj.forEach((elm,key)=>{
+      if (elm.name==k){
+        o = JSON.parse(JSON.stringify(this.#ngObj.get(key)));
+        return;
+      }
+    });
+    return o;
+  }
                         
   setNgObj(key,val) {
     this.#ngObj.set(key,val);
