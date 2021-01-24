@@ -1,4 +1,4 @@
-export default function define(runtime, observer) {
+export default function zooming(runtime, observer) {
   const main = runtime.module();
   const fileAttachments = new Map([["land-110m.json","https://static.observableusercontent.com/files/eec657afeffb70691657f56f78ce546cc20861c628c4272d902fb7ff94d07a73737fd5356d255cef2a092de8322c56bbbc4f0f6a3c0c12864101f37ec6da9321"],["land-50m.json","https://static.observableusercontent.com/files/efcaaf9f0b260e09b6afeaee6dbc1b91ad45f3328561cd67eb16a1754096c1095f70d284acdc4b004910e89265b60eba2706334e0dc84ded38fd9209083d4cef"]]);
   main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
