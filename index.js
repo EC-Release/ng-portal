@@ -658,6 +658,31 @@ import EC from './ec.js'
                     console.log(`no data obj available`);
                 }
             });
+		    
+	    $('ul').on('click', 'li.ec-usage', (event)=>{
+                ec.setActiveTab(event.target,`${ec.appPath}/usage`);
+                event.preventDefault();
+                //if (document.getElementsByClassName('ec-info').length<1) {                
+                    $('.ec-info').remove();
+		    $('body').append($('<div class="ec-info"></div>').css({
+                        position: "fixed",
+                        left: $('body')[0].getBoundingClientRect().width - 100,
+                        bottom: 20,
+                        color: 'grey'
+                    }).text('[ + data@EC ]').on("click", (e)=>{
+                        e.preventDefault();
+                        ec.TenguDataInit();
+                        ec.showDataModel();
+                    }));
+                //}
+                
+                if (ec.ngObjSize>0){
+                    ec.showTenguChartIII();
+                    $(event.target).addClass('active');
+                } else {
+                    console.log(`no data obj available`);
+                }
+            });
 
             $('main').on('click', 'a.ec-godoc-rev', (event)=>{
                 event.preventDefault();
