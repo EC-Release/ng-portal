@@ -49,6 +49,10 @@ class EC extends Base {
     let _this=this;
     return this.TenguAPI('snapshot').then(d=>{
       for (const [key, data] of Object.entries(d)) {
+        data['id']=key;
+        if (!data.hasOwnProperty('name')){
+          data['name']=key;
+        }
         _this.#ngObj.set(key,data);           
       }
       return _this.#ngObj.keys();
@@ -115,7 +119,7 @@ class EC extends Base {
       if (val["parent"]==pk) { 
          cArr=cArr.concat(this.TenguDataConversionII(key,lvl));
          let _val=JSON.parse(JSON.stringify(val));
-         _val['id']=key;
+         _val['id']=_val.name;
          _val['parents']=[pk];
          pArr.push(_val);
       }
