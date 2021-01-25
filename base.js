@@ -347,7 +347,6 @@ class Base {
 
         $('body').append($('<div class="ec-scheduler-form"></div>').css({
             width: 640,
-            height: 480,
             position: 'fixed',
             top: '50%',
             left: '50%',
