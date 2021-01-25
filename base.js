@@ -358,12 +358,16 @@ class Base {
             'padding': 20
         }).html(`<form>
   <div class="form-group">
+    <label for="exampleFormControlInput1">Title</label>
+    <input type="text" class="form-control" id="exampleFormControlInput0" placeholder="Tensorflow Deep Learning Model I- Release..">
+  </div>
+  <div class="form-group">
     <label for="exampleFormControlInput1">Git Commit</label>
     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="79fds6gupo8">
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Downloadable Link (HTTPS)</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="https://raw.githubusercontent.com/EC-Release/..">
+    <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="https://raw.githubusercontent.com/EC-Release/..">
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1" class="col-form-label">Repo Vendor</label>
