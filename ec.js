@@ -180,17 +180,17 @@ class EC extends Base {
     obj.path.forEach((elm,idx)=>{
       if (sp&&sp['name']!=undefined&&
           lp&&lp['name']==sp['name']){
-          obj.key=sp['name'];
+          obj.key=sp['key'];
           obj.value = this.cloneNgObjVal(lp);
       } else if (obj.path[idx-2]=='children'&&
          idx==obj.path.length-1){
           obj.method='POST'
           obj.value = this.cloneNgObjVal(lp);
           obj.value['parent']=obj.key;
-          obj.key=obj.path.join('-');
+          obj.key=obj.value['key'];
       } else if (obj.path[idx-1]=='children'&&
             idx==obj.path.length-1&&obj.method=='DELETE'){
-          obj.key=sp[obj.path[idx]]['name'];
+          obj.key=sp[obj.path[idx]]['key'];
       }
 
       sp=(sp&&sp[elm]);
