@@ -519,7 +519,7 @@ class Base {
 
     showTenguChartI() {
         $('.chart').remove();
-        this.TenguDataInit('qa');        
+        this.TenguDataInit('de9a4c93-0e1d-40fc-aff8-4a50f4e397c0');        
         $("main").html('<div class="chart mx-1 my-1"></div>');
         (new Runtime).module(define, name=>{
             if (name === "chart")
