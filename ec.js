@@ -187,7 +187,10 @@ class EC extends Base {
           obj.method='POST'
           obj.value = this.cloneNgObjVal(lp);
           obj.value['parent']=obj.key;
-          obj.key=obj.value['key'];
+          if (obj.value['name']==undefined){
+            obj.value['name']=obj.path.join('-');
+          }
+          obj.key=obj.value['name'];
       } else if (obj.path[idx-1]=='children'&&
             idx==obj.path.length-1&&obj.method=='DELETE'){
           obj.key=sp[obj.path[idx]]['key'];
