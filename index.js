@@ -300,6 +300,7 @@ import EC from './ec.js'
                                         `<th scope="col" class="text-left">git commit</th>` + 
                                         `<th scope="col">repo vendor</th>` +
                                         `<th scope="col">time</th>` + 
+                                        `<th scope="col">title</th>` + 
                                         `<th scope="col">freq</th>` + 
                                         `<th scope="col">owner</th>` + 
                                         `<th scope="col"></th>` + 
@@ -310,6 +311,7 @@ import EC from './ec.js'
                             htmlString += `<tr><td scope="row" class="text-left"><a href="https://raw.githubusercontent.com/EC-Release/sdk/88965e046a37549a75a7529cd33828b5d7bd0878/scripts/agt/v1.linux64.txt">a288b6e</td>` +
                                     `<td>github</td>` + 
                                     `<td>2021-FEB-2</td>` + 
+                                    `<td>Machine Learning- Test Model Based on Release</td>` + 
                                     `<td>Hourly</td>` + 
                                     `<td>apolo.yasuda</td>` + 
                                     `<td><a class="ec-show-scheduler-form p-1" href="javascript:void(0);">${feather.icons['edit'].toSvg({'color':'darkgreen'})}</a><a class="ec-delete-scheduler p-1" href="javascript:void(0);">${feather.icons['delete'].toSvg({'color':'darkred'})}</a></td></tr>`;
