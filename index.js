@@ -314,7 +314,7 @@ import EC from './ec.js'
                                     `<td>Machine Learning- Test Model Based on Release</td>` + 
                                     `<td>Hourly</td>` + 
                                     `<td>apolo.yasuda</td>` + 
-                                    `<td><a class="ec-show-scheduler-form p-1" href="javascript:void(0);">${feather.icons['edit'].toSvg({'color':'darkgreen'})}</a><a class="ec-delete-scheduler p-1" href="javascript:void(0);">${feather.icons['delete'].toSvg({'color':'darkred'})}</a></td></tr>`;
+                                    `<td><a class="ec-show-scheduler-form p-1" href="javascript:void(0);">${feather.icons['corner-down-left'].toSvg({'color':'blue'})}</a><a class="ec-show-scheduler-form p-1" href="javascript:void(0);">${feather.icons['edit'].toSvg({'color':'darkgreen'})}</a><a class="ec-delete-scheduler p-1" href="javascript:void(0);">${feather.icons['delete'].toSvg({'color':'darkred'})}</a></td></tr>`;
                         //}
                         htmlString += `</table>`;
 		    htmlString += `<button type="button" class="btn btn-primary ec-show-scheduler-form">Schedule An Executor</button>`
