@@ -112,15 +112,15 @@ class EC extends Base {
               cArr=cArr.concat(this.TenguDataConversionII(key,lvl));
               let _val=JSON.parse(JSON.stringify(val));
               _val['id']=_val['name'];
-              pArr.push(_val);    
+              pArr.push(_val);
               continue
       }
     
       if (val["parent"]==pk) { 
          cArr=cArr.concat(this.TenguDataConversionII(key,lvl));
          let _val=JSON.parse(JSON.stringify(val));
-         _val['id']=_val['name'];
-         _val['parents']=[pk];
+         _val['id']=_val['name'];           
+         _val['parents']=[this.getNgObjVal(pk).name];
          pArr.push(_val);
       }
     }
