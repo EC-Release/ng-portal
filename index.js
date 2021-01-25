@@ -211,7 +211,7 @@ import EC from './ec.js'
 			
                     htmlString += '</table>';
                     
-                    let bh = ec.getNgObjVal('browseHistory');
+                    let bh = ec.getNgObjByName('browseHistory');
                     if (bh) {
 			    
 			let bhArr = Object.values(bh.list);
