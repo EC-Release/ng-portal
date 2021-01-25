@@ -40,7 +40,7 @@ This variant of a [sunburst diagram](/@d3/sunburst) shows only two layers of the
 
         const label = g.append("g").attr("pointer-events", "none").attr("text-anchor", "middle").style("user-select", "none").selectAll("text").data(root.descendants().slice(1)).join("text").attr("dy", "0.35em").attr("fill-opacity", d=>+labelVisible(d.current)).attr("transform", d=>labelTransform(d.current)).text(d=>d.data.name).attr("pointer-events", "all").on("click", (e,p)=>{
             e.preventDefault();
-            ec.TenguDataInit(p.data.name);
+            ec.TenguDataInit(p.data.key);
             ec.showDataModel();
         });
 
