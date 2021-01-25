@@ -540,7 +540,7 @@ class Base {
         setTimeout(()=>{
           $('.ec-visual-ngObj').on('click',e=>{
             e.preventDefault();
-            ec.TenguDataInit($(e.target).text());
+            ec.TenguDataInit($(e.target).attr('ec-data'));
             ec.showDataModel();
           });
         },1000)
