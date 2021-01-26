@@ -293,7 +293,7 @@ class EC extends Base {
     return this.#releases;
   }
         
-  timeStrConv(ms)=>{
+  timeStrConv(ms) {
       var currentdate = new Date(ms);
       return currentdate.getFullYear() + "-" + 
         (currentdate.getMonth() + 1) + "-" + 
