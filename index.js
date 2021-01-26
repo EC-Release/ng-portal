@@ -319,7 +319,7 @@ import EC from './ec.js'
 
                     let op = ec.getNgObjVal("9bbef597-8a42-404a-92ab-57ccdfb9c450");
                     op.list.forEach((value,index)=>{
-                        htmlString += `<tr><td scope="row" class="text-left"><a href="${value.downloadURL}">${value.gitCommit}</td>` + `<td>${value.vendor}</td>` + `<td>${value.startDate}</td>` + `<td>${value.title}</td>` + `<td>${value.freq}</td>` + `<td>${value.ownerId}</td>` + `<td><a class="ec-show-scheduler-form p-1" href="javascript:void(0);">${feather.icons['corner-down-left'].toSvg({
+                        htmlString += `<tr><td scope="row" class="text-left"><a href="${value.downloadURL}">${value.gitCommit.substring(0, 10)}</td>` + `<td>${value.vendor}</td>` + `<td>${value.startDate}</td>` + `<td>${value.title}</td>` + `<td>${value.freq}</td>` + `<td>${value.ownerId}</td>` + `<td><a class="ec-show-scheduler-form p-1" href="javascript:void(0);">${feather.icons['corner-down-left'].toSvg({
                             'color': 'blue'
                         })}</a><a class="ec-show-scheduler-form p-1" href="javascript:void(0);">${feather.icons['edit'].toSvg({
                             'color': 'darkgreen'
