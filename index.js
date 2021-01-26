@@ -137,11 +137,6 @@ import EC from './ec.js'
                     ec.setActiveTab(event.target, `${ec.appPath}/status`);
                     event.preventDefault();
 
-                    let tc = (ms)=>{
-                        var currentdate = new Date(ms);
-                        return currentdate.getFullYear() + "-" + (currentdate.getMonth() + 1) + "-" + currentdate.getDate() + " " + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
-                    }
-
                     let up = (url)=>{
                         var _u = new URL(url);
                         return _u.hostname.split('.')[0];
@@ -215,7 +210,7 @@ import EC from './ec.js'
                         );
 
                         sdArr.forEach((seed,idx)=>{
-                            htmlString += `<tr><td>${seed.SeqID}</td>` + `<th scope="row" class="text-left"><a class="ec-seed-link" href="${seed.Node}">${up(seed.Node)}</a></th>` + `<td><a class="ec-seed-link" href="${seed.Seed}">${up(seed.Seed)}</a></td>` + `<td><a class="ec-oauth-link" href="${seed.OAuth}">${up(seed.OAuth)}</a></td>` + `<td>${st(seed.Status)}</td>` + `<td>${seed.Retry}</td>` + `<td>${refreshOps(seed.Node)}</td>` + `<td>${debugOps(seed.Node)}</td>` + `<td>${remoteOps(seed.Node)}</td>` + `<td>${tc(seed.UpdatedOn * 1000)}</td>` + `<td>${tc(seed.CreatedOn * 1000)}</td></tr>`;
+                            htmlString += `<tr><td>${seed.SeqID}</td>` + `<th scope="row" class="text-left"><a class="ec-seed-link" href="${seed.Node}">${up(seed.Node)}</a></th>` + `<td><a class="ec-seed-link" href="${seed.Seed}">${up(seed.Seed)}</a></td>` + `<td><a class="ec-oauth-link" href="${seed.OAuth}">${up(seed.OAuth)}</a></td>` + `<td>${st(seed.Status)}</td>` + `<td>${seed.Retry}</td>` + `<td>${refreshOps(seed.Node)}</td>` + `<td>${debugOps(seed.Node)}</td>` + `<td>${remoteOps(seed.Node)}</td>` + `<td>${ec.timeStrConv(seed.UpdatedOn * 1000)}</td>` + `<td>${ec.timeStrConv(seed.CreatedOn * 1000)}</td></tr>`;
                         }
                         );
 
