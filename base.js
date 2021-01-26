@@ -360,7 +360,7 @@ class Base {
         };
         
         if (schr==undefined){
-            schr={title:'',gitCommit:'',downloadURL:'',vendor:'github',startDate:'',interval='-1'};
+            schr={title:'',gitCommit:'',downloadURL:'',vendor:'github',startDate:'',interval:'-1'};
         }
         
         htmlStr+=`<form>
