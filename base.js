@@ -363,35 +363,35 @@ class Base {
             schr={title:'',gitCommit:'',downloadURL:'',vendor:'github',interval:'-1'};
         }
         
-        htmlStr+=`<form>
+        htmlStr+=`<form class='executor-form'>
   <div class="form-group">
-    <label for="exampleFormControlInput0">Title</label>
-    <input type="text" class="form-control" id="exampleFormControlInput0" value="${schr.title}" placeholder="Tensorflow Deep Learning Model I- Release..">
+    <label for="title-input">Title</label>
+    <input type="text" class="form-control" id="title-input" ec-data="title" value="${schr.title}" placeholder="Tensorflow Deep Learning Model I- Release..">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlInput1">Git Commit</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" value="${schr.gitCommit}" placeholder="79fds6gupo8">
+    <label for="gitCommit-input">Git Commit</label>
+    <input type="text" class="form-control" id="gitCommit-input" ec-data="gitCommit" value="${schr.gitCommit}" placeholder="79fds6gupo8">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlInput2">Downloadable Link (HTTPS)</label>
-    <input type="text" class="form-control" id="exampleFormControlInput2" value="${schr.downloadURL}" placeholder="https://raw.githubusercontent.com/EC-Release/..">
+    <label for="downloadURL-input">Downloadable Link (HTTPS)</label>
+    <input type="text" class="form-control" id="downloadURL-input" ec-data="downloadURL" value="${schr.downloadURL}" placeholder="https://raw.githubusercontent.com/EC-Release/..">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlSelect1" class="col-form-label">Repo Vendor</label>
-    <select class="form-control" id="exampleFormControlSelect1">${getOptions(schr.vendor)}</select>
+    <label for="vendor-select" class="col-form-label">Repo Vendor</label>
+    <select class="form-control" id="vendor-select" ec-data="vendor">${getOptions(schr.vendor)}</select>
   </div>
   <div class="form-group row">
   </div>
   <div class="form-group row"> 
-      <label for="exampleFormControlSelect5" class="col-1 col-form-label">Freq.</label>
-      <select class="form-control col-2" id="exampleFormControlSelect5">${getOptions(schr.freq,['MINUTE','HOUR','DAY','WEEK','MONTH','YEAR'])}</select>
-      <label for="example-number-input" class="col-1 col-form-label">Interval</label>
+      <label for="freq-select" class="col-1 col-form-label">Freq.</label>
+      <select class="form-control col-2" id="freq-select">${getOptions(schr.freq,['MINUTE','HOUR','DAY','WEEK','MONTH','YEAR'])}</select>
+      <label for="interval-input" class="col-1 col-form-label">Interval</label>
       <div class="col-2">
-        <input class="form-control" type="number" value="${schr.interval}" id="example-number-input">
+        <input class="form-control" type="number" ec-data="interval" value="${schr.interval}" id="interval-input">
       </div>
-      <label for="example-datetime-local-input" class="col-1 col-form-label">Start</label>
+      <label for="startDate-input" class="col-1 col-form-label">Start</label>
       <div class="col-5">
-        <input class="form-control" type="datetime-local" value="${ec.timeStrConv(schr.startDate)}" id="example-datetime-local-input">
+        <input class="form-control" type="datetime-local" ec-data="startDate" value="${ec.timeStrConv(schr.startDate)}" id="startDate-input">
       </div>      
   </div>
   <button type="button" class="btn btn-primary">${k==''?'Create':'Update'} Executor</button>
@@ -408,7 +408,17 @@ class Base {
             'border-radius': 5,
             'padding': 20
         }).html(htmlStr));
-
+        
+        $('.ec-btn-scheduler-submit').on('click',()=>{
+            $('.executor-form').find('input,select').forEach((elm,ind)=>{
+                let fld=$(elm).attr('ec-data');
+                if fld!=undefined {
+                    let isdate = Date.parse($(elm).val());
+                    schr[fld]=(!isdate?$(elm).val():isdate);
+                }
+            });
+            setNgObj(k,schr);
+        }
     }
 
     showDataModel() {
