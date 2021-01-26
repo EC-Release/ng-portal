@@ -13,331 +13,348 @@ import EC from './ec.js'
 
 (()=>{
 
-    let _s = window.location.pathname.split('/'),
-        ec = new EC('ec1',window.location.host,_s[1],_s[2]);
+    let _s = window.location.pathname.split('/')
+      , ec = new EC('ec1',window.location.host,_s[1],_s[2]);
     window.ec = ec;
-    ec.TenguObjInit().catch(err=>{console.error(`TenguObjInit failed: ${err}`)}).then(keys=>{
-    ec.load("https://code.jquery.com/jquery-3.5.1.slim.min.js").catch((err)=>{}).then((s)=>{ 
-	    ec.windowEventBinder();
-	    
-	    ec.load("https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js").then((success)=>{		  
+    ec.TenguObjInit().catch(err=>{
+        console.error(`TenguObjInit failed: ${err}`)
+    }
+    ).then(keys=>{
+        ec.load("https://code.jquery.com/jquery-3.5.1.slim.min.js").catch((err)=>{}
+        ).then((s)=>{
+            ec.windowEventBinder();
 
-		    showdown.extension('header-anchors', ()=>{	
-			var ancTpl = '$1<a id="user-content-$3" class="anchor" href="#$3" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>$4';
-			return [{
-				type: 'html',
-				regex: /(<h([1-5]) id="([^"]+?)">)(.*<\/h\2>)/g,
-				replace: ancTpl
-			}];
-		    });
-          		
-		    let marked = new showdown.Converter({           	
-			    extensions: ['header-anchors'],
-			    ghCompatibleHeaderId: true
-		    });
-                                                       
-		    let ay=ec.getNgObjVal('ay');
-		    
-		    ec.TenguAPI('ip').then(data1=>{
-			    data1.list.split(', ').forEach((ip)=>{                                    
-				 if (!ip.startsWith('10.')){
-					 ec.Api(`${ay.cred.ipdata.url}/${ip}?${ay.cred.ipdata.key}=${ay.cred.ipdata.value}`).then((data)=>{                                                                    
-						 //console.log(`geo svc: ${data} browsHistory: ${ec.getNgObjVal('browseHistory')}`);                                         
-						 let bh = ec.getNgObjByName('browseHistory'),
-							ts = (new Date()).getTime();                                         
-						 bh.list[`${ts}`]={                                       
-							ip:ip,
-							lat:data.latitude,
-							lng:data.longitude,
-							city:data.city,
-							country:data.country_name,
-							zip:data.postal,
-							state:data.region_code
-						    };                                            
-						 return ec.TenguAPI(bh.key,bh,'POST').then((data)=>{                                         
-							 //console.log(`geolocation updated. ${JSON.stringify(data)}`);                                                
-							 ec.routing();
-						 });                                        
-					 }).catch(e=>{                                 
-						 console.log(`Exception: ${e}`);                                        
-					 });                                 
-				 }                      
-			    });   
-		    }).catch(e=>{console.log(`get up err: ${e}`)});
-		    
-		    $('ul').on('click', 'li.ec-godoc', (event)=>{
+            ec.load("https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js").then((success)=>{
 
-                ec.setActiveTab(event.target,`${ec.appPath}/godoc`);
-                event.preventDefault();
-                if (ec.sdkInnerHTML != "") {
-                    $("main").html(ec.sdkInnerHTML);
-                    return;
+                showdown.extension('header-anchors', ()=>{
+                    var ancTpl = '$1<a id="user-content-$3" class="anchor" href="#$3" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>$4';
+                    return [{
+                        type: 'html',
+                        regex: /(<h([1-5]) id="([^"]+?)">)(.*<\/h\2>)/g,
+                        replace: ancTpl
+                    }];
                 }
+                );
 
-                ec.Api('https://api.github.com/repos/ec-release/ng-webui/contents/godoc').then((data)=>{
-                    let htmlString = `<table class="table text-center table-striped"><caption>Agent SDK Matrix</caption><thead><tr>` + `<th scope="col" class="text-left">Rev</th>` + `<th scope="col">Go</th>` + `<th scope="col">Java</th>` + `<th scope="col">C++</th>` + `<th scope="col">NodeJS</th>` + `</tr></thead><tbody>`;
-                    for (let file of data) {
-                        if (file.type == "dir") {
-                            htmlString += `<tr><th scope="row" class="text-left">${file.name}</th>` + `<td>${ec.getBoolIcon(true, file.path)}</td>` + `<td>${ec.getBoolIcon(false, file.path)}</td>` + `<td>${ec.getBoolIcon(true, file.path)}</td>` + `<td>${ec.getBoolIcon(false, file.path)}</td>` + `</tr>`;
+                let marked = new showdown.Converter({
+                    extensions: ['header-anchors'],
+                    ghCompatibleHeaderId: true
+                });
+
+                let ay = ec.getNgObjVal('ay');
+
+                ec.TenguAPI('ip').then(data1=>{
+                    data1.list.split(', ').forEach((ip)=>{
+                        if (!ip.startsWith('10.')) {
+                            ec.Api(`${ay.cred.ipdata.url}/${ip}?${ay.cred.ipdata.key}=${ay.cred.ipdata.value}`).then((data)=>{
+                                //console.log(`geo svc: ${data} browsHistory: ${ec.getNgObjVal('browseHistory')}`);                                         
+                                let bh = ec.getNgObjByName('browseHistory')
+                                  , ts = (new Date()).getTime();
+                                bh.list[`${ts}`] = {
+                                    ip: ip,
+                                    lat: data.latitude,
+                                    lng: data.longitude,
+                                    city: data.city,
+                                    country: data.country_name,
+                                    zip: data.postal,
+                                    state: data.region_code
+                                };
+                                return ec.TenguAPI(bh.key, bh, 'POST').then((data)=>{
+                                    //console.log(`geolocation updated. ${JSON.stringify(data)}`);                                                
+                                    ec.routing();
+                                }
+                                );
+                            }
+                            ).catch(e=>{
+                                console.log(`Exception: ${e}`);
+                            }
+                            );
                         }
                     }
-                    htmlString += '</tbody></table>';
-                    ec.sdkInnerHTML = htmlString;
-                    $("main").html(ec.sdkInnerHTML);
-                    $(event.target).addClass('active');
-                }).catch((e)=>{
-                    console.log(`Exception: ${e}`);
-                });
-            }
-            );
-
-            $('ul').on('click', 'li.ec-releases', (event)=>{
-
-                ec.setActiveTab(event.target,`${ec.appPath}/releases`);
-
-                event.preventDefault();
-                if (ec.Releases != "") {
-                    $("main").html(ec.Releases);
-                    return;
+                    );
                 }
+                ).catch(e=>{
+                    console.log(`get up err: ${e}`)
+                }
+                );
 
-                ec.Api('https://api.github.com/repos/ec-release/sdk/releases').then((data)=>{
-                    let htmlString = `<table class="table table-striped"><caption>Release Matrix</caption><thead><tr><th scope="col">Rev</th><th scope="col">Release Note</th></tr></thead><tbody>`;
-                    for (let rel of data) {
-                        htmlString += `<tr><th scope="row">${rel.name}</th><td>${marked.makeHtml(rel.body)}</td></tr>`;
+                $('ul').on('click', 'li.ec-godoc', (event)=>{
+
+                    ec.setActiveTab(event.target, `${ec.appPath}/godoc`);
+                    event.preventDefault();
+                    if (ec.sdkInnerHTML != "") {
+                        $("main").html(ec.sdkInnerHTML);
+                        return;
                     }
-                    htmlString += '</tbody></table>';
-                    ec.Releases = htmlString;
-                    $("main").html(ec.Releases);
-                    $(event.target).addClass('active');
-                }).catch((e)=>{
-                    console.log(`Exception: ${e}`);
-                });
-            });
 
-            $('ul').on('click', 'li.ec-status', (event)=>{
-                ec.setActiveTab(event.target,`${ec.appPath}/status`);
-                event.preventDefault();
+                    ec.Api('https://api.github.com/repos/ec-release/ng-webui/contents/godoc').then((data)=>{
+                        let htmlString = `<table class="table text-center table-striped"><caption>Agent SDK Matrix</caption><thead><tr>` + `<th scope="col" class="text-left">Rev</th>` + `<th scope="col">Go</th>` + `<th scope="col">Java</th>` + `<th scope="col">C++</th>` + `<th scope="col">NodeJS</th>` + `</tr></thead><tbody>`;
+                        for (let file of data) {
+                            if (file.type == "dir") {
+                                htmlString += `<tr><th scope="row" class="text-left">${file.name}</th>` + `<td>${ec.getBoolIcon(true, file.path)}</td>` + `<td>${ec.getBoolIcon(false, file.path)}</td>` + `<td>${ec.getBoolIcon(true, file.path)}</td>` + `<td>${ec.getBoolIcon(false, file.path)}</td>` + `</tr>`;
+                            }
+                        }
+                        htmlString += '</tbody></table>';
+                        ec.sdkInnerHTML = htmlString;
+                        $("main").html(ec.sdkInnerHTML);
+                        $(event.target).addClass('active');
+                    }
+                    ).catch((e)=>{
+                        console.log(`Exception: ${e}`);
+                    }
+                    );
+                }
+                );
 
-                let tc = (ms)=>{
-                    var currentdate = new Date(ms);
-                    return currentdate.getFullYear() + "-"
-                            + (currentdate.getMonth()+1)  + "-" 
-                            + currentdate.getDate() + " "  
-                            + currentdate.getHours() + ":"  
-                            + currentdate.getMinutes() + ":" 
-                            + currentdate.getSeconds();
+                $('ul').on('click', 'li.ec-releases', (event)=>{
+
+                    ec.setActiveTab(event.target, `${ec.appPath}/releases`);
+
+                    event.preventDefault();
+                    if (ec.Releases != "") {
+                        $("main").html(ec.Releases);
+                        return;
+                    }
+
+                    ec.Api('https://api.github.com/repos/ec-release/sdk/releases').then((data)=>{
+                        let htmlString = `<table class="table table-striped"><caption>Release Matrix</caption><thead><tr><th scope="col">Rev</th><th scope="col">Release Note</th></tr></thead><tbody>`;
+                        for (let rel of data) {
+                            htmlString += `<tr><th scope="row">${rel.name}</th><td>${marked.makeHtml(rel.body)}</td></tr>`;
+                        }
+                        htmlString += '</tbody></table>';
+                        ec.Releases = htmlString;
+                        $("main").html(ec.Releases);
+                        $(event.target).addClass('active');
+                    }
+                    ).catch((e)=>{
+                        console.log(`Exception: ${e}`);
+                    }
+                    );
                 }
-                
-                let up = (url)=>{
-                    var _u = new URL(url);
-                    return _u.hostname.split('.')[0];
-                }
-                
-                let st = (code)=>{
-                    switch (code){
+                );
+
+                $('ul').on('click', 'li.ec-status', (event)=>{
+                    ec.setActiveTab(event.target, `${ec.appPath}/status`);
+                    event.preventDefault();
+
+                    let tc = (ms)=>{
+                        var currentdate = new Date(ms);
+                        return currentdate.getFullYear() + "-" + (currentdate.getMonth() + 1) + "-" + currentdate.getDate() + " " + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+                    }
+
+                    let up = (url)=>{
+                        var _u = new URL(url);
+                        return _u.hostname.split('.')[0];
+                    }
+
+                    let st = (code)=>{
+                        switch (code) {
                         case 1006:
-                            return feather.icons['sun'].toSvg({'color':'grey'});
+                            return feather.icons['sun'].toSvg({
+                                'color': 'grey'
+                            });
                         case 1007:
-                            return feather.icons['pause-circle'].toSvg({'color':'grey'});
+                            return feather.icons['pause-circle'].toSvg({
+                                'color': 'grey'
+                            });
                         case 1008:
-                            return feather.icons['alert-triangle'].toSvg({'color':'grey'});                        
+                            return feather.icons['alert-triangle'].toSvg({
+                                'color': 'grey'
+                            });
                         case 1009:
-                            return feather.icons['eye-off'].toSvg({'color':'grey'});                        
+                            return feather.icons['eye-off'].toSvg({
+                                'color': 'grey'
+                            });
                         default:
-                            return feather.icons['help-circle'].toSvg({'color':'grey'});                                                                                
-                    }
-                }
-                
-                let refreshOps = (node)=>{
-                    if (node.startsWith(`https://${ec.appHost}`)){
-                        return `<a class="ec-seed-reboot" href="javascript:void(0)">${feather.icons['refresh-cw'].toSvg({'color':'green'})}</a>`;
-                    }
-                    
-                    return '&nbsp;';
-                }
-		
-		let debugOps = (node)=>{
-                    if (node.startsWith(`https://${ec.appHost}`)){
-                        return `<a class="ec-seed-debug" href="javascript:void(0)">${feather.icons['monitor'].toSvg({'color':'blue'})}</a>`;
-                    }
-                    
-                    return '&nbsp;';
-                }
-		
-		let remoteOps = (node)=>{
-                    if (node.startsWith(`https://${ec.appHost}`)){
-                        return `<a class="ec-seed-term" href="javascript:void(0)">${feather.icons['terminal'].toSvg({color: 'black', 'border-radius': '3px'})}</a>`;
-                    }
-                    
-                    return '&nbsp;';
-                }
-		
-		//ec.attachWorker(`${ec.assetPath}/worker.js`);
-                
-                ec.TenguAPI('seed', '', 'GET').then(data=>{
-                    let htmlString = `<table class="table texsht-center table-striped"><caption>System Mining</caption><thead><tr>` + 
-                                    `<th scope="col">Sequence</th>` + 
-                                    `<th scope="col" class="text-left">Seeder</th>` + 
-                                    `<th scope="col">Ancestor</th>` + 
-                                    `<th scope="col">OAuth</th>` + 
-                                    `<th scope="col">Status</th>` + 
-                                    `<th scope="col">Retry</th>` + 
-                                    `<th scope="col">Reboot</th>` + 
-                                    `<th scope="col">Debug</th>` + 
-                                    `<th scope="col">Remote</th>` + 
-                                    `<th scope="col" class="text-left">Updated On</th>` + 
-                                    `<th scope="col" class="text-left">Joined On</th>` + 
-                                    `</tr></thead><tbody>`;
-			
-			let sdArr = Object.values(data);
-			sdArr.sort((a, b)=>{
-			  return a.SeqID - b.SeqID;
-			});
-			
-                    sdArr.forEach((seed, idx)=>{
-			 htmlString += `<tr><td>${seed.SeqID}</td>` + 
-                            `<th scope="row" class="text-left"><a class="ec-seed-link" href="${seed.Node}">${up(seed.Node)}</a></th>` +
-                            `<td><a class="ec-seed-link" href="${seed.Seed}">${up(seed.Seed)}</a></td>` + 
-                            `<td><a class="ec-oauth-link" href="${seed.OAuth}">${up(seed.OAuth)}</a></td>` + 
-                            `<td>${st(seed.Status)}</td>` + 
-                            `<td>${seed.Retry}</td>` + 
-                            `<td>${refreshOps(seed.Node)}</td>` + 
-                            `<td>${debugOps(seed.Node)}</td>` + 
-                            `<td>${remoteOps(seed.Node)}</td>` + 
-                            `<td>${tc(seed.UpdatedOn*1000)}</td>` + 
-                            `<td>${tc(seed.CreatedOn*1000)}</td></tr>`;
-		    });
-			
-                    htmlString += '</table>';
-                    
-                    let bh = ec.getNgObjByName('browseHistory');
-                    if (bh) {
-			    
-			let bhArr = Object.values(bh.list);
-			    
-			let groupBy = (xs, key)=>{
-			  return xs.reduce(function(rv, x) {
-			    (rv[x[key]] = rv[x[key]] || []).push(x);
-			    return rv;
-			  }, {});
-			};
-			let hits = groupBy(bhArr, 'ip');
-
-                        htmlString += `<table class="table text-center table-striped"><caption>Usage Geo-reporting</caption><thead><tr>` +                 
-                                        `<th scope="col" class="text-left">Ip</th>` + 
-                                        `<th scope="col">LAT</th>` + 
-                                        `<th scope="col">LNG</th>` + 
-                                        `<th scope="col">City</th>` + 
-                                        `<th scope="col">Visit</th>` + 
-                                        `</tr></thead><tbody>`;                     
-
-                        for (const [ip, grp] of Object.entries(hits)) {
-                        	let histry = grp[0], visit = grp.length;
-                            htmlString += `<tr><th scope="row" class="text-left">${ip}</th>` +
-                                    `<td>${histry.lat}</td>` + 
-                                    `<td>${histry.lng}</td>` + 
-                                    `<td>${histry.city}</td>` + 
-                                    `<td>${visit}</td></tr>`;
+                            return feather.icons['help-circle'].toSvg({
+                                'color': 'grey'
+                            });
                         }
+                    }
+
+                    let refreshOps = (node)=>{
+                        if (node.startsWith(`https://${ec.appHost}`)) {
+                            return `<a class="ec-seed-reboot" href="javascript:void(0)">${feather.icons['refresh-cw'].toSvg({
+                                'color': 'green'
+                            })}</a>`;
+                        }
+
+                        return '&nbsp;';
+                    }
+
+                    let debugOps = (node)=>{
+                        if (node.startsWith(`https://${ec.appHost}`)) {
+                            return `<a class="ec-seed-debug" href="javascript:void(0)">${feather.icons['monitor'].toSvg({
+                                'color': 'blue'
+                            })}</a>`;
+                        }
+
+                        return '&nbsp;';
+                    }
+
+                    let remoteOps = (node)=>{
+                        if (node.startsWith(`https://${ec.appHost}`)) {
+                            return `<a class="ec-seed-term" href="javascript:void(0)">${feather.icons['terminal'].toSvg({
+                                color: 'black',
+                                'border-radius': '3px'
+                            })}</a>`;
+                        }
+
+                        return '&nbsp;';
+                    }
+
+                    //ec.attachWorker(`${ec.assetPath}/worker.js`);
+
+                    ec.TenguAPI('seed', '', 'GET').then(data=>{
+                        let htmlString = `<table class="table texsht-center table-striped"><caption>System Mining</caption><thead><tr>` + `<th scope="col">Sequence</th>` + `<th scope="col" class="text-left">Seeder</th>` + `<th scope="col">Ancestor</th>` + `<th scope="col">OAuth</th>` + `<th scope="col">Status</th>` + `<th scope="col">Retry</th>` + `<th scope="col">Reboot</th>` + `<th scope="col">Debug</th>` + `<th scope="col">Remote</th>` + `<th scope="col" class="text-left">Updated On</th>` + `<th scope="col" class="text-left">Joined On</th>` + `</tr></thead><tbody>`;
+
+                        let sdArr = Object.values(data);
+                        sdArr.sort((a,b)=>{
+                            return a.SeqID - b.SeqID;
+                        }
+                        );
+
+                        sdArr.forEach((seed,idx)=>{
+                            htmlString += `<tr><td>${seed.SeqID}</td>` + `<th scope="row" class="text-left"><a class="ec-seed-link" href="${seed.Node}">${up(seed.Node)}</a></th>` + `<td><a class="ec-seed-link" href="${seed.Seed}">${up(seed.Seed)}</a></td>` + `<td><a class="ec-oauth-link" href="${seed.OAuth}">${up(seed.OAuth)}</a></td>` + `<td>${st(seed.Status)}</td>` + `<td>${seed.Retry}</td>` + `<td>${refreshOps(seed.Node)}</td>` + `<td>${debugOps(seed.Node)}</td>` + `<td>${remoteOps(seed.Node)}</td>` + `<td>${tc(seed.UpdatedOn * 1000)}</td>` + `<td>${tc(seed.CreatedOn * 1000)}</td></tr>`;
+                        }
+                        );
+
                         htmlString += '</table>';
 
-                    }
-                    $("main").html(htmlString);
-                    $('.ec-seed-reboot > svg').on('click',(e)=>{
-                        e.preventDefault();                
-                        if (!$(e.target).parent().hasClass('ec-seed-reboot')) {
-                            return;
+                        let bh = ec.getNgObjByName('browseHistory');
+                        if (bh) {
+
+                            let bhArr = Object.values(bh.list);
+
+                            let groupBy = (xs,key)=>{
+                                return xs.reduce(function(rv, x) {
+                                    (rv[x[key]] = rv[x[key]] || []).push(x);
+                                    return rv;
+                                }, {});
+                            }
+                            ;
+                            let hits = groupBy(bhArr, 'ip');
+
+                            htmlString += `<table class="table text-center table-striped"><caption>Usage Geo-reporting</caption><thead><tr>` + `<th scope="col" class="text-left">Ip</th>` + `<th scope="col">LAT</th>` + `<th scope="col">LNG</th>` + `<th scope="col">City</th>` + `<th scope="col">Visit</th>` + `</tr></thead><tbody>`;
+
+                            for (const [ip,grp] of Object.entries(hits)) {
+                                let histry = grp[0]
+                                  , visit = grp.length;
+                                htmlString += `<tr><th scope="row" class="text-left">${ip}</th>` + `<td>${histry.lat}</td>` + `<td>${histry.lng}</td>` + `<td>${histry.city}</td>` + `<td>${visit}</td></tr>`;
+                            }
+                            htmlString += '</table>';
+
                         }
-                        
-                        let _o=0,
-                            ref2 = setInterval(()=>{
-                                _o+=10;
-                                $(e.target).css({transform:`rotate(${_o}deg)`,color:'red'});
-                            }, 100),
-                            ref3 = setInterval(()=>{
-                                ec.TenguSeederAPI(`${ec.apiPath}/seed`,'GET').then(d=>{
+                        $("main").html(htmlString);
+                        $('.ec-seed-reboot > svg').on('click', (e)=>{
+                            e.preventDefault();
+                            if (!$(e.target).parent().hasClass('ec-seed-reboot')) {
+                                return;
+                            }
+
+                            let _o = 0
+                              , ref2 = setInterval(()=>{
+                                _o += 10;
+                                $(e.target).css({
+                                    transform: `rotate(${_o}deg)`,
+                                    color: 'red'
+                                });
+                            }
+                            , 100)
+                              , ref3 = setInterval(()=>{
+                                ec.TenguSeederAPI(`${ec.apiPath}/seed`, 'GET').then(d=>{
                                     clearInterval(ref2);
                                     clearInterval(ref3);
-                                    $(e.target).css({transform:`rotate(${_o}deg)`,color:'green'});
+                                    $(e.target).css({
+                                        transform: `rotate(${_o}deg)`,
+                                        color: 'green'
+                                    });
                                     console.log(`seeder re-instated.`);
-                                }).catch(e=>{
+                                }
+                                ).catch(e=>{
                                     console.log(`seeder reboot in-progress.`);
-                                });
-                            }, 5000);
-                        
-                        ec.TenguSeederAPI(`${ec.appPath}/exit`,'POST').then(d=>{
-                            console.log(`seeder is being rebooted. d: ${d}`);
-                        }).catch(e=>{
-                            console.log(`error whilst rebooting. e: ${e}`);
-                        });
-                    });
-			
-		    $('.ec-seed-debug > svg').on('click',(e)=>{
+                                }
+                                );
+                            }
+                            , 5000);
+
+                            ec.TenguSeederAPI(`${ec.appPath}/exit`, 'POST').then(d=>{
+                                console.log(`seeder is being rebooted. d: ${d}`);
+                            }
+                            ).catch(e=>{
+                                console.log(`error whilst rebooting. e: ${e}`);
+                            }
+                            );
+                        }
+                        );
+
+                        $('.ec-seed-debug > svg').on('click', (e)=>{
+                            e.preventDefault();
+                            ec.showRemoteDebug(`wss://${ec.appHost + ec.appPath}/log`);
+                        }
+                        );
+
+                        $('.ec-seed-term > svg').on('click', (e)=>{
+                            e.preventDefault();
+                            ec.showTerminal(`wss://${ec.appHost + ec.appPath}/term`);
+                        }
+                        );
+
+                        $(event.target).addClass('active');
+                    }
+                    ).catch((e)=>{
+                        console.log(`Exception: ${e}`);
+                        location.reload();
+                    }
+                    );
+
+                }
+                );
+
+                $('ul').on('click', 'li.ec-scheduler', (event)=>{
+                    ec.setActiveTab(event.target, `${ec.appPath}/scheduler`);
+                    event.preventDefault();
+
+                    let htmlString = `<table class="table text-center table-striped"><caption>Script Scheduler</caption><thead><tr>` + `<th scope="col" class="text-left">git commit</th>` + `<th scope="col">repo vendor</th>` + `<th scope="col">time</th>` + `<th scope="col">title</th>` + `<th scope="col">freq</th>` + `<th scope="col">owner</th>` + `<th scope="col"></th>` + `</tr></thead><tbody>`;
+
+                    let op = ec.getNgObjVal("9bbef597-8a42-404a-92ab-57ccdfb9c450");
+                    op.list.forEach((value,index)=>{
+                        htmlString += `<tr><td scope="row" class="text-left"><a href="${value.downloadURL}">${value.gitCommit}</td>` + `<td>${value.vendor}</td>` + `<td>${value.startDate}</td>` + `<td>${value.title}</td>` + `<td>${value.freq}</td>` + `<td>${value.ownerId}</td>` + `<td><a class="ec-show-scheduler-form p-1" href="javascript:void(0);">${feather.icons['corner-down-left'].toSvg({
+                            'color': 'blue'
+                        })}</a><a class="ec-show-scheduler-form p-1" href="javascript:void(0);">${feather.icons['edit'].toSvg({
+                            'color': 'darkgreen'
+                        })}</a><a class="ec-delete-scheduler p-1" href="javascript:void(0);">${feather.icons['delete'].toSvg({
+                            'color': 'darkred'
+                        })}</a></td></tr>`;
+
+                    }
+                    );
+
+                    htmlString += `</table>`;
+                    htmlString += `<button type="button" class="btn btn-primary ec-show-scheduler-form">Schedule An Executor</button>`
+
+                    $("main").html(htmlString);
+                    $('.ec-show-scheduler-form > svg').on('click', (e)=>{
                         e.preventDefault();
-			ec.showRemoteDebug(`wss://${ec.appHost+ec.appPath}/log`);
-		    });
-			
-	            $('.ec-seed-term > svg').on('click',(e)=>{
+                        ec.showSchedulerForm();
+                    }
+                    );
+
+                    $('button.ec-show-scheduler-form').on('click', (e)=>{
                         e.preventDefault();
-			ec.showTerminal(`wss://${ec.appHost+ec.appPath}/term`);
-		    });
-                    
+                        ec.showSchedulerForm();
+                    }
+                    );
+
                     $(event.target).addClass('active');
-                }).catch((e)=>{
-                    console.log(`Exception: ${e}`);
-		    location.reload();
-                });
-                
-            });
-		    
-	    $('ul').on('click', 'li.ec-scheduler', (event)=>{
-                ec.setActiveTab(event.target,`${ec.appPath}/scheduler`);
-                event.preventDefault();
-		    
-		let htmlString = "";
-		htmlString += `<table class="table text-center table-striped"><caption>Script Scheduler</caption><thead><tr>` +                 
-                                        `<th scope="col" class="text-left">git commit</th>` + 
-                                        `<th scope="col">repo vendor</th>` +
-                                        `<th scope="col">time</th>` + 
-                                        `<th scope="col">title</th>` + 
-                                        `<th scope="col">freq</th>` + 
-                                        `<th scope="col">owner</th>` + 
-                                        `<th scope="col"></th>` + 
-                                        `</tr></thead><tbody>`;                     
+                }
+                );
 
-                        //for (const [ip, grp] of Object.entries(hits)) {
-                        //	let histry = grp[0], visit = grp.length;
-                            htmlString += `<tr><td scope="row" class="text-left"><a href="https://raw.githubusercontent.com/EC-Release/sdk/88965e046a37549a75a7529cd33828b5d7bd0878/scripts/agt/v1.linux64.txt">a288b6e</td>` +
-                                    `<td>github</td>` + 
-                                    `<td>2021-FEB-2</td>` + 
-                                    `<td>Machine Learning- Test Model Based on Release</td>` + 
-                                    `<td>Hourly</td>` + 
-                                    `<td>apolo.yasuda</td>` + 
-                                    `<td><a class="ec-show-scheduler-form p-1" href="javascript:void(0);">${feather.icons['corner-down-left'].toSvg({'color':'blue'})}</a><a class="ec-show-scheduler-form p-1" href="javascript:void(0);">${feather.icons['edit'].toSvg({'color':'darkgreen'})}</a><a class="ec-delete-scheduler p-1" href="javascript:void(0);">${feather.icons['delete'].toSvg({'color':'darkred'})}</a></td></tr>`;
-                        //}
-                        htmlString += `</table>`;
-		    htmlString += `<button type="button" class="btn btn-primary ec-show-scheduler-form">Schedule An Executor</button>`
+                $('ul').on('click', 'li.ec-social', (event)=>{
+                    ec.setActiveTab(event.target, `${ec.appPath}/social`);
+                    event.preventDefault();
 
-                $("main").html(htmlString);
-		$('.ec-show-scheduler-form > svg').on('click',(e)=>{
-			e.preventDefault();
-			ec.showSchedulerForm();
-		});
-		    
-		$('button.ec-show-scheduler-form').on('click',(e)=>{
-			e.preventDefault();
-			ec.showSchedulerForm();
-		});
-
-                $(event.target).addClass('active');
-            });
-		    
-            $('ul').on('click', 'li.ec-social', (event)=>{
-                ec.setActiveTab(event.target,`${ec.appPath}/social`);
-                event.preventDefault();
-
-                $("main").html(`<div class="container p-0">
+                    $("main").html(`<div class="container p-0">
 
 		<h1 class="h3 mb-3">EC Social (WIP)</h1>
 
@@ -589,33 +606,36 @@ import EC from './ec.js'
 			</div>
 		</div>
 	</div>`);
-                $(event.target).addClass('active');
-            });
-            
-            $('ul').on('click', 'li.ec-security', (event)=>{
-                ec.setActiveTab(event.target,`${ec.appPath}/security`);
-                event.preventDefault();
-
-                if (ec.securityMd != "") {
-                    $("main").html(marked.makeHtml(ec.securityMd));
                     $(event.target).addClass('active');
-
-                    return;
                 }
+                );
 
-                ec.Html('https://raw.githubusercontent.com/EC-Release/sdk/v1_security_review/vulnerability/predix.README.md').then((data)=>{
+                $('ul').on('click', 'li.ec-security', (event)=>{
+                    ec.setActiveTab(event.target, `${ec.appPath}/security`);
+                    event.preventDefault();
 
-                    ec.securityMd = '<div class="mt-3">' + marked.makeHtml(data) + '</div>';
-                    $("main").html(ec.securityMd);
-                    $(event.target).addClass('active');
-                });
-            });
+                    if (ec.securityMd != "") {
+                        $("main").html(marked.makeHtml(ec.securityMd));
+                        $(event.target).addClass('active');
 
-            $('ul').on('click', 'li.ec-analytics', (event)=>{
-                ec.setActiveTab(event.target,`${ec.appPath}/analytics`);
-                event.preventDefault();
-                //if (document.getElementsByClassName('ec-info').length<1) { 
-		    $('.ec-info').remove();
+                        return;
+                    }
+
+                    ec.Html('https://raw.githubusercontent.com/EC-Release/sdk/v1_security_review/vulnerability/predix.README.md').then((data)=>{
+
+                        ec.securityMd = '<div class="mt-3">' + marked.makeHtml(data) + '</div>';
+                        $("main").html(ec.securityMd);
+                        $(event.target).addClass('active');
+                    }
+                    );
+                }
+                );
+
+                $('ul').on('click', 'li.ec-analytics', (event)=>{
+                    ec.setActiveTab(event.target, `${ec.appPath}/analytics`);
+                    event.preventDefault();
+                    //if (document.getElementsByClassName('ec-info').length<1) { 
+                    $('.ec-info').remove();
                     $('body').append($('<div class="ec-info"></div>').css({
                         position: "fixed",
                         left: $('body')[0].getBoundingClientRect().width - 100,
@@ -625,168 +645,202 @@ import EC from './ec.js'
                         e.preventDefault();
                         ec.TenguDataInit('qa');
                         ec.showDataModel();
-                    }));
-                //}
-                
-                if (ec.ngObjSize>0){
-                    ec.showTenguChartI();
-                    $(event.target).addClass('active');
-                } else {
-                    console.log(`no data obj available`);
-                }
-            });
-		    
-	    $('ul').on('click', 'li.ec-visualisation', (event)=>{
-                ec.setActiveTab(event.target,`${ec.appPath}/visualisation`);
-                event.preventDefault();
-                //if (document.getElementsByClassName('ec-info').length<1) {                
-                    $('.ec-info').remove();
-		    $('body').append($('<div class="ec-info"></div>').css({
-                        position: "fixed",
-                        left: $('body')[0].getBoundingClientRect().width - 100,
-                        bottom: 20,
-                        color: 'grey'
-                    }).text('[ + data@EC ]').on("click", (e)=>{
-                        e.preventDefault();
-                        ec.TenguDataInit();
-                        ec.showDataModel();
-                    }));
-                //}
-                
-                if (ec.ngObjSize>0){
-                    ec.showTenguChartII();
-                    $(event.target).addClass('active');
-                } else {
-                    console.log(`no data obj available`);
-                }
-            });
-		    
-	    $('ul').on('click', 'li.ec-usage', (event)=>{
-                ec.setActiveTab(event.target,`${ec.appPath}/usage`);
-                event.preventDefault();
-                //if (document.getElementsByClassName('ec-info').length<1) {                
-                    $('.ec-info').remove();
-		    $('body').append($('<div class="ec-info"></div>').css({
-                        position: "fixed",
-                        left: $('body')[0].getBoundingClientRect().width - 100,
-                        bottom: 20,
-                        color: 'grey'
-                    }).text('[ + data@EC ]').on("click", (e)=>{
-                        e.preventDefault();
-                        ec.TenguDataInit();
-                        ec.showDataModel();
-                    }));
-                //}
-                
-                if (ec.ngObjSize>0){
-                    ec.showTenguChartIII();
-                    $(event.target).addClass('active');
-                } else {
-                    console.log(`no data obj available`);
-                }
-            });
+                    }
+                    ));
+                    //}
 
-            $('main').on('click', 'a.ec-godoc-rev', (event)=>{
-                event.preventDefault();
-                let p = $(event.target).parents('a')[0]
-                  , h = p.href.split("/").pop();
-                ec.setActiveState(event.target.parentNode, ec.appPath + '/godoc/' + h);
-                $("main").html(`<div class="embed-responsive embed-responsive-16by9 mt-3"><iframe class="embed-responsive-item" src="${p.href}" allowfullscreen></iframe></div>`);
-            });
-		 
-            $('ul').on('click', 'li.ec-feature', (event)=>{
-                event.preventDefault();
-		if (ec.featureHTML!=""){
-			ec.setActiveTab(event.target,`${ec.appPath}/features`);
-			$("main").html(ec.featureHTML);
-			return;
-		}
-		    
-		let v=ec.getToken('v_tkn'),
-		    h={method: 'GET',
-		 	headers: {'Content-Type': 'application/json',
-				'Accept': 'application/json',
-				'Authorization': `Bearer ${v}`}},
-			hs=(html)=>{
-			   let tmp = document.createElement("DIV");
-			   tmp.innerHTML = html;
-			   return tmp.textContent || tmp.innerText || "";
-			};
-		
-		v&&ec.Api('https://ge-dw.aha.io/api/v1/products/DTEC/releases?q=Release%202021',h).then(op=>{
-			return op.releases[0].id;
-		}).then(rid=>{
-			return ec.Api(`https://ge-dw.aha.io/api/v1/releases/${rid}/features`,h);
-		}).then(fs=>{
-			let htmlString = `<div class="row justify-content-around"><div class="col-4">`;
-			fs.features.forEach((ft,idx)=>{
-				setTimeout(() => {
-					ec.Api(`https://ge-dw.aha.io/api/v1/features/${ft.id}`,h).then(f=>{
-					htmlString += `<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">` +
-							 `<div class="card-header">${f.feature.reference_num}</div>` +
-							 `<div class="card-body">` +
-							  `<h5 class="card-title">${f.feature.name}</h5>` +
-							  `<p class="card-text">${hs(f.feature.description.body).substring(0, 100)} ..</p>` +
-							 `</div>` +
-							 `</div>`;
-					if (idx==fs.features.length-1){
-						htmlString += `</div><div class="col-4 ec-feature-col-centre">`;
-						ec.Api('https://api.github.com/repos/ec-release/oci/issues').then((data)=>{
-							//let sdArr = Object.values(data);
-							//data.sort((a, b)=>{
-							//  return a.number - b.SeqID;
-							//});
-							//let htmlString2 = "";
-							data.forEach((pr,idx)=>{
-								setTimeout(() => {
-									htmlString += `<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                    if (ec.ngObjSize > 0) {
+                        ec.showTenguChartI();
+                        $(event.target).addClass('active');
+                    } else {
+                        console.log(`no data obj available`);
+                    }
+                }
+                );
+
+                $('ul').on('click', 'li.ec-visualisation', (event)=>{
+                    ec.setActiveTab(event.target, `${ec.appPath}/visualisation`);
+                    event.preventDefault();
+                    //if (document.getElementsByClassName('ec-info').length<1) {                
+                    $('.ec-info').remove();
+                    $('body').append($('<div class="ec-info"></div>').css({
+                        position: "fixed",
+                        left: $('body')[0].getBoundingClientRect().width - 100,
+                        bottom: 20,
+                        color: 'grey'
+                    }).text('[ + data@EC ]').on("click", (e)=>{
+                        e.preventDefault();
+                        ec.TenguDataInit();
+                        ec.showDataModel();
+                    }
+                    ));
+                    //}
+
+                    if (ec.ngObjSize > 0) {
+                        ec.showTenguChartII();
+                        $(event.target).addClass('active');
+                    } else {
+                        console.log(`no data obj available`);
+                    }
+                }
+                );
+
+                $('ul').on('click', 'li.ec-usage', (event)=>{
+                    ec.setActiveTab(event.target, `${ec.appPath}/usage`);
+                    event.preventDefault();
+                    //if (document.getElementsByClassName('ec-info').length<1) {                
+                    $('.ec-info').remove();
+                    $('body').append($('<div class="ec-info"></div>').css({
+                        position: "fixed",
+                        left: $('body')[0].getBoundingClientRect().width - 100,
+                        bottom: 20,
+                        color: 'grey'
+                    }).text('[ + data@EC ]').on("click", (e)=>{
+                        e.preventDefault();
+                        ec.TenguDataInit();
+                        ec.showDataModel();
+                    }
+                    ));
+                    //}
+
+                    if (ec.ngObjSize > 0) {
+                        ec.showTenguChartIII();
+                        $(event.target).addClass('active');
+                    } else {
+                        console.log(`no data obj available`);
+                    }
+                }
+                );
+
+                $('main').on('click', 'a.ec-godoc-rev', (event)=>{
+                    event.preventDefault();
+                    let p = $(event.target).parents('a')[0]
+                      , h = p.href.split("/").pop();
+                    ec.setActiveState(event.target.parentNode, ec.appPath + '/godoc/' + h);
+                    $("main").html(`<div class="embed-responsive embed-responsive-16by9 mt-3"><iframe class="embed-responsive-item" src="${p.href}" allowfullscreen></iframe></div>`);
+                }
+                );
+
+                $('ul').on('click', 'li.ec-feature', (event)=>{
+                    event.preventDefault();
+                    if (ec.featureHTML != "") {
+                        ec.setActiveTab(event.target, `${ec.appPath}/features`);
+                        $("main").html(ec.featureHTML);
+                        return;
+                    }
+
+                    let v = ec.getToken('v_tkn')
+                      , h = {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'Authorization': `Bearer ${v}`
+                        }
+                    }
+                      , hs = (html)=>{
+                        let tmp = document.createElement("DIV");
+                        tmp.innerHTML = html;
+                        return tmp.textContent || tmp.innerText || "";
+                    }
+                    ;
+
+                    v && ec.Api('https://ge-dw.aha.io/api/v1/products/DTEC/releases?q=Release%202021', h).then(op=>{
+                        return op.releases[0].id;
+                    }
+                    ).then(rid=>{
+                        return ec.Api(`https://ge-dw.aha.io/api/v1/releases/${rid}/features`, h);
+                    }
+                    ).then(fs=>{
+                        let htmlString = `<div class="row justify-content-around"><div class="col-4">`;
+                        fs.features.forEach((ft,idx)=>{
+                            setTimeout(()=>{
+                                ec.Api(`https://ge-dw.aha.io/api/v1/features/${ft.id}`, h).then(f=>{
+                                    htmlString += `<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">` + `<div class="card-header">${f.feature.reference_num}</div>` + `<div class="card-body">` + `<h5 class="card-title">${f.feature.name}</h5>` + `<p class="card-text">${hs(f.feature.description.body).substring(0, 100)} ..</p>` + `</div>` + `</div>`;
+                                    if (idx == fs.features.length - 1) {
+                                        htmlString += `</div><div class="col-4 ec-feature-col-centre">`;
+                                        ec.Api('https://api.github.com/repos/ec-release/oci/issues').then((data)=>{
+                                            //let sdArr = Object.values(data);
+                                            //data.sort((a, b)=>{
+                                            //  return a.number - b.SeqID;
+                                            //});
+                                            //let htmlString2 = "";
+                                            data.forEach((pr,idx)=>{
+                                                setTimeout(()=>{
+                                                    htmlString += `<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
 									  <div class="card-header">PR#${pr.number}</div>
 									  <div class="card-body">
 									    <h5 class="card-title">${pr.title}</h5>
 									    <p class="card-text">${pr.body.substring(0, 100)} ..</p>
 									  </div>
 									</div>`
-									if (idx==data.length-1) {
-										htmlString += `</div><div class="col-4">`;
-										ec.Api(`https://api.github.com/orgs/EC-Release/projects`,
-										       {method: 'GET',
-											headers:{Accept: 'application/vnd.github.inertia-preview+json'}}).then(pl=>{
-											pl.forEach((pt,idx)=>{
-												htmlString += `<div class="card bg-light mb-3" style="max-width: 18rem;">
+                                                    if (idx == data.length - 1) {
+                                                        htmlString += `</div><div class="col-4">`;
+                                                        ec.Api(`https://api.github.com/orgs/EC-Release/projects`, {
+                                                            method: 'GET',
+                                                            headers: {
+                                                                Accept: 'application/vnd.github.inertia-preview+json'
+                                                            }
+                                                        }).then(pl=>{
+                                                            pl.forEach((pt,idx)=>{
+                                                                htmlString += `<div class="card bg-light mb-3" style="max-width: 18rem;">
 												  <div class="card-header">Project#${pt.number}</div>
 												  <div class="card-body">
 												    <h5 class="card-title">${pt.name}</h5>
 												    <p class="card-text">${pt.body.substring(0, 100)} ..</p>
 												  </div>
 												</div>`
-											});
-										htmlString += `</div></div>`;
-										ec.setActiveTab(event.target,`${ec.appPath}/features`);
-										ec.featureHTML = htmlString;
-										$("main").html(ec.featureHTML);
+                                                            }
+                                                            );
+                                                            htmlString += `</div></div>`;
+                                                            ec.setActiveTab(event.target, `${ec.appPath}/features`);
+                                                            ec.featureHTML = htmlString;
+                                                            $("main").html(ec.featureHTML);
 
-										}).catch(e=>{console.log(e)});
-									}
-								},200);
-							});
-						});
-						
-					}
-					}).catch(e=>{console.log(e)});
-				},200);
-			});
-			   
-			
-		}).catch(e=>{console.log(e)});
-		    
-                
-            });
-	
-            }).catch((e)=>{
+                                                        }
+                                                        ).catch(e=>{
+                                                            console.log(e)
+                                                        }
+                                                        );
+                                                    }
+                                                }
+                                                , 200);
+                                            }
+                                            );
+                                        }
+                                        );
+
+                                    }
+                                }
+                                ).catch(e=>{
+                                    console.log(e)
+                                }
+                                );
+                            }
+                            , 200);
+                        }
+                        );
+
+                    }
+                    ).catch(e=>{
+                        console.log(e)
+                    }
+                    );
+
+                }
+                );
+
+            }
+            ).catch((e)=>{
                 console.log(`Exception: ${e}`);
-            });
+            }
+            );
 
-        }, (failure)=>{});
-    });	
-    
-})();
+        }
+        , (failure)=>{}
+        );
+    }
+    );
+
+}
+)();
