@@ -352,9 +352,9 @@ class Base {
             let opt='';
             arr.forEach((v,i)=>{
                 if (val==v) 
-                    opt+=`<option selected>${val}</option>`;
+                    opt+=`<option selected>${v}</option>`;
                 else
-                    opt+=`<option>${val}</option>`;                    
+                    opt+=`<option>${v}</option>`;                    
             });
             return opt;
         };
