@@ -295,9 +295,11 @@ class EC extends Base {
         
   timeStrConv(ms=Date.now()) {
     //yyyy-MM-ddThh:mm
-    var currentdate = new Date(parseInt(ms));
+    let currentdate = new Date(parseInt(ms)),\
+        mh = (currentdate.getMonth() + 1);
+    
     return currentdate.getFullYear() + "-" + 
-      (currentdate.getMonth() + 1) + "-" + 
+      mh<10?'0'+mh.toString():mh + "-" + 
       currentdate.getDate() + currentdate.getHours() + 
       ":" + currentdate.getMinutes();
   }
