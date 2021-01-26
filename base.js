@@ -348,9 +348,9 @@ class Base {
             schr=this.getNgObjVal(k),
             htmlStr='';
         
-        let getRepoOpt=(val)=>{
+        let getOptions=(val,arr=['github','gitlab','build.ge','bitbucket'])=>{
             let opt='';
-            ['github','gitlab','build.ge','bitbucket'].forEach((v,i)=>{
+            arr.forEach((v,i)=>{
                 if (val==v) 
                     opt+=`<option selected>${val}</option>`;
                 else
@@ -378,7 +378,7 @@ class Base {
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1" class="col-form-label">Repo Vendor</label>
-    <select class="form-control" id="exampleFormControlSelect1">${getRepoOpt(schr.vendor)}</select>
+    <select class="form-control" id="exampleFormControlSelect1">${getOptions(schr.vendor)}</select>
   </div>
   <div class="form-group row">
   <label for="example-datetime-local-input" class="col-4 col-form-label">Date/time</label>
@@ -386,11 +386,13 @@ class Base {
     <input class="form-control" type="datetime-local" value="ec.timeStrConv(schr.startDate)" id="example-datetime-local-input">
   </div>
   </div>
-  <div class="form-group row">
-  <label for="example-number-input" class="col-4 col-form-label">Interval (seconds)</label>
-  <div class="col-8">
-    <input class="form-control" type="number" value="${schr.interval}" id="example-number-input">
-  </div>
+  <div class="form-group row">  
+      <label for="example-number-input" class="col-4 col-form-label">Interval</label>
+      <div class="col-2">
+        <input class="form-control" type="number" value="${schr.interval}" id="example-number-input">
+      </div>
+      <label for="exampleFormControlSelect5" class="col-4 col-form-label">Freq.</label>
+      <select class="form-control col-2" id="exampleFormControlSelect5">${getOptions(schr.freq,['MINUTE','HOUR','DAY','WEEK','MONTH','YEAR'])}</select>
   </div>
   <button type="button" class="btn btn-primary">${k==''?'Create':'Update'} Executor</button>
 </form>`;
