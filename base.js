@@ -366,32 +366,32 @@ class Base {
         htmlStr+=`<form>
   <div class="form-group">
     <label for="exampleFormControlInput0">Title</label>
-    <input type="text" class="form-control" id="exampleFormControlInput0" text="${schr.title}" placeholder="Tensorflow Deep Learning Model I- Release..">
+    <input type="text" class="form-control" id="exampleFormControlInput0" value="${schr.title}" placeholder="Tensorflow Deep Learning Model I- Release..">
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Git Commit</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" text="${schr.gitCommit}" placeholder="79fds6gupo8">
+    <input type="text" class="form-control" id="exampleFormControlInput1" value="${schr.gitCommit}" placeholder="79fds6gupo8">
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput2">Downloadable Link (HTTPS)</label>
-    <input type="text" class="form-control" id="exampleFormControlInput2" text="${schr.downloadURL}" placeholder="https://raw.githubusercontent.com/EC-Release/..">
+    <input type="text" class="form-control" id="exampleFormControlInput2" value="${schr.downloadURL}" placeholder="https://raw.githubusercontent.com/EC-Release/..">
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1" class="col-form-label">Repo Vendor</label>
     <select class="form-control" id="exampleFormControlSelect1">${getOptions(schr.vendor)}</select>
   </div>
   <div class="form-group row">
-  <label for="example-datetime-local-input" class="col-4 col-form-label">Date/time</label>
-  <div class="col-8">
-    <input class="form-control" type="datetime-local" value="ec.timeStrConv(schr.startDate)" id="example-datetime-local-input">
-  </div>
   </div>
   <div class="form-group row">  
-      <label for="example-number-input" class="col-4 col-form-label">Interval</label>
+      <label for="example-datetime-local-input" class="col-2 col-form-label">Date/time</label>
+      <div class="col-2">
+        <input class="form-control" type="datetime-local" value="ec.timeStrConv(schr.startDate)" id="example-datetime-local-input">
+      </div>
+      <label for="example-number-input" class="col-2 col-form-label">Interval</label>
       <div class="col-2">
         <input class="form-control" type="number" value="${schr.interval}" id="example-number-input">
       </div>
-      <label for="exampleFormControlSelect5" class="col-4 col-form-label">Freq.</label>
+      <label for="exampleFormControlSelect5" class="col-2 col-form-label">Freq.</label>
       <select class="form-control col-2" id="exampleFormControlSelect5">${getOptions(schr.freq,['MINUTE','HOUR','DAY','WEEK','MONTH','YEAR'])}</select>
   </div>
   <button type="button" class="btn btn-primary">${k==''?'Create':'Update'} Executor</button>
