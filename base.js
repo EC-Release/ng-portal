@@ -394,7 +394,7 @@ class Base {
         <input class="form-control" type="datetime-local" ec-data="startDate" value="${ec.timeStrConv(schr.startDate)}" id="startDate-input">
       </div>      
   </div>
-  <button type="button" class="btn btn-primary">${k==''?'Create':'Update'} Executor</button>
+  <button type="button" class="btn btn-primary ec-btn-scheduler-submit">${k==''?'Create':'Update'} Executor</button>
 </form>`;
 
         $('body').append($('<div class="ec-scheduler-form"></div>').css({
@@ -417,7 +417,8 @@ class Base {
                     schr[fld]=(!isdate?$(elm).val():isdate);
                 }
             });
-            setNgObj(k,schr);
+            _this.setNgObj(k,schr);
+            this.hideSchedulerForm();
         });
     }
 
