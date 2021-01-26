@@ -299,8 +299,8 @@ class EC extends Base {
         mh = (currentdate.getMonth() + 1);
     
     return currentdate.getFullYear() + "-" + 
-      mh<10?'0'+mh.toString():mh + "-" + 
-      currentdate.getDate() + currentdate.getHours() + 
+      (mh<10?'0'+mh.toString():mh) + "-" + 
+      currentdate.getDate() + "T"+ currentdate.getHours() + 
       ":" + currentdate.getMinutes();
   }
 
