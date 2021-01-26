@@ -331,7 +331,8 @@ import EC from './ec.js'
                     $("main").html(htmlString);
                     $('a.ec-show-scheduler-form').on('click', (e)=>{
                         e.preventDefault();
-                        ec.showSchedulerForm($(e.target).attr('ec-data'));
+			let dk=(!$(e.target).attr('ec-data')?$(e.target).parent().attr('ec-data'):$(e.target).attr('ec-data'));
+                        ec.showSchedulerForm(dk);
                     }
                     );
 
