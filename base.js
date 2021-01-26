@@ -338,12 +338,62 @@ class Base {
         this.unsetBlock();
     }
 
-    showSchedulerForm() {
+    showSchedulerForm(k='') {
         if (document.getElementsByClassName("ec-scheduler-form").length > 0)
             return;
 
         this.setBlock();
-        let _this = this;
+        
+        let _this = this,
+            schr=this.getNgObjVal(k),
+            htmlStr='';
+        
+        let getRepoOpt=(val)=>{
+            let opt='';
+            ['github','gitlab','build.ge','bitbucket'].forEach((v,i)=>{
+                if (val==v) 
+                    opt+=`<option selected>${val}</option>`;
+                else
+                    opt+=`<option>${val}</option>`;                    
+            });
+            return opt;
+        };
+        
+        if (schr==undefined){
+            schr={title:'',gitCommit:'',downloadURL:'',vendor:'github',startDate:'',interval='-1'};
+        }
+        
+        htmlStr+=`<form>
+  <div class="form-group">
+    <label for="exampleFormControlInput0">Title</label>
+    <input type="text" class="form-control" id="exampleFormControlInput0" text="${schr.title}" placeholder="Tensorflow Deep Learning Model I- Release..">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Git Commit</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" text="${schr.gitCommit}" placeholder="79fds6gupo8">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput2">Downloadable Link (HTTPS)</label>
+    <input type="text" class="form-control" id="exampleFormControlInput2" text="${schr.downloadURL}" placeholder="https://raw.githubusercontent.com/EC-Release/..">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1" class="col-form-label">Repo Vendor</label>
+    <select class="form-control" id="exampleFormControlSelect1">${getRepoOpt(schr.vendor)}</select>
+  </div>
+  <div class="form-group row">
+  <label for="example-datetime-local-input" class="col-4 col-form-label">Date/time</label>
+  <div class="col-8">
+    <input class="form-control" type="datetime-local" value="ec.timeStrConv(schr.startDate)" id="example-datetime-local-input">
+  </div>
+  </div>
+  <div class="form-group row">
+  <label for="example-number-input" class="col-4 col-form-label">Interval (seconds)</label>
+  <div class="col-8">
+    <input class="form-control" type="number" value="${schr.interval}" id="example-number-input">
+  </div>
+  </div>
+  <button type="button" class="btn btn-primary">${k==''?'Create':'Update'} Executor</button>
+</form>`;
 
         $('body').append($('<div class="ec-scheduler-form"></div>').css({
             width: 640,
@@ -355,42 +405,7 @@ class Base {
             'background-color': 'whitesmoke',
             'border-radius': 5,
             'padding': 20
-        }).html(`<form>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Title</label>
-    <input type="text" class="form-control" id="exampleFormControlInput0" placeholder="Tensorflow Deep Learning Model I- Release..">
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Git Commit</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="79fds6gupo8">
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Downloadable Link (HTTPS)</label>
-    <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="https://raw.githubusercontent.com/EC-Release/..">
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlSelect1" class="col-form-label">Repo Vendor</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>github</option>
-      <option>gitlab</option>
-      <option>build.ge</option>
-      <option>bitbucket</option>
-    </select>
-  </div>
-  <div class="form-group row">
-  <label for="example-datetime-local-input" class="col-4 col-form-label">Date/time</label>
-  <div class="col-8">
-    <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
-  </div>
-  </div>
-  <div class="form-group row">
-  <label for="example-number-input" class="col-4 col-form-label">Interval (seconds)</label>
-  <div class="col-8">
-    <input class="form-control" type="number" value="-1" id="example-number-input">
-  </div>
-  </div>
-  <button type="button" class="btn btn-primary">Update Executor</button>
-</form>`));
+        }).html(htmlStr));
 
     }
 
