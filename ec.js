@@ -292,6 +292,14 @@ class EC extends Base {
   get Releases() {
     return this.#releases;
   }
-  
+        
+  timeStrConv(ms)=>{
+      var currentdate = new Date(ms);
+      return currentdate.getFullYear() + "-" + 
+        (currentdate.getMonth() + 1) + "-" + 
+        currentdate.getDate() + " " + currentdate.getHours() + 
+        ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+  }
+
 }
 export { EC as default };
