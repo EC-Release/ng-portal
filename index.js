@@ -331,7 +331,7 @@ import EC from './ec.js'
                     $("main").html(htmlString);
                     $('.ec-show-scheduler-form > svg').on('click', (e)=>{
                         e.preventDefault();
-                        ec.showSchedulerForm($(e.target).attr('ec-data'));
+                        ec.showSchedulerForm($(e.target).parent().attr('ec-data'));
                     }
                     );
 
