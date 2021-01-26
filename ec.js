@@ -223,6 +223,16 @@ class EC extends Base {
     let _k = JSON.parse(JSON.stringify(this.#ngObj.get(k)));
     return _k;
   }
+  
+  getNgObjArrByParentKey(k) {
+    let arr=[];  
+    for (const [key, val] of this.#ngObj) {
+         if (val.parent==k){
+              arr.push(val);
+         }
+    }
+    return arr;
+  }
         
   getNgObjByName(k) {
     let o=undefined;
