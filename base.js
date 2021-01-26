@@ -418,7 +418,7 @@ class Base {
                 }
             });
             setNgObj(k,schr);
-        }
+        });
     }
 
     showDataModel() {
