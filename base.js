@@ -410,7 +410,7 @@ class Base {
         }).html(htmlStr));
         
         $('.ec-btn-scheduler-submit').on('click',()=>{
-            $('.executor-form').find('input,select').forEach((elm,ind)=>{
+            $('.executor-form').find('input,select').each((ind,elm)=>{
                 let fld=$(elm).attr('ec-data');
                 if (fld!=undefined) {
                     let isdate = Date.parse($(elm).val());
