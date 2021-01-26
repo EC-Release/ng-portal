@@ -382,17 +382,17 @@ class Base {
   </div>
   <div class="form-group row">
   </div>
-  <div class="form-group row">  
-      <label for="example-datetime-local-input" class="col-2 col-form-label">Date/time</label>
-      <div class="col-2">
-        <input class="form-control" type="datetime-local" value="ec.timeStrConv(schr.startDate)" id="example-datetime-local-input">
-      </div>
+  <div class="form-group row"> 
+      <label for="exampleFormControlSelect5" class="col-2 col-form-label">Freq.</label>
+      <select class="form-control col-2" id="exampleFormControlSelect5">${getOptions(schr.freq,['MINUTE','HOUR','DAY','WEEK','MONTH','YEAR'])}</select>
       <label for="example-number-input" class="col-2 col-form-label">Interval</label>
       <div class="col-2">
         <input class="form-control" type="number" value="${schr.interval}" id="example-number-input">
       </div>
-      <label for="exampleFormControlSelect5" class="col-2 col-form-label">Freq.</label>
-      <select class="form-control col-2" id="exampleFormControlSelect5">${getOptions(schr.freq,['MINUTE','HOUR','DAY','WEEK','MONTH','YEAR'])}</select>
+      <label for="example-datetime-local-input" class="col-2 col-form-label">Date/time</label>
+      <div class="col-2">
+        <input class="form-control" type="datetime-local" value="ec.timeStrConv(schr.startDate)" id="example-datetime-local-input">
+      </div>      
   </div>
   <button type="button" class="btn btn-primary">${k==''?'Create':'Update'} Executor</button>
 </form>`;
