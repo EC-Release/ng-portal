@@ -317,8 +317,8 @@ import EC from './ec.js'
 
                     let htmlString = `<table class="table text-center table-striped"><caption>Script Scheduler</caption><thead><tr>` + `<th scope="col" class="text-left">git commit</th>` + `<th scope="col">repo vendor</th>` + `<th scope="col">time</th><th scope="col">title</th><th scope="col">freq</th><th scope="col"></th></tr></thead><tbody>`;
 
-                    let op = ec.getNgObjVal("9bbef597-8a42-404a-92ab-57ccdfb9c450");
-                    op.list.forEach((value,index)=>{
+                    let op = ec.getNgObjArrByParentKey("9bbef597-8a42-404a-92ab-57ccdfb9c450");
+                    op.forEach((value,index)=>{
                         htmlString += `<tr><td scope="row" class="text-left"><a href="${value.downloadURL}">${value.gitCommit.substring(0, 10)}</td>` + `<td>${value.vendor}</td>` + `<td>${value.startDate}</td>` + `<td>${value.title}</td>` + `<td>${value.freq}</td><td><a class="ec-show-scheduler-form p-1" href="javascript:void(0);">${feather.icons['corner-down-left'].toSvg({
                             'color': 'blue'
                         })}</a><a class="ec-show-scheduler-form p-1" href="javascript:void(0);">${feather.icons['edit'].toSvg({
