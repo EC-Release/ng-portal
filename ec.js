@@ -294,11 +294,12 @@ class EC extends Base {
   }
         
   timeStrConv(ms) {
-      var currentdate = new Date(ms);
-      return currentdate.getFullYear() + "-" + 
-        (currentdate.getMonth() + 1) + "-" + 
-        currentdate.getDate() + " " + currentdate.getHours() + 
-        ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+    //yyyy-MM-ddThh:mm
+    var currentdate = new Date(ms);
+    return currentdate.getFullYear() + "-" + 
+      (currentdate.getMonth() + 1) + "-" + 
+      currentdate.getDate() + currentdate.getHours() + 
+      ":" + currentdate.getMinutes();
   }
 
 }
