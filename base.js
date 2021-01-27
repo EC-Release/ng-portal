@@ -434,6 +434,49 @@ class Base {
             
         });
     }
+    
+    hideDeleteConfirm() {
+        $('.ec-delete-form").remove();
+        this.unsetBlock();
+    }
+    
+    showDeleteConfirm(k='') {
+        if (document.getElementsByClassName("ec-delete-form").length > 0)
+            return;
+
+        this.setBlock();
+        
+        let _this = this,
+            htmlStr='';
+        
+        htmlStr+=`<form class='executor-delete-form'>
+  <div class="form-group">
+    <label for="title-input">Type <b>${k}</b> to confirm the deletion.</label>
+    <input type="text" class="form-control" id="title-input" ec-data="title" placeholder="${k}">
+  </div>
+  <button type="button" class="btn btn-primary ec-btn-delete-submit">Confirm</button>
+</form>`;
+
+        $('body').append($('<div class="ec-delete-form"></div>').css({
+            width: 500,
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            'z-index': 5001,
+            'background-color': 'whitesmoke',
+            'border-radius': 5,
+            'padding': 20
+        }).html(htmlStr));
+        
+        $('.ec-btn-delete-submit').on('click',()=>{            
+            _this.TenguAPI(k,'','DELETE').then(_d=>{
+                _this.delNgObj(k);
+                this.hideDeleteConfirm();
+            });
+            
+        });
+    }
 
     showDataModel() {
         if (document.getElementsByClassName("ec-data-model").length > 0)
