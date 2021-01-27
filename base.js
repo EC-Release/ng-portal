@@ -15,7 +15,6 @@ import define from "./analytics.js";
 import {default as build} from "./build.js";
 import zooming from "./zooming.js";
 
-
 class Base {
     constructor() {}
 
@@ -152,6 +151,7 @@ class Base {
             this.hideRemoteDebug();
             this.hideTerminal();
             this.hideSchedulerForm();
+            this.hideDeleteConfirm();
         }
         ).on("touchstart touchmove scroll", (e)=>{
             e.preventDefault();
@@ -343,27 +343,35 @@ class Base {
             return;
 
         this.setBlock();
-        
-        let _this = this,
-            schr=this.getNgObjVal(k),
-            htmlStr='';
-        
-        let getOptions=(val,arr=['github','gitlab','build.ge','bitbucket'])=>{
-            let opt='';
+
+        let _this = this
+          , schr = this.getNgObjVal(k)
+          , htmlStr = '';
+
+        let getOptions = (val,arr=['github', 'gitlab', 'build.ge', 'bitbucket'])=>{
+            let opt = '';
             arr.forEach((v,i)=>{
-                if (val==v) 
-                    opt+=`<option selected>${v}</option>`;
+                if (val == v)
+                    opt += `<option selected>${v}</option>`;
                 else
-                    opt+=`<option>${v}</option>`;                    
-            });
+                    opt += `<option>${v}</option>`;
+            }
+            );
             return opt;
-        };
-        
-        if (schr==undefined){
-            schr={title:'',gitCommit:'',downloadURL:'',vendor:'github',interval:'-1'};
         }
-        
-        htmlStr+=`<form class='executor-form'>
+        ;
+
+        if (schr == undefined) {
+            schr = {
+                title: '',
+                gitCommit: '',
+                downloadURL: '',
+                vendor: 'github',
+                interval: '-1'
+            };
+        }
+
+        htmlStr += `<form class='executor-form'>
   <div class="form-group">
     <label for="title-input">Title</label>
     <input type="text" class="form-control" id="title-input" ec-data="title" value="${schr.title}" placeholder="Tensorflow Deep Learning Model I- Release..">
@@ -384,7 +392,7 @@ class Base {
   </div>
   <div class="form-group row"> 
       <label for="freq-select" class="col-1 col-form-label">Freq.</label>
-      <select class="form-control col-2" id="freq-select" ec-data="freq">${getOptions(schr.freq,['MINUTE','HOUR','DAY','WEEK','MONTH','YEAR'])}</select>
+      <select class="form-control col-2" id="freq-select" ec-data="freq">${getOptions(schr.freq, ['MINUTE', 'HOUR', 'DAY', 'WEEK', 'MONTH', 'YEAR'])}</select>
       <label for="interval-input" class="col-1 col-form-label">Interval</label>
       <div class="col-2">
         <input class="form-control" type="number" ec-data="interval" value="${schr.interval}" id="interval-input">
@@ -394,7 +402,7 @@ class Base {
         <input class="form-control" type="datetime-local" ec-data="startDate" value="${ec.timeStrConv(schr.startDate)}" id="startDate-input">
       </div>      
   </div>
-  <button type="button" class="btn btn-primary ec-btn-scheduler-submit">${k==''?'Create':'Update'} Executor</button>
+  <button type="button" class="btn btn-primary ec-btn-scheduler-submit">${k == '' ? 'Create' : 'Update'} Executor</button>
 </form>`;
 
         $('body').append($('<div class="ec-scheduler-form"></div>').css({
@@ -408,48 +416,52 @@ class Base {
             'border-radius': 5,
             'padding': 20
         }).html(htmlStr));
-        
-        $('.ec-btn-scheduler-submit').on('click',()=>{
+
+        $('.ec-btn-scheduler-submit').on('click', ()=>{
             $('.executor-form').find('input,select').each((ind,elm)=>{
-                let fld=$(elm).attr('ec-data');
-                if (fld!=undefined) {
-                    let val=$(elm).val();
-                    if ($(elm).attr('type')=='datetime-local')
-                       val=Date.parse($(elm).val());
-                       
-                    schr[fld]=val;
+                let fld = $(elm).attr('ec-data');
+                if (fld != undefined) {
+                    let val = $(elm).val();
+                    if ($(elm).attr('type') == 'datetime-local')
+                        val = Date.parse($(elm).val());
+
+                    schr[fld] = val;
                 }
-            });
-            let mtd='PUT';
-            if (k=='') {
-                k=`${schr.title}-${schr.gitCommit}`;
-                mtd='POST';
-                schr['parent']='04888c44-4adb-4845-a31e-cd33e336b0a1';
-                schr['name']=k;
             }
-            _this.TenguAPI(k,schr,mtd).then(_d=>{
-                _this.setNgObj(k,schr);
+            );
+            let mtd = 'PUT';
+            if (k == '') {
+                k = `${schr.title}-${schr.gitCommit}`;
+                mtd = 'POST';
+                schr['parent'] = '04888c44-4adb-4845-a31e-cd33e336b0a1';
+                schr['name'] = k;
+            }
+            _this.TenguAPI(k, schr, mtd).then(_d=>{
+                _this.setNgObj(k, schr);
                 this.hideSchedulerForm();
-            });
-            
-        });
+                $('ul > li.ec-scheduler').click();
+            }
+            );
+
+        }
+        );
     }
-    
+
     hideDeleteConfirm() {
         $('.ec-delete-form').remove();
         this.unsetBlock();
     }
-    
+
     showDeleteConfirm(k='') {
         if (document.getElementsByClassName("ec-delete-form").length > 0)
             return;
 
         this.setBlock();
-        
-        let _this = this,
-            htmlStr='';
-        
-        htmlStr+=`<form class='executor-delete-form'>
+
+        let _this = this
+          , htmlStr = '';
+
+        htmlStr += `<form class='executor-delete-form'>
   <div class="form-group">
     <label for="title-input">Type <b>${k}</b> to confirm the deletion.</label>
     <input type="text" class="form-control" id="title-input" ec-data="${k}" placeholder="${k}">
@@ -468,23 +480,27 @@ class Base {
             'border-radius': 5,
             'padding': 20
         }).html(htmlStr));
-        
-        $('.ec-btn-delete-submit').on('click',()=>{
+
+        $('.ec-btn-delete-submit').on('click', ()=>{
             $('.executor-delete-form').find('input,select').each((ind,elm)=>{
-                let tky=$(elm).attr('ec-data');
-                if (k==tky) {
-                    if ($(elm).val()==k){
+                let tky = $(elm).attr('ec-data');
+                if (k == tky) {
+                    if ($(elm).val() == k) {
                         $(elm).removeClass('is-invalid');
-                        _this.TenguAPI(k,'','DELETE').then(_d=>{
+                        _this.TenguAPI(k, '', 'DELETE').then(_d=>{
                             _this.delNgObj(k);
                             this.hideDeleteConfirm();
-                        });
+                            $('ul > li.ec-scheduler').click();
+                        }
+                        );
                     } else {
                         $(elm).addClass('is-invalid');
                     }
                 }
-            });
-        });
+            }
+            );
+        }
+        );
     }
 
     showDataModel() {
@@ -615,7 +631,7 @@ class Base {
 
     showTenguChartI() {
         $('.chart').remove();
-        this.TenguDataInit('de9a4c93-0e1d-40fc-aff8-4a50f4e397c0');        
+        this.TenguDataInit('de9a4c93-0e1d-40fc-aff8-4a50f4e397c0');
         $("main").html('<div class="chart mx-1 my-1"></div>');
         (new Runtime).module(define, name=>{
             if (name === "chart")
@@ -626,30 +642,34 @@ class Base {
 
     showTenguChartII() {
         //this.TenguDataInit('qa');
-        $('.chart').remove();        
+        $('.chart').remove();
         $("main").html('<div class="chart mx-1 my-1"></div>');
         (new Runtime).module(build, name=>{
             if (name === "chart")
                 return Inspector.into(".chart")();
-        });
-        
+        }
+        );
+
         setTimeout(()=>{
-          $('.ec-visual-ngObj').on('click',e=>{
-            e.preventDefault();
-            ec.TenguDataInit($(e.target).attr('ec-data'));
-            ec.showDataModel();
-          });
-        },1000)
+            $('.ec-visual-ngObj').on('click', e=>{
+                e.preventDefault();
+                ec.TenguDataInit($(e.target).attr('ec-data'));
+                ec.showDataModel();
+            }
+            );
+        }
+        , 1000)
     }
-    
+
     showTenguChartIII() {
-        $('.chart').remove();        
+        $('.chart').remove();
         $("main").html('<div class="chart mx-1 my-1"></div>');
         (new Runtime).module(zooming, name=>{
             if (name === "chart")
                 return Inspector.into(".chart")();
-        });
-        
+        }
+        );
+
         /*setTimeout(()=>{
           $('.ec-visual-ngObj').on('click',e=>{
             e.preventDefault();
