@@ -384,7 +384,7 @@ class Base {
   </div>
   <div class="form-group row"> 
       <label for="freq-select" class="col-1 col-form-label">Freq.</label>
-      <select class="form-control col-2" id="freq-select">${getOptions(schr.freq,['MINUTE','HOUR','DAY','WEEK','MONTH','YEAR'])}</select>
+      <select class="form-control col-2" id="freq-select" ec-data="freq">${getOptions(schr.freq,['MINUTE','HOUR','DAY','WEEK','MONTH','YEAR'])}</select>
       <label for="interval-input" class="col-1 col-form-label">Interval</label>
       <div class="col-2">
         <input class="form-control" type="number" ec-data="interval" value="${schr.interval}" id="interval-input">
