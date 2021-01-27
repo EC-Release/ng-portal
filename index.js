@@ -48,7 +48,7 @@ import EC from './ec.js'
                         if (!ip.startsWith('10.')) {
                             ec.Api(`${ay.cred.ipdata.url}/${ip}?${ay.cred.ipdata.key}=${ay.cred.ipdata.value}`).then((data)=>{
                                 //console.log(`geo svc: ${data} browsHistory: ${ec.getNgObjVal('browseHistory')}`);                                         
-                                let bh = ec.getNgObjByName('browseHistory')
+                                let bh = ec.getNgObjByName('geoHistory')
                                   , ts = (new Date()).getTime()
                                   , ipd = {
                                     ip: ip,
