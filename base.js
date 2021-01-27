@@ -452,7 +452,7 @@ class Base {
         htmlStr+=`<form class='executor-delete-form'>
   <div class="form-group">
     <label for="title-input">Type <b>${k}</b> to confirm the deletion.</label>
-    <input type="text" class="form-control" id="title-input" ec-data="title" placeholder="${k}">
+    <input type="text" class="form-control" id="title-input" ec-data="${k}" placeholder="${k}">
   </div>
   <button type="button" class="btn btn-primary ec-btn-delete-submit">Confirm</button>
 </form>`;
@@ -469,12 +469,19 @@ class Base {
             'padding': 20
         }).html(htmlStr));
         
-        $('.ec-btn-delete-submit').on('click',()=>{            
-            _this.TenguAPI(k,'','DELETE').then(_d=>{
-                _this.delNgObj(k);
-                this.hideDeleteConfirm();
+        $('.ec-btn-delete-submit').on('click',()=>{
+            $('.executor-delete-form').find('input,select').each((ind,elm)=>{
+                let tky=$(elm).attr('ec-data');
+                if (k==tky) {
+                    $(elm).removeClass('is-invalid');
+                    _this.TenguAPI(k,'','DELETE').then(_d=>{
+                        _this.delNgObj(k);
+                        this.hideDeleteConfirm();
+                    });
+                } else {
+                    $(elm).addClass('is-invalid');
+                }
             });
-            
         });
     }
 
