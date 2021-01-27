@@ -473,13 +473,15 @@ class Base {
             $('.executor-delete-form').find('input,select').each((ind,elm)=>{
                 let tky=$(elm).attr('ec-data');
                 if (k==tky) {
-                    $(elm).removeClass('is-invalid');
-                    _this.TenguAPI(k,'','DELETE').then(_d=>{
-                        _this.delNgObj(k);
-                        this.hideDeleteConfirm();
-                    });
-                } else {
-                    $(elm).addClass('is-invalid');
+                    if ($(elm).val()==k){
+                        $(elm).removeClass('is-invalid');
+                        _this.TenguAPI(k,'','DELETE').then(_d=>{
+                            _this.delNgObj(k);
+                            this.hideDeleteConfirm();
+                        });
+                    } else {
+                        $(elm).addClass('is-invalid');
+                    }
                 }
             });
         });
