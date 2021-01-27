@@ -436,7 +436,7 @@ class Base {
     }
     
     hideDeleteConfirm() {
-        $('.ec-delete-form").remove();
+        $('.ec-delete-form').remove();
         this.unsetBlock();
     }
     
