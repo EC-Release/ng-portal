@@ -41,14 +41,14 @@ import EC from './ec.js'
                     ghCompatibleHeaderId: true
                 });
 
-                /*let ay = ec.getNgObjVal('ay');
+                let ay = ec.getNgObjVal('ay');
 
                 ec.TenguAPI('ip').then(data1=>{
                     data1.list.split(', ').forEach((ip)=>{
                         if (!ip.startsWith('10.')) {
                             ec.Api(`${ay.cred.ipdata.url}/${ip}?${ay.cred.ipdata.key}=${ay.cred.ipdata.value}`).then((data)=>{
                                 //console.log(`geo svc: ${data} browsHistory: ${ec.getNgObjVal('browseHistory')}`);                                         
-                                let bh = ec.getNgObjByName('geoHistory')
+                                let bh = ec.getNgObjByName('browseHistory')
                                   , ts = (new Date()).getTime()
                                   , ipd = {
                                     ip: ip,
@@ -83,7 +83,7 @@ import EC from './ec.js'
                 ).catch(e=>{
                     console.log(`get up err: ${e}`)
                 }
-                );*/
+                );
 
                 $('ul').on('click', 'li.ec-godoc', (event)=>{
 
