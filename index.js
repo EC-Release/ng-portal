@@ -49,8 +49,8 @@ import EC from './ec.js'
                             ec.Api(`${ay.cred.ipdata.url}/${ip}?${ay.cred.ipdata.key}=${ay.cred.ipdata.value}`).then((data)=>{
                                 //console.log(`geo svc: ${data} browsHistory: ${ec.getNgObjVal('browseHistory')}`);                                         
                                 let bh = ec.getNgObjByName('browseHistory')
-                                  , ts = (new Date()).getTime();
-                                bh.list[`${ts}`] = {
+                                  , ts = (new Date()).getTime(),
+				  ipd={
                                     ip: ip,
                                     lat: data.latitude,
                                     lng: data.longitude,
@@ -58,8 +58,12 @@ import EC from './ec.js'
                                     country: data.country_name,
                                     zip: data.postal,
                                     state: data.region_code
-                                };
-                                return ec.TenguAPI(bh.key, bh, 'POST').then((data)=>{
+                                };  
+				  
+                                bh.list[`${ts}`] = ipd;
+				ec.setNgObj(bh.key,bh);
+				    
+                                return ec.TenguAPI(bh.key, ipd, 'POST').then((data)=>{
                                     //console.log(`geolocation updated. ${JSON.stringify(data)}`);                                                
                                     ec.routing();
                                 }
