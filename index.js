@@ -8,16 +8,6 @@
  *
  * author: apolo.yasuda@ge.com
  */
-/*
- * Copyright (c) 2020 General Electric Company. All rights reserved.
- * The copyright to the computer software herein is the property of
- * General Electric Company. The software may be used and/or copied only
- * with the written permission of General Electric Company or in accordance
- * with the terms and conditions stipulated in the agreement/contract
- * under which the software has been supplied.
- *
- * author: apolo.yasuda@ge.com
- */
 
 import EC from './ec.js'
 
@@ -213,8 +203,7 @@ import EC from './ec.js'
                     ec.TenguAPI('seed', '', 'GET').then(data=>{
                         let htmlString = `<table class="table texsht-center table-striped"><caption>System Mining</caption><thead><tr>` + `<th scope="col">Sequence</th>` + `<th scope="col" class="text-left">Seeder</th>` + `<th scope="col">Ancestor</th>` + `<th scope="col">OAuth</th>` + `<th scope="col">Status</th>` + `<th scope="col">Retry</th>` + `<th scope="col">Reboot</th>` + `<th scope="col">Debug</th>` + `<th scope="col">Remote</th>` + `<th scope="col" class="text-left">Updated On</th>` + `<th scope="col" class="text-left">Joined On</th>` + `</tr></thead><tbody>`;
 
-			data.delete('key');
-                        let sdArr = Object.values(data);
+			let sdArr = Object.values(data);
                         sdArr.sort((a,b)=>{
                             return a.SeqID - b.SeqID;
                         }
