@@ -213,7 +213,7 @@ import EC from './ec.js'
                     ec.TenguAPI('seed', '', 'GET').then(data=>{
                         let htmlString = `<table class="table texsht-center table-striped"><caption>System Mining</caption><thead><tr>` + `<th scope="col">Sequence</th>` + `<th scope="col" class="text-left">Seeder</th>` + `<th scope="col">Ancestor</th>` + `<th scope="col">OAuth</th>` + `<th scope="col">Status</th>` + `<th scope="col">Retry</th>` + `<th scope="col">Reboot</th>` + `<th scope="col">Debug</th>` + `<th scope="col">Remote</th>` + `<th scope="col" class="text-left">Updated On</th>` + `<th scope="col" class="text-left">Joined On</th>` + `</tr></thead><tbody>`;
 
-                        let sdArr = Object.values(data);
+                        let sdArr = Object.values(data.val);
                         sdArr.sort((a,b)=>{
                             return a.SeqID - b.SeqID;
                         }
