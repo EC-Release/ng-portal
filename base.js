@@ -598,7 +598,7 @@ class Base {
             e.preventDefault();
             for (const _k in aq) {
                 let _v = aq[_k];
-                if (!_v.value.hasOwnProperty('parent'))
+                if (_v.value&&!_v.value.hasOwnProperty('parent'))
                     console.debug(`invalid keyvalue pair ${_v.value}: no parent defined.`);
 
                 _this.TenguAPI(_v.key, _v.value, _v.method).then(data=>{
