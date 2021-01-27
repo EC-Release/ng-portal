@@ -437,7 +437,7 @@ class Base {
                 schr['name'] = k;
             }
             _this.TenguAPI(k, schr, mtd).then(_d=>{
-                _this.setNgObj(k, schr);
+                _this.setNgObj(k, _d);
                 this.hideSchedulerForm();
                 $('ul > li.ec-scheduler').click();
             }
