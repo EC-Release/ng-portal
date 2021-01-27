@@ -344,6 +344,12 @@ import EC from './ec.js'
 			ec.showSchedulerForm($(e.target).closest('a').attr('ec-data'));
                     }
                     );
+			
+		    $('a.ec-delete-scheduler').on('click', (e)=>{
+                        e.preventDefault();
+			ec.showDeleteConfirm($(e.target).closest('a').attr('ec-data'));
+                    }
+                    );
 
                     $('button.ec-show-scheduler-form').on('click', (e)=>{
                         e.preventDefault();
