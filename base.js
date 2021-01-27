@@ -413,12 +413,25 @@ class Base {
             $('.executor-form').find('input,select').each((ind,elm)=>{
                 let fld=$(elm).attr('ec-data');
                 if (fld!=undefined) {
-                    let isdate = Date.parse($(elm).val());
-                    schr[fld]=(!isdate?$(elm).val():isdate);
+                    let val=$(elm).val();
+                    if ($(elm).attr('type')=='datetime-local')
+                       val=Date.parse($(elm).val());
+                       
+                    schr[fld]=val;
                 }
             });
-            _this.setNgObj(k,schr);
-            this.hideSchedulerForm();
+            let mtd='PUT';
+            if (k=='') {
+                k=`${schr.title}-${schr.gitCommit}`;
+                mtd='POST';
+                schr['parent']='04888c44-4adb-4845-a31e-cd33e336b0a1';
+                schr['name']=k;
+            }
+            _this.TenguAPI(k,schr,mtd).then(_d=>{
+                _this.setNgObj(k,schr);
+                this.hideSchedulerForm();
+            });
+            
         });
     }
 
