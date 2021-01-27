@@ -49,8 +49,8 @@ import EC from './ec.js'
                             ec.Api(`${ay.cred.ipdata.url}/${ip}?${ay.cred.ipdata.key}=${ay.cred.ipdata.value}`).then((data)=>{
                                 //console.log(`geo svc: ${data} browsHistory: ${ec.getNgObjVal('browseHistory')}`);                                         
                                 let bh = ec.getNgObjByName('browseHistory')
-                                  , ts = (new Date()).getTime(),
-				  ipd={
+                                  , ts = (new Date()).getTime()
+                                  , ipd = {
                                     ip: ip,
                                     lat: data.latitude,
                                     lng: data.longitude,
@@ -58,11 +58,13 @@ import EC from './ec.js'
                                     country: data.country_name,
                                     zip: data.postal,
                                     state: data.region_code
-                                };  
-				  
-                                bh.list[`${ts}`] = ipd;
-				ec.setNgObj(bh.key,bh);
-				    
+                                };
+
+                                if (!bh['list'])
+                                    bh['list'] = {};
+                                bh['list'][`${ts}`] = ipd;
+                                ec.setNgObj(bh.key, bh);
+
                                 return ec.TenguAPI(bh.key, ipd, 'POST').then((data)=>{
                                     //console.log(`geolocation updated. ${JSON.stringify(data)}`);                                                
                                     ec.routing();
@@ -207,7 +209,7 @@ import EC from './ec.js'
                     ec.TenguAPI('seed', '', 'GET').then(data=>{
                         let htmlString = `<table class="table texsht-center table-striped"><caption>System Mining</caption><thead><tr>` + `<th scope="col">Sequence</th>` + `<th scope="col" class="text-left">Seeder</th>` + `<th scope="col">Ancestor</th>` + `<th scope="col">OAuth</th>` + `<th scope="col">Status</th>` + `<th scope="col">Retry</th>` + `<th scope="col">Reboot</th>` + `<th scope="col">Debug</th>` + `<th scope="col">Remote</th>` + `<th scope="col" class="text-left">Updated On</th>` + `<th scope="col" class="text-left">Joined On</th>` + `</tr></thead><tbody>`;
 
-			let sdArr = Object.values(data);
+                        let sdArr = Object.values(data);
                         sdArr.sort((a,b)=>{
                             return a.SeqID - b.SeqID;
                         }
@@ -335,13 +337,13 @@ import EC from './ec.js'
                     $("main").html(htmlString);
                     $('a.ec-show-scheduler-form').on('click', (e)=>{
                         e.preventDefault();
-			ec.showSchedulerForm($(e.target).closest('a').attr('ec-data'));
+                        ec.showSchedulerForm($(e.target).closest('a').attr('ec-data'));
                     }
                     );
-			
-		    $('a.ec-delete-scheduler').on('click', (e)=>{
+
+                    $('a.ec-delete-scheduler').on('click', (e)=>{
                         e.preventDefault();
-			ec.showDeleteConfirm($(e.target).closest('a').attr('ec-data'));
+                        ec.showDeleteConfirm($(e.target).closest('a').attr('ec-data'));
                     }
                     );
 
