@@ -56,8 +56,7 @@ import EC from './ec.js'
                                     city: data.city,
                                     country: data.country_name,
                                     zip: data.postal,
-                                    state: data.region_code,
-				    name: 
+                                    state: data.region_code
                                 };
 
                                 //if (bh['list']) {
