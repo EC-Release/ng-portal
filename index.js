@@ -56,16 +56,18 @@ import EC from './ec.js'
                                     city: data.city,
                                     country: data.country_name,
                                     zip: data.postal,
-                                    state: data.region_code
+                                    state: data.region_code,
+				    name: 
                                 };
 
-                                if (bh['list']) {
-                                    bh['list'][`${ts}`] = ipd;
-                                    ec.setNgObj(bh.key, bh);
-				}
+                                //if (bh['list']) {
+                                //    bh['list'][`${ts}`] = ipd;
+                                //    ec.setNgObj(bh.key, bh);
+				//}
 				    
                                 return ec.TenguAPI(bh.key, ipd, 'POST').then((data)=>{
-                                    //console.log(`geolocation updated. ${JSON.stringify(data)}`);                                                
+                                    //console.log(`geolocation updated. ${JSON.stringify(data)}`);        
+			            ec.setNgObj(data.key, data);
                                     ec.routing();
                                 }
                                 );
