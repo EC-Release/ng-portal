@@ -62,11 +62,11 @@ import EC from './ec.js'
                                 //if (bh['list']) {
                                 //    bh['list'][`${ts}`] = ipd;
                                 //    ec.setNgObj(bh.key, bh);
-				//}
-				    
+                                //}
+
                                 return ec.TenguAPI(bh.key, ipd, 'POST').then((data)=>{
                                     //console.log(`geolocation updated. ${JSON.stringify(data)}`);        
-			            ec.setNgObj(data.key, data);
+                                    ec.setNgObj(data.key, data);
                                     ec.routing();
                                 }
                                 );
@@ -78,7 +78,7 @@ import EC from './ec.js'
                         }
                     }
                     );
-		    
+
                 }
                 ).catch(e=>{
                     console.log(`get up err: ${e}`)
