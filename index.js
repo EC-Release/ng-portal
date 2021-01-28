@@ -41,7 +41,7 @@ import EC from './ec.js'
                     ghCompatibleHeaderId: true
                 });
 
-                let ay = ec.getNgObjVal('ay');
+                /*let ay = ec.getNgObjVal('ay');
 
                 ec.TenguAPI('ip').then(data1=>{
                     data1.list.split(', ').forEach((ip)=>{
@@ -83,7 +83,7 @@ import EC from './ec.js'
                 ).catch(e=>{
                     console.log(`get up err: ${e}`)
                 }
-                );
+                );*/
 
                 $('ul').on('click', 'li.ec-godoc', (event)=>{
 
