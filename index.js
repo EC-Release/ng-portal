@@ -41,7 +41,7 @@ import EC from './ec.js'
                     ghCompatibleHeaderId: true
                 });
 
-                /*let ay = ec.getNgObjVal('ay');
+                let ay = ec.getNgObjVal('ay');
 
                 ec.TenguAPI('ip').then(data1=>{
                     data1.list.split(', ').forEach((ip)=>{
@@ -49,7 +49,6 @@ import EC from './ec.js'
                             ec.Api(`${ay.cred.ipdata.url}/${ip}?${ay.cred.ipdata.key}=${ay.cred.ipdata.value}`).then((data)=>{
                                 //console.log(`geo svc: ${data} browsHistory: ${ec.getNgObjVal('browseHistory')}`);                                         
                                 let bh = ec.getNgObjByName('browseHistory')
-                                  , ts = (new Date()).getTime()
                                   , ipd = {
                                     ip: ip,
                                     lat: data.latitude,
@@ -60,11 +59,11 @@ import EC from './ec.js'
                                     state: data.region_code
                                 };
 
-                                if (!bh['list'])
-                                    bh['list'] = {};
-                                bh['list'][`${ts}`] = ipd;
-                                ec.setNgObj(bh.key, bh);
-
+                                if (bh['list']) {
+                                    bh['list'][`${ts}`] = ipd;
+                                    ec.setNgObj(bh.key, bh);
+				}
+				    
                                 return ec.TenguAPI(bh.key, ipd, 'POST').then((data)=>{
                                     //console.log(`geolocation updated. ${JSON.stringify(data)}`);                                                
                                     ec.routing();
@@ -83,7 +82,7 @@ import EC from './ec.js'
                 ).catch(e=>{
                     console.log(`get up err: ${e}`)
                 }
-                );*/
+                );
 
                 $('ul').on('click', 'li.ec-godoc', (event)=>{
 
