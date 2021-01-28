@@ -179,7 +179,7 @@ class EC extends Base {
 
     obj.path.forEach((elm,idx)=>{
       if (sp&&sp['key']!=undefined&&
-          lp&&lp['key']==sp['name']){
+          lp&&lp['key']==sp['key']){
           obj.key=sp['key'];
           obj.value = this.cloneNgObjVal(lp);
       } else if (obj.path[idx-2]=='children'&&
