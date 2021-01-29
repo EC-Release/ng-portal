@@ -213,8 +213,8 @@ class Base {
 
         this.ws.onopen = (e)=>{
             const t = new Terminal({
-                cols: 100,
-                rows: 80,
+                cols: 120,
+                rows: 40,
                 convertEol: true
             })
               , f = new FitAddon.FitAddon();
