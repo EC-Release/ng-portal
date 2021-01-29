@@ -148,7 +148,7 @@ class EC extends Base {
              break;          
           case 'PUT':
           case 'POST':
-            _this.#ngObj.set(key,data);
+            _this.#ngObj.set(data.key,data);
         }
       }
       
