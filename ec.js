@@ -244,6 +244,8 @@ class EC extends Base {
         return JSON.parse(JSON.stringify(elm));
       }
     }
+    
+    return;
   }
                         
   setNgObj(key,val) {
