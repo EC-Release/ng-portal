@@ -250,9 +250,11 @@ class EC extends Base {
     _val=this.getNgObjVal(key);
     if (_val&&_val.name&&_val.name=='browseHistory'){
       _val['list']&&(_val['list'][`${Date.now()}`]=val);
+      this.#ngObj.set(key,_val);
+      return;
     }
           
-    this.#ngObj.set(key,_val);
+    this.#ngObj.set(key,val);
   }
 
   delNgObj(key) {
