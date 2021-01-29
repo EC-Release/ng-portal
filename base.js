@@ -214,7 +214,7 @@ class Base {
         this.ws.onopen = (e)=>{
             const t = new Terminal({
                 cols: 100,
-                rows: 40,
+                rows: 80,
                 convertEol: true
             })
               , f = new FitAddon.FitAddon();
@@ -275,7 +275,7 @@ class Base {
 
         this.ws.onopen = (e)=>{
             const t = new Terminal({
-                cols: 100,
+                cols: 120,
                 rows: 40,
                 convertEol: true,
                 screenKeys: true,
