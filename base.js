@@ -381,7 +381,7 @@ class Base {
     <input type="text" class="form-control" id="gitCommit-input" ec-data="gitCommit" value="${schr.gitCommit}" placeholder="79fds6gupo8">
   </div>
   <div class="form-group">
-    <label for="downloadURL-input">Downloadable Link (HTTPS)</label>
+    <label for="downloadURL-input">Git URL (HTTPS)</label>
     <input type="text" class="form-control" id="downloadURL-input" ec-data="downloadURL" value="${schr.downloadURL}" placeholder="https://raw.githubusercontent.com/EC-Release/..">
   </div>
   <div class="form-group">
