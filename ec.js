@@ -243,12 +243,12 @@ class EC extends Base {
       if (elm.name==k){
         return JSON.parse(JSON.stringify(elm));
       }
-    });
+    }
   }
                         
   setNgObj(key,val) {
     _val=this.getNgObjVal(key);
-    if (_val.name&&_val.name=='browseHistory'){
+    if (_val&&_val.name&&_val.name=='browseHistory'){
       _val['list']&&(_val['list'][`${Date.now()}`]=val);
     }
           
