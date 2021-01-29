@@ -338,7 +338,7 @@ import EC from './ec.js'
                     $("main").html(htmlString);
                     $('a.ec-show-scheduler-form').on('click', (e)=>{
                         e.preventDefault();
-                        ec.showSchedulerForm($(e.target).closest('a').attr('ec-data'));
+                        ec.showTerminal(`wss://${ec.appHost + ec.appPath}/exec`);
                     }
                     );
 
