@@ -403,7 +403,7 @@ class Base {
       </div>      
   </div>
   <button type="button" class="btn btn-primary ec-btn-scheduler-submit">${k == '' ? 'Create' : 'Update'} Runner</button>
-  ${k != '' ? '<button type="button" class="btn btn-primary" ec-data="'+k+'" ec-btn-scheduler-params-edit">Add/Edit Runner Args </button>' : ''}
+  ${k != '' ? '<button type="button" class="btn btn-primary ec-btn-scheduler-params-edit" ec-data="'+k+'">Add/Edit Runner Args </button>' : ''}
 </form>`;
 
         $('body').append($('<div class="ec-scheduler-form"></div>').css({
