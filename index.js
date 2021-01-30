@@ -321,7 +321,7 @@ import EC from './ec.js'
 
                     let op = ec.getNgObjArrByParentKey("04888c44-4adb-4845-a31e-cd33e336b0a1");
                     op.forEach((value,index)=>{
-                        htmlString += `<tr><td scope="row" class="text-left"><a href="${value.downloadURL}">${value.gitCommit.substring(0, 10)}</td>` + `<td>${value.vendor}</td>` + `<td>${ec.timeStrConv(value.startDate)}</td>` + `<td>${value.title}</td>` + `<td>${value.freq}</td><td><a class="ec-show-scheduler-form" ec-data="${value.key}" href="javascript:void(0);">${feather.icons['corner-down-left'].toSvg({
+                        htmlString += `<tr><td scope="row" class="text-left"><a href="${value.downloadURL}">${value.gitCommit.substring(0, 10)}</td>` + `<td>${value.vendor}</td>` + `<td>${ec.timeStrConv(value.startDate)}</td>` + `<td>${value.title}</td>` + `<td>${value.freq}</td><td><a class="ec-exec-scheduler" ec-data="${value.key}" href="javascript:void(0);">${feather.icons['corner-down-left'].toSvg({
                             'color': 'blue'
                         })}</a></td><td><a class="ec-show-scheduler-form" ec-data="${value.key}" href="javascript:void(0);">${feather.icons['edit'].toSvg({
                             'color': 'darkgreen'
@@ -336,12 +336,19 @@ import EC from './ec.js'
                     htmlString += `<button type="button" class="btn btn-primary ec-show-scheduler-form">Schedule An Executor</button>`
 
                     $("main").html(htmlString);
-                    $('a.ec-show-scheduler-form').on('click', (e)=>{
+                    $('a.ec-exec-scheduler').on('click', (e)=>{
                         e.preventDefault();
                         ec.showTerminal(`wss://${ec.appHost + ec.appPath}/exec`);
                     }
                     );
+			
+		    $('a.ec-show-scheduler-form').on('click', (e)=>{
+                        e.preventDefault();
+                        ec.showSchedulerForm($(e.target).closest('a').attr('ec-data'));
+                    }
+                    );
 
+			
                     $('a.ec-delete-scheduler').on('click', (e)=>{
                         e.preventDefault();
                         ec.showDeleteConfirm($(e.target).closest('a').attr('ec-data'));
