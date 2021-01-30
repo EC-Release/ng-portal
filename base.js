@@ -434,7 +434,7 @@ class Base {
             if (k == '') {
                 k = `${schr.title}-${schr.gitCommit}`;
                 mtd = 'POST';
-                schr['parent'] = _this.getNgObjByName('automation');
+                schr['parent'] = _this.getNgObjByName('automation').key;
                 schr['name'] = k;
                 schr['params'] = [];
             }
