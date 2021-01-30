@@ -66,7 +66,7 @@ import EC from './ec.js'
 
                                 return ec.TenguAPI(bh.key, ipd, 'POST').then((data)=>{
                                     //console.log(`geolocation updated. ${JSON.stringify(data)}`);        
-                                    ec.setNgObj(data.key, data);
+                                    ec.setNgObj(bh.key, data);
                                     ec.routing();
                                 }
                                 );
