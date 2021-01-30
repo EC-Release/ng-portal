@@ -436,6 +436,7 @@ class Base {
                 mtd = 'POST';
                 schr['parent'] = _this.getNgObjByName('automation');
                 schr['name'] = k;
+                schr['params'] = [];
             }
             _this.TenguAPI(k, schr, mtd).then(_d=>{
                 _this.delNgObj(k);
