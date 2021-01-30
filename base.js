@@ -448,7 +448,7 @@ class Base {
         }
         );
         
-        $('.ec-btn-scheduler-params-edit').on('click', ()=>{
+        $('.ec-btn-scheduler-params-edit').on('click', (e)=>{
             _this.hideSchedulerForm();
             e.preventDefault();
             ec.TenguDataInit($(e.target).attr('ec-data'));
