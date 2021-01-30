@@ -25,6 +25,7 @@ class EC extends Base {
       this.appRev = rev;
       this.appPath = `/${this.appRev}/${path}`;
       this.apiPath = `/${this.appRev}/${path}/${api}`;
+      this.appExit = `/${this.appRev}/${path}/exit`;
       this.appExec = `/${this.appRev}/${path}/exec`;
       this.appTerm = `/${this.appRev}/${path}/term`;
       this.appLog = `/${this.appRev}/${path}/log`;
