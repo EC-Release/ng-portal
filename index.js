@@ -280,7 +280,7 @@ import EC from './ec.js'
                             }
                             , 5000);
 
-                            ec.TenguSeederAPI(`${ec.appPath}/exit`, 'POST').then(d=>{
+                            ec.TenguSeederAPI(`${ec.appExit}`, 'POST').then(d=>{
                                 console.log(`seeder is being rebooted. d: ${d}`);
                             }
                             ).catch(e=>{
@@ -292,13 +292,13 @@ import EC from './ec.js'
 
                         $('.ec-seed-debug > svg').on('click', (e)=>{
                             e.preventDefault();
-                            ec.showRemoteDebug(`wss://${ec.appHost + ec.appPath}/log`);
+                            ec.showRemoteDebug(`wss://${ec.appHost + ec.appLog}`);
                         }
                         );
 
                         $('.ec-seed-term > svg').on('click', (e)=>{
                             e.preventDefault();
-                            ec.showTerminal(`wss://${ec.appHost + ec.appPath}/term`);
+                            ec.showTerminal(`wss://${ec.appHost + ec.appTerm}`);
                         }
                         );
 
@@ -338,7 +338,7 @@ import EC from './ec.js'
                     $("main").html(htmlString);
                     $('a.ec-exec-scheduler').on('click', (e)=>{
                         e.preventDefault();
-                        ec.showTerminal(`wss://${ec.appHost + ec.appPath}/exec`);
+                        ec.showTerminal(`wss://${ec.appHost + ec.appExec}?eid=${$(e.target).closest('a').attr('ec-data')}`);
                     }
                     );
 			
