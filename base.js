@@ -402,7 +402,8 @@ class Base {
         <input class="form-control" type="datetime-local" ec-data="startDate" value="${ec.timeStrConv(schr.startDate)}" id="startDate-input">
       </div>      
   </div>
-  <button type="button" class="btn btn-primary ec-btn-scheduler-submit">${k == '' ? 'Create' : 'Update'} Executor</button>
+  <button type="button" class="btn btn-primary ec-btn-scheduler-submit">${k == '' ? 'Create' : 'Update'} Runner</button>
+  ${k == '' ? '<button type="button" class="btn btn-primary ec-data="${k}" ec-btn-scheduler-params-edit">Add/Edit Runner Args </button>' : ''}
 </form>`;
 
         $('body').append($('<div class="ec-scheduler-form"></div>').css({
@@ -433,7 +434,7 @@ class Base {
             if (k == '') {
                 k = `${schr.title}-${schr.gitCommit}`;
                 mtd = 'POST';
-                schr['parent'] = '04888c44-4adb-4845-a31e-cd33e336b0a1';
+                schr['parent'] = _this.getNgObjByName('automation');
                 schr['name'] = k;
             }
             _this.TenguAPI(k, schr, mtd).then(_d=>{
@@ -446,6 +447,13 @@ class Base {
 
         }
         );
+        
+        $('.ec-btn-scheduler-params-edit').on('click', ()=>{
+            _this.hideSchedulerForm();
+            e.preventDefault();
+            ec.TenguDataInit($(e.target).attr('ec-data'));
+            ec.showDataModel();
+        });
     }
 
     hideDeleteConfirm() {
