@@ -144,11 +144,11 @@ class EC extends Base {
       if (key!=''&&key!='snapshot') {
         switch(obj.method) {
           case 'DELETE':
-             _this.#ngObj.delete(key);
+             _this.delNgObj(key);
              break;          
           case 'PUT':
           case 'POST':
-            _this.#ngObj.set(data.key,data);
+            _this.setNgObj(data.key,data);
         }
       }
       
