@@ -761,7 +761,7 @@ import EC from './ec.js'
                     ;
 
                     v && ec.Api('https://ge-dw.aha.io/api/v1/products/DTEC/releases?q=Release%202021', h).then(op=>{
-                        return op.releases[0].id;
+                        return op.releases[1].id;
                     }
                     ).then(rid=>{
                         return ec.Api(`https://ge-dw.aha.io/api/v1/releases/${rid}/features`, h);
